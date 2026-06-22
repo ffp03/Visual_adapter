@@ -24,7 +24,7 @@ AI-powered Chrome extension that transforms complex web pages into clean, access
 
 1. **Install Extension**:
    - Download from Chrome Web Store (coming soon)
-   - Or load unpacked: `chrome://extensions` → Load unpacked → Select folder
+   - Or load unpacked: `chrome://extensions` → Load unpacked → Select the `extension` folder
 
 2. **Use Extension**:
    - Click extension icon to open side panel
@@ -41,7 +41,7 @@ export GEMINI_API_KEY="your_key"
 node index.js
 
 # 2. Load extension
-# Chrome → chrome://extensions → Load unpacked → Select Visual_adapter folder
+# Chrome → chrome://extensions → Load unpacked → Select the extension folder
 
 # 3. Test
 # Visit any website and click extension icon

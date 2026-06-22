@@ -50,7 +50,7 @@ node index.js
 1. Open Chrome → `chrome://extensions`
 2. Enable **"Developer mode"** (top right)
 3. Click **"Load unpacked"**
-4. Select the `Visual_adapter` directory
+4. Select the `extension` directory
 5. Extension should appear in toolbar
 
 ---

@@ -1,0 +1,17 @@
+import requests
+import re
+
+TOKEN = "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"
+URL = "https://huggingface.co/spaces/ffpffp/visual-adapter-backend"
+
+# Try using token as cookie
+cookies = {"token": TOKEN}
+response = requests.get(URL, cookies=cookies)
+
+if response.status_code == 200:
+    print("Successfully fetched page")
+    # Look for the embedded config that contains the log URL or build ID
+    # This is usually in a script tag or data attribute
+    print(response.text[:2000]) # Print first 2000 chars to check structure
+else:
+    print(f"Failed to fetch page: {response.status_code}")

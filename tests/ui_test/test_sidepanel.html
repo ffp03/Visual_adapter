@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Panel Test</title>
+    <link rel="stylesheet" href="../../sidepanel.css">
+    <script src="mock_chrome.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <h2>Visual Adapter (Test)</h2>
+            <button id="refresh-btn" title="Re-analyze Page">↻</button>
+        </header>
+
+        <!-- Main Content Area (Reader Mode) -->
+        <main id="reader-view">
+            <div class="placeholder">
+                <p>Open a webpage to see the adapted version here.</p>
+            </div>
+        </main>
+
+        <!-- Settings Area -->
+        <footer id="controls">
+            <!-- Theme Selection -->
+            <div class="settings-section">
+                <h3>Theme</h3>
+                <div class="theme-grid">
+                    <button class="theme-btn" data-theme="black-white" aria-label="Black on White"
+                        style="background:#fff; color:#000; border:1px solid #ccc">Aa</button>
+                    <button class="theme-btn" data-theme="white-black" aria-label="White on Black"
+                        style="background:#000; color:#fff; border:1px solid #fff">Aa</button>
+                    <button class="theme-btn" data-theme="yellow-black" aria-label="Yellow on Black"
+                        style="background:#000; color:#FFD700; border:1px solid #FFD700">Aa</button>
+                    <button class="theme-btn" data-theme="blue-yellow" aria-label="Blue on Yellow"
+                        style="background:#FFFF00; color:#0000FF; border:1px solid #0000FF">Aa</button>
+                    <button class="theme-btn" data-theme="sepia" aria-label="Sepia"
+                        style="background:#f4ecd8; color:#5b4636; border:1px solid #5b4636">Aa</button>
+                    <button class="theme-btn" data-theme="green-black" aria-label="Green on Black"
+                        style="background:#000; color:#00FF00; border:1px solid #00FF00">Aa</button>
+                </div>
+            </div>
+
+            <!-- Typography Controls -->
+            <div class="settings-section">
+                <h3>Typography</h3>
+                <div class="control-group">
+                    <select id="font-select" aria-label="Font Family">
+                        <option value="sans-serif">Sans Serif</option>
+                        <option value="serif">Serif</option>
+                        <option value="'OpenDyslexic', sans-serif">Dyslexic Friendly</option>
+                        <option value="'Courier New', monospace">Monospace</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <button id="font-decrease" class="icon-btn" aria-label="Decrease Font Size">A-</button>
+                    <input type="range" id="size-slider" min="14" max="40" step="2" value="20"
+                        aria-label="Font Size Slider">
+                    <button id="font-increase" class="icon-btn" aria-label="Increase Font Size">A+</button>
+                </div>
+                <div class="size-label">Size: <span id="font-display">20px</span></div>
+            </div>
+        </footer>
+    </div>
+    <script src="../../sidepanel.js"></script>
+</body>
+
+</html>

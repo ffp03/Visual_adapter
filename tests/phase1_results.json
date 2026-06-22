@@ -1,0 +1,819 @@
+[
+  {
+    "id": "good_001",
+    "name": "Sephora Product Listing - Semantic Main",
+    "file": "personal care/Sephora.mhtml",
+    "hostname": "sephora.com",
+    "category": "Beauty/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.75,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Clean semantic main selector with proper exclusions"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": 27376,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 239,
+        "totalText": 422
+      }
+    }
+  },
+  {
+    "id": "good_002",
+    "name": "Zillow Rentals - Article Tag",
+    "file": "house rental/Zillow.mhtml",
+    "hostname": "zillow.com",
+    "category": "Real Estate",
+    "rule": {
+      "main": "article",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ],
+      "name": "Rental Listings"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.75,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic article tag for content"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 11479,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 115,
+        "totalText": 107
+      }
+    }
+  },
+  {
+    "id": "good_003",
+    "name": "IKEA Products - Main Tag",
+    "file": "extra/IKEA.mhtml",
+    "hostname": "ikea.com",
+    "category": "Furniture/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.7,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic main with modal exclusions"
+    },
+    "structureAnalysis": {
+      "semanticElements": [
+        {
+          "selector": "main",
+          "textLength": 2808,
+          "childCount": 5,
+          "score": 100
+        }
+      ],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 6802,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 581,
+        "totalText": 6616
+      }
+    }
+  },
+  {
+    "id": "good_004",
+    "name": "Costco Products - Main Tag",
+    "file": "food/Costco.mhtml",
+    "hostname": "costco.com",
+    "category": "Wholesale/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ],
+      "name": "Product Catalog"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.75,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic HTML5 main tag with comprehensive exclusions"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": -1,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 45,
+        "totalText": 390
+      }
+    }
+  },
+  {
+    "id": "good_005",
+    "name": "Etsy Search - Semantic Main",
+    "file": "shopping/Etsy.mhtml",
+    "hostname": "etsy.com",
+    "category": "Marketplace",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ],
+      "name": "Search Results"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.75,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Clean semantic selector for marketplace"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 9568,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 82,
+        "totalText": 647
+      }
+    }
+  },
+  {
+    "id": "good_006",
+    "name": "LCBO Products - Main Tag",
+    "file": "alcoholic/LCBO.mhtml",
+    "hostname": "lcbo.com",
+    "category": "Liquor/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]",
+        "[class*=\"popup\"]"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.7,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic main with popup/modal exclusions"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header"
+      ],
+      "bodyLocation": {
+        "start": 9466,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 199,
+        "totalText": 1459
+      }
+    }
+  },
+  {
+    "id": "good_007",
+    "name": "Walmart Food - Main Tag",
+    "file": "food/Walmart.mhtml",
+    "hostname": "walmart.com",
+    "category": "Retail/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.75,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic main with standard exclusions"
+    },
+    "structureAnalysis": {
+      "semanticElements": [
+        {
+          "selector": "main",
+          "textLength": 2619,
+          "childCount": 1,
+          "score": 100
+        }
+      ],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 15931,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 2472,
+        "totalText": 12310
+      }
+    }
+  },
+  {
+    "id": "good_008",
+    "name": "Macy's Sales - Main Tag",
+    "file": "clothing/Macy.mhtml",
+    "hostname": "macys.com",
+    "category": "Fashion/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.7,
+      "maxAttempts": 2,
+      "shouldRefine": false,
+      "reason": "Semantic main selector"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": 6869,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 30,
+        "totalText": 137
+      }
+    }
+  },
+  {
+    "id": "good_009",
+    "name": "Amazon - Body with Comprehensive Exclusions",
+    "file": "shopping/Amazon.mhtml",
+    "hostname": "amazon.com",
+    "category": "E-commerce",
+    "rule": {
+      "main": "body",
+      "exclude": [
+        "header",
+        "nav",
+        "footer",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]",
+        "script",
+        "style",
+        "noscript"
+      ],
+      "name": "Full Page Content"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.65,
+      "maxAttempts": 3,
+      "shouldRefine": false,
+      "reason": "Body selector with extensive exclusions (no semantic tags available)"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header"
+      ],
+      "bodyLocation": {
+        "start": 5439,
+        "end": 459556
+      },
+      "stats": {
+        "totalElements": 3865,
+        "totalText": 29460
+      }
+    }
+  },
+  {
+    "id": "good_010",
+    "name": "Best Buy - Body with Data Attribute Exclusions",
+    "file": "shopping/Best Buy Canada.mhtml",
+    "hostname": "bestbuy.ca",
+    "category": "Electronics/E-commerce",
+    "rule": {
+      "main": "body",
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "[data-automation*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ],
+      "name": "Product Listing"
+    },
+    "expected": {
+      "status": "verified",
+      "minConfidence": 0.65,
+      "maxAttempts": 3,
+      "shouldRefine": false,
+      "reason": "Body selector with data-attribute exclusions (no semantic tags)"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav",
+        "footer"
+      ],
+      "bodyLocation": {
+        "start": 7250,
+        "end": 946971
+      },
+      "stats": {
+        "totalElements": 8767,
+        "totalText": 31611
+      }
+    }
+  },
+  {
+    "id": "bad_001",
+    "name": "Overly Broad - Body with No Exclusions",
+    "file": "shopping/Amazon.mhtml",
+    "hostname": "amazon.com",
+    "category": "E-commerce",
+    "rule": {
+      "main": "body",
+      "exclude": [],
+      "name": "Full Page"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.5,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Body selector with no exclusions includes everything"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header"
+      ],
+      "bodyLocation": {
+        "start": 5439,
+        "end": 459556
+      },
+      "stats": {
+        "totalElements": 3865,
+        "totalText": 29460
+      }
+    }
+  },
+  {
+    "id": "bad_002",
+    "name": "Wrong Selector - Header as Main",
+    "file": "personal care/Sephora.mhtml",
+    "hostname": "sephora.com",
+    "category": "Beauty/E-commerce",
+    "rule": {
+      "main": "header",
+      "exclude": [],
+      "name": "Header Content"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.3,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Targets header navigation instead of main content"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": 27376,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 239,
+        "totalText": 422
+      }
+    }
+  },
+  {
+    "id": "bad_003",
+    "name": "Missing Critical Exclusions",
+    "file": "extra/IKEA.mhtml",
+    "hostname": "ikea.com",
+    "category": "Furniture/E-commerce",
+    "rule": {
+      "main": "main",
+      "exclude": [],
+      "name": "Main Content"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.6,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Missing exclusions for ads, modals, and navigation"
+    },
+    "structureAnalysis": {
+      "semanticElements": [
+        {
+          "selector": "main",
+          "textLength": 2808,
+          "childCount": 5,
+          "score": 100
+        }
+      ],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 6802,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 581,
+        "totalText": 6616
+      }
+    }
+  },
+  {
+    "id": "bad_004",
+    "name": "Non-existent Selector",
+    "file": "food/Walmart.mhtml",
+    "hostname": "walmart.com",
+    "category": "Retail/E-commerce",
+    "rule": {
+      "main": "#does-not-exist-selector-12345",
+      "exclude": [],
+      "name": "Invalid Selector"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.1,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Selector doesn't exist in the HTML"
+    },
+    "structureAnalysis": {
+      "semanticElements": [
+        {
+          "selector": "main",
+          "textLength": 2619,
+          "childCount": 1,
+          "score": 100
+        }
+      ],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 15931,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 2472,
+        "totalText": 12310
+      }
+    }
+  },
+  {
+    "id": "bad_005",
+    "name": "Nav as Main Content",
+    "file": "house rental/Zillow.mhtml",
+    "hostname": "zillow.com",
+    "category": "Real Estate",
+    "rule": {
+      "main": "nav",
+      "exclude": [],
+      "name": "Navigation"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.2,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Extracts navigation instead of content"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 11479,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 115,
+        "totalText": 107
+      }
+    }
+  },
+  {
+    "id": "bad_006",
+    "name": "Footer as Main Content",
+    "file": "extra/IKEA.mhtml",
+    "hostname": "ikea.com",
+    "category": "Furniture/E-commerce",
+    "rule": {
+      "main": "footer",
+      "exclude": [],
+      "name": "Footer"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.15,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Extracts footer links instead of products"
+    },
+    "structureAnalysis": {
+      "semanticElements": [
+        {
+          "selector": "main",
+          "textLength": 2808,
+          "childCount": 5,
+          "score": 100
+        }
+      ],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 6802,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 581,
+        "totalText": 6616
+      }
+    }
+  },
+  {
+    "id": "bad_007",
+    "name": "Body with Wrong Exclusions",
+    "file": "food/Costco.mhtml",
+    "hostname": "costco.com",
+    "category": "Wholesale/E-commerce",
+    "rule": {
+      "main": "body",
+      "exclude": [
+        "main",
+        "article",
+        "section"
+      ],
+      "name": "Everything Except Content"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.25,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Excludes the actual content, keeps only navigation/ads"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": -1,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 45,
+        "totalText": 390
+      }
+    }
+  },
+  {
+    "id": "bad_008",
+    "name": "Missing Video/Media Exclusions",
+    "file": "shopping/Etsy.mhtml",
+    "hostname": "etsy.com",
+    "category": "Marketplace",
+    "rule": {
+      "main": "main",
+      "exclude": [],
+      "name": "Main Content"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.65,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Missing exclusions for ads, iframes, and modals"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header",
+        "nav"
+      ],
+      "bodyLocation": {
+        "start": 9568,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 82,
+        "totalText": 647
+      }
+    }
+  },
+  {
+    "id": "bad_009",
+    "name": "Script Tags as Content",
+    "file": "alcoholic/LCBO.mhtml",
+    "hostname": "lcbo.com",
+    "category": "Liquor/E-commerce",
+    "rule": {
+      "main": "head",
+      "exclude": [],
+      "name": "Head Section"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.05,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Extracts metadata and scripts instead of content"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [
+        "header"
+      ],
+      "bodyLocation": {
+        "start": 9466,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 199,
+        "totalText": 1459
+      }
+    }
+  },
+  {
+    "id": "bad_010",
+    "name": "Wildcard Selector - Too Generic",
+    "file": "clothing/Macy.mhtml",
+    "hostname": "macys.com",
+    "category": "Fashion/E-commerce",
+    "rule": {
+      "main": "div",
+      "exclude": [],
+      "name": "First Div"
+    },
+    "expected": {
+      "status": "failed",
+      "maxConfidence": 0.25,
+      "minAttempts": 1,
+      "shouldRefine": true,
+      "reason": "Matches first div only, likely a container or wrapper"
+    },
+    "structureAnalysis": {
+      "semanticElements": [],
+      "idBasedContainers": [],
+      "classBasedContainers": [],
+      "noiseElements": [],
+      "bodyLocation": {
+        "start": 6869,
+        "end": -1
+      },
+      "stats": {
+        "totalElements": 30,
+        "totalText": 137
+      }
+    }
+  }
+]

@@ -1,0 +1,368 @@
+:root {
+    /* Core Tokens matched to options.css */
+    --bg-color: #f5f5f5;
+    --panel-bg: #ffffff;
+    --text-color: #333;
+    --accent-color: #0056b3;
+    --border-color: #ddd;
+    --font-size: 18px;
+    --line-height: 1.6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* --- Header --- */
+header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-bg);
+    color: var(--text-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+#refresh-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#refresh-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* --- Main Content --- */
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    background: var(--panel-bg);
+}
+
+/* Reader View Styles */
+#reader-view h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: var(--accent-color);
+}
+
+#reader-view h2 {
+    font-size: 1.4em;
+    margin-top: 1em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+#reader-view p {
+    margin-bottom: 1em;
+}
+
+#reader-view img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Force Reader View to inherit theme colors */
+#reader-view,
+#reader-view * {
+    color: var(--text-color) !important;
+    background-color: transparent !important;
+    border-color: var(--border-color);
+}
+
+#reader-view a {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+}
+
+/* Prevent content from overlaying sidebar controls */
+#reader-view {
+    position: relative;
+    z-index: 1;
+}
+
+/* Reset positioning for absolutely positioned elements */
+#reader-view [style*="position: absolute"],
+#reader-view [style*="position:absolute"] {
+    position: relative !important;
+}
+
+/* Constrain video players and media */
+#reader-view video,
+#reader-view iframe,
+#reader-view figure {
+    position: relative !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 15px 0 !important;
+}
+
+/* Remove fixed positioning that could overlay controls */
+#reader-view [style*="position: fixed"],
+#reader-view [style*="position:fixed"] {
+    position: relative !important;
+}
+
+/* --- Footer Settings --- */
+footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--panel-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Foldable Section Styling - Inherits Theme */
+details {
+    border: 2px solid var(--border-color) !important;
+    border-radius: 5px;
+}
+
+details summary {
+    background: var(--panel-bg) !important;
+    color: var(--text-color) !important;
+    border-bottom: 2px solid var(--border-color);
+    font-size: calc(var(--font-size) * 0.9) !important;
+    padding: 15px !important;
+    cursor: pointer;
+    font-weight: bold;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+details summary:hover {
+    background: var(--bg-color) !important;
+}
+
+details[open] summary {
+    border-bottom: 2px solid var(--accent-color);
+}
+
+details>div {
+    background: var(--panel-bg) !important;
+    padding: 15px;
+}
+
+.settings-section h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Theme Grid */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.theme-btn {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, outline 0.1s;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-btn:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.theme-btn:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Typography Controls */
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    flex: 1;
+    height: 40px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.icon-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.size-label {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+#font-display {
+    font-weight: bold;
+}
+
+/* --- Themes (Exact match to options.css) --- */
+
+/* Black on White */
+body.theme-black-white {
+    --bg-color: #f5f5f5;
+    --panel-bg: #ffffff;
+    --text-color: #000000;
+    --accent-color: #0056b3;
+    --border-color: #ccc;
+}
+
+/* White on Black */
+body.theme-white-black {
+    --bg-color: #1a1a1a;
+    --panel-bg: #000000;
+    --text-color: #ffffff;
+    --accent-color: #4da3ff;
+    --border-color: #333;
+}
+
+/* Yellow on Black */
+body.theme-yellow-black {
+    --bg-color: #1a1a1a;
+    --panel-bg: #000000;
+    --text-color: #FFD700;
+    --accent-color: #FFD700;
+    --border-color: #FFD700;
+}
+
+/* Blue on Yellow */
+body.theme-blue-yellow {
+    --bg-color: #e6e600;
+    --panel-bg: #FFFF00;
+    --text-color: #0000FF;
+    --accent-color: #0000FF;
+    --border-color: #0000FF;
+}
+
+/* Sepia */
+body.theme-sepia {
+    --bg-color: #f4ecd8;
+    --panel-bg: #fdf6e3;
+    --text-color: #5b4636;
+    --accent-color: #b58900;
+    --border-color: #d3cbb7;
+}
+
+/* Green on Black */
+body.theme-green-black {
+    --bg-color: #001100;
+    --panel-bg: #000000;
+    --text-color: #00FF00;
+    --accent-color: #00FF00;
+    --border-color: #00FF00;
+}
+
+/* --- States --- */
+.loading {
+    text-align: center;
+    padding: 40px 20px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.error {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ffcdd2;
+    margin: 10px 0;
+}
+
+.success {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+}
+
+.placeholder {
+    text-align: center;
+    margin-top: 50px;
+    opacity: 0.6;
+    font-size: 1.1rem;
+}

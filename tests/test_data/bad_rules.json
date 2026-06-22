@@ -1,0 +1,196 @@
+[
+    {
+        "id": "bad_001",
+        "name": "Overly Broad - Body with No Exclusions",
+        "file": "shopping/Amazon.mhtml",
+        "hostname": "amazon.com",
+        "category": "E-commerce",
+        "rule": {
+            "main": "body",
+            "exclude": [],
+            "name": "Full Page"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.50,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Body selector with no exclusions includes everything"
+        }
+    },
+    {
+        "id": "bad_002",
+        "name": "Wrong Selector - Header as Main",
+        "file": "personal care/Sephora.mhtml",
+        "hostname": "sephora.com",
+        "category": "Beauty/E-commerce",
+        "rule": {
+            "main": "header",
+            "exclude": [],
+            "name": "Header Content"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.30,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Targets header navigation instead of main content"
+        }
+    },
+    {
+        "id": "bad_003",
+        "name": "Missing Critical Exclusions",
+        "file": "extra/IKEA.mhtml",
+        "hostname": "ikea.com",
+        "category": "Furniture/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [],
+            "name": "Main Content"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.60,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Missing exclusions for ads, modals, and navigation"
+        }
+    },
+    {
+        "id": "bad_004",
+        "name": "Non-existent Selector",
+        "file": "food/Walmart.mhtml",
+        "hostname": "walmart.com",
+        "category": "Retail/E-commerce",
+        "rule": {
+            "main": "#does-not-exist-selector-12345",
+            "exclude": [],
+            "name": "Invalid Selector"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.10,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Selector doesn't exist in the HTML"
+        }
+    },
+    {
+        "id": "bad_005",
+        "name": "Nav as Main Content",
+        "file": "house rental/Zillow.mhtml",
+        "hostname": "zillow.com",
+        "category": "Real Estate",
+        "rule": {
+            "main": "nav",
+            "exclude": [],
+            "name": "Navigation"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.20,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Extracts navigation instead of content"
+        }
+    },
+    {
+        "id": "bad_006",
+        "name": "Footer as Main Content",
+        "file": "extra/IKEA.mhtml",
+        "hostname": "ikea.com",
+        "category": "Furniture/E-commerce",
+        "rule": {
+            "main": "footer",
+            "exclude": [],
+            "name": "Footer"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.15,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Extracts footer links instead of products"
+        }
+    },
+    {
+        "id": "bad_007",
+        "name": "Body with Wrong Exclusions",
+        "file": "food/Costco.mhtml",
+        "hostname": "costco.com",
+        "category": "Wholesale/E-commerce",
+        "rule": {
+            "main": "body",
+            "exclude": [
+                "main",
+                "article",
+                "section"
+            ],
+            "name": "Everything Except Content"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.25,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Excludes the actual content, keeps only navigation/ads"
+        }
+    },
+    {
+        "id": "bad_008",
+        "name": "Missing Video/Media Exclusions",
+        "file": "shopping/Etsy.mhtml",
+        "hostname": "etsy.com",
+        "category": "Marketplace",
+        "rule": {
+            "main": "main",
+            "exclude": [],
+            "name": "Main Content"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.65,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Missing exclusions for ads, iframes, and modals"
+        }
+    },
+    {
+        "id": "bad_009",
+        "name": "Script Tags as Content",
+        "file": "alcoholic/LCBO.mhtml",
+        "hostname": "lcbo.com",
+        "category": "Liquor/E-commerce",
+        "rule": {
+            "main": "head",
+            "exclude": [],
+            "name": "Head Section"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.05,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Extracts metadata and scripts instead of content"
+        }
+    },
+    {
+        "id": "bad_010",
+        "name": "Wildcard Selector - Too Generic",
+        "file": "clothing/Macy.mhtml",
+        "hostname": "macys.com",
+        "category": "Fashion/E-commerce",
+        "rule": {
+            "main": "div",
+            "exclude": [],
+            "name": "First Div"
+        },
+        "expected": {
+            "status": "failed",
+            "maxConfidence": 0.25,
+            "minAttempts": 1,
+            "shouldRefine": true,
+            "reason": "Matches first div only, likely a container or wrapper"
+        }
+    }
+]

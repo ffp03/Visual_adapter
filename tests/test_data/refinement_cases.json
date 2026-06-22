@@ -1,0 +1,317 @@
+[
+    {
+        "id": "refine_001",
+        "name": "Body to Main - Should Narrow Scope",
+        "file": "personal care/Sephora.mhtml",
+        "hostname": "sephora.com",
+        "category": "Beauty/E-commerce",
+        "initialRule": {
+            "main": "body",
+            "exclude": [],
+            "name": "Full Page"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe"
+            ],
+            "confidenceIncrease": 0.30,
+            "maxAttempts": 3
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.75,
+            "shouldImprove": true,
+            "reason": "Should refine from body to semantic main selector"
+        }
+    },
+    {
+        "id": "refine_002",
+        "name": "Add Missing Exclusions - Ads and Nav",
+        "file": "extra/IKEA.mhtml",
+        "hostname": "ikea.com",
+        "category": "Furniture/E-commerce",
+        "initialRule": {
+            "main": "main",
+            "exclude": [],
+            "name": "Main Content"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "confidenceIncrease": 0.25,
+            "maxAttempts": 2
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.75,
+            "shouldImprove": true,
+            "reason": "Should add critical exclusions for clean extraction"
+        }
+    },
+    {
+        "id": "refine_003",
+        "name": "Wrong Selector to Correct One",
+        "file": "house rental/Zillow.mhtml",
+        "hostname": "zillow.com",
+        "category": "Real Estate",
+        "initialRule": {
+            "main": "nav",
+            "exclude": [],
+            "name": "Navigation"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "article",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe"
+            ],
+            "confidenceIncrease": 0.40,
+            "maxAttempts": 3
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.70,
+            "shouldImprove": true,
+            "reason": "Should identify and correct wrong selector from nav to article"
+        }
+    },
+    {
+        "id": "refine_004",
+        "name": "Add Media Exclusions",
+        "file": "shopping/Etsy.mhtml",
+        "hostname": "etsy.com",
+        "category": "Marketplace",
+        "initialRule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer"
+            ],
+            "name": "Main Content"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "confidenceIncrease": 0.20,
+            "maxAttempts": 2
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.75,
+            "shouldImprove": true,
+            "reason": "Should add media and ad exclusions"
+        }
+    },
+    {
+        "id": "refine_005",
+        "name": "Non-existent to Valid Selector",
+        "file": "food/Walmart.mhtml",
+        "hostname": "walmart.com",
+        "category": "Retail/E-commerce",
+        "initialRule": {
+            "main": "#does-not-exist-selector-12345",
+            "exclude": [],
+            "name": "Invalid"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe"
+            ],
+            "confidenceIncrease": 0.50,
+            "maxAttempts": 4
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.70,
+            "shouldImprove": true,
+            "reason": "Should find valid selector when initial one fails"
+        }
+    },
+    {
+        "id": "refine_006",
+        "name": "Add Modal and Popup Exclusions",
+        "file": "alcoholic/LCBO.mhtml",
+        "hostname": "lcbo.com",
+        "category": "Liquor/E-commerce",
+        "initialRule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer"
+            ],
+            "name": "Content Area"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]",
+                "[class*=\"popup\"]"
+            ],
+            "confidenceIncrease": 0.20,
+            "maxAttempts": 2
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.75,
+            "shouldImprove": true,
+            "reason": "Should add UI element exclusions"
+        }
+    },
+    {
+        "id": "refine_007",
+        "name": "Generic Div to Semantic Main",
+        "file": "clothing/Macy.mhtml",
+        "hostname": "macys.com",
+        "category": "Fashion/E-commerce",
+        "initialRule": {
+            "main": "div",
+            "exclude": [],
+            "name": "First Div"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe"
+            ],
+            "confidenceIncrease": 0.40,
+            "maxAttempts": 3
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.70,
+            "shouldImprove": true,
+            "reason": "Should narrow from generic div to semantic main"
+        }
+    },
+    {
+        "id": "refine_008",
+        "name": "Add Comprehensive Exclusions for Body",
+        "file": "shopping/Amazon.mhtml",
+        "hostname": "amazon.com",
+        "category": "E-commerce",
+        "initialRule": {
+            "main": "body",
+            "exclude": [
+                "header",
+                "footer"
+            ],
+            "name": "Page Content"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "body",
+            "addedExclusions": [
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "confidenceIncrease": 0.25,
+            "maxAttempts": 2
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.70,
+            "shouldImprove": true,
+            "reason": "Should add comprehensive exclusions for body selector"
+        }
+    },
+    {
+        "id": "refine_009",
+        "name": "Wrong Exclusions to Correct Ones",
+        "file": "food/Costco.mhtml",
+        "hostname": "costco.com",
+        "category": "Wholesale/E-commerce",
+        "initialRule": {
+            "main": "body",
+            "exclude": [
+                "main",
+                "article"
+            ],
+            "name": "Everything Except Content"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "main",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "confidenceIncrease": 0.50,
+            "maxAttempts": 3
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.75,
+            "shouldImprove": true,
+            "reason": "Should fix selector and exclusions completely"
+        }
+    },
+    {
+        "id": "refine_010",
+        "name": "Header to Main with Exclusions",
+        "file": "shopping/Best Buy Canada.mhtml",
+        "hostname": "bestbuy.ca",
+        "category": "Electronics/E-commerce",
+        "initialRule": {
+            "main": "header",
+            "exclude": [],
+            "name": "Header"
+        },
+        "expectedRefinement": {
+            "improvedSelector": "body",
+            "addedExclusions": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[data-automation*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "confidenceIncrease": 0.45,
+            "maxAttempts": 3
+        },
+        "expected": {
+            "status": "verified",
+            "minFinalConfidence": 0.70,
+            "shouldImprove": true,
+            "reason": "Should correct from header to body with comprehensive exclusions"
+        }
+    }
+]

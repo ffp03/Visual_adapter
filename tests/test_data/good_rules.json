@@ -1,0 +1,271 @@
+[
+    {
+        "id": "good_001",
+        "name": "Sephora Product Listing - Semantic Main",
+        "file": "personal care/Sephora.mhtml",
+        "hostname": "sephora.com",
+        "category": "Beauty/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.75,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Clean semantic main selector with proper exclusions"
+        }
+    },
+    {
+        "id": "good_002",
+        "name": "Zillow Rentals - Article Tag",
+        "file": "house rental/Zillow.mhtml",
+        "hostname": "zillow.com",
+        "category": "Real Estate",
+        "rule": {
+            "main": "article",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe"
+            ],
+            "name": "Rental Listings"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.75,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic article tag for content"
+        }
+    },
+    {
+        "id": "good_003",
+        "name": "IKEA Products - Main Tag",
+        "file": "extra/IKEA.mhtml",
+        "hostname": "ikea.com",
+        "category": "Furniture/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.70,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic main with modal exclusions"
+        }
+    },
+    {
+        "id": "good_004",
+        "name": "Costco Products - Main Tag",
+        "file": "food/Costco.mhtml",
+        "hostname": "costco.com",
+        "category": "Wholesale/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "name": "Product Catalog"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.75,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic HTML5 main tag with comprehensive exclusions"
+        }
+    },
+    {
+        "id": "good_005",
+        "name": "Etsy Search - Semantic Main",
+        "file": "shopping/Etsy.mhtml",
+        "hostname": "etsy.com",
+        "category": "Marketplace",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "name": "Search Results"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.75,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Clean semantic selector for marketplace"
+        }
+    },
+    {
+        "id": "good_006",
+        "name": "LCBO Products - Main Tag",
+        "file": "alcoholic/LCBO.mhtml",
+        "hostname": "lcbo.com",
+        "category": "Liquor/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]",
+                "[class*=\"popup\"]"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.70,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic main with popup/modal exclusions"
+        }
+    },
+    {
+        "id": "good_007",
+        "name": "Walmart Food - Main Tag",
+        "file": "food/Walmart.mhtml",
+        "hostname": "walmart.com",
+        "category": "Retail/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.75,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic main with standard exclusions"
+        }
+    },
+    {
+        "id": "good_008",
+        "name": "Macy's Sales - Main Tag",
+        "file": "clothing/Macy.mhtml",
+        "hostname": "macys.com",
+        "category": "Fashion/E-commerce",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.70,
+            "maxAttempts": 2,
+            "shouldRefine": false,
+            "reason": "Semantic main selector"
+        }
+    },
+    {
+        "id": "good_009",
+        "name": "Amazon - Body with Comprehensive Exclusions",
+        "file": "shopping/Amazon.mhtml",
+        "hostname": "amazon.com",
+        "category": "E-commerce",
+        "rule": {
+            "main": "body",
+            "exclude": [
+                "header",
+                "nav",
+                "footer",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]",
+                "script",
+                "style",
+                "noscript"
+            ],
+            "name": "Full Page Content"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.65,
+            "maxAttempts": 3,
+            "shouldRefine": false,
+            "reason": "Body selector with extensive exclusions (no semantic tags available)"
+        }
+    },
+    {
+        "id": "good_010",
+        "name": "Best Buy - Body with Data Attribute Exclusions",
+        "file": "shopping/Best Buy Canada.mhtml",
+        "hostname": "bestbuy.ca",
+        "category": "Electronics/E-commerce",
+        "rule": {
+            "main": "body",
+            "exclude": [
+                "header",
+                "footer",
+                "nav",
+                "[class*=\"ad\"]",
+                "[id*=\"ad\"]",
+                "[data-automation*=\"ad\"]",
+                "iframe",
+                "[class*=\"modal\"]"
+            ],
+            "name": "Product Listing"
+        },
+        "expected": {
+            "status": "verified",
+            "minConfidence": 0.65,
+            "maxAttempts": 3,
+            "shouldRefine": false,
+            "reason": "Body selector with data-attribute exclusions (no semantic tags)"
+        }
+    }
+]

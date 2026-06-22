@@ -1,0 +1,99 @@
+{
+  "total": 5,
+  "passed": 1,
+  "failed": 4,
+  "tokensSaved": 8600,
+  "tokensUsed": 12900,
+  "details": [
+    {
+      "id": "dom_001",
+      "passed": false,
+      "actualConfidence": 0.55,
+      "expectedConfidence": 0.85,
+      "actualMethod": "llm-verified",
+      "expectedMethod": "dom-only",
+      "tokensUsed": 4300,
+      "tokensSaved": 0,
+      "metrics": {
+        "textRatio": 0.825,
+        "paragraphRatio": 1,
+        "headingRatio": 1,
+        "hasNav": false,
+        "hasAds": false,
+        "hasScripts": false
+      }
+    },
+    {
+      "id": "dom_002",
+      "passed": false,
+      "actualConfidence": 0.3,
+      "expectedConfidence": 0.15,
+      "actualMethod": "llm-verified",
+      "expectedMethod": "dom-only",
+      "tokensUsed": 4300,
+      "tokensSaved": 0,
+      "metrics": {
+        "textRatio": 1,
+        "paragraphRatio": 1,
+        "headingRatio": 1,
+        "hasNav": true,
+        "hasAds": false,
+        "hasScripts": false
+      }
+    },
+    {
+      "id": "dom_003",
+      "passed": false,
+      "actualConfidence": 0.75,
+      "expectedConfidence": 0.5,
+      "actualMethod": "dom-only",
+      "expectedMethod": "llm-verified",
+      "tokensUsed": 0,
+      "tokensSaved": 4300,
+      "metrics": {
+        "textRatio": 0.709,
+        "paragraphRatio": 1,
+        "headingRatio": 1,
+        "hasNav": false,
+        "hasAds": false,
+        "hasScripts": false
+      }
+    },
+    {
+      "id": "dom_004",
+      "passed": false,
+      "actualConfidence": 0.4,
+      "expectedConfidence": 0.7,
+      "actualMethod": "llm-verified",
+      "expectedMethod": "dom-only",
+      "tokensUsed": 4300,
+      "tokensSaved": 0,
+      "metrics": {
+        "textRatio": 0.917,
+        "paragraphRatio": 1,
+        "headingRatio": 1,
+        "hasNav": false,
+        "hasAds": false,
+        "hasScripts": true
+      }
+    },
+    {
+      "id": "dom_005",
+      "passed": true,
+      "actualConfidence": 0.1,
+      "expectedConfidence": 0.2,
+      "actualMethod": "dom-only",
+      "expectedMethod": "dom-only",
+      "tokensUsed": 0,
+      "tokensSaved": 4300,
+      "metrics": {
+        "textRatio": 1.913,
+        "paragraphRatio": 1,
+        "headingRatio": 0,
+        "hasNav": true,
+        "hasAds": false,
+        "hasScripts": false
+      }
+    }
+  ]
+}

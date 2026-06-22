@@ -1,0 +1,101 @@
+{
+  "timestamp": "2025-11-22T02:27:12.976Z",
+  "summary": {
+    "total": 10,
+    "successful": 10,
+    "rulesGenerated": 10,
+    "verificationsTriggered": 10
+  },
+  "results": [
+    {
+      "hostname": "amazon.com",
+      "category": "E-commerce",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "walmart.com",
+      "category": "Retail",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "macys.com",
+      "category": "Fashion",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "sephora.com",
+      "category": "Beauty",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "costco.com",
+      "category": "Wholesale",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "bestbuy.ca",
+      "category": "Electronics",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "zillow.com",
+      "category": "Real Estate",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "lcbo.com",
+      "category": "Liquor",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "ikea.com",
+      "category": "Furniture",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    },
+    {
+      "hostname": "etsy.com",
+      "category": "Marketplace",
+      "success": true,
+      "ruleGenerated": true,
+      "verificationTriggered": true,
+      "verificationStatus": "pending",
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Adapter - Setup</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <div id="app-container" class="theme-black-white">
+        <!-- Left Panel: Wizard Controls -->
+        <aside id="wizard-panel">
+            <header>
+                <h1>Visual Adapter</h1>
+                <p>Calibration Wizard</p>
+            </header>
+
+            <main id="wizard-content">
+                <!-- Step 1: Global Theme (First Step) -->
+                <section id="step-theme" class="wizard-step active">
+                    <h2>1. Choose Your Look</h2>
+                    <p>Select a color scheme. This will change the entire screen immediately.</p>
+                    <div class="theme-grid">
+                        <button class="theme-btn" data-theme="black-white" aria-label="Black on White"
+                            style="background:#fff; color:#000; border:1px solid #ccc">Aa</button>
+                        <button class="theme-btn" data-theme="white-black" aria-label="White on Black"
+                            style="background:#000; color:#fff; border:1px solid #fff">Aa</button>
+                        <button class="theme-btn" data-theme="yellow-black" aria-label="Yellow on Black"
+                            style="background:#000; color:#FFD700; border:1px solid #FFD700">Aa</button>
+                        <button class="theme-btn" data-theme="blue-yellow" aria-label="Blue on Yellow"
+                            style="background:#FFFF00; color:#0000FF; border:1px solid #0000FF">Aa</button>
+                        <button class="theme-btn" data-theme="sepia" aria-label="Sepia"
+                            style="background:#f4ecd8; color:#5b4636; border:1px solid #5b4636">Aa</button>
+                        <button class="theme-btn" data-theme="green-black" aria-label="Green on Black"
+                            style="background:#000; color:#00FF00; border:1px solid #00FF00">Aa</button>
+                    </div>
+                    <button class="next-btn primary-btn">Next: Text Size</button>
+                </section>
+
+                <!-- Step 2: Typography -->
+                <section id="step-typography" class="wizard-step">
+                    <h2>2. Adjust Text</h2>
+                    <p>Make the text comfortable to read.</p>
+
+                    <div class="control-group">
+                        <label>Font Size: <span id="size-display">20px</span></label>
+                        <input type="range" id="size-slider" min="14" max="40" step="2" value="20">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Font Family</label>
+                        <select id="font-select">
+                            <option value="sans-serif">Sans Serif (Arial)</option>
+                            <option value="serif">Serif (Times)</option>
+                            <option value="'OpenDyslexic', sans-serif">Dyslexic Friendly</option>
+                            <option value="'Courier New', monospace">Monospace</option>
+                        </select>
+                    </div>
+
+                    <button id="finish-btn" class="primary-btn">Finish Setup</button>
+                    <button class="prev-btn secondary-btn">Back</button>
+                </section>
+
+
+
+                <!-- Step 3: Complete -->
+                <section id="step-complete" class="wizard-step">
+                    <h2>All Set!</h2>
+                    <p>Your preferences have been saved.</p>
+                    <p>Open the Side Panel on any page to use the adapter.</p>
+                </section>
+            </main>
+        </aside>
+
+        <!-- Right Panel: Complex Realistic Preview -->
+        <section id="preview-panel">
+            <div class="preview-frame-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <div class="fake-url">news.daily-example.com/future-of-ai</div>
+            </div>
+            <div id="preview-content">
+                <!-- Simulated Complex Page -->
+                <nav class="preview-nav">
+                    <div class="logo">Daily News</div>
+                    <div class="links"><span>World</span><span>Tech</span><span>Science</span><span>Business</span>
+                    </div>
+                </nav>
+
+                <div class="preview-body">
+                    <article>
+                        <h1 class="preview-headline">The Future of Artificial Intelligence</h1>
+                        <div class="meta">By Jane Doe • Nov 19, 2025 • 5 min read</div>
+
+                        <div class="hero-image">
+                            <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="currentColor" opacity="0.2" />
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                                    fill="currentColor" font-size="20">Hero Image</text>
+                            </svg>
+                        </div>
+
+                        <p class="preview-text">Artificial intelligence (AI) is rapidly transforming industries around
+                            the globe. From healthcare to finance, machine learning algorithms are optimizing processes
+                            and creating new opportunities for innovation.</p>
+
+                        <p class="preview-text">However, as these technologies evolve, questions about ethics and
+                            accessibility become increasingly important. How do we ensure that AI benefits everyone
+                            equally?</p>
+
+                        <h3>Key Challenges</h3>
+                        <ul class="preview-list">
+                            <li><strong>Data Privacy:</strong> Protecting user information in an age of big data.</li>
+                            <li><strong>Algorithmic Bias:</strong> Ensuring fair outcomes for all demographics.</li>
+                            <li><strong>Accessibility:</strong> Making AI tools usable by people with disabilities.</li>
+                        </ul>
+                    </article>
+
+                    <aside class="preview-sidebar">
+                        <div class="sidebar-section">
+                            <h3>Trending Now</h3>
+                            <ul class="sidebar-links">
+                                <li><a href="#">SpaceX Launches New Rocket</a></li>
+                                <li><a href="#">Global Climate Report 2025</a></li>
+                                <li><a href="#">Top 10 Gadgets of the Year</a></li>
+                                <li><a href="#">Stock Market Updates</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="ad-box">
+                            <span>Advertisement</span>
+                        </div>
+                    </aside>
+                </div>
+
+                <footer class="preview-footer">
+                    <div class="footer-links">About • Contact • Privacy • Terms</div>
+                    <div class="copyright">&copy; 2025 Daily News. All rights reserved.</div>
+                </footer>
+            </div>
+        </section>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>

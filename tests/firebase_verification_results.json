@@ -1,0 +1,445 @@
+{
+  "timestamp": "2025-11-24T01:00:29.022Z",
+  "summary": {
+    "total": 10,
+    "verified": 0,
+    "failed": 2,
+    "pending": 8,
+    "notFound": 0
+  },
+  "results": [
+    {
+      "hostname": "amazon.com",
+      "found": true,
+      "status": "failed",
+      "attempts": 5,
+      "confidence": 0.3,
+      "rule": {
+        "main": "div#zg_pageContainer",
+        "exclude": [
+          "script",
+          "style",
+          "link[rel='stylesheet']",
+          "noscript",
+          "footer",
+          "#nav-flyout-shopAll",
+          "#adId",
+          "#rhf",
+          "#nav-up-to-top"
+        ],
+        "name": "Amazon Best Sellers Main Content"
+      },
+      "verification": {
+        "attempts": 5,
+        "confidence": 0.3,
+        "history": {
+          "-OelagF5IXP9dZ_1ISCD": {
+            "attempt": 1,
+            "confidence": 0.05,
+            "reason": "The extraction failed to capture the main content of the page and instead captured boilerplate HTML from the <head> and the main navigation bar. The output HTML is also malformed with '3D&quot;' encoding. It is recommended to review the extraction logic, ensure proper HTML parsing, and define more specific selectors to target the product listings while explicitly excluding headers, footers, and navigation elements. The main selector 'body' should ideally yield content from within the <body> tags, not <head> elements.",
+            "status": "failed",
+            "timestamp": 1763916301292
+          },
+          "-OelanajtvUR_xX9lItK": {
+            "attempt": 2,
+            "confidence": 0.1,
+            "reason": "The extraction rule `Main selector: div#zg_pageContainer` was not applied correctly, or the provided 'EXTRACTED HTML' does not represent the result of applying this rule. The extracted content should *only* include the HTML found within the `div` element with `id='zg_pageContainer'`. All content outside of this selector, including the HTML head and global navigation, should be excluded.",
+            "status": "failed",
+            "timestamp": 1763916331414
+          },
+          "-OelawOuVYeOQleZOop4": {
+            "attempt": 3,
+            "confidence": 0.1,
+            "reason": "The provided 'EXTRACTED HTML' appears to be identical to the 'ORIGINAL HTML' for the truncated portion, indicating that the extraction rules (both main selector and exclude selectors) were not applied to this segment. Specifically, elements like <link rel=\"stylesheet\"> and the <header> element, which are explicitly in the 'Exclude selectors' list, are present in the extracted content. The main selector 'div#zg_pageContainer' is not visible in either truncated snippet, so it's impossible to validate its capture. Ensure the extraction logic correctly applies all 'Exclude selectors' and scopes the extraction to the 'Main selector'.",
+            "status": "failed",
+            "timestamp": 1763916367457
+          },
+          "-Oelb2Rqy1I5fyCTuI1w": {
+            "attempt": 4,
+            "confidence": 0.1,
+            "reason": "The extraction process failed to correctly apply the 'Main selector' rule. Instead of extracting content *from within* 'div#zg_pageContainer', it appears to have extracted the entire document from the <html> tag. This also led to the failure of the 'Exclude selectors' for <head> and <header id=\"navbar-main\">. The extraction should first isolate the content within 'div#zg_pageContainer' and then apply the exclusion rules to any elements within that specific block.",
+            "status": "failed",
+            "timestamp": 1763916396317
+          },
+          "-OelbE7HXwBGP9oJSSmq": {
+            "attempt": 5,
+            "confidence": 0.3,
+            "reason": "The 'Exclude selectors' rule for `link[rel='stylesheet']` was not applied, as these elements are still present in the extracted output. Review the extraction process to ensure all specified exclusion rules are correctly enforced. Additionally, consider expanding the exclusion list to cover more general navigation elements (like the main header and search bar) if the goal is to extract only the core article content, as the main selector `div#zg_pageContainer` is not visible in the provided truncated HTML.",
+            "status": "failed",
+            "timestamp": 1763916444153
+          }
+        },
+        "lastUpdated": 1763916444202,
+        "status": "failed"
+      }
+    },
+    {
+      "hostname": "walmart.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "main",
+        "exclude": [
+          "[data-testid=\"global-header\"]",
+          "[data-testid=\"gic-wrapper\"]",
+          "form[role=\"search\"]",
+          "nav[aria-label=\"Account and Cart\"]",
+          ".skip-main",
+          "footer",
+          "aside",
+          ".promo-banner",
+          ".modal-container",
+          ".dialog-container"
+        ],
+        "name": "Walmart Food Page Main Content"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOberoE-oZ_ibtDKO": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 57.009230554s.",
+            "status": "failed",
+            "timestamp": 1763862542502
+          }
+        },
+        "lastUpdated": 1763862541959,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "macys.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "main, div[role=\"main\"], div#content, div.main-content, div.product-grid, div.catalog-results, div.product-listing-container",
+        "exclude": [
+          "#teleported",
+          "#nav-header",
+          ".skip-to-content",
+          ".link-rail",
+          ".navigation-rail"
+        ],
+        "name": "Macy's Men's Sales Page Main Content"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOpUS6OaHACFl0FE8": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 439.48943ms.",
+            "status": "failed",
+            "timestamp": 1763862599116
+          }
+        },
+        "lastUpdated": 1763862598628,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "sephora.com",
+      "found": true,
+      "status": "failed",
+      "attempts": 5,
+      "confidence": 0.1,
+      "rule": {
+        "main": "main",
+        "exclude": [
+          "header",
+          "footer",
+          "nav",
+          "aside",
+          "iframe",
+          "[class*=\"ad\" i]",
+          "[id*=\"ad\" i]",
+          "[class*=\"banner\" i]",
+          "[id*=\"banner\" i]",
+          "[class*=\"sponsored\" i]",
+          "[id*=\"sponsored\" i]",
+          "[alt*=\"sponsored\" i]",
+          "[class*=\"promo\" i]",
+          "[id*=\"promo\" i]",
+          "[class*=\"advert\" i]",
+          "[id*=\"advert\" i]",
+          "[class*=\"popup\" i]",
+          "[id*=\"popup\" i]",
+          "[class*=\"modal\" i]",
+          "[id*=\"modal\" i]",
+          "[class*=\"social\" i]",
+          "[id*=\"social\" i]",
+          "[class*=\"share\" i]",
+          "[id*=\"share\" i]",
+          "[class*=\"widget\" i]",
+          "[id*=\"widget\" i]",
+          "[role=\"complementary\"]",
+          "[role=\"banner\"]",
+          ":is([class*=\"banner\" i], [id*=\"banner\" i]):has-text(sponsored i)"
+        ],
+        "name": "General Article Content with Expanded Ad/Noise Exclusion"
+      },
+      "verification": {
+        "attempts": 5,
+        "confidence": 0.1,
+        "history": {
+          "-OelafDWzKkdoT-wywTZ": {
+            "attempt": 1,
+            "confidence": 0.75,
+            "reason": "Enhance ad exclusion rules to target elements containing 'banner' in their class names or 'sponsored' keywords within their text content or attributes (e.g., alt text).",
+            "status": "failed",
+            "timestamp": 1763916297095
+          },
+          "-OelapTXLcgD3u9XLunt": {
+            "attempt": 2,
+            "confidence": 0.1,
+            "reason": "The extraction process needs to strictly apply the 'main' selector. The output should begin with the content found within the <main> tag, not with the full document structure (DOCTYPE, html, head). Ensure the extraction logic correctly isolates the content based on the primary selector.",
+            "status": "failed",
+            "timestamp": 1763916339081
+          },
+          "-OelayMccEQqlTPNsoZ1": {
+            "attempt": 3,
+            "confidence": 0.1,
+            "reason": "The extracted HTML is identical to the original HTML up to the truncation point, which is within the <head> section. This indicates that the main selector 'body > main' was either not applied correctly or could not find a matching element within the available (truncated) HTML. To properly validate, ensure the extraction logic correctly isolates content within 'body > main' and provide full HTML that includes the <body> and <main> elements.",
+            "status": "failed",
+            "timestamp": 1763916375503
+          },
+          "-Oelb2XZvhxIM2L0PuSZ": {
+            "attempt": 4,
+            "confidence": 0,
+            "reason": "Please provide the complete HTML content for both the original and extracted versions, specifically including the <body> section where the main content and potential noise would reside, to allow for proper validation against the extraction rules.",
+            "status": "failed",
+            "timestamp": 1763916396683
+          },
+          "-Oelb7IUd5FLPPVs3be8": {
+            "attempt": 5,
+            "confidence": 0.1,
+            "reason": "To accurately validate the content extraction, please provide the full HTML content, especially the <body> section where the main article content and potential noise elements would reside.",
+            "status": "failed",
+            "timestamp": 1763916416197
+          }
+        },
+        "lastUpdated": 1763916416248,
+        "status": "failed"
+      }
+    },
+    {
+      "hostname": "costco.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "main",
+        "exclude": [
+          "header",
+          "footer",
+          "nav",
+          "aside",
+          "form",
+          "iframe",
+          "[class*=\"ad\"]",
+          "[id*=\"ad\"]",
+          "[class*=\"modal\"]",
+          "[class*=\"overlay\"]",
+          "[class*=\"sr-only\"]",
+          "[class*=\"offscreen\"]"
+        ],
+        "name": "General Content Extraction with Enhanced UI Exclusions"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOqjHtX_aG85hN7Ea": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 55.275025123s.",
+            "status": "failed",
+            "timestamp": 1763862604225
+          }
+        },
+        "lastUpdated": 1763862603771,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "bestbuy.ca",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "main",
+        "exclude": [
+          "section[data-automation=\"dynamic-content-ad-slot\"]",
+          "header[data-automation=\"x-headerContainer\"]",
+          "footer",
+          "div.style-module_navigationBar__xlNYm"
+        ],
+        "name": "Best Buy Canada Product Listing Main Content"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOrTeNJbIb7dudTxg": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 52.29893468s.",
+            "status": "failed",
+            "timestamp": 1763862607257
+          }
+        },
+        "lastUpdated": 1763862606854,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "zillow.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "main",
+        "exclude": [
+          "div[data-testid=\"topnav\"]",
+          "div[data-microfrontend]",
+          "img[src*=\"track?action=pageView\"]"
+        ],
+        "name": "Rental Listings Page"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOobcz51KXyk06gi4": {
+            "attempt": 1,
+            "confidence": 0.3,
+            "reason": "The main selector 'article' worked well for capturing property listings. However, the exclusion rules for 'footer' and 'iframe' were not effective. The footer content is not wrapped in a `<footer>` tag but rather `div`s with `data-testid=\"footer\"` and other class patterns; update exclusion rules to target these attributes/classes. Explicitly exclude the map container with its ID '#search-page-map-container' and ensure `iframe` elements are removed.",
+            "status": "failed",
+            "timestamp": 1763862595543
+          },
+          "-OeiOpCPNZmbRmvl9Tr7": {
+            "attempt": 1,
+            "confidence": 0.1,
+            "reason": "The extraction rule used (Main selector: nav) correctly targeted a navigation element, but this is not the main article content of the page. To extract the main content, a more appropriate selector should be used, targeting the specific container holding the rental listings. Common selectors for main content include `<main>`, `<article>`, or specific `<div>` elements identified by their `id` or `class` that encapsulate the primary content.",
+            "status": "failed",
+            "timestamp": 1763862597961
+          }
+        },
+        "lastUpdated": 1763862587330,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "lcbo.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "#contentarea",
+        "exclude": [
+          ".skip-content-block",
+          "[aria-live=\"assertive\"]",
+          ".cookie-status-message",
+          "#notice-cookie-block",
+          ".widget.block-banners",
+          "header.page-header",
+          ".modal-body-content.storelocator_popup"
+        ],
+        "name": "Product Listing Page"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOp4_AXpexkbvf8aC": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 2.116659329s.",
+            "status": "failed",
+            "timestamp": 1763862597460
+          }
+        },
+        "lastUpdated": 1763862595605,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "ikea.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 1,
+      "confidence": 0,
+      "rule": {
+        "main": "#hnf-content",
+        "exclude": [
+          ".hnf-skip-to-content",
+          "header"
+        ],
+        "name": "Product Listing Page"
+      },
+      "verification": {
+        "attempts": 1,
+        "confidence": 0,
+        "history": {
+          "-OeiOp7q6a6YYBh5Vt-y": {
+            "attempt": 1,
+            "confidence": 0.6,
+            "reason": "The 'main' selector was ineffective as the original HTML does not use a <main> tag to encapsulate the primary content. The extraction should target specific content blocks or use a more robust exclusion list to filter out site-wide navigation, promotional banners, footers, and tracking elements. For a product listing page, focus on extracting category headings, product cards, and descriptive text.",
+            "status": "failed",
+            "timestamp": 1763862597669
+          }
+        },
+        "lastUpdated": 1763862583832,
+        "status": "pending"
+      }
+    },
+    {
+      "hostname": "etsy.com",
+      "found": true,
+      "status": "pending",
+      "attempts": 2,
+      "confidence": 0,
+      "rule": {
+        "main": "#content",
+        "exclude": [
+          "header",
+          "footer"
+        ],
+        "name": "Etsy Search Results"
+      },
+      "verification": {
+        "attempts": 2,
+        "confidence": 0,
+        "history": {
+          "-OeiOoDAfCuel3X7yQwB": {
+            "attempt": 1,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 5.850422428s.",
+            "status": "failed",
+            "timestamp": 1763862593914
+          },
+          "-OeiOtieVFlAh57kCWCB": {
+            "attempt": 2,
+            "confidence": 0,
+            "reason": "Verification error: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 250000, model: gemini-2.5-flash\nPlease retry in 43.028162124s.",
+            "status": "failed",
+            "timestamp": 1763862616473
+          }
+        },
+        "lastUpdated": 1763862613036,
+        "status": "pending"
+      }
+    }
+  ]
+}

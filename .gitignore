@@ -1,0 +1,32 @@
+# Backups
+Visual_adapter_v1_backup/
+Visual_adapter_v2.4_backup/
+Visual_adapter_v3_backup/
+*_backup/
+
+# Credentials & Secrets
+CREDENTIALS.md
+firebase-config.json
+service-account.json
+backend/service-account.json
+.env
+backend/.env
+*.env
+
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Logs & Temporary Files
+*.log
+backend/*.log
+log/
+test_output.txt
+tests/test_output.txt
+tests/test_2_output.txt
+
+# Generated Test Outputs
+tests/output/
+
+# Deployment folders
+hf-deploy/

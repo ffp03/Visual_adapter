@@ -1,0 +1,577 @@
+{
+  "good": [
+    {
+      "id": "good_001",
+      "valid": true,
+      "stats": {
+        "originalSize": 22499,
+        "finalSize": 22499,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 761,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "good_002",
+      "valid": true,
+      "stats": {
+        "originalSize": 1129407,
+        "finalSize": 859890,
+        "reductionPercent": "23.9",
+        "excludedElements": 122,
+        "textLength": 22325,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Reasonable content reduction",
+        "Successfully excluded 122 elements"
+      ]
+    },
+    {
+      "id": "good_003",
+      "valid": true,
+      "stats": {
+        "originalSize": 643535,
+        "finalSize": 580808,
+        "reductionPercent": "9.7",
+        "excludedElements": 57,
+        "textLength": 23054,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 57 elements"
+      ]
+    },
+    {
+      "id": "good_004",
+      "valid": true,
+      "stats": {
+        "originalSize": 659851,
+        "finalSize": 603036,
+        "reductionPercent": "8.6",
+        "excludedElements": 111,
+        "textLength": 173589,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 111 elements"
+      ]
+    },
+    {
+      "id": "good_005",
+      "valid": true,
+      "stats": {
+        "originalSize": 1142533,
+        "finalSize": 1057346,
+        "reductionPercent": "7.5",
+        "excludedElements": 375,
+        "textLength": 147238,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 375 elements"
+      ]
+    },
+    {
+      "id": "good_006",
+      "valid": true,
+      "stats": {
+        "originalSize": 625189,
+        "finalSize": 492719,
+        "reductionPercent": "21.2",
+        "excludedElements": 272,
+        "textLength": 86678,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Reasonable content reduction",
+        "Successfully excluded 272 elements"
+      ]
+    },
+    {
+      "id": "good_007",
+      "valid": true,
+      "stats": {
+        "originalSize": 65771,
+        "finalSize": 65042,
+        "reductionPercent": "1.1",
+        "excludedElements": 1,
+        "textLength": 2615,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)",
+        "No paragraph tags (might be extracting navigation/lists)"
+      ],
+      "strengths": [
+        "Successfully excluded 1 elements"
+      ]
+    },
+    {
+      "id": "good_008",
+      "valid": true,
+      "stats": {
+        "originalSize": 18437,
+        "finalSize": 15974,
+        "reductionPercent": "13.4",
+        "excludedElements": 3,
+        "textLength": 658,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 3 elements"
+      ]
+    },
+    {
+      "id": "good_009",
+      "valid": true,
+      "stats": {
+        "originalSize": 554508,
+        "finalSize": 441058,
+        "reductionPercent": "20.5",
+        "excludedElements": 17,
+        "textLength": 22127,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "No paragraph tags (might be extracting navigation/lists)"
+      ],
+      "strengths": [
+        "Reasonable content reduction",
+        "Successfully excluded 17 elements"
+      ]
+    },
+    {
+      "id": "good_010",
+      "valid": true,
+      "stats": {
+        "originalSize": 1184189,
+        "finalSize": 992105,
+        "reductionPercent": "16.2",
+        "excludedElements": 166,
+        "textLength": 22843,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 166 elements"
+      ]
+    }
+  ],
+  "bad": [
+    {
+      "id": "bad_001",
+      "valid": true,
+      "stats": {
+        "originalSize": 554508,
+        "finalSize": 554508,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 29390,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "bad_002",
+      "valid": true,
+      "stats": {
+        "originalSize": 1472,
+        "finalSize": 1472,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 107,
+        "hasImages": false,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": []
+    },
+    {
+      "id": "bad_003",
+      "valid": true,
+      "stats": {
+        "originalSize": 643535,
+        "finalSize": 643535,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 33335,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "bad_004",
+      "valid": false,
+      "reason": "Main selector \"#does-not-exist-selector-12345\" not found"
+    },
+    {
+      "id": "bad_005",
+      "valid": true,
+      "stats": {
+        "originalSize": 2545,
+        "finalSize": 2545,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 13,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Very little text content extracted",
+        "Minimal content reduction (may include too much)",
+        "May include navigation/login elements"
+      ],
+      "strengths": []
+    },
+    {
+      "id": "bad_006",
+      "valid": true,
+      "stats": {
+        "originalSize": 38429,
+        "finalSize": 38429,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 6769,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)",
+        "May include navigation/login elements"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "bad_007",
+      "valid": true,
+      "stats": {
+        "originalSize": 772369,
+        "finalSize": 106912,
+        "reductionPercent": "86.2",
+        "excludedElements": 4,
+        "textLength": 15043,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 4 elements"
+      ]
+    },
+    {
+      "id": "bad_008",
+      "valid": true,
+      "stats": {
+        "originalSize": 1142533,
+        "finalSize": 1142533,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 170900,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "bad_009",
+      "valid": true,
+      "stats": {
+        "originalSize": 245,
+        "finalSize": 245,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 0,
+        "hasImages": false,
+        "hasLinks": false,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Very little text content extracted",
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": []
+    },
+    {
+      "id": "bad_010",
+      "valid": true,
+      "stats": {
+        "originalSize": 851,
+        "finalSize": 851,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 0,
+        "hasImages": true,
+        "hasLinks": false,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Very little text content extracted",
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": []
+    }
+  ],
+  "refinement": [
+    {
+      "id": "refine_001",
+      "valid": true,
+      "stats": {
+        "originalSize": 1008723,
+        "finalSize": 1008723,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 39064,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "refine_002",
+      "valid": true,
+      "stats": {
+        "originalSize": 643535,
+        "finalSize": 643535,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 33335,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "refine_003",
+      "valid": true,
+      "stats": {
+        "originalSize": 2545,
+        "finalSize": 2545,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 13,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Very little text content extracted",
+        "Minimal content reduction (may include too much)",
+        "May include navigation/login elements"
+      ],
+      "strengths": []
+    },
+    {
+      "id": "refine_004",
+      "valid": true,
+      "stats": {
+        "originalSize": 1142533,
+        "finalSize": 1142533,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 170900,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content"
+      ]
+    },
+    {
+      "id": "refine_005",
+      "valid": false,
+      "reason": "Main selector \"#does-not-exist-selector-12345\" not found"
+    },
+    {
+      "id": "refine_006",
+      "valid": true,
+      "stats": {
+        "originalSize": 625189,
+        "finalSize": 612838,
+        "reductionPercent": "2.0",
+        "excludedElements": 1,
+        "textLength": 97611,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 1 elements"
+      ]
+    },
+    {
+      "id": "refine_007",
+      "valid": true,
+      "stats": {
+        "originalSize": 851,
+        "finalSize": 851,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 0,
+        "hasImages": true,
+        "hasLinks": false,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Very little text content extracted",
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": []
+    },
+    {
+      "id": "refine_008",
+      "valid": true,
+      "stats": {
+        "originalSize": 554508,
+        "finalSize": 500677,
+        "reductionPercent": "9.7",
+        "excludedElements": 1,
+        "textLength": 24120,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)"
+      ],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 1 elements"
+      ]
+    },
+    {
+      "id": "refine_009",
+      "valid": true,
+      "stats": {
+        "originalSize": 772369,
+        "finalSize": 112465,
+        "reductionPercent": "85.4",
+        "excludedElements": 1,
+        "textLength": 15251,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": true
+      },
+      "issues": [],
+      "strengths": [
+        "Good amount of paragraph content",
+        "Successfully excluded 1 elements"
+      ]
+    },
+    {
+      "id": "refine_010",
+      "valid": true,
+      "stats": {
+        "originalSize": 69656,
+        "finalSize": 69656,
+        "reductionPercent": "0.0",
+        "excludedElements": 0,
+        "textLength": 3394,
+        "hasImages": true,
+        "hasLinks": true,
+        "hasParagraphs": false
+      },
+      "issues": [
+        "Minimal content reduction (may include too much)",
+        "No paragraph tags (might be extracting navigation/lists)",
+        "May include navigation/login elements"
+      ],
+      "strengths": []
+    }
+  ]
+}

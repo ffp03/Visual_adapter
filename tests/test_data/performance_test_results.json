@@ -1,0 +1,744 @@
+{
+  "timestamp": "2025-11-23T01:50:08.768Z",
+  "metrics": {
+    "accuracy": {
+      "totalTests": 30,
+      "successful": 28,
+      "failed": 2,
+      "truePositives": 0,
+      "trueNegatives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "performance": {
+      "avgRuleApplicationTime": 849.2857142857143,
+      "avgVerificationTriggerTime": 20.5,
+      "avgTotalTime": 879.6785714285714,
+      "minTime": 347,
+      "maxTime": 2075
+    },
+    "byCategory": {
+      "good": {
+        "total": 10,
+        "successful": 10,
+        "failed": 0
+      },
+      "bad": {
+        "total": 10,
+        "successful": 9,
+        "failed": 1
+      },
+      "refinement": {
+        "total": 10,
+        "successful": 9,
+        "failed": 1
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "good_001",
+      "category": "good",
+      "hostname": "sephora.com",
+      "file": "personal care/Sephora.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 740,
+        "verificationTriggerTime": 33,
+        "totalTime": 779
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.75,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Clean semantic main selector with proper exclusions"
+      }
+    },
+    {
+      "id": "good_002",
+      "category": "good",
+      "hostname": "zillow.com",
+      "file": "house rental/Zillow.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 1645,
+        "verificationTriggerTime": 25,
+        "totalTime": 1682
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.75,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic article tag for content"
+      }
+    },
+    {
+      "id": "good_003",
+      "category": "good",
+      "hostname": "ikea.com",
+      "file": "extra/IKEA.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 491,
+        "verificationTriggerTime": 19,
+        "totalTime": 518
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.7,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic main with modal exclusions"
+      }
+    },
+    {
+      "id": "good_004",
+      "category": "good",
+      "hostname": "costco.com",
+      "file": "food/Costco.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 579,
+        "verificationTriggerTime": 17,
+        "totalTime": 604
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.75,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic HTML5 main tag with comprehensive exclusions"
+      }
+    },
+    {
+      "id": "good_005",
+      "category": "good",
+      "hostname": "etsy.com",
+      "file": "shopping/Etsy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 838,
+        "verificationTriggerTime": 26,
+        "totalTime": 871
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.75,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Clean semantic selector for marketplace"
+      }
+    },
+    {
+      "id": "good_006",
+      "category": "good",
+      "hostname": "lcbo.com",
+      "file": "alcoholic/LCBO.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 762,
+        "verificationTriggerTime": 13,
+        "totalTime": 795
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.7,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic main with popup/modal exclusions"
+      }
+    },
+    {
+      "id": "good_007",
+      "category": "good",
+      "hostname": "walmart.com",
+      "file": "food/Walmart.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 504,
+        "verificationTriggerTime": 11,
+        "totalTime": 519
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.75,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic main with standard exclusions"
+      }
+    },
+    {
+      "id": "good_008",
+      "category": "good",
+      "hostname": "macys.com",
+      "file": "clothing/Macy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 713,
+        "verificationTriggerTime": 15,
+        "totalTime": 735
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.7,
+        "maxAttempts": 2,
+        "shouldRefine": false,
+        "reason": "Semantic main selector"
+      }
+    },
+    {
+      "id": "good_009",
+      "category": "good",
+      "hostname": "amazon.com",
+      "file": "shopping/Amazon.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 450,
+        "verificationTriggerTime": 15,
+        "totalTime": 470
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.65,
+        "maxAttempts": 3,
+        "shouldRefine": false,
+        "reason": "Body selector with extensive exclusions (no semantic tags available)"
+      }
+    },
+    {
+      "id": "good_010",
+      "category": "good",
+      "hostname": "bestbuy.ca",
+      "file": "shopping/Best Buy Canada.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 1386,
+        "verificationTriggerTime": 33,
+        "totalTime": 1425
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minConfidence": 0.65,
+        "maxAttempts": 3,
+        "shouldRefine": false,
+        "reason": "Body selector with data-attribute exclusions (no semantic tags)"
+      }
+    },
+    {
+      "id": "bad_001",
+      "category": "bad",
+      "hostname": "amazon.com",
+      "file": "shopping/Amazon.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 390,
+        "verificationTriggerTime": 17,
+        "totalTime": 414
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.5,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Body selector with no exclusions includes everything"
+      }
+    },
+    {
+      "id": "bad_002",
+      "category": "bad",
+      "hostname": "sephora.com",
+      "file": "personal care/Sephora.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 623,
+        "verificationTriggerTime": 12,
+        "totalTime": 643
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.3,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Targets header navigation instead of main content"
+      }
+    },
+    {
+      "id": "bad_003",
+      "category": "bad",
+      "hostname": "ikea.com",
+      "file": "extra/IKEA.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 597,
+        "verificationTriggerTime": 23,
+        "totalTime": 631
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.6,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Missing exclusions for ads, modals, and navigation"
+      }
+    },
+    {
+      "id": "bad_004",
+      "category": "bad",
+      "hostname": "walmart.com",
+      "file": "food/Walmart.mhtml",
+      "success": false,
+      "error": "Rule application failed: Selector \"#does-not-exist-selector-12345\" not found",
+      "metrics": {
+        "ruleApplicationTime": 504,
+        "verificationTriggerTime": 0,
+        "totalTime": 510
+      },
+      "verification": null,
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.1,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Selector doesn't exist in the HTML"
+      }
+    },
+    {
+      "id": "bad_005",
+      "category": "bad",
+      "hostname": "zillow.com",
+      "file": "house rental/Zillow.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 2039,
+        "verificationTriggerTime": 22,
+        "totalTime": 2075
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.2,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Extracts navigation instead of content"
+      }
+    },
+    {
+      "id": "bad_006",
+      "category": "bad",
+      "hostname": "ikea.com",
+      "file": "extra/IKEA.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 329,
+        "verificationTriggerTime": 9,
+        "totalTime": 347
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.15,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Extracts footer links instead of products"
+      }
+    },
+    {
+      "id": "bad_007",
+      "category": "bad",
+      "hostname": "costco.com",
+      "file": "food/Costco.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 579,
+        "verificationTriggerTime": 12,
+        "totalTime": 597
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.25,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Excludes the actual content, keeps only navigation/ads"
+      }
+    },
+    {
+      "id": "bad_008",
+      "category": "bad",
+      "hostname": "etsy.com",
+      "file": "shopping/Etsy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 827,
+        "verificationTriggerTime": 35,
+        "totalTime": 869
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.65,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Missing exclusions for ads, iframes, and modals"
+      }
+    },
+    {
+      "id": "bad_009",
+      "category": "bad",
+      "hostname": "lcbo.com",
+      "file": "alcoholic/LCBO.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 632,
+        "verificationTriggerTime": 23,
+        "totalTime": 677
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.05,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Extracts metadata and scripts instead of content"
+      }
+    },
+    {
+      "id": "bad_010",
+      "category": "bad",
+      "hostname": "macys.com",
+      "file": "clothing/Macy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 810,
+        "verificationTriggerTime": 18,
+        "totalTime": 836
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "failed",
+        "maxConfidence": 0.25,
+        "minAttempts": 1,
+        "shouldRefine": true,
+        "reason": "Matches first div only, likely a container or wrapper"
+      }
+    },
+    {
+      "id": "refine_001",
+      "category": "refinement",
+      "hostname": "sephora.com",
+      "file": "personal care/Sephora.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 946,
+        "verificationTriggerTime": 33,
+        "totalTime": 987
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.75,
+        "shouldImprove": true,
+        "reason": "Should refine from body to semantic main selector"
+      }
+    },
+    {
+      "id": "refine_002",
+      "category": "refinement",
+      "hostname": "ikea.com",
+      "file": "extra/IKEA.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 412,
+        "verificationTriggerTime": 15,
+        "totalTime": 435
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.75,
+        "shouldImprove": true,
+        "reason": "Should add critical exclusions for clean extraction"
+      }
+    },
+    {
+      "id": "refine_003",
+      "category": "refinement",
+      "hostname": "zillow.com",
+      "file": "house rental/Zillow.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 1700,
+        "verificationTriggerTime": 22,
+        "totalTime": 1737
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.7,
+        "shouldImprove": true,
+        "reason": "Should identify and correct wrong selector from nav to article"
+      }
+    },
+    {
+      "id": "refine_004",
+      "category": "refinement",
+      "hostname": "etsy.com",
+      "file": "shopping/Etsy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 846,
+        "verificationTriggerTime": 28,
+        "totalTime": 884
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.75,
+        "shouldImprove": true,
+        "reason": "Should add media and ad exclusions"
+      }
+    },
+    {
+      "id": "refine_005",
+      "category": "refinement",
+      "hostname": "walmart.com",
+      "file": "food/Walmart.mhtml",
+      "success": false,
+      "error": "Rule application failed: Selector \"#does-not-exist-selector-12345\" not found",
+      "metrics": {
+        "ruleApplicationTime": 450,
+        "verificationTriggerTime": 0,
+        "totalTime": 453
+      },
+      "verification": null,
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.7,
+        "shouldImprove": true,
+        "reason": "Should find valid selector when initial one fails"
+      }
+    },
+    {
+      "id": "refine_006",
+      "category": "refinement",
+      "hostname": "lcbo.com",
+      "file": "alcoholic/LCBO.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 863,
+        "verificationTriggerTime": 20,
+        "totalTime": 904
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.75,
+        "shouldImprove": true,
+        "reason": "Should add UI element exclusions"
+      }
+    },
+    {
+      "id": "refine_007",
+      "category": "refinement",
+      "hostname": "macys.com",
+      "file": "clothing/Macy.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 764,
+        "verificationTriggerTime": 30,
+        "totalTime": 801
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.7,
+        "shouldImprove": true,
+        "reason": "Should narrow from generic div to semantic main"
+      }
+    },
+    {
+      "id": "refine_008",
+      "category": "refinement",
+      "hostname": "amazon.com",
+      "file": "shopping/Amazon.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 398,
+        "verificationTriggerTime": 18,
+        "totalTime": 422
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.7,
+        "shouldImprove": true,
+        "reason": "Should add comprehensive exclusions for body selector"
+      }
+    },
+    {
+      "id": "refine_009",
+      "category": "refinement",
+      "hostname": "costco.com",
+      "file": "food/Costco.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 906,
+        "verificationTriggerTime": 16,
+        "totalTime": 932
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.75,
+        "shouldImprove": true,
+        "reason": "Should fix selector and exclusions completely"
+      }
+    },
+    {
+      "id": "refine_010",
+      "category": "refinement",
+      "hostname": "bestbuy.ca",
+      "file": "shopping/Best Buy Canada.mhtml",
+      "success": true,
+      "error": null,
+      "metrics": {
+        "ruleApplicationTime": 1057,
+        "verificationTriggerTime": 14,
+        "totalTime": 1079
+      },
+      "verification": {
+        "triggered": true,
+        "status": "pending"
+      },
+      "expected": {
+        "status": "verified",
+        "minFinalConfidence": 0.7,
+        "shouldImprove": true,
+        "reason": "Should correct from header to body with comprehensive exclusions"
+      }
+    }
+  ]
+}

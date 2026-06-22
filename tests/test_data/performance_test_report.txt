@@ -1,0 +1,98 @@
+================================================================================
+RULE VERIFICATION SYSTEM - PERFORMANCE TEST REPORT
+================================================================================
+Test Date: 2025-11-23T01:50:08.767Z
+Total Tests: 30
+
+SUMMARY
+--------------------------------------------------------------------------------
+✓ Successful: 28 (93.3%)
+✗ Failed: 2 (6.7%)
+
+RESULTS BY CATEGORY
+--------------------------------------------------------------------------------
+GOOD: 10/10 (100.0%)
+BAD: 9/10 (90.0%)
+REFINEMENT: 9/10 (90.0%)
+
+PERFORMANCE METRICS
+--------------------------------------------------------------------------------
+Avg Rule Application: 849ms
+Avg Verification Trigger: 21ms
+Avg Total Time: 880ms
+Min Time: 347ms
+Max Time: 2075ms
+
+DETAILED RESULTS
+--------------------------------------------------------------------------------
+
+GOOD RULES:
+  ✓ good_001: sephora.com
+     Time: 779ms
+  ✓ good_002: zillow.com
+     Time: 1682ms
+  ✓ good_003: ikea.com
+     Time: 518ms
+  ✓ good_004: costco.com
+     Time: 604ms
+  ✓ good_005: etsy.com
+     Time: 871ms
+  ✓ good_006: lcbo.com
+     Time: 795ms
+  ✓ good_007: walmart.com
+     Time: 519ms
+  ✓ good_008: macys.com
+     Time: 735ms
+  ✓ good_009: amazon.com
+     Time: 470ms
+  ✓ good_010: bestbuy.ca
+     Time: 1425ms
+
+BAD RULES:
+  ✓ bad_001: amazon.com
+     Time: 414ms
+  ✓ bad_002: sephora.com
+     Time: 643ms
+  ✓ bad_003: ikea.com
+     Time: 631ms
+  ✗ bad_004: walmart.com
+     Error: Rule application failed: Selector "#does-not-exist-selector-12345" not found
+  ✓ bad_005: zillow.com
+     Time: 2075ms
+  ✓ bad_006: ikea.com
+     Time: 347ms
+  ✓ bad_007: costco.com
+     Time: 597ms
+  ✓ bad_008: etsy.com
+     Time: 869ms
+  ✓ bad_009: lcbo.com
+     Time: 677ms
+  ✓ bad_010: macys.com
+     Time: 836ms
+
+REFINEMENT RULES:
+  ✓ refine_001: sephora.com
+     Time: 987ms
+  ✓ refine_002: ikea.com
+     Time: 435ms
+  ✓ refine_003: zillow.com
+     Time: 1737ms
+  ✓ refine_004: etsy.com
+     Time: 884ms
+  ✗ refine_005: walmart.com
+     Error: Rule application failed: Selector "#does-not-exist-selector-12345" not found
+  ✓ refine_006: lcbo.com
+     Time: 904ms
+  ✓ refine_007: macys.com
+     Time: 801ms
+  ✓ refine_008: amazon.com
+     Time: 422ms
+  ✓ refine_009: costco.com
+     Time: 932ms
+  ✓ refine_010: bestbuy.ca
+     Time: 1079ms
+
+================================================================================
+NOTE: Verification results will be available in Firebase after 5-6 minutes
+Run check_firebase_results.js to see final verification status
+================================================================================

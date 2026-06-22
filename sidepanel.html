@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Adapter Panel</title>
+    <link rel="stylesheet" href="sidepanel.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h2>Visual Adapter</h2>
+        <button id="refresh-btn" title="Re-analyze Page">↻</button>
+    </header>
+
+    <!-- Main Content Area (Reader Mode) -->
+    <main id="reader-view">
+        <div class="placeholder">
+            <p>Open a webpage to see the adapted version here.</p>
+        </div>
+    </main>
+
+    <!-- Settings Area (Foldable Sections) -->
+    <footer id="controls">
+
+        <!-- Section 1: Accessibility Settings -->
+        <details open style="margin-bottom: 10px; border: 1px solid #333; border-radius: 5px; overflow: hidden;">
+            <summary style="
+                background: #333; 
+                color: #fff; 
+                padding: 10px; 
+                cursor: pointer; 
+                font-weight: bold; 
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            ">
+                <span>👁️ Accessibility Settings</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div style="padding: 10px; background: #1a1a1a;">
+                <!-- Theme Selection -->
+                <div class="settings-section">
+                    <h3>Theme</h3>
+                    <div class="theme-grid">
+                        <button class="theme-btn" data-theme="black-white" aria-label="Black on White"
+                            style="background:#fff; color:#000; border:1px solid #ccc">Aa</button>
+                        <button class="theme-btn" data-theme="white-black" aria-label="White on Black"
+                            style="background:#000; color:#fff; border:1px solid #fff">Aa</button>
+                        <button class="theme-btn" data-theme="yellow-black" aria-label="Yellow on Black"
+                            style="background:#000; color:#FFD700; border:1px solid #FFD700">Aa</button>
+                        <button class="theme-btn" data-theme="blue-yellow" aria-label="Blue on Yellow"
+                            style="background:#FFFF00; color:#0000FF; border:1px solid #0000FF">Aa</button>
+                        <button class="theme-btn" data-theme="sepia" aria-label="Sepia"
+                            style="background:#f4ecd8; color:#5b4636; border:1px solid #5b4636">Aa</button>
+                        <button class="theme-btn" data-theme="green-black" aria-label="Green on Black"
+                            style="background:#000; color:#00FF00; border:1px solid #00FF00">Aa</button>
+                    </div>
+                </div>
+
+                <!-- Typography Controls -->
+                <div class="settings-section">
+                    <h3>Typography</h3>
+                    <div class="control-group">
+                        <select id="font-select" aria-label="Font Family">
+                            <option value="sans-serif">Sans Serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="'OpenDyslexic', sans-serif">Dyslexic Friendly</option>
+                            <option value="'Courier New', monospace">Monospace</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <button id="font-decrease" class="icon-btn" aria-label="Decrease Font Size">A-</button>
+                        <input type="range" id="size-slider" min="14" max="40" step="2" value="20"
+                            aria-label="Font Size Slider">
+                        <button id="font-increase" class="icon-btn" aria-label="Increase Font Size">A+</button>
+                    </div>
+                    <div class="size-label">Size: <span id="font-display">20px</span></div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Section 2: Developer Tools -->
+        <details style="border: 1px solid #333; border-radius: 5px; overflow: hidden;">
+            <summary style="
+                background: #222; 
+                color: #ccc; 
+                padding: 10px; 
+                cursor: pointer; 
+                font-weight: bold;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            ">
+                <span>🛠️ Developer Tools</span>
+                <span class="toggle-icon">▼</span>
+            </summary>
+            <div style="padding: 10px; background: #111;">
+                <div class="control-group" style="margin-bottom: 10px;">
+                    <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                        <input type="checkbox" id="auto-download-logs"> Auto-Download Logs
+                    </label>
+                </div>
+                <div class="control-group">
+                    <button id="clear-cache-btn" class="icon-btn"
+                        style="width: 100%; margin-bottom: 5px; background: #442222;">🗑️ Clear Smart Rules</button>
+                </div>
+                <div class="control-group">
+                    <button id="export-log-btn" class="icon-btn" style="width: 100%; background: #224422;">💾 Export
+                        Last Debug Log</button>
+                </div>
+                <div class="control-group">
+                    <button id="toggle-console-btn" class="icon-btn"
+                        style="width: 100%; background: #222; border: 1px solid #444;">💻 Toggle Debug Console</button>
+                </div>
+
+                <!-- Debug Console (Moved inside Dev Tools) -->
+                <div id="debug-console" style="
+                    border-top: 1px solid #333;
+                    background: #000;
+                    color: #0f0;
+                    font-family: monospace;
+                    font-size: 10px;
+                    padding: 5px;
+                    max-height: 150px;
+                    overflow-y: auto;
+                    display: none;
+                    margin-top: 10px;
+                ">
+                    <div>> Debug Console Ready</div>
+                </div>
+            </div>
+        </details>
+    </footer>
+
+    <script src="sidepanel.js"></script>
+</body>
+
+</html>

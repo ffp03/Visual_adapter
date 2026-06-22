@@ -1,0 +1,252 @@
+{
+  "amazon.com": {
+    "hostname": "amazon.com",
+    "suggestions": {
+      "main": [],
+      "exclude": [
+        "header",
+        "[class*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": false,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": []
+    }
+  },
+  "sephora.com": {
+    "hostname": "sephora.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": []
+    }
+  },
+  "zillow.com": {
+    "hostname": "zillow.com",
+    "suggestions": {
+      "main": [
+        "article"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ]
+    },
+    "structure": {
+      "hasMain": false,
+      "hasArticle": true,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": [
+        "data-testid"
+      ]
+    }
+  },
+  "ikea.com": {
+    "hostname": "ikea.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": [
+        "data-testid"
+      ]
+    }
+  },
+  "costco.com": {
+    "hostname": "costco.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": []
+    }
+  },
+  "bestbuy.ca": {
+    "hostname": "bestbuy.ca",
+    "suggestions": {
+      "main": [],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": false,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": [
+        "data-testid",
+        "data-automation"
+      ]
+    }
+  },
+  "etsy.com": {
+    "hostname": "etsy.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": []
+    }
+  },
+  "lcbo.com": {
+    "hostname": "lcbo.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe",
+        "[class*=\"modal\"]",
+        "[class*=\"popup\"]"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": []
+    }
+  },
+  "walmart.com": {
+    "hostname": "walmart.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "header",
+        "footer",
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": [
+        "data-testid",
+        "data-automation"
+      ]
+    }
+  },
+  "macys.com": {
+    "hostname": "macys.com",
+    "suggestions": {
+      "main": [
+        "main"
+      ],
+      "exclude": [
+        "nav",
+        "[class*=\"ad\"]",
+        "[id*=\"ad\"]",
+        "iframe"
+      ]
+    },
+    "structure": {
+      "hasMain": true,
+      "hasArticle": false,
+      "hasBody": true,
+      "commonIds": [],
+      "commonClasses": [],
+      "dataAttributes": [
+        "data-testid"
+      ]
+    }
+  }
+}

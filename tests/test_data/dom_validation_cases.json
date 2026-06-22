@@ -1,0 +1,89 @@
+[
+    {
+        "id": "dom_001",
+        "name": "Perfect extraction (high confidence)",
+        "hostname": "example-perfect.com",
+        "rawHTML": "<html><body><header>Navigation Menu</header><main><h1>Article Title</h1><p>This is the first paragraph of content.</p><p>This is the second paragraph with more details.</p><p>Third paragraph concludes the article.</p></main><footer>Copyright 2024</footer></body></html>",
+        "extractedHTML": "<main><h1>Article Title</h1><p>This is the first paragraph of content.</p><p>This is the second paragraph with more details.</p><p>Third paragraph concludes the article.</p></main>",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header",
+                "footer"
+            ],
+            "name": "Perfect Extraction"
+        },
+        "expectedDOMConfidence": 0.85,
+        "expectedDOMMethod": "dom-only",
+        "expectedValid": true,
+        "notes": "Clean extraction with good text/paragraph ratio, no noise"
+    },
+    {
+        "id": "dom_002",
+        "name": "Poor extraction (low confidence)",
+        "hostname": "example-poor.com",
+        "rawHTML": "<html><body><header>Nav</header><main><h1>Title</h1><p>Content paragraph.</p></main><footer>Footer</footer></body></html>",
+        "extractedHTML": "<html><body><header>Nav</header><main><h1>Title</h1><p>Content paragraph.</p></main><footer>Footer</footer></body></html>",
+        "rule": {
+            "main": "body",
+            "exclude": [],
+            "name": "No Extraction"
+        },
+        "expectedDOMConfidence": 0.15,
+        "expectedDOMMethod": "dom-only",
+        "expectedValid": false,
+        "notes": "No extraction applied, returned entire document"
+    },
+    {
+        "id": "dom_003",
+        "name": "Borderline extraction (needs LLM)",
+        "hostname": "example-borderline.com",
+        "rawHTML": "<html><body><nav>Menu Item 1 | Menu Item 2</nav><article><h2>Article Title</h2><p>Article content goes here.</p></article><aside><h3>Related</h3><p>Sidebar content</p></aside></body></html>",
+        "extractedHTML": "<article><h2>Article Title</h2><p>Article content goes here.</p></article><aside><h3>Related</h3><p>Sidebar content</p></aside>",
+        "rule": {
+            "main": "article",
+            "exclude": [
+                "nav"
+            ],
+            "name": "Partial Extraction"
+        },
+        "expectedDOMConfidence": 0.5,
+        "expectedDOMMethod": "llm-verified",
+        "expectedValid": false,
+        "notes": "Missing aside exclusion, borderline case"
+    },
+    {
+        "id": "dom_004",
+        "name": "Good extraction with minor noise",
+        "hostname": "example-minor-noise.com",
+        "rawHTML": "<html><body><header>Site Header</header><main><h1>Main Article</h1><p>Paragraph one with content.</p><p>Paragraph two with more content.</p><p>Paragraph three wraps up.</p><script>console.log('analytics');</script></main></body></html>",
+        "extractedHTML": "<main><h1>Main Article</h1><p>Paragraph one with content.</p><p>Paragraph two with more content.</p><p>Paragraph three wraps up.</p><script>console.log('analytics');</script></main>",
+        "rule": {
+            "main": "main",
+            "exclude": [
+                "header"
+            ],
+            "name": "Minor Noise"
+        },
+        "expectedDOMConfidence": 0.7,
+        "expectedDOMMethod": "dom-only",
+        "expectedValid": true,
+        "notes": "Has script tag but good content coverage"
+    },
+    {
+        "id": "dom_005",
+        "name": "Over-extraction (too much text)",
+        "hostname": "example-over.com",
+        "rawHTML": "<html><body><main><p>Just a short paragraph.</p></main></body></html>",
+        "extractedHTML": "<html><head><title>Page Title</title><meta charset='utf-8'></head><body><nav>Navigation</nav><main><p>Just a short paragraph.</p></main><footer>Footer text</footer></body></html>",
+        "rule": {
+            "main": "html",
+            "exclude": [],
+            "name": "Over Extraction"
+        },
+        "expectedDOMConfidence": 0.2,
+        "expectedDOMMethod": "dom-only",
+        "expectedValid": false,
+        "notes": "Extracted more than original, clearly wrong"
+    }
+]

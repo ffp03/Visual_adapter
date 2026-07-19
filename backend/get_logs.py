@@ -1,6 +1,9 @@
 from huggingface_hub import HfApi
+import os
 
-api = HfApi(token="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")
+# HF token loaded from env (dotfiles-ai -> ~/.env.shared); was hardcoded, moved 2026-07-19.
+# See ~/dotfiles-ai/docs/secret-scrub-2026-07-19.md
+api = HfApi(token=os.environ["HF_TOKEN"])
 repo_id = "ffpffp/visual-adapter-backend"
 
 print(f"Fetching logs for {repo_id}...")

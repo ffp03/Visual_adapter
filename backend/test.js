@@ -22,7 +22,8 @@ function makeRequest(method, path, data = null) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
+                // HF token from env (dotfiles-ai); was hardcoded, moved 2026-07-19. See ~/dotfiles-ai/docs/secret-scrub-2026-07-19.md
+                'Authorization': `Bearer ${process.env.HF_TOKEN}`
             }
         };
 

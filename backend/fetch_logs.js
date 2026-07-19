@@ -1,7 +1,9 @@
 const https = require('https');
 
 const SPACE_ID = 'ffpffp/visual-adapter-backend';
-const TOKEN = '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';
+// HF token from env (dotfiles-ai -> ~/.env.shared); was hardcoded, moved 2026-07-19.
+// See ~/dotfiles-ai/docs/secret-scrub-2026-07-19.md
+const TOKEN = process.env.HF_TOKEN;
 
 function getLogs() {
     const options = {

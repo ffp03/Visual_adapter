@@ -237,6 +237,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     chrome.runtime.sendMessage({ action: "ANALYZE_PAGE", context: response }, (res) => {
                         if (chrome.runtime.lastError) {
                             console.warn("Analysis trigger failed:", chrome.runtime.lastError);
+                            banner.textContent = 'Analysis unavailable. Using basic view.';
+                            return;
+                        }
+
+                        if (!res) {
+                            banner.textContent = 'Analysis unavailable. Using basic view.';
                             return;
                         }
 
@@ -255,24 +261,30 @@ document.addEventListener('DOMContentLoaded', async () => {
                             }, 1000);
 
                             // Trigger verification if this is a newly generated rule
-                            if (res.source === 'generated') {
+                            if (res.source === 'backend') {
                                 log('[Verification] Triggering verification for new rule');
 
                                 // Get the full HTML for verification
-                                chrome.tabs.sendMessage(tabId, { action: "EXTRACT_CONTEXT" }, (extractResponse) => {
-                                    if (extractResponse && extractResponse.html) {
+                                chrome.tabs.sendMessage(tabId, { action: "EXTRACT_CONTEXT", includeRawHTML: true }, (extractResponse) => {
+                                    if (extractResponse?.usedRule && extractResponse.rawHTML && extractResponse.html
+                                        && response.url && response.hostname
+                                        && extractResponse.url === response.url
+                                        && extractResponse.hostname === response.hostname) {
                                         // Trigger verification in background
                                         chrome.runtime.sendMessage({
                                             action: "TRIGGER_VERIFICATION",
                                             hostname: response.hostname,
-                                            rawHTML: extractResponse.html,
-                                            extractedHTML: readerView.innerHTML,
+                                            rawHTML: extractResponse.rawHTML,
+                                            extractedHTML: extractResponse.html,
                                             rule: res.rule
                                         });
                                     }
                                 });
                             }
 
+                        } else if (res.status === 'fallback') {
+                            log('Cached selector did not match this page. Keeping basic view.');
+                            banner.textContent = 'Saved rule did not match this page. Using basic view.';
                         } else if (res.status === 'pending') {
                             log("Request sent to backend. Waiting for analysis...");
                             // Banner stays as "Analyzing..."

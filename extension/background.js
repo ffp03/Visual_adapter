@@ -55,6 +55,13 @@ async function handleAnalysisRequest(context, sendResponse) {
         const existingRule = await firebaseService.getRule(hostname);
 
         if (existingRule) {
+            // The content script has already tried this host's cached selector.
+            // Keep the usable local view instead of reapplying it forever. A failed
+            // selector does not authorize an automatic paid regeneration policy.
+            if (context.ruleFailure) {
+                sendResponse({ success: false, status: 'fallback', reason: 'cached-selector-failed' });
+                return;
+            }
             console.log(`Background: Found rule for ${hostname} in Firebase.`);
             sendResponse({ success: true, rule: existingRule, source: 'firebase' });
             return;

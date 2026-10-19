@@ -2,7 +2,7 @@
 // Listens for requests to scrape content or extract context for LLM
 
 // --- Rule Matching ---
-async function tryApplyRules() {
+async function tryApplyRules(outcome = {}) {
     const hostname = window.location.hostname;
     // We need to wrap sendMessage in a promise if we want to use await cleanly here, 
     // or just use the callback style. Chrome's sendMessage returns a promise in MV3 but 
@@ -10,6 +10,7 @@ async function tryApplyRules() {
     try {
         const response = await chrome.runtime.sendMessage({ action: "GET_RULES", hostname });
         const rules = response?.rules || [];
+        outcome.ruleFailure = rules.length > 0;
 
         for (const rule of rules) {
             const mainElement = document.querySelector(rule.main);
@@ -56,7 +57,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         (async () => {
             try {
                 // 1. Try Cached Rules
-                let html = await tryApplyRules();
+                const outcome = {};
+                let html = await tryApplyRules(outcome);
                 let usedRule = !!html;
 
                 // 2. If no rule, use Heuristic
@@ -69,11 +71,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     html = html.substring(0, 50000) + "... [Truncated]";
                 }
 
+                const verificationContext = {};
+                if (request.includeRawHTML) {
+                    // The verifier's model prompt accepts 5,000 original-context characters.
+                    // Send a complete body that fits; a head/prefix-only sample can falsely
+                    // reject a working rule and trigger destructive refinement.
+                    const rawBody = document.body?.outerHTML || '';
+                    if (rawBody && rawBody.length <= 5000) {
+                        verificationContext.rawHTML = rawBody;
+                    } else {
+                        verificationContext.verificationContextUnavailable = 'complete-body-exceeds-verifier-bound';
+                    }
+                }
+
                 sendResponse({
                     url: window.location.href,
                     html: html || "",
                     hostname: window.location.hostname,
                     usedRule: usedRule,
+                    ruleFailure: !usedRule && !!outcome.ruleFailure,
+                    ...verificationContext,
                     originalLength: document.body.innerText.length // Metadata to detect extraction failure
                 });
             } catch (e) {

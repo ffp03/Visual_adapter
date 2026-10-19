@@ -28,5 +28,10 @@ tests/test_2_output.txt
 # Generated Test Outputs
 tests/output/
 
+# Local, reproducible benchmark artifacts and project Python environment
+workspace/
+.venv/
+tests/local/__pycache__/
+
 # Deployment folders
 hf-deploy/

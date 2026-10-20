@@ -48,7 +48,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // --- Centralized Logic ---
 async function handleAnalysisRequest(context, sendResponse) {
     const hostname = context.hostname;
-    const html = context.html;
+    const html = context.analysisHTML || context.html;
 
     try {
         // 1. Check Firebase for existing rule first

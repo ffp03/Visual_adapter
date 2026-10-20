@@ -18,6 +18,10 @@ Scripts, active embeds, event handlers and form values are stripped, but other p
 
 The backend checks selector syntax, a matching content container, and nonempty output before caching. These checks do not establish semantic accuracy or accessibility compliance. `/verify` performs deterministic local checks only; it does not start a model verification/refinement loop. This preserves fallback and avoids surprise inference calls.
 
+The current validation also protects the actual title heading, samples substantive paragraphs/code/table content and common comment markers, and can widen a narrow selector to a stable ancestor. Table-row selections are normalized to complete table containers. Exclusions that would delete the primary heading are dropped, and the original model rule plus normalization metadata are retained. The reader keeps full content separately from the bounded model sample, resolves source links/images for the extension panel, and uses local fallback when these checks reject a rule. These are practical heuristics, not a semantic correctness guarantee.
+
+A generation/provider failure is remembered for that host during the server session. Further requests keep fallback without another inference attempt. An explicit report or a server restart enables another attempt; neither bypasses an experiment's separate aggregate budget.
+
 An explicit alternative uses **Codex Luna at medium effort**, with existing ChatGPT CLI authentication:
 
 ```text

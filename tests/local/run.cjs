@@ -17,6 +17,7 @@ if (mode === 'test') {
     run(process.execPath, ['tests/local/scoring.cjs']);
     run(process.execPath, ['tests/local/provenance.cjs']);
     run(process.execPath, ['--test', 'tests/local/codex-local.cjs']);
+    run(process.execPath, ['--test', 'tests/local/experiment-lock-test.cjs']);
 } else if (mode === 'benchmark') {
     run(python, ['tests/local/corpus.py']);
     run(process.execPath, ['--expose-gc', 'tests/local/benchmark.cjs', ...process.argv.slice(3)]);

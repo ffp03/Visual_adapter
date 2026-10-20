@@ -199,3 +199,38 @@ test('Codex timeout terminates the child without a retry', async () => {
         spawnProcess: (exe, args, options) => { count++; return spawn(exe, [script], options); } });
     await assert.rejects(runner.generate(html), /timed out/); assert.equal(count, 1); assert.equal(runner.children.size, 0);
 });
+test('local validation widens a post-only rule to retain sibling discussion content', () => {
+    const raw = '<table id="thread"><tr id="post-and-comments"><td><table class="post"><tr><td>Thread title</td></tr></table><table class="comments"><tr><td><p>'
+        + 'A substantive discussion comment that must remain readable. '.repeat(10) + '</p></td></tr></table></td></tr></table>';
+    const modelRule = { main: '.post', exclude: [], name: 'Thread' };
+    const effective = validateRule(modelRule, raw);
+    assert.notEqual(effective.main, modelRule.main); assert.equal(modelRule.main, '.post');
+    assert.match(effective.main, /thread/);
+    assert.match(effective.main, /^table/);
+});
+test('a legacy table-row selection is promoted to a stable complete table', () => {
+    const raw = '<center><table id="thread"><tr id="content"><td>Discussion title</td></tr><tr><td><div class="commtext">A short but substantive comment.</div></td></tr></table></center>';
+    const effective = validateRule({ main: '#content', exclude: [], name: 'Thread' }, raw);
+    assert.match(effective.main, /^table/); assert.match(effective.main, /thread/);
+});
+test('model exclusions cannot delete the main page title', () => {
+    const raw = '<main id="content"><div class="page-title"><h1>Guide title</h1></div><section id="guide"><h2>Details</h2><p>'
+        + 'Substantive guide information. '.repeat(8) + '</p></section></main>';
+    const effective = validateRule({ main: '#guide', exclude: ['.page-title'], name: 'Guide' }, raw);
+    assert.deepEqual(effective.exclude, []); assert.match(effective.main, /content/);
+});
+test('a title word in prose cannot substitute for the actual heading element', () => {
+    const raw = '<main id="content"><h1 id="title">HTML</h1><section id="body"><p>' + 'HTML article content. '.repeat(12) + '</p></section></main>';
+    const effective = validateRule({ main: '#body', exclude: [], name: 'Article' }, raw);
+    assert.match(effective.main, /content/);
+});
+test('a failed host does not consume more inference until explicitly reported', async t => {
+    let calls = 0;
+    const app = await listen(t, { maxCalls: 20, runner: { async generate() { calls++; throw Error('unavailable'); } } });
+    await app.request('/analyze', { hostname: 'example.org', html });
+    assert.equal((await app.request('/analyze', { hostname: 'example.org', html })).status, 429);
+    assert.equal(calls, 1);
+    await app.request('/report', { hostname: 'example.org' });
+    await app.request('/analyze', { hostname: 'example.org', html });
+    assert.equal(calls, 2);
+});

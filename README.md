@@ -2,6 +2,8 @@
 
 AI-powered Chrome extension that transforms complex web pages into clean, accessible reading experiences for low-vision users.
 
+The current local prototype uses **DeepSeek** through the shared-secret key, with a persistent local rule cache and heuristic fallback. Start it with `npm run start:local`, then reload the unpacked extension. [Local setup and limits](docs/LOCAL_AI.md). An optional `npm run start:codex` route uses Codex Luna; the hosted Gemini deployment is not the default.
+
 [![Version](https://img.shields.io/badge/version-3.0-blue.svg)](https://github.com/your-repo)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -9,7 +11,7 @@ AI-powered Chrome extension that transforms complex web pages into clean, access
 
 ## ✨ Features
 
-- 🤖 **AI-Powered Extraction** - Google Gemini analyzes page structure
+- 🤖 **AI-Powered Extraction** - The local DeepSeek backend analyzes HTML structure
 - ⚡ **Instant Loading** - Cached rules load in <0.5s
 - 🎨 **High-Contrast Themes** - 6 accessibility-focused themes
 - 📝 **Customizable Typography** - Adjust font size and family

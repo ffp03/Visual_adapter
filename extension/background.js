@@ -1,10 +1,10 @@
 // Background Service Worker
 // Handles Firebase integration and backend communication
 
-import { FirebaseService } from './firebase-service.js';
+import { createRuleService } from './rule-service.js';
 import { getBackendURL } from './backend-config.js';
 
-const firebaseService = new FirebaseService();
+const firebaseService = createRuleService();
 
 // Enable Side Panel on Action Click
 chrome.sidePanel
@@ -162,6 +162,8 @@ async function sendDebugLog(hostname, rawHTML, extractedHTML, rule) {
 
         const data = await response.json();
         console.log(`[Verification] Backend response:`, data);
+
+        if (data.verification?.status === 'local-only') return;
 
         // Start polling for updates
         pollForRuleUpdates(hostname);

@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "main": {"type": "string"},
+    "exclude": {"type": "array", "items": {"type": "string"}},
+    "name": {"type": "string"}
+  },
+  "required": ["main", "exclude", "name"],
+  "additionalProperties": false
+}

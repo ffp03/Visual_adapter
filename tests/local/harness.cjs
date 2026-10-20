@@ -30,6 +30,7 @@ function background({ rule = null, fail = false, failCache = false, generatedRul
     const context = vm.createContext({ console: quiet,
         // FirebaseService catches request errors and resolves null in production.
         FirebaseService: class { async getRule() { return failCache ? null : rule; } },
+        createRuleService: () => ({ async getRule() { return failCache ? null : rule; } }),
         getBackendURL: () => 'https://local-double.invalid',
         chrome: { sidePanel: { setPanelBehavior: async () => {} }, tabs: { create() {} },
             runtime: { onInstalled: { addListener() {} }, onMessage: { addListener: fn => listeners.push(fn) }, sendMessage: async () => {} } },

@@ -44,7 +44,9 @@ test('incomplete context never generates or admits; two structural families coex
 test('second selector failure retires admission attempt without automatic generation; explicit report resets family, never session cap', async t => {
     const app = await open(t, { maxCalls: 1, generate: async () => ({ rule: { ...rule, main: '.reading' } }) });
     await app.post('/analyze', example('a', '<main><div class=reading><p>First text</p></div></main>'));
-    const failed = await app.post('/analyze', example('b', '<main><div class=other><p>Second text</p></div></main>'));
+    // A unique DIV is a safe predeclared recovery. Two reading DIVs make every
+    // declared seed selector absent or ambiguous, so failure remains required.
+    const failed = await app.post('/analyze', example('b', '<main><div class=other><p>Second text</p></div><div class=other><p>Another reading block</p></div></main>'));
     assert.equal(failed.status, 'fallback'); assert.equal((await app.list()).length, 0);
     await app.post('/analyze', example('c', '<main><div class=reading><p>Third text</p></div></main>')); assert.equal(app.calls(), 1);
     await app.post('/report', { protocol: 2, hostname: 'example.test', familyKey: failed.familyKey });
@@ -66,6 +68,23 @@ test('legacy and v2 requests share the global generation cap', async t => {
     const app = await open(t, { maxCalls: 1 }); await app.post('/analyze', example('first'));
     const legacy = await app.post('/analyze', { hostname: 'other.test', html: body('legacy') });
     assert.equal(legacy.status, 'fallback'); assert.equal(app.calls(), 1);
+});
+
+test('old descriptor caches are invisible and invalidation never resets the generation cap', async t => {
+    const app = await open(t, { maxCalls: 1 });
+    const cache = path.join(app.directory, 'procedures-v2'); fs.mkdirSync(cache, { recursive: true });
+    const oldFamily = hash('old family');
+    fs.writeFileSync(path.join(cache, hash('example.test') + '-' + oldFamily + '.json'), JSON.stringify({
+        hostname: 'example.test', familyKey: oldFamily, provider: 'fake-local', model: 'fixture',
+        descriptor: { version: 2 }, status: 'admitted', examples: [{}, {}],
+        procedure: { schemaVersion: 2, preconditions: { scope: { version: 2 } }, regions: [{ selector: 'main' }] }
+    }));
+    assert.equal((await app.list()).length, 0);
+    assert.equal((await app.post('/analyze', example('first'))).status, 'pending'); assert.equal(app.calls(), 1);
+    await app.post('/report', { protocol: 2, hostname: 'example.test', familyKey: oldFamily });
+    const otherFamily = '<article><p>Different semantic envelope</p></article>';
+    assert.equal((await app.post('/analyze', example('other', otherFamily))).status, 'fallback');
+    assert.equal(app.calls(), 1); assert.equal((await app.list()).length, 0);
 });
 
 test('unusable, unsupported essential media and unresolved relative validation context consume no runner call', async t => {

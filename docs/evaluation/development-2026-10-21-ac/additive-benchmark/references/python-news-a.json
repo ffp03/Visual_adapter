@@ -1,0 +1,83 @@
+{
+  "title": "Python 3.16.0 alpha 1 is now available | Python Insider",
+  "targets": [
+    {
+      "text": "Python 3.16.0 alpha 1 is now available",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "What’s new in Python 3.16?",
+      "tag": "H2",
+      "id": "whats-new-in-python-316"
+    },
+    {
+      "text": "More resources",
+      "tag": "H2",
+      "id": "more-resources"
+    },
+    {
+      "text": "And now for something completely different",
+      "tag": "H2",
+      "id": "and-now-for-something-completely-different"
+    },
+    {
+      "text": "Enjoy the new release",
+      "tag": "H2",
+      "id": "enjoy-the-new-release"
+    },
+    {
+      "text": "There’s plenty still to come in Python 3.16, but its first alpha is ready to try! Python 3.16.0a1 is the first of seven planned alpha releases.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "For Python 3.16, this section will host the Python 3.16 Film Festival: one film pairing for each release, from the first alpha to the final version.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Thank you to everyone who has contributed code, reviewed changes, written documentation, tested builds, and reported bugs. All of that work helps make Python and its releases possi",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Python 3.16 documentation",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "main p",
+      "text": "This is an early developer preview of Python 3.16",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main p",
+      "text": "Your release team, Savannah Ostrowski Ned Deily Steve Dower Julien Palard",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "python.org/downloads/release/python-3160a1/",
+      "url": "https://www.python.org/downloads/release/python-3160a1/",
+      "originalHref": "https://www.python.org/downloads/release/python-3160a1/"
+    },
+    {
+      "text": "What’s new in Python 3.16",
+      "url": "https://docs.python.org/3.16/whatsnew/3.16.html",
+      "originalHref": "https://docs.python.org/3.16/whatsnew/3.16.html"
+    }
+  ],
+  "images": [],
+  "noise": [],
+  "paragraphs": 11,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

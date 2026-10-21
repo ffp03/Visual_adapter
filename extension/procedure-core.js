@@ -54,6 +54,77 @@
         }
         return path(node);
     }
+    const DESCRIPTOR_VERSION = 3;
+    const positional = value => /:(?:nth-|first-|last-|only-)/i.test(value);
+    function balancedSelector(value) {
+        const stack = []; let quote = null, escaped = false;
+        for (const character of value) {
+            if (escaped) { escaped = false; continue; }
+            if (character === '\\') { escaped = true; continue; }
+            if (quote) { if (character === quote) quote = null; continue; }
+            if (character === '"' || character === "'") { quote = character; continue; }
+            if (character === '[' || character === '(') stack.push(character);
+            if (character === ']' || character === ')') {
+                if (stack.pop() !== (character === ']' ? '[' : '(')) return false;
+            }
+        }
+        return !quote && !escaped && !stack.length;
+    }
+    function regionScope(node) {
+        if (node.tagName === 'BODY') return { kind: 'body' };
+        if (node.matches('main,[role="main"]')) return { kind: 'primary' };
+        if (node.matches('article,[role="article"]')) return { kind: 'article' };
+        const envelope = node.parentElement?.closest(READING);
+        return { kind: 'element', tag: node.tagName, role: node.getAttribute('role') || null,
+            envelope: envelope ? (envelope.matches('article') ? 'article' : 'primary') : null };
+    }
+    function sameScope(node, scope, primary) {
+        if (!scope) return node.tagName !== 'BODY' || primary.trim().toLowerCase() === 'body';
+        return JSON.stringify(regionScope(node)) === JSON.stringify(scope);
+    }
+    function selectorChoices(node, doc, primary) {
+        const tag = node.tagName.toLowerCase(), candidates = [primary];
+        if (['BODY', 'MAIN', 'ARTICLE'].includes(node.tagName)) candidates.push(tag);
+        if (node.getAttribute('role')) candidates.push('[role=' + JSON.stringify(node.getAttribute('role')) + ']');
+        const classes = [...node.classList].slice(0, 3).map(value => '[class~=' + JSON.stringify(value) + ']').join('');
+        if (classes) candidates.push(tag + classes);
+        if (node.id) candidates.push('[id=' + JSON.stringify(node.id) + ']');
+        if (classes) candidates.push(classes);
+        candidates.push(tag);
+        const chosen = [];
+        for (const candidate of candidates) {
+            if (!candidate || candidate.length > 500 || positional(candidate) || !balancedSelector(candidate) || chosen.includes(candidate)) continue;
+            try { const resolved = matches(doc, candidate); if (resolved.length === 1 && resolved[0] === node) chosen.push(candidate); } catch {}
+            if (chosen.length === 4) break;
+        }
+        if (chosen[0] !== primary) throw Error('invalid-primary-region-selector');
+        return chosen;
+    }
+    function familyDescriptor(doc, scope) {
+        const landmarks = outermost([...doc.querySelectorAll(READING)].filter(outsideNoise));
+        const envelopes = landmarks.length ? landmarks : [doc.body];
+        const nodes = envelopes.flatMap(root => all(root, '*')).filter(node => outsideNoise(node) && !node.closest(NAVIGATION));
+        const commentSelector = '[role="comment"],[itemprop="commentText"],[itemprop~="comment"]';
+        const articles = outermost(nodes.filter(node => node.matches('article,[role="article"]') && !node.closest(commentSelector)));
+        const narrative = nodes.filter(node => !node.closest(commentSelector) && (node.matches('p,pre,code,table,blockquote,[itemprop="text"]')
+            || (!node.closest('h1,h2,h3,h4,h5,h6,input,textarea,select,button') && [...node.childNodes].some(child => child.nodeType === 3 && norm(child.nodeValue)))));
+        const outsideArticles = narrative.some(node => !articles.some(article => article.contains(node)));
+        const comments = nodes.filter(node => node.matches(commentSelector));
+        const dominant = node => narrative.every(block => node.contains(block));
+        const typeNodes = type => nodes.filter(node => (node.getAttribute('itemtype') || '').split(/\s+/).some(value => value.split(/[\/#]/).pop() === type));
+        const explicitDiscussion = typeNodes('DiscussionForumPosting').some(dominant);
+        const explicitCollection = typeNodes('ItemList').some(dominant) || nodes.some(node => node.matches('[role="list"]') && dominant(node)
+            && [...node.querySelectorAll('[role="listitem"]')].some(item => item.querySelector('h1,h2,h3,h4,h5,h6') && item.querySelector('a[href]')));
+        let archetype = 'unmarked';
+        if (explicitDiscussion || (comments.length && !articles.length && !narrative.length)) archetype = 'discussion';
+        else if (articles.length === 1 && !outsideArticles) archetype = 'article';
+        else if (explicitCollection || (articles.length >= 2 && !outsideArticles)) archetype = 'collection';
+        else if (scope.semantic) archetype = 'document';
+        const roles = [...new Set(landmarks.map(node => node.matches('article') ? 'article' : 'primary'))].sort();
+        return { version: DESCRIPTOR_VERSION, policy: 'semantic-reading-envelope', archetype,
+            envelope: roles.length ? roles : ['body'],
+            topology: archetype === 'collection' ? 'reading>entries' : archetype === 'discussion' ? 'reading>comments' : archetype === 'article' ? 'reading>article' : 'reading>blocks' };
+    }
     function boundary(doc) {
         let roots = outermost([...doc.querySelectorAll('main,article,[role="main"]')].filter(outsideNoise));
         const semantic = roots.length > 0;
@@ -164,9 +235,7 @@
             limits: ['css-generated-and-background-content-not-assessed', ...(scope.semantic ? [] : ['unmarked-body-content-indeterminate'])],
             unsupported: scope.roots.flatMap(root => all(root, 'canvas,math,video,audio')).filter(outsideNoise).filter(node => !norm(node.getAttribute('aria-label') || node.getAttribute('alttext') || node.textContent)).map(node => 'unrepresented-' + node.tagName.toLowerCase()),
             unsupportedInteraction: scope.roots.some(root => root.matches('input,textarea,form,select,button') || root.querySelector('input,textarea,form,select,button')) ? ['application-controls-not-verified'] : [],
-            descriptor: { version: 2, boundary: scope.semantic ? 'semantic' : 'body-indeterminate',
-                landmarks: [...new Set(outermost([...doc.querySelectorAll('main,article,[role="main"]')].filter(outsideNoise)).map(node =>
-                    node.tagName + ':' + (node.getAttribute('role') || '')))].sort() } };
+            descriptor: familyDescriptor(doc, scope) };
     }
     function assess(doc, reader, inventory = inspect(doc)) {
         const target = typeof reader === 'string' ? (() => { const div = doc.createElement('div'); div.innerHTML = reader; return div; })() : reader;
@@ -221,14 +290,46 @@
         return transferred;
     }
     function apply(doc, procedure, inventory = inspect(doc)) {
+        let attemptedCombinations = 0, visitedStates = 0, stateBudgetExceeded = false, lastCoverage, lastReason = 'region-must-match-exactly-once';
         try {
             if (procedure?.schemaVersion !== 2 || !Array.isArray(procedure.regions) || !procedure.regions.length) throw Error('unsupported-procedure');
-            if (JSON.stringify(inventory.descriptor) !== JSON.stringify(procedure.preconditions?.scope)) throw Error('structural-scope-mismatch');
-            if (procedure.regions.some(region => region.fragileSelector || region.selector.includes(':nth-of-type('))) throw Error('unstable-region-selector');
-            const reader = render(doc, procedure.regions, procedure.exclude);
-            const coverage = assess(doc, reader, inventory);
-            return { accepted: coverage.accepted, html: coverage.accepted ? reader.innerHTML : '', reason: coverage.accepted ? null : 'role-preservation-failed', coverage };
-        } catch (error) { return { accepted: false, html: '', reason: error.message }; }
+            if (procedure.preconditions?.scope?.version !== DESCRIPTOR_VERSION || JSON.stringify(inventory.descriptor) !== JSON.stringify(procedure.preconditions.scope)) throw Error('structural-scope-mismatch');
+            const options = procedure.regions.map(region => {
+                const choices = region.selectors === undefined ? [region.selector] : region.selectors;
+                if (!Array.isArray(choices) || choices.length < 1 || choices.length > 4 || choices[0] !== region.selector || new Set(choices).size !== choices.length) throw Error('invalid-region-selectors');
+                if (region.fragileSelector || choices.some(value => typeof value !== 'string' || !value.trim() || value.length > 500 || positional(value) || !balancedSelector(value))) throw Error('unstable-region-selector');
+                const unique = new Set(), candidates = [];
+                for (const value of choices) {
+                    let resolved; try { resolved = matches(doc, value); } catch { throw Error('invalid-region-selector'); }
+                    if (resolved.length !== 1 || !sameScope(resolved[0], region.scope, region.selector) || unique.has(resolved[0])) continue;
+                    unique.add(resolved[0]); candidates.push({ selector: value, node: resolved[0] });
+                }
+                return candidates;
+            });
+            if (options.some(values => !values.length)) throw Error('region-must-match-exactly-once');
+            const selected = [], stateLimit = Math.min(16384, 64 * procedure.regions.length * 4);
+            function search(index) {
+                if (visitedStates >= stateLimit) { stateBudgetExceeded = true; return null; }
+                visitedStates++;
+                if (attemptedCombinations >= 64) return null;
+                if (index !== options.length) {
+                    for (const choice of options[index]) { selected.push(choice); const result = search(index + 1); selected.pop(); if (result) return result; if (attemptedCombinations >= 64) break; }
+                    return null;
+                }
+                attemptedCombinations++;
+                const nodes = selected.map(choice => choice.node);
+                if (new Set(nodes).size !== nodes.length || outermost(nodes).length !== nodes.length) { lastReason = 'overlapping-regions'; return null; }
+                const chosenSelectors = selected.map(choice => choice.selector);
+                const reader = render(doc, chosenSelectors.map(selector => ({ selector })), procedure.exclude);
+                const coverage = assess(doc, reader, inventory); lastCoverage = coverage;
+                if (!coverage.accepted) { lastReason = 'role-preservation-failed'; return null; }
+                return { accepted: true, html: reader.innerHTML, reason: null, coverage, chosenSelectors,
+                    alternativeUsed: chosenSelectors.some((value, i) => value !== procedure.regions[i].selector), attemptedCombinations, visitedStates };
+            }
+            const result = search(0);
+            return result || { accepted: false, html: '', reason: attemptedCombinations >= 64 || stateBudgetExceeded ? 'selector-search-budget-exhausted' : lastReason,
+                coverage: lastCoverage, chosenSelectors: [], alternativeUsed: false, attemptedCombinations, visitedStates };
+        } catch (error) { return { accepted: false, html: '', reason: error.message, chosenSelectors: [], alternativeUsed: false, attemptedCombinations, visitedStates }; }
     }
     function compile(doc, legacy, inventory = inspect(doc)) {
         if (!legacy || typeof legacy.main !== 'string' || !legacy.main.trim() || legacy.main.length > 500 || typeof legacy.name !== 'string' || legacy.name.length > 120 ||
@@ -254,7 +355,9 @@
         // a later page adds nested article cards.
         const regionSelector = node => node === modelNode && !/:(?:nth-|first-|last-|only-)/i.test(legacy.main)
             ? legacy.main : selector(node, doc);
-        const regions = nodes.map(node => ({ role: node === modelNode ? 'model-reading-region' : 'required-reading-region', selector: regionSelector(node), required: true, fragileSelector: regionSelector(node).includes(':nth-of-type(') }));
+        const regions = nodes.map(node => { const primary = regionSelector(node); return { role: node === modelNode ? 'model-reading-region' : 'required-reading-region', selector: primary, selectors: selectorChoices(node, doc, primary), scope: regionScope(node), required: true, fragileSelector: positional(primary) }; });
+        const alternativeRegions = regions.filter(region => region.selectors.length > 1);
+        if (alternativeRegions.length) adjustments.push({ kind: 'predeclared-selector-alternatives', regions: alternativeRegions.map(region => ({ selector: region.selector, selectors: [...region.selectors] })) });
         if (regions.length !== 1 || regions[0].selector !== legacy.main) adjustments.push({ kind: nodes.length !== 1 || nodes[0] !== modelNode ? 'explicit-region-expansion' : 'selector-canonicalization', originalMain: legacy.main, regions: regions.map(r => r.selector) });
         const procedure = { schemaVersion: 2, serialization: 'body-region-as-div', taskScope: 'reading', applicationFunctionalityVerified: false, name: legacy.name, regions, exclude: [], preconditions: { scope: inventory.descriptor },
             adjustments, modelCandidate: { main: legacy.main, exclude: [...legacy.exclude], name: legacy.name },
@@ -297,5 +400,5 @@
         return html.length <= 100000 ? { validationHTML: html, validationComplete: true, validationContextScope: 'complete-client-sanitized-body', interactionValuesOmitted: true, structuralDescriptor: inventory.descriptor }
             : { validationComplete: false, validationLimitation: 'complete-sanitized-body-exceeds-100k', structuralDescriptor: inventory.descriptor };
     }
-    return { matches, inspect, compile, apply, assess, applyLegacy, fallback, validationContext, descriptor: doc => inspect(doc).descriptor };
+    return { descriptorVersion: DESCRIPTOR_VERSION, matches, inspect, compile, apply, assess, applyLegacy, fallback, validationContext, descriptor: doc => inspect(doc).descriptor };
 });

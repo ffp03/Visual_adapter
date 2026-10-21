@@ -13,7 +13,7 @@ function createFamilies({ directory, provider, model, generate, cleanHTML }) {
     const file = (host, family) => path.join(cache, prefix(host) + family + '.json');
     function entries(host) {
         return fs.readdirSync(cache).filter(name => name.startsWith(prefix(host)) && name.endsWith('.json')).flatMap(name => {
-            try { const entry = JSON.parse(fs.readFileSync(path.join(cache, name), 'utf8')); return entry.hostname === host && entry.provider === provider && entry.model === model ? [entry] : []; } catch { return []; }
+            try { const entry = JSON.parse(fs.readFileSync(path.join(cache, name), 'utf8')); return entry.hostname === host && entry.provider === provider && entry.model === model && entry.descriptor?.version === core.descriptorVersion ? [entry] : []; } catch { return []; }
         });
     }
     function retireFile(target) {
@@ -74,7 +74,7 @@ function createFamilies({ directory, provider, model, generate, cleanHTML }) {
                     save(entry); return pending('second-distinct-valid-example-required', familyKey, 1);
                 } catch (error) {
                     if (error.status === 429) throw error;
-                    if ((revisions.get(key) || 0) === revision) save({ schemaVersion: 2, hostname: host, familyKey, provider, model, status: 'failed', failure: error.message, examples: [] });
+                    if ((revisions.get(key) || 0) === revision) save({ schemaVersion: 2, hostname: host, familyKey, descriptor: inventory.descriptor, provider, model, status: 'failed', failure: error.message, examples: [] });
                     throw error;
                 }
             })();

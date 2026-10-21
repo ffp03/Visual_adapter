@@ -1,0 +1,137 @@
+{
+  "title": "Python 3.15.0 (final) is here! | Python Insider",
+  "targets": [
+    {
+      "text": "Python 3.15.0 (final) is here!",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Python 3.15.0 is now available",
+      "tag": "H2",
+      "id": "python-3150-is-now-available"
+    },
+    {
+      "text": "This is the stable release of Python 3.15.0",
+      "tag": "H2",
+      "id": "this-is-the-stable-release-of-python-3150"
+    },
+    {
+      "text": "Major new features of the 3.15 series, compared to 3.14",
+      "tag": "H2",
+      "id": "major-new-features-of-the-315-series-compared-to-314"
+    },
+    {
+      "text": "Interpreter improvements",
+      "tag": "H3",
+      "id": "interpreter-improvements"
+    },
+    {
+      "text": "Significant improvements in the standard library",
+      "tag": "H3",
+      "id": "significant-improvements-in-the-standard-library"
+    },
+    {
+      "text": "New typing features",
+      "tag": "H3",
+      "id": "new-typing-features"
+    },
+    {
+      "text": "C API improvements",
+      "tag": "H3",
+      "id": "c-api-improvements"
+    },
+    {
+      "text": "Build changes",
+      "tag": "H3",
+      "id": "build-changes"
+    },
+    {
+      "text": "Release changes",
+      "tag": "H3",
+      "id": "release-changes"
+    },
+    {
+      "text": "Attention macOS 27.0 IDLE or tkinter users",
+      "tag": "H3",
+      "id": "attention-macos-270-idle-or-tkinter-users"
+    },
+    {
+      "text": "More resources",
+      "tag": "H2",
+      "id": "more-resources"
+    },
+    {
+      "text": "Enjoy the new release",
+      "tag": "H2",
+      "id": "enjoy-the-new-release"
+    },
+    {
+      "text": "Python 3.15.0 is the newest major release of the Python programming language, and it contains many new features and optimisations compared to Python 3.14, in 5,643 commits from 1,0",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "I had this idea to whip up a little TUI adventure game that takes you through a What’s New in Python 3.15. I present to you “whatsnewt”:",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "And also huge thanks to the Sovereign Tech Agency for supporting my work as release manager for Python 3.14 and 3.15 through the Sovereign Tech Fellowship.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "PEP 661: Add sentinel built-in type",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "main h1",
+      "text": "And now for something completely different",
+      "tag": "H1",
+      "elementId": "and-now-for-something-completely-different",
+      "id": "and-now-for-something-completely-different"
+    },
+    {
+      "selector": "main p",
+      "text": "python.org/downloads/release/python-3150/",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main p",
+      "text": "A TUI text adventure through what’s new in Python 3.15.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main p",
+      "text": "Your release team, Hugo van Kemenade Ned Deily Steve Dower",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "python.org/downloads/release/python-3150/",
+      "url": "https://www.python.org/downloads/release/python-3150/",
+      "originalHref": "https://www.python.org/downloads/release/python-3150/"
+    },
+    {
+      "text": "experimental JIT compiler",
+      "url": "https://docs.python.org/3/whatsnew/3.15.html#whatsnew315-jit",
+      "originalHref": "https://docs.python.org/3/whatsnew/3.15.html#whatsnew315-jit"
+    }
+  ],
+  "images": [],
+  "noise": [],
+  "paragraphs": 11,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

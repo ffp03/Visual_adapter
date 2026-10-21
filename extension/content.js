@@ -117,7 +117,12 @@ async function tryApplyRules(outcome = {}) {
         for (const rule of rules) {
             const result = rule.schemaVersion === 2
                 ? PreservationCore.apply(document, rule, outcome.inventory) : PreservationCore.applyLegacy(document, rule, outcome.inventory);
+            outcome.attemptedCombinations = (outcome.attemptedCombinations || 0) + (result.attemptedCombinations || 0);
             if (!result.accepted) {
+                if (result.attemptedCombinations) (outcome.rejectedProcedureSearches ||= []).push({
+                    familyKey: rule.familyKey || null, reason: result.reason,
+                    attemptedCombinations: result.attemptedCombinations, visitedStates: result.visitedStates || 0
+                });
                 if (result.reason === 'structural-scope-mismatch') {
                     outcome.ruleRejectionDetail = result.reason;
                     (outcome.incompatibleFamilies ||= []).push(rule.familyKey || null);
@@ -130,9 +135,11 @@ async function tryApplyRules(outcome = {}) {
                 continue;
             }
             outcome.coverage = result.coverage;
+            outcome.chosenSelectors = result.chosenSelectors || [];
+            outcome.alternativeUsed = !!result.alternativeUsed;
             outcome.procedureDelivered = rule.schemaVersion === 2;
             outcome.compilationAdjusted = !!rule.compilationAdjusted;
-            outcome.pureModelSelection = rule.schemaVersion === 2 ? !!rule.pureModelSelection : null;
+            outcome.pureModelSelection = rule.schemaVersion === 2 ? !!rule.pureModelSelection && !result.alternativeUsed : null;
             outcome.addedRegions = rule.addedRegions || [];
             outcome.supplementation = !!rule.supplementation;
             outcome.modelSelectionSuperseded = !!rule.modelSelectionSuperseded;
@@ -206,6 +213,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     ruleFailure: !ruleApplied && !!outcome.ruleFailure,
                     ruleApplied,
                     procedureDelivered: !!outcome.procedureDelivered,
+                    chosenSelectors: outcome.chosenSelectors || [],
+                    alternativeUsed: !!outcome.alternativeUsed,
+                    attemptedCombinations: outcome.attemptedCombinations || 0,
+                    rejectedProcedureSearches: outcome.rejectedProcedureSearches || [],
                     ruleOnly: usedRule,
                     ruleRejected: outcome.ruleRejected,
                     ruleRejectionDetail: outcome.ruleRejectionDetail,

@@ -1,0 +1,65 @@
+{
+  "title": "Tipping the Velvet | Books to Scrape - Sandbox",
+  "targets": [
+    {
+      "text": "Tipping the Velvet",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Product Description",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Product Information",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Products you recently viewed",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "A Light in the ...",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "\"Erotic and absorbing...Written with starling power.\"--\"The New York Times Book Review \" Nan King, an oyster girl, is captivated by the music hall phenomenon Kitty Butler, a male i",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Price (excl. tax)£53.74",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "text": "A Light in the ... £51.77 In stock Add to basket",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": ".product_main .price_color",
+      "text": "£53.74",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [],
+  "images": [
+    {
+      "url": "https://books.toscrape.com/media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg",
+      "alt": "A Light in the Attic"
+    }
+  ],
+  "noise": [],
+  "paragraphs": 1,
+  "regionTag": "ARTICLE",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

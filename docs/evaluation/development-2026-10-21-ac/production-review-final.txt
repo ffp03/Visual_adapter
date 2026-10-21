@@ -1,0 +1,1 @@
+No actionable findings in the scoped staged changes. All 10 focused synthetic tests passed, including both descriptor-stability repairs and rejected-search diagnostics. No replay harness, testing44 data, external services, or recompilation was used.

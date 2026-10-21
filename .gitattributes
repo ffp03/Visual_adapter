@@ -1,0 +1,2 @@
+# Preserve exact experimental evidence and source-snapshot bytes across hosts.
+docs/evaluation/development-2026-10-20/** -text whitespace=trailing-space,space-before-tab,cr-at-eol

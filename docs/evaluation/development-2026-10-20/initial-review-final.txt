@@ -1,0 +1,12 @@
+The replay/rescoring workflow has three actionable provenance-verification gaps. Focused preservation and sampling tests passed; full tests and browser replay were not run.
+
+Full review comments:
+
+- [P2] Compare replay inputs against their original frozen hashes — C:/Dev/Visual_adapter/tests/local/training-development.cjs:49-51
+  If a retained provider rule or legacy reference changes after the original freeze, replay accepts it: these inputs are hashed from their current contents rather than compared with `manifest.files`. Subsequent verification therefore only detects changes during replay, while the results still claim historical retained-candidate provenance. Validate these files against the original frozen hashes before creating the replay freeze.
+
+- [P2] Bind the summary consumed by additive rescoring — C:/Dev/Visual_adapter/tests/local/training-development.cjs:118-120
+  `summary.json` is written after artifact hashes are collected, so it is never covered by `artifact-hashes.json`. However, `unionScore()` trusts its rows and delivery metadata instead of the individually hashed result files. Changing a summary row's `delivery.noFallback` or original classification consequently passes verification and changes reported results without changing any verified reading artifact. Hash the completed summary or reconstruct its rows from the verified per-approach files.
+
+- [P2] Verify the union manifest checksum before rescoring — C:/Dev/Visual_adapter/tests/local/training-development.cjs:125-127
+  `unionScore()` checks the files named by the union manifest but never verifies the manifest against `manifest.sha256`, bypassing the existing `verifyBenchmark()` check. For example, removing an entry from `manifest.pages` leaves every checked file hash valid, yet rescoring silently evaluates fewer pages while `metrics()` still reports fixed denominators of 18 pages and 9 sites. Verify the frozen manifest itself before trusting its page list and provenance metadata.

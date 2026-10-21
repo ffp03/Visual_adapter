@@ -1,0 +1,204 @@
+{
+  "title": "XHTML - Wikipedia",
+  "targets": [
+    {
+      "text": "XHTML",
+      "tag": "H1",
+      "id": "firstHeading"
+    },
+    {
+      "text": "Motivation",
+      "tag": "H3",
+      "id": "Motivation"
+    },
+    {
+      "text": "Relationship to HTML",
+      "tag": "H3",
+      "id": "Relationship_to_HTML"
+    },
+    {
+      "text": "Versions of XHTML",
+      "tag": "H2",
+      "id": "Versions_of_XHTML"
+    },
+    {
+      "text": "Modularization of XHTML",
+      "tag": "H3",
+      "id": "Modularization_of_XHTML"
+    },
+    {
+      "text": "XHTML 1.1: Module-based XHTML",
+      "tag": "H3",
+      "id": "XHTML_1.1:_Module-based_XHTML"
+    },
+    {
+      "text": "XHTML Basic",
+      "tag": "H3",
+      "id": "XHTML_Basic"
+    },
+    {
+      "text": "XHTML-Print",
+      "tag": "H4",
+      "id": "XHTML-Print"
+    },
+    {
+      "text": "XHTML Mobile Profile",
+      "tag": "H3",
+      "id": "XHTML_Mobile_Profile"
+    },
+    {
+      "text": "XHTML Mobile Profile 1.1",
+      "tag": "H4",
+      "id": "XHTML_Mobile_Profile_1.1"
+    },
+    {
+      "text": "XHTML Mobile Profile 1.2",
+      "tag": "H4",
+      "id": "XHTML_Mobile_Profile_1.2"
+    },
+    {
+      "text": "XHTML Mobile Profile 1.3",
+      "tag": "H4",
+      "id": "XHTML_Mobile_Profile_1.3"
+    },
+    {
+      "text": "Semantic content in XHTML",
+      "tag": "H2",
+      "id": "Semantic_content_in_XHTML"
+    },
+    {
+      "text": "Valid XHTML documents",
+      "tag": "H2",
+      "id": "Valid_XHTML_documents"
+    },
+    {
+      "text": "Root element",
+      "tag": "H3",
+      "id": "Root_element"
+    },
+    {
+      "text": "XML declaration",
+      "tag": "H3",
+      "id": "XML_declaration"
+    },
+    {
+      "text": "Backward compatibility",
+      "tag": "H2",
+      "id": "Backward_compatibility"
+    },
+    {
+      "text": "Cross-compatibility of XHTML and HTML",
+      "tag": "H2",
+      "id": "Cross-compatibility_of_XHTML_and_HTML"
+    },
+    {
+      "text": "References",
+      "tag": "H2",
+      "id": "References"
+    },
+    {
+      "text": "External links",
+      "tag": "H2",
+      "id": "External_links"
+    },
+    {
+      "text": "Extensible HyperText Markup Language (XHTML) is part of the family of XML markup languages which mirrors or extends versions of the widely used HyperText Markup Language (HTML), th",
+      "tag": "P",
+      "id": "mwBw"
+    },
+    {
+      "text": "XHTML Basic 1.1 replaces the Basic Forms Module with the Forms Module and adds the Intrinsic Events, Presentation, and Scripting modules. It also supports additional tags and attri",
+      "tag": "P",
+      "id": "mwAc8"
+    },
+    {
+      "text": "HTML5 and XHTML5 serializations are largely inter-compatible if adhering to the stricter XHTML5 syntax, but there are some cases in which XHTML will not work as valid HTML5 (e.g., ",
+      "tag": "P",
+      "id": "mwA7c"
+    },
+    {
+      "text": "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"ar\">",
+      "tag": "PRE",
+      "id": "mwAn0"
+    },
+    {
+      "text": "Media type recommendation (in RFC 2119 terms) for the examples:",
+      "tag": "CAPTION",
+      "id": "mwArg"
+    },
+    {
+      "text": "Filename extension .xhtml, .xht, .xml, .html, .htm",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "text": "Srpskohrvatski / српскохрватски",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "text": "The \"loadpdf\" function is actually a workaround for Internet Explorer. It can be replaced by adding <param name=\"src\" value=\"http://www.w3.org/TR/xhtml1/xhtml1.pdf\"/> within <objec",
+      "tag": "LI",
+      "id": "mwA6w"
+    },
+    {
+      "selector": ".mw-parser-output p",
+      "text": "The current version of XHTML Basic is 1.1 Second Edition (23 November 2010), in which the language is re-implemented in the W3C's XML Schema language. This version also supports th",
+      "tag": "P",
+      "elementId": "mwAdQ",
+      "id": "mwAdQ"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "Media type Example 1 Example 2",
+      "tag": "TR",
+      "elementId": "mwAro",
+      "id": "mwAro"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "application/xml MAYMAY",
+      "tag": "TR",
+      "elementId": "mwAsI",
+      "id": "mwAsI"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "text/html MAY SHOULD NOT",
+      "tag": "TR",
+      "elementId": "mwAso",
+      "id": "mwAso"
+    }
+  ],
+  "links": [
+    {
+      "text": "Srpskohrvatski / српскохрватски",
+      "url": "https://sh.wikipedia.org/wiki/XHTML",
+      "originalHref": "https://sh.wikipedia.org/wiki/XHTML"
+    },
+    {
+      "text": "Switch to legacy parser",
+      "url": "https://en.wikipedia.org/w/index.php?title=XHTML&useparsoid=0",
+      "originalHref": "/w/index.php?title=XHTML&useparsoid=0"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Wikipedia_main_page_XHTML_source.png/330px-Wikipedia_main_page_XHTML_source.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "alt": ""
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "alt": "Edit this at Wikidata"
+    }
+  ],
+  "noise": [
+    "Main menu Main menu move to sidebar hide Navigation Main pageContentsCurrent eventsRandom articleAbout WikipediaContact us Contribute HelpLe",
+    "Appearance Donate Create account Log in Personal tools Donate Create account Log in"
+  ],
+  "paragraphs": 49,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

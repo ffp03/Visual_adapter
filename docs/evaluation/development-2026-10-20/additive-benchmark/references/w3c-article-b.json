@@ -1,0 +1,137 @@
+{
+  "title": "Designing for Web Accessibility – Tips for Getting Started | Web Accessibility Initiative (WAI) | W3C",
+  "targets": [
+    {
+      "text": "Designing for Web Accessibility",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Provide sufficient contrast between foreground and background",
+      "tag": "H2",
+      "id": "provide-sufficient-contrast-between-foreground-and-background"
+    },
+    {
+      "text": "Don’t use color alone to convey information",
+      "tag": "H2",
+      "id": "dont-use-color-alone-to-convey-information"
+    },
+    {
+      "text": "Ensure that interactive elements are easy to identify",
+      "tag": "H2",
+      "id": "ensure-that-interactive-elements-are-easy-to-identify"
+    },
+    {
+      "text": "Provide clear and consistent navigation options",
+      "tag": "H2",
+      "id": "provide-clear-and-consistent-navigation-options"
+    },
+    {
+      "text": "Ensure that form elements include clearly associated labels",
+      "tag": "H2",
+      "id": "ensure-that-form-elements-include-clearly-associated-labels"
+    },
+    {
+      "text": "Provide easily identifiable feedback",
+      "tag": "H2",
+      "id": "provide-easily-identifiable-feedback"
+    },
+    {
+      "text": "Use headings and spacing to group related content",
+      "tag": "H2",
+      "id": "use-headings-and-spacing-to-group-related-content"
+    },
+    {
+      "text": "Create designs for different viewport sizes",
+      "tag": "H2",
+      "id": "create-designs-for-different-viewport-sizes"
+    },
+    {
+      "text": "Include image and media alternatives in your design",
+      "tag": "H2",
+      "id": "include-image-and-media-alternatives-in-your-design"
+    },
+    {
+      "text": "Provide controls for content that starts automatically",
+      "tag": "H2",
+      "id": "provide-controls-for-content-that-starts-automatically"
+    },
+    {
+      "text": "Help improve this page",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "This page introduces some basic considerations to help you get started making your user interface design and visual design more accessible to people with disabilities. These tips a",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Ensure that all fields have a descriptive label adjacent to the field. For left-to-right languages, labels are usually positioned to the left or above the field, except for checkbo",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Please share your ideas, suggestions, or comments via e-mail to the publicly-archived list wai@w3.org or via GitHub.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Email address is invalid",
+      "tag": "LI",
+      "id": "error_email"
+    },
+    {
+      "selector": "main > p",
+      "text": "Foreground text needs to have sufficient contrast with background colors. This includes text on images, background gradients, buttons, and other elements. This does not apply for l",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main > p",
+      "text": "Provide feedback for interactions, such as confirming form submission, alerting the user when something goes wrong, or notifying the user of changes on the page. Instructions shoul",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main > p",
+      "text": "Provide visible controls to allow users to stop any animations or auto-playing sound. This applies to carousels, image sliders, background sound, and videos.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Tips for Getting Started",
+      "url": "https://www.w3.org/WAI/tips/",
+      "originalHref": "/WAI/tips/"
+    },
+    {
+      "text": "Provide sufficient contrast between foreground and background",
+      "url": "https://www.w3.org/WAI/tips/designing/#provide-sufficient-contrast-between-foreground-and-background",
+      "originalHref": "#provide-sufficient-contrast-between-foreground-and-background"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://www.w3.org/WAI/content-images/tips/pointer.png",
+      "alt": ""
+    },
+    {
+      "url": "https://www.w3.org/WAI/content-images/tips/pointer.png",
+      "alt": ""
+    }
+  ],
+  "noise": [
+    "Skip to Content Change Text Size or Colors This page in: Englishfrançais Bahasa Indonesia 日本語 All Translations Show Customization, Languages",
+    "Accessibility FundamentalsPlanning & PoliciesDesign & DevelopTest & EvaluateTeach & AdvocateStandards/Guidelines"
+  ],
+  "paragraphs": 21,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

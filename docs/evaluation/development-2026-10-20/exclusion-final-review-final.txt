@@ -1,0 +1,1 @@
+No actionable findings in the final exclusion-handling delta or relevant callers. Focused core tests and synthetic selector-validation, provenance, and current-page acceptance checks passed.

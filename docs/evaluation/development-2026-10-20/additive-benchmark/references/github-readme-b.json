@@ -1,0 +1,235 @@
+{
+  "title": "GitHub - expressjs/body-parser: Node.js body parsing middleware · GitHub",
+  "targets": [
+    {
+      "text": "body-parser",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Repository navigation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Code of conduct",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Contributing",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Security policy",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Latest commit",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Folders and files",
+      "tag": "H2",
+      "id": "folders-and-files"
+    },
+    {
+      "text": "Repository files navigation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Installation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "bodyParser.json([options])",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "bodyParser.raw([options])",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "bodyParser.text([options])",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "bodyParser.urlencoded([options])",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "content encoding unsupported",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "entity parse failed",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "entity verify failed",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "request aborted",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "request entity too large",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "request size did not match content length",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "stream encoding should not be set",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "stream is not readable",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "too many parameters",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "unsupported charset \"BOGUS\"",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "unsupported content encoding \"bogus\"",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "The input exceeded the depth",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Express/Connect top-level generic",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Express route-specific",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Change accepted type for parsers",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Sponsor this project",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Contributors",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "body-parser Node.js body parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property. Note As req.body's shape is ",
+      "tag": "ARTICLE",
+      "id": null
+    },
+    {
+      "text": "It’s recommended not to configure a very high limit and to use the default value whenever possible. Allowing larger payloads increases memory usage because of the resources require",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "All the parsers accept a type option which allows you to change the Content-Type that the middleware will parse.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "$ npm install body-parser",
+      "tag": "PRE",
+      "id": null
+    },
+    {
+      "text": "NameNameLast commit messageLast commit date",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "selector": ".markdown-body h2",
+      "text": "Errors",
+      "tag": "H2",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".markdown-body h2",
+      "text": "License",
+      "tag": "H2",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".markdown-body p",
+      "text": "Node.js body parsing middleware.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".markdown-body p",
+      "text": "MIT",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Pull requests28 (28)",
+      "url": "https://github.com/expressjs/body-parser/pulls",
+      "originalHref": "/expressjs/body-parser/pulls"
+    },
+    {
+      "text": "Security and quality3 (3)",
+      "url": "https://github.com/expressjs/body-parser/security",
+      "originalHref": "/expressjs/body-parser/security"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://camo.githubusercontent.com/22c6aaf23e85a916da3747fee194a6db0861ae0782c75331aac74dd00609cb72/68747470733a2f2f6170692e73636f7265636172642e6465762f70726f6a656374732f6769746875622e636f6d2f657870726573736a732f626f64792d7061727365722f6261646765",
+      "alt": "OpenSSF Scorecard Badge"
+    }
+  ],
+  "noise": [
+    "PlatformAI CODE CREATIONGitHub CopilotWrite better code with AIGitHub Copilot appDirect agents from issue to mergeMCP RegistryIntegrate exte",
+    "Footer navigation Terms Privacy Security Status Community Docs Contact Manage cookies Do not share my personal information"
+  ],
+  "paragraphs": 69,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

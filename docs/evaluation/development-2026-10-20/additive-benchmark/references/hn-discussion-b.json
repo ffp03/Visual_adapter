@@ -1,0 +1,45 @@
+{
+  "title": "Y Combinator | Hacker News",
+  "targets": [
+    {
+      "text": "Hacker Newsnew | past | comments | ask | show | jobs | submitlogin",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "selector": ".titleline > a",
+      "text": "Y Combinator",
+      "tag": "A",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".commtext",
+      "text": "\"the rising star of venture capital\" -unknown VC eating lunch on SHR",
+      "tag": "DIV",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".commtext",
+      "text": "Is there anywhere to eat on Sandhill Road?",
+      "tag": "DIV",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Consider applying for YC's Winter 2027 batch! Applications are open till November 2.",
+      "url": "https://www.ycombinator.com/apply/",
+      "originalHref": "https://www.ycombinator.com/apply/"
+    }
+  ],
+  "images": [],
+  "noise": [],
+  "paragraphs": 0,
+  "regionTag": "BODY",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

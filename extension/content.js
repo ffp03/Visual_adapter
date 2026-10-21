@@ -1,21 +1,109 @@
 // Content Script
 // Listens for requests to scrape content or extract context for LLM
 
-function analysisSample(element) {
-    const sample = element.cloneNode(true);
-    sample.querySelectorAll('input,textarea').forEach(node => { node.removeAttribute('value'); node.textContent = ''; });
-    for (const node of [sample, ...sample.querySelectorAll('*')]) {
-        for (const attribute of [...node.attributes]) {
-            if (!['id', 'class', 'role', 'alt', 'aria-label', 'itemprop'].includes(attribute.name)) node.removeAttribute(attribute.name);
+function analysisSample(doc, budget = 12000) {
+    // Whole-document selection precedes serialization. A late table or discussion
+    // competes for the same budget as an early paragraph, never a prefix cutoff.
+    const maximum = Number.isFinite(budget) ? Math.max(2000, Math.min(12000, budget)) : 12000;
+    const norm = text => (text || '').replace(/\s+/g, ' ').trim();
+    const skip = 'script,style,noscript,iframe,object,embed,template,input,textarea,select,option';
+    const elements = [...doc.body.querySelectorAll('*')].filter(node => !node.closest(skip));
+    const groups = {
+        region: elements.filter(node => node.matches('main,article,[role="main"]')),
+        title: elements.filter(node => node.matches('h1')),
+        heading: elements.filter(node => node.matches('h1,h2,h3,h4,h5,h6')),
+        table: elements.filter(node => node.matches('table')),
+        code: elements.filter(node => node.matches('pre,code') && !node.parentElement.closest('pre,code')),
+        image: elements.filter(node => node.matches('img,svg')),
+        caption: elements.filter(node => node.matches('figcaption,caption')),
+        list: elements.filter(node => node.matches('ul,ol,dl')),
+        discussion: elements.filter(node => node.matches('[role="comment"],[itemprop="commentText"]')),
+        navigation: elements.filter(node => node.matches('nav,[role="navigation"]')),
+        prose: elements.filter(node => node.matches('p,blockquote')),
+        link: elements.filter(node => node.matches('a[href]')),
+        text: elements.filter(node => !node.children.length && !node.matches('svg *') && norm(node.textContent).length > 24)
+    };
+    const selected = new Set([doc.body]), rejected = new Set(), covered = new Set();
+    const inert = doc.implementation.createHTMLDocument(''), cues = new Map();
+    function cue(element) {
+        if (cues.has(element)) return cues.get(element);
+        const walker = doc.createTreeWalker(element, 4);
+        let text = '', node;
+        while ((node = walker.nextNode()) && text.length < 192) {
+            if (!node.parentElement?.closest(skip)) text += ' ' + node.nodeValue.slice(0, 192);
         }
+        const value = norm(text).slice(0, 96); cues.set(element, value); return value;
     }
-    const walker = document.createTreeWalker(sample, NodeFilter.SHOW_TEXT);
-    let node;
-    while ((node = walker.nextNode())) {
-        if (node.nodeValue.length > 400) node.nodeValue = node.nodeValue.slice(0, 400);
+    const totals = Object.fromEntries(Object.entries(groups).map(([kind, nodes]) => [kind, nodes.length]));
+    const textTags = 'h1,h2,h3,h4,h5,h6,p,pre,code,td,th,li,dt,dd,blockquote,a,figcaption,caption,span,small';
+    const ancestors = node => {
+        const result = [];
+        for (let current = node; current && current !== doc.body; current = current.parentElement) result.push(current);
+        return result.reverse();
+    };
+    function build(nodes) {
+        const included = new Set([doc.body]);
+        for (const node of nodes) for (const ancestor of ancestors(node)) included.add(ancestor);
+        const copies = new Map();
+        const ordered = [...included].sort((a, b) => a === b ? 0 : a.compareDocumentPosition(b) & 2 ? 1 : -1);
+        for (const node of ordered) {
+            const clone = inert.createElementNS(node.namespaceURI, node.localName);
+            for (const key of ['id', 'class', 'role', 'alt', 'aria-label', 'itemprop']) {
+                // Preserve complete structural attribute values or omit them;
+                // truncating a class or ID would manufacture a nonexistent selector.
+                const value = node.getAttribute(key);
+                if (value && value.length <= 160) clone.setAttribute(key, value);
+            }
+            copies.set(node, clone);
+        }
+        for (const node of ordered) {
+            if (node !== doc.body) copies.get(node.parentElement).appendChild(copies.get(node));
+            if (nodes.has(node) && (node.matches(textTags) || !node.children.length)) {
+                // A single short cue is enough to identify a role; never an article
+                // body, code file, form value, destination URL or image payload.
+                const text = cue(node);
+                if (text) copies.get(node).insertBefore(inert.createTextNode(text), copies.get(node).firstChild);
+            }
+        }
+        const body = copies.get(doc.body);
+        body.setAttribute('data-analysis-sampled', 'structure-and-short-cues; not-complete; original-attributes-only-for-selectors');
+        return body.outerHTML;
     }
-    // This is an analysis sample only. Never truncate the user's reading output.
-    return sample.outerHTML.slice(0, 60000);
+    let html = build(selected);
+    function add(node, kind) {
+        if (selected.has(node)) { covered.add(kind); return; }
+        if (rejected.has(node)) return;
+        const trial = new Set(selected); trial.add(node);
+        const candidate = build(trial);
+        if (candidate.length > maximum) { rejected.add(node); return; }
+        selected.add(node); html = candidate; covered.add(kind);
+    }
+    // One representative per role first, then balanced examples across document
+    // positions. Large repeated lists cannot consume all of the available budget.
+    const positions = nodes => [...new Set([0, Math.floor(nodes.length / 2), nodes.length - 1])].filter(i => i >= 0 && i < nodes.length);
+    for (const [kind, nodes] of Object.entries(groups)) if (nodes.length) add(nodes[0], kind);
+    for (const [kind, nodes] of Object.entries(groups)) for (const index of positions(nodes)) add(nodes[index], kind);
+    for (const [kind, nodes] of Object.entries(groups)) {
+        const parents = new Map();
+        for (const node of nodes) {
+            if (!parents.has(node.parentElement)) parents.set(node.parentElement, []);
+            parents.get(node.parentElement).push(node);
+        }
+        const repeated = [...parents.values()].filter(siblings => siblings.length >= 3);
+        for (const index of positions(repeated)) for (const i of positions(repeated[index])) add(repeated[index][i], kind);
+    }
+    // Table/list examples retain actual parent paths and valid HTML structure.
+    for (const container of [...selected].filter(node => node.matches('table,ul,ol,dl'))) {
+        const cells = [...container.querySelectorAll('td,th,li,dt,dd')];
+        for (const index of positions(cells)) add(cells[index], container.matches('table') ? 'table' : 'list');
+    }
+    for (const [kind, nodes] of Object.entries(groups)) {
+        for (let i = 0; i < nodes.length && i < 12; i++) add(nodes[Math.floor(i * nodes.length / Math.min(nodes.length, 12))], kind);
+    }
+    return { html, context: { complete: false, kind: 'balanced-structural-sample', maxCharacters: maximum, characters: html.length,
+        sourceElements: elements.length, selectedElements: selected.size, roleCounts: totals,
+        representedRoles: [...covered], unrepresentedRoles: Object.keys(groups).filter(kind => totals[kind] && !covered.has(kind)),
+        textCueLimit: 96, cuesMayContainContent: true, requiresFullSourceValidation: true } };
 }
 
 async function tryApplyRules(outcome = {}) {
@@ -108,10 +196,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     }
                 }
 
+                const analysis = ruleApplied || outcome.lookupAvailable === false ? null : analysisSample(document);
                 sendResponse({
                     url: window.location.href,
                     html: html || "",
-                    analysisHTML: ruleApplied || outcome.lookupAvailable === false ? undefined : analysisSample(outcome.analysisRoot),
+                    analysisHTML: analysis?.html,
                     hostname: window.location.hostname,
                     usedRule: usedRule,
                     ruleFailure: !ruleApplied && !!outcome.ruleFailure,
@@ -136,7 +225,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     pureModelSelection: outcome.pureModelSelection ?? null,
                     addedRegions: outcome.addedRegions || [],
                     validationContext: 'full-live-source-dom',
-                    analysisContext: { complete: false, kind: 'bounded-analysis-sample', maxCharacters: 60000 },
+                    analysisContext: analysis?.context,
                     localProtocol: outcome.localProtocol,
                     lookupAvailable: outcome.lookupAvailable,
                     ...localContext,

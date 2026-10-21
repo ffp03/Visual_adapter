@@ -140,3 +140,65 @@ const bodyClassProcedure = core.compile(bodyClassServer.window.document, { main:
 assert.equal(core.apply(bodyClass.window.document, bodyClassProcedure).accepted, true);
 assert(!core.apply(bodyClass.window.document, bodyClassProcedure).html.includes('<body'));
 bodyClass.window.close(); bodyClassServer.window.close();
+
+const scopedSeed = make('<article class=reading><h1>First title</h1><p>First reading body.</p></article>');
+const scopedTransfer = make('<article class=reading><h1>Second title</h1><p>Second reading body.</p><section><article><p>Nested related card.</p></article></section></article>');
+const scopedProcedure = core.compile(scopedSeed.window.document, { main: 'article.reading', exclude: [], name: 'Reading page' });
+assert.equal(scopedProcedure.regions[0].selector, 'article.reading');
+assert.equal(core.apply(scopedTransfer.window.document, scopedProcedure).accepted, true);
+scopedSeed.window.close(); scopedTransfer.window.close();
+
+const adjacentText = make('<main><ol><li>Obsoleted by<link rel=unused href="/style"> RFC</li></ol><pre><code>return<script>hiddenPayload()</script>  value;</code></pre></main>');
+const adjacentOriginal = adjacentText.window.document.body.outerHTML;
+const adjacentProcedure = core.compile(adjacentText.window.document, { main: 'main', exclude: [], name: 'Merged text partitions' });
+const adjacentResult = core.apply(adjacentText.window.document, adjacentProcedure);
+assert.equal(adjacentResult.accepted, true);
+assert(adjacentResult.html.includes('Obsoleted by RFC') && adjacentResult.html.includes('return  value;'));
+assert.equal(core.assess(adjacentText.window.document, adjacentResult.html.replace('return  value;', 'return value;')).accepted, false);
+assert.equal(adjacentText.window.document.body.outerHTML, adjacentOriginal);
+adjacentText.window.close();
+
+const unseenExclusionSeed = make('<main><h1>First title</h1><p>First body.</p></main>');
+const unseenExclusionTransfer = make('<main><h1>Second title</h1><p>Second body.</p><ol class=new-section><li>A new substantive reference.</li></ol></main>');
+const conservativeExclusion = core.compile(unseenExclusionSeed.window.document, { main: 'main', exclude: ['.new-section'], name: 'No exclusion evidence' });
+assert.equal(conservativeExclusion.exclude.length, 0);
+assert(conservativeExclusion.adjustments.some(a => a.kind === 'dropped-unobserved-exclusion'));
+assert.equal(conservativeExclusion.pureModelSelection, false);
+assert.equal(core.apply(unseenExclusionTransfer.window.document, conservativeExclusion).accepted, true);
+unseenExclusionSeed.window.close(); unseenExclusionTransfer.window.close();
+
+// Navigation inside a semantic reading region is content; global chrome is not.
+const readingNavigation = make('<nav id=global-nav><a href="https://example.test/global">Global navigation</a></nav><main id=reading-main><header><nav id=inner-tabs><a href="chapter">Chapter tab</a></nav></header><p>Readable chapter prose</p><div role=navigation id=inner-toc><a href="#section">Contents destination</a><img src="authority.png" alt="Authority mark"></div><h2 id=section>Section heading</h2></main><footer><a href="https://example.test/footer">Global footer</a></footer>');
+const readingDoc = readingNavigation.window.document;
+const readingNavFallback = core.fallback(readingDoc);
+assert(readingNavFallback.html.includes('Chapter tab') && readingNavFallback.html.includes('Contents destination'));
+assert(readingNavFallback.html.includes('https://example.test/section/authority.png'));
+assert(!readingNavFallback.html.includes('Global navigation') && !readingNavFallback.html.includes('Global footer'));
+assert.equal(readingNavFallback.coverage.accepted, true);
+assert.equal(core.matches(readingDoc, '#global-nav').length, 0);
+assert.equal(core.matches(readingDoc, '#inner-tabs').length, 1);
+const guardedInnerNav = core.compile(readingDoc, { main: 'main', exclude: ['#inner-tabs', '#inner-toc'], name: 'Reading navigation' });
+assert.equal(guardedInnerNav.exclude.length, 0);
+assert.equal(core.apply(readingDoc, guardedInnerNav).accepted, true);
+assert.equal(core.applyLegacy(readingDoc, { main: 'main', exclude: ['#inner-tabs'], name: 'Unsafe navigation exclusion' }).accepted, false);
+const completeInnerNav = core.validationContext(readingDoc);
+assert(completeInnerNav.validationHTML.includes('inner-tabs') && completeInnerNav.validationHTML.includes('inner-toc'));
+assert(!completeInnerNav.validationHTML.includes('global-nav'));
+readingNavigation.window.close();
+// A separately rendered NAV or list has lost its original MAIN ancestor. Source
+// signatures and cleaned reader signatures must still agree on all reading links.
+for (const fragment of ['<nav id=only-nav><a href="next">Reading navigation only</a></nav>', '<ul id=only-nav><li><nav><a href="next">Nested reading navigation</a></nav></li></ul>']) {
+    const detachedReading = make('<main>' + fragment + '</main>');
+    const detachedDoc = detachedReading.window.document;
+    const detachedRule = { main: '#only-nav', exclude: [], name: 'Detached reading region' };
+    const detachedProcedure = core.compile(detachedDoc, detachedRule);
+    const detachedResult = core.apply(detachedDoc, detachedProcedure);
+    assert.equal(detachedResult.accepted, true);
+    assert(detachedResult.html.includes('https://example.test/section/next'));
+    assert.equal(core.assess(detachedDoc, detachedResult.html).accepted, true);
+    assert.equal(core.applyLegacy(detachedDoc, detachedRule).accepted, true);
+    detachedReading.window.close();
+}
+const globalNavArticle = make('<nav><article><p>Global navigation teaser</p></article></nav><main><p>Actual reading body</p></main>');
+assert(!core.fallback(globalNavArticle.window.document).html.includes('Global navigation teaser'));
+globalNavArticle.window.close();

@@ -1,0 +1,60 @@
+{
+  "title": "Quotes to Scrape",
+  "targets": [
+    {
+      "text": "Quotes to Scrape",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“This life is what you make it. No matter what, you're going to mess up sometimes, it's a universal truth. But the good part is you get to decide how you're going to mess it up. Gi",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“I may not have gone where I intended to go, but I think I have ended up where I needed to be.”",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“Life is what happens to us while we are making other plans.”",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .author",
+      "text": "Marilyn Monroe",
+      "tag": "SMALL",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .author",
+      "text": "Douglas Adams",
+      "tag": "SMALL",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .author",
+      "text": "Allen Saunders",
+      "tag": "SMALL",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [],
+  "images": [],
+  "noise": [],
+  "paragraphs": 0,
+  "regionTag": "BODY",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

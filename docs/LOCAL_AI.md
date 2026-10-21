@@ -35,3 +35,38 @@ The legacy hosted path can be deliberately selected with `BACKEND_CONFIG.current
 Run `npm run test:local` for existing regressions and HTTP/cache/provider-double checks. A live routing smoke check is separate from a fresh-AI/shared-rule experiment; neither frozen paper timings nor the v1 manuscript results change merely because this backend changes.
 
 Provider references checked 2026-10-19: [DeepSeek API](https://api-docs.deepseek.com/api/create-chat-completion/), [model and pricing](https://api-docs.deepseek.com/quick_start/pricing/), [Codex non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
+
+## Current structural sampling and preservation route
+
+The extension now builds a balanced structural sample with a 12,000-character
+ceiling. It inspects the whole BODY locally before selecting examples. It keeps
+original container paths and bounded, complete ID/class/role attributes, includes
+representatives of headings, tables, code, images/captions, lists, discussions and
+navigation, and samples repeated siblings at early/middle/late positions. Text
+cues are limited to96 characters; form values, scripts, destination URLs and image
+payloads are omitted from this model sample. Oversized attributes are omitted,
+not truncated into nonexistent selectors. The sample is serialized as valid HTML
+within its budget, rather than cutting an HTML prefix. Provider-side30,000-character
+limits remain a separate defensive bound. Characters are not billed-token counts.
+
+The sample is explicitly incomplete. Its role-count/representation diagnostics do
+not prove that every important instance was selected. The model proposes a CSS
+procedure; the compiler and runtime separately inspect the full source DOM for
+required reading roles and relationships. They retain navigation inside semantic
+reading regions while removing global navigation, preserve precise observed
+selectors, and drop exclusions without seed evidence. Compilation adjustments,
+unadjusted model selection, rule delivery and fallback remain separately labeled.
+
+Local protocol2 shares only admitted procedures. Its first complete example is
+private/provisional; a second distinct identity and content example must pass the
+same procedure before publication. A separate sanitized BODY, capped at100,000
+characters and262,144 request bytes, currently goes to the backend for deterministic
+validation. It is not the LLM input. This upload can disclose page content to the
+backend; compact model input alone does not establish article privacy or anonymity.
+Large/incomplete contexts remain pending with the basic view. Session budgets and
+automatic-retry restrictions are unchanged.
+
+Development replay supplies retained historical candidates and tests compiled
+procedures directly through production extraction in isolated Chromium. It does
+not measure fresh model generation from the new sample or corpus-wide API
+admission. See the local testing guide for these separate endpoints.

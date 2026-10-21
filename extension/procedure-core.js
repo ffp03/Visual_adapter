@@ -5,10 +5,20 @@
     else root.PreservationCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
     'use strict';
-    const NOISE = 'script,style,link,noscript,iframe,object,embed,template,svg animate,svg set,svg animateMotion,svg animateTransform,nav,footer,[role="navigation"],[role="banner"],[role="contentinfo"]';
+    const NOISE = 'script,style,link,noscript,iframe,object,embed,template,svg animate,svg set,svg animateMotion,svg animateTransform,footer,[role="banner"],[role="contentinfo"]';
     const BLOCKS = 'h1,h2,h3,h4,h5,h6,p,pre,code,table,ul,ol,dl,blockquote,figure,img,a[href],[role="comment"],[itemprop="commentText"]';
     const norm = value => (value || '').replace(/\s+/g, ' ').trim();
-    const outsideNoise = node => !node.closest(NOISE);
+    const NAVIGATION = 'nav,[role="navigation"]';
+    const READING = 'main,article,[role="main"]';
+    const isNoise = (node, readingArtifact = false) => node.matches(NOISE)
+        || (!readingArtifact && node.matches(NAVIGATION) && !node.parentElement?.closest(READING));
+    const outsideNoise = node => {
+        if (node.closest(NOISE)) return false;
+        for (let nav = node.closest(NAVIGATION); nav; nav = nav.parentElement?.closest(NAVIGATION)) {
+            if (isNoise(nav)) return false;
+        }
+        return true;
+    };
     const matches = (doc, selector) => [...doc.querySelectorAll(selector)].filter(outsideNoise);
     const outermost = nodes => {
         const selected = new Set(nodes);
@@ -64,9 +74,12 @@
         roots.sort((a, b) => a === b ? 0 : a.compareDocumentPosition(b) & 2 ? 1 : -1);
         return { roots: outermost(roots), semantic, title };
     }
-    function clean(element, doc, preserveBody = false) {
+    function clean(element, doc, preserveBody = false, readingArtifact = false) {
         const clone = element.cloneNode(true);
-        all(clone, NOISE).forEach(node => node.remove());
+        // Decide against ORIGINAL ancestry: a detached clone of reading NAV or
+        // one of its subregions no longer has its MAIN/ARTICLE ancestor.
+        const originals = all(element, '*'), copies = all(clone, '*');
+        originals.forEach((original, index) => { if (isNoise(original, readingArtifact)) copies[index].remove(); });
         all(clone, 'input,textarea').forEach(node => { node.removeAttribute('value'); node.textContent = ''; });
         all(clone, '*').forEach(node => {
             [...node.attributes].forEach(attribute => {
@@ -98,8 +111,14 @@
         }
         return clone;
     }
-    function signature(node, doc) {
-        const clone = clean(node, doc);
+    function signature(node, doc, readingArtifact = false) {
+        // Reader fragments already passed source-ancestry sanitization. Their
+        // region wrappers may omit MAIN; canonicalization must retain reading NAV.
+        const clone = clean(node, doc, false, readingArtifact);
+        // Removing inactive nodes can leave adjacent text nodes. Serialization
+        // merges these without changing text; compare the same partitioning.
+        // normalize() preserves every character, including PRE/CODE whitespace.
+        clone.normalize();
         // Attribute ordering and presentation are irrelevant; reading structure,
         // exact normalized text, destinations and fragment identities are not.
         function encode(n, exact = false) {
@@ -162,7 +181,7 @@
         // Only index role-bearing tags, never every ancestor subtree.
         for (const node of tags.length ? all(target, tags.join(',')) : []) {
             if (!hints.get(node.tagName.toLowerCase()).has(norm(node.textContent).length)) continue;
-            const key = signature(node, doc); available.set(key, (available.get(key) || 0) + 1);
+            const key = signature(node, doc, true); available.set(key, (available.get(key) || 0) + 1);
         }
         const missing = [], consumedText = new Set();
         for (const role of inventory.roles) {
@@ -230,20 +249,29 @@
             adjustments.push({ kind: 'stable-common-ancestor-expansion', originalRegions: nodes.map(node => selector(node, doc)), appliedRegion: selector(common, doc) });
             nodes = [common];
         }
-        const regions = nodes.map(node => ({ role: node === modelNode ? 'model-reading-region' : 'required-reading-region', selector: selector(node, doc), required: true, fragileSelector: selector(node, doc).includes(':nth-of-type(') }));
+        // Preserve an already unique, nonpositional model selector. Replacing
+        // article.product_page with article loses its disambiguating scope when
+        // a later page adds nested article cards.
+        const regionSelector = node => node === modelNode && !/:(?:nth-|first-|last-|only-)/i.test(legacy.main)
+            ? legacy.main : selector(node, doc);
+        const regions = nodes.map(node => ({ role: node === modelNode ? 'model-reading-region' : 'required-reading-region', selector: regionSelector(node), required: true, fragileSelector: regionSelector(node).includes(':nth-of-type(') }));
         if (regions.length !== 1 || regions[0].selector !== legacy.main) adjustments.push({ kind: nodes.length !== 1 || nodes[0] !== modelNode ? 'explicit-region-expansion' : 'selector-canonicalization', originalMain: legacy.main, regions: regions.map(r => r.selector) });
         const procedure = { schemaVersion: 2, serialization: 'body-region-as-div', taskScope: 'reading', applicationFunctionalityVerified: false, name: legacy.name, regions, exclude: [], preconditions: { scope: inventory.descriptor },
             adjustments, modelCandidate: { main: legacy.main, exclude: [...legacy.exclude], name: legacy.name },
             supplementation: nodes.length !== 1 || nodes[0] !== modelNode, modelSelectionSuperseded: !nodes.includes(modelNode),
             compiler: 'role-preservation-v2', context: { boundary: inventory.boundary, limits: inventory.limits, unsupported: inventory.unsupported, unsupportedInteraction: inventory.unsupportedInteraction } };
         for (const exclusion of legacy.exclude) {
+            if (!doc.querySelectorAll(exclusion).length) {
+                adjustments.push({ kind: 'dropped-unobserved-exclusion', selector: exclusion });
+                continue;
+            }
             const trial = render(doc, regions, [...procedure.exclude, exclusion]);
             const coverage = assess(doc, trial, inventory);
             if (coverage.accepted) procedure.exclude.push(exclusion);
             else adjustments.push({ kind: 'dropped-unsafe-exclusion', selector: exclusion, missing: coverage.missing });
         }
         procedure.compilationAdjusted = adjustments.length > 0;
-        procedure.pureModelSelection = !procedure.supplementation && !adjustments.some(adjustment => adjustment.kind === 'dropped-unsafe-exclusion');
+        procedure.pureModelSelection = !procedure.supplementation && !adjustments.some(adjustment => adjustment.kind.startsWith('dropped-'));
         procedure.addedRegions = regions.filter(region => region.role !== 'model-reading-region').map(region => region.selector);
         const result = apply(doc, procedure, inventory);
         if (!result.accepted) throw Error(result.reason + ': ' + JSON.stringify(result.coverage));

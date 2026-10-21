@@ -1,0 +1,138 @@
+{
+  "parentVerified": true,
+  "developmentOnly": true,
+  "sourceFreezeSha256": "6b7789a136a796a0ddefe5bcf7cb911663634a1eedeac9fbec3f6485b7561132",
+  "sourceHashes": {
+    "extension/procedure-core.js": "01a1433a3ee99039bdb664851d700d0b40163c4c92f2dd634868d92712ab1fe2",
+    "extension/content.js": "012e620268c4d54b66dddbda19475cb5dddf3b243f46b734fb988199efab4162",
+    "extension/background.js": "0819ec515d61f245354098c9a9a010a405c73bfd8ad001cda66bf8c5fb39282a",
+    "extension/rule-service.js": "496bd26cc1d016e98747daa68fa8191ca204481ac2b23436b881acd49a5406b0",
+    "extension/sidepanel.js": "c020f55caeb4c974173e342a7ddef25375fc40420657e7900c72f8ba73f100f4",
+    "extension/manifest.json": "431693030e46de63986145adeda31123da96a1ef9c1cee7110c91fbb0b501053",
+    "backend/local-ai.cjs": "d316057a1223d112fadc9ceca59d8b9f50651d0eafd6cb3a556d90ec14c92367",
+    "backend/procedure-families.cjs": "d1e80de1cffbb6580b8ccfed564cb2abde233d5d4c929b847d5eeefd6c0757aa",
+    "backend/deepseek-runner.cjs": "9aacd10cc29bedd9790f483e0f0c58389dceeb812feb22e30da767e9c676a9b6",
+    "backend/codex-runner.cjs": "d41e2d43ee718fe1ec79443f41bf8c360dca24c5ad5d73d1d2e9563823b513a2"
+  },
+  "bothEndpointsUseSameScorer": true,
+  "sourceOnlyAdditiveManifestSha256": "b6ee9e9120edc2b0bc7f9ab3c98d445272ea0b1055a54d9d2e5c9762d54d55f6",
+  "originalChecksDeleted": 0,
+  "supplementaryTargetsAdded": 63,
+  "statistics": {
+    "original": {
+      "fallback": {
+        "passedPages": 15,
+        "scorablePages": 15,
+        "indeterminatePages": 3,
+        "passedPairs": 7,
+        "scorablePairs": 7,
+        "noFallbackPages": 0,
+        "fallbackDeliveries": 18,
+        "targets": 262,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      },
+      "compiled-fresh": {
+        "passedPages": 15,
+        "scorablePages": 15,
+        "indeterminatePages": 3,
+        "passedPairs": 7,
+        "scorablePairs": 7,
+        "noFallbackPages": 15,
+        "fallbackDeliveries": 0,
+        "targets": 262,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      },
+      "compiled-shared": {
+        "passedPages": 15,
+        "scorablePages": 15,
+        "indeterminatePages": 3,
+        "passedPairs": 7,
+        "scorablePairs": 7,
+        "noFallbackPages": 15,
+        "fallbackDeliveries": 0,
+        "targets": 262,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      }
+    },
+    "additive": {
+      "fallback": {
+        "passedPages": 18,
+        "scorablePages": 18,
+        "indeterminatePages": 0,
+        "passedPairs": 9,
+        "scorablePairs": 9,
+        "noFallbackPages": 0,
+        "fallbackDeliveries": 18,
+        "targets": 325,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      },
+      "compiled-fresh": {
+        "passedPages": 18,
+        "scorablePages": 18,
+        "indeterminatePages": 0,
+        "passedPairs": 9,
+        "scorablePairs": 9,
+        "noFallbackPages": 18,
+        "fallbackDeliveries": 0,
+        "targets": 325,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      },
+      "compiled-shared": {
+        "passedPages": 18,
+        "scorablePages": 18,
+        "indeterminatePages": 0,
+        "passedPairs": 9,
+        "scorablePairs": 9,
+        "noFallbackPages": 18,
+        "fallbackDeliveries": 0,
+        "targets": 325,
+        "links": 27,
+        "images": 11,
+        "noiseRetained": 0
+      }
+    }
+  },
+  "samples": {
+    "maxCharacters": 11999,
+    "medianCharacters": 9482.0,
+    "medianBodyCharacterReduction": 0.8589834256031283,
+    "allDeclaredRoleKindsRepresented": true,
+    "allImportantInstancesGuaranteed": false
+  },
+  "newPrototypeModelRequests": 0,
+  "liveSiteRequests": 0,
+  "actualColdAPIAdmissionMeasured": false,
+  "newSamplerModelGenerationQualityMeasured": false,
+  "paperUpdated": false,
+  "heldoutDataUsed": false,
+  "parentFullLocalSuitePassed": true,
+  "parentFullLocalSuiteSeconds": 45.33,
+  "parentFocusedUnionChecks": 7,
+  "parentFocusedProvenanceChecks": 4,
+  "nativeFinalReview": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 44.37,
+    "requested_model": "gpt-6.1-sol",
+    "requested_effort": "medium",
+    "tokens": null,
+    "thread_id": "01a15c4e-2b43-7833-9c70-2dfc394e958e"
+  },
+  "nativeFinalVerdict": "No actionable findings in the final exclusion-handling delta or relevant callers. Focused core tests and synthetic selector-validation, provenance, and current-page acceptance checks passed.",
+  "limits": [
+    "Retained historical model candidates, direct compiled-rule delivery through production extraction and messaging doubles.",
+    "Static development snapshots, source-derived engineering annotations, not independent human accessibility gold.",
+    "Original benchmark remains15scorable/3indeterminate; stronger additive benchmark covers18.",
+    "API admission and complete-context size limits are unchanged; these figures do not measure admitted-cache coverage or unseen generalization."
+  ]
+}

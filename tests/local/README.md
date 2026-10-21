@@ -100,3 +100,32 @@ content/background/service path in isolated Chromium, including privacy, live DO
 updates during cache lookup and lookup-failure behavior. Saved development replay
 scripts require frozen source hashes; cold admission and GET-only warm reuse are
 separate resubstitution reports, never unseen performance or new generation.
+
+## Compact input and fixed development benchmarks
+
+`analysis-sample-test.cjs` runs in `test:local`. It checks late structures and
+repeated content under a12,000-character structural sample budget, complete local
+reading output, original DOM preservation and omission of nested form values.
+`training-development-test.cjs` adds focused provenance/tamper tests; run it with
+`node --test tests/local/training-development-test.cjs`.
+
+`training-development.cjs replay --tag=<unused-tag>` uses the original18 captured
+development pages and retained provider rules, never the44-page heldout data.
+It freezes production/input hashes, checks historical bindings, and reports
+fallback, compiled fresh procedures and unchanged seed-procedure transfer
+separately. It requires the existing ignored task023 source/reference artifacts.
+It refuses an existing output tag.
+
+`development-reference-union.cjs freeze` creates a separate immutable benchmark
+with all original strict checks plus all119 legacy source anchors (325 distinct
+targets). No original link/image/noise check is deleted. This makes the three
+one-target pages evaluable while retaining the original15-scorable/3-indeterminate
+endpoint. The union is engineering development annotation, not independent human
+ground truth. `development-reference-union-test.cjs` verifies source binding,
+inclusion, deduplication, eligibility, overwrite refusal and drift detection.
+
+`training-development.cjs union --tag=<same-tag>` scores the exact same hash-bound
+reading outputs against that additive benchmark. It verifies the annotation
+manifest, original18 IDs/nine pairs and all individual artifacts, and makes no
+timing claims. Neither direct compiled replay nor additive rescoring measures
+cold service admission, newly generated rule quality or unseen generalization.

@@ -1,0 +1,214 @@
+{
+  "title": "<table> HTML table element - HTML | MDN",
+  "targets": [
+    {
+      "text": "<table> HTML table element",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Attributes",
+      "tag": "H2",
+      "id": "attributes"
+    },
+    {
+      "text": "Deprecated attributes",
+      "tag": "H3",
+      "id": "deprecated_attributes"
+    },
+    {
+      "text": "Visual layout of table contents",
+      "tag": "H2",
+      "id": "visual_layout_of_table_contents"
+    },
+    {
+      "text": "Table layers and transparency",
+      "tag": "H3",
+      "id": "table_layers_and_transparency"
+    },
+    {
+      "text": "Accessibility",
+      "tag": "H2",
+      "id": "accessibility"
+    },
+    {
+      "text": "Scoping rows and columns",
+      "tag": "H3",
+      "id": "scoping_rows_and_columns"
+    },
+    {
+      "text": "Complicated tables",
+      "tag": "H3",
+      "id": "complicated_tables"
+    },
+    {
+      "text": "Basic table",
+      "tag": "H3",
+      "id": "basic_table"
+    },
+    {
+      "text": "Expanded table with header cells",
+      "tag": "H3",
+      "id": "expanded_table_with_header_cells"
+    },
+    {
+      "text": "Specifying table cell relations",
+      "tag": "H3",
+      "id": "specifying_table_cell_relations"
+    },
+    {
+      "text": "Explicitly specifying table section groups",
+      "tag": "H3",
+      "id": "explicitly_specifying_table_section_groups"
+    },
+    {
+      "text": "Column and row spanning",
+      "tag": "H3",
+      "id": "column_and_row_spanning"
+    },
+    {
+      "text": "Table caption and column summary",
+      "tag": "H3",
+      "id": "table_caption_and_column_summary"
+    },
+    {
+      "text": "Basic table styling",
+      "tag": "H3",
+      "id": "basic_table_styling"
+    },
+    {
+      "text": "Advanced table styling",
+      "tag": "H3",
+      "id": "advanced_table_styling"
+    },
+    {
+      "text": "Displaying large tables in small spaces",
+      "tag": "H3",
+      "id": "displaying_large_tables_in_small_spaces"
+    },
+    {
+      "text": "Technical summary",
+      "tag": "H2",
+      "id": "technical_summary"
+    },
+    {
+      "text": "Specifications",
+      "tag": "H2",
+      "id": "specifications"
+    },
+    {
+      "text": "Browser compatibility",
+      "tag": "H2",
+      "id": "browser_compatibility"
+    },
+    {
+      "text": "Help improve MDN",
+      "tag": "H2",
+      "id": "feedback"
+    },
+    {
+      "text": "This feature is well established and works across many devices and browser versions. It’s been available across browsers since July 2015.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "With CSS, we provide the basic styling to create lines around the components of the table to make the data structure clearer. The CSS adds a solid border around the <table> and aro",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Given that the <table> has a fixed size, the overflow set to auto is the important part here, as it makes the table scrollable.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "<table> <caption> Front-end web developer course 2021 </caption> <thead> <tr> <th scope=\"col\">Person</th> <th scope=\"col\">Most interest in</th> <th scope=\"col\">Age</th> </tr> </the",
+      "tag": "PRE",
+      "id": null
+    },
+    {
+      "text": "Content categories Flow content",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "text": "See full compatibility",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "text": "The row boxes fill the table in the source code order from top to bottom. Each row box occupies one row of cells.",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "#examples",
+      "text": "Examples",
+      "tag": "H2",
+      "elementId": "examples",
+      "id": "examples"
+    },
+    {
+      "selector": "section[aria-labelledby=\"attributes\"] p",
+      "text": "This element includes the global attributes.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main pre",
+      "text": "table { border: 2px solid rgb(140 140 140); font: 16px \"Open Sans\", \"Helvetica\", \"Arial\", sans-serif; } thead > tr, tfoot > tr { background-color: rgb(228 240 245); } th, td { bord",
+      "tag": "PRE",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main pre",
+      "text": "table, th, td { border: 1px solid black; } table { overflow: auto; width: 100%; max-width: 400px; height: 240px; display: block; margin: 0 auto; border-spacing: 0; } tbody { white-",
+      "tag": "PRE",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main table tr",
+      "text": "Implicit ARIA role table",
+      "tag": "TR",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main table tr",
+      "text": "HTML# the-table-element",
+      "tag": "TR",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "See full compatibility",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table#browser_compatibility",
+      "originalHref": "#browser_compatibility"
+    },
+    {
+      "text": "Visual layout of table contents",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table#visual_layout_of_table_contents",
+      "originalHref": "#visual_layout_of_table_contents"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table/table_element_layers.png",
+      "alt": "Table element layers"
+    }
+  ],
+  "noise": [
+    "MDN HTML HTML: Markup language HTML reference Elements Global attributes Attributes See all… HTML guides Responsive images HTML cheatsheet D",
+    "HTML HTML: Markup language HTML reference Elements Global attributes Attributes See all… HTML guides Responsive images HTML cheatsheet Date "
+  ],
+  "paragraphs": 65,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

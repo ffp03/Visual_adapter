@@ -1,0 +1,224 @@
+{
+  "title": "HTML - Wikipedia",
+  "targets": [
+    {
+      "text": "HTML",
+      "tag": "H1",
+      "id": "firstHeading"
+    },
+    {
+      "text": "Development",
+      "tag": "H3",
+      "id": "Development"
+    },
+    {
+      "text": "HTML version timeline",
+      "tag": "H3",
+      "id": "HTML_version_timeline"
+    },
+    {
+      "text": "HTML draft version timeline",
+      "tag": "H3",
+      "id": "HTML_draft_version_timeline"
+    },
+    {
+      "text": "XHTML versions",
+      "tag": "H4",
+      "id": "XHTML_versions"
+    },
+    {
+      "text": "Transition of HTML publication to WHATWG",
+      "tag": "H3",
+      "id": "Transition_of_HTML_publication_to_WHATWG"
+    },
+    {
+      "text": "Element examples",
+      "tag": "H4",
+      "id": "Element_examples"
+    },
+    {
+      "text": "Attributes",
+      "tag": "H4",
+      "id": "Attributes"
+    },
+    {
+      "text": "Character and entity references",
+      "tag": "H3",
+      "id": "Character_and_entity_references"
+    },
+    {
+      "text": "Data types",
+      "tag": "H3",
+      "id": "Data_types"
+    },
+    {
+      "text": "Document type declaration",
+      "tag": "H3",
+      "id": "Document_type_declaration"
+    },
+    {
+      "text": "Semantic HTML",
+      "tag": "H2",
+      "id": "Semantic_HTML"
+    },
+    {
+      "text": "HTML e-mail",
+      "tag": "H3",
+      "id": "HTML_e-mail"
+    },
+    {
+      "text": "Naming conventions",
+      "tag": "H3",
+      "id": "Naming_conventions"
+    },
+    {
+      "text": "HTML Application",
+      "tag": "H3",
+      "id": "HTML_Application"
+    },
+    {
+      "text": "HTML4 variations",
+      "tag": "H2",
+      "id": "HTML4_variations"
+    },
+    {
+      "text": "SGML-based versus XML-based HTML",
+      "tag": "H3",
+      "id": "SGML-based_versus_XML-based_HTML"
+    },
+    {
+      "text": "Transitional versus strict",
+      "tag": "H3",
+      "id": "Transitional_versus_strict"
+    },
+    {
+      "text": "Frameset versus transitional",
+      "tag": "H3",
+      "id": "Frameset_versus_transitional"
+    },
+    {
+      "text": "Summary of specification versions",
+      "tag": "H3",
+      "id": "Summary_of_specification_versions"
+    },
+    {
+      "text": "WHATWG HTML versus HTML5",
+      "tag": "H2",
+      "id": "WHATWG_HTML_versus_HTML5"
+    },
+    {
+      "text": "WYSIWYG editors",
+      "tag": "H2",
+      "id": "WYSIWYG_editors"
+    },
+    {
+      "text": "References",
+      "tag": "H2",
+      "id": "References"
+    },
+    {
+      "text": "External links",
+      "tag": "H2",
+      "id": "External_links"
+    },
+    {
+      "text": "Hypertext Markup Language (HTML) is the standard markup language[a] for documents designed to be displayed in a web browser. It defines the content and structure of web content. It",
+      "tag": "P",
+      "id": "mwEg"
+    },
+    {
+      "text": "HTML documents are required to start with a document type declaration (informally, a \"doctype\"). In browsers, the doctype helps to define the rendering mode—particularly whether to",
+      "tag": "P",
+      "id": "mwBY0"
+    },
+    {
+      "text": "WYSIWYG editors remain a controversial topic because of their perceived flaws such as:",
+      "tag": "P",
+      "id": "mwByY"
+    },
+    {
+      "text": "<!DOCTYPE html> <html> <head> <title>This is a title</title> </head> <body> <div> <p>Hello world!</p> </div> </body> </html>",
+      "tag": "PRE",
+      "id": "mwAlU"
+    },
+    {
+      "text": "HTML escape sequence examples",
+      "tag": "CAPTION",
+      "id": "mwBPo"
+    },
+    {
+      "text": "This article has multiple issues. Please help improve it or discuss these issues on the talk page. (Learn how and when to remove these messages) This article contains instructions ",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "text": "Беларуская (тарашкевіца)",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "text": "The language for an element is specified with a lang attribute rather than the XHTML xml:lang attribute. XHTML uses XML's built-in language-defining functionality attribute.",
+      "tag": "LI",
+      "id": "mwBkg"
+    },
+    {
+      "selector": ".mw-parser-output p",
+      "text": "Escaping also allows for characters that are not easily typed, or that are not available in the document's character encoding, to be represented within the element and attribute co",
+      "tag": "P",
+      "elementId": "mwBOk",
+      "id": "mwBOk"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "Named Decimal Hexadecimal Result Description Notes",
+      "tag": "TR",
+      "elementId": "mwBPw",
+      "id": "mwBPw"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "&nbsp; &#160; &#xA0; Non-Breaking Space",
+      "tag": "TR",
+      "elementId": "mwBT8",
+      "id": "mwBT8"
+    },
+    {
+      "selector": ".wikitable tr",
+      "text": "&trade; &#8482; &#x2122; ™ Trademark",
+      "tag": "TR",
+      "elementId": "mwBXw",
+      "id": "mwBXw"
+    }
+  ],
+  "links": [
+    {
+      "text": "Беларуская (тарашкевіца)",
+      "url": "https://be-tarask.wikipedia.org/wiki/HTML",
+      "originalHref": "https://be-tarask.wikipedia.org/wiki/HTML"
+    },
+    {
+      "text": "閩東語 / Mìng-dĕ̤ng-ngṳ̄",
+      "url": "https://cdo.wikipedia.org/wiki/HTML",
+      "originalHref": "https://cdo.wikipedia.org/wiki/HTML"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Tim_Berners-Lee_April_2009.jpg/250px-Tim_Berners-Lee_April_2009.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "alt": "Photograph of Tim Berners-Lee in April 2009"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/HTML_element_content_categories.svg/250px-HTML_element_content_categories.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "alt": ""
+    }
+  ],
+  "noise": [
+    "Main menu Main menu move to sidebar hide Navigation Main pageContentsCurrent eventsRandom articleAbout WikipediaContact us Contribute HelpLe",
+    "Appearance Donate Create account Log in Personal tools Donate Create account Log in"
+  ],
+  "paragraphs": 75,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

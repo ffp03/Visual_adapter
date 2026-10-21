@@ -1,0 +1,178 @@
+{
+  "title": "GitHub - expressjs/express: Fast, unopinionated, minimalist web framework for node. · GitHub",
+  "targets": [
+    {
+      "text": "Repository navigation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Code of conduct",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Contributing",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Security policy",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Latest commit",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Folders and files",
+      "tag": "H2",
+      "id": "folders-and-files"
+    },
+    {
+      "text": "Repository files navigation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Table of contents",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Installation",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Docs & Community",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Quick Start",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Philosophy",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Security Issues",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Running Tests",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Current project team members",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "TC (Technical Committee)",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "TC emeriti members",
+      "tag": "H4",
+      "id": null
+    },
+    {
+      "text": "Emeritus Triagers",
+      "tag": "H4",
+      "id": null
+    },
+    {
+      "text": "Sponsor this project",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Contributors",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "Fast, unopinionated, minimalist web framework for Node.js. Table of contents Installation Features Docs & Community Quick Start Philosophy Examples Contributing Security Issues Run",
+      "tag": "ARTICLE",
+      "id": null
+    },
+    {
+      "text": "Express does not force you to use any specific ORM or template engine. With support for over 14 template engines via @ladjs/consolidate, you can quickly craft your perfect framewor",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "For information about the governance of the express.js project, see GOVERNANCE.md.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "import express from 'express' const app = express() app.get('/', (req, res) => { res.send('Hello World') }) app.listen(3000, () => { console.log('Server is running on http://localh",
+      "tag": "PRE",
+      "id": null
+    },
+    {
+      "text": "NameNameLast commit messageLast commit date",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "selector": ".markdown-body h2",
+      "text": "License",
+      "tag": "H2",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".markdown-body p",
+      "text": "Fast, unopinionated, minimalist web framework for Node.js.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".markdown-body p",
+      "text": "MIT",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Pull requests130 (130)",
+      "url": "https://github.com/expressjs/express/pulls",
+      "originalHref": "/expressjs/express/pulls"
+    },
+    {
+      "text": "Security and quality3 (3)",
+      "url": "https://github.com/expressjs/express/security",
+      "originalHref": "/expressjs/express/security"
+    }
+  ],
+  "images": [
+    {
+      "url": "https://camo.githubusercontent.com/4b0fc341c3e7a818c1d65476a6904bea2593fd6f9f65dd7f32cc3c1a8b0c4288/68747470733a2f2f6170692e73636f7265636172642e6465762f70726f6a656374732f6769746875622e636f6d2f657870726573736a732f657870726573732f6261646765",
+      "alt": "OpenSSF Scorecard Badge"
+    }
+  ],
+  "noise": [
+    "PlatformAI CODE CREATIONGitHub CopilotWrite better code with AIGitHub Copilot appDirect agents from issue to mergeMCP RegistryIntegrate exte",
+    "Footer navigation Terms Privacy Security Status Community Docs Contact Manage cookies Do not share my personal information"
+  ],
+  "paragraphs": 10,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

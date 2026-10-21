@@ -64,14 +64,20 @@ const { page, background, root, sourceFile } = require('./harness.cjs');
         const p = page(`<article class="product"><div class="summary"><h1>Product</h1><p>Price</p></div><section><p>${description}</p></section></article>`, undefined, [{ main: '.summary', exclude: [], name: 'narrow' }]);
         try {
             const out = await p.extract(); assert.equal(out.usedRule, false); assert.equal(out.ruleRejected, 'substantive-content-loss');
-            assert.ok(out.html.includes(description)); assert.match(out.analysisHTML, /^<article class="product">/);
+            assert.ok(out.html.includes(description));
+            const sample = new p.dom.window.DOMParser().parseFromString(out.analysisHTML, 'text/html');
+            assert(sample.querySelector('article.product .summary h1'));
+            assert.equal(out.analysisContext.complete, false);
         } finally { p.close(); }
     });
     await check('long reading output remains complete while model context is bounded', async () => {
         const p = page('<main id="long-article"><h1>Long article</h1><p>' + 'Useful text. '.repeat(10000) + '</p><p>ENDING CONTENT MUST REMAIN</p></main>');
         try {
             const out = await p.extract(); assert.ok(out.html.length > 50000); assert.match(out.html, /ENDING CONTENT MUST REMAIN/);
-            assert.ok(out.analysisHTML.length <= 60000); assert.match(out.analysisHTML, /^<main id="long-article">/);
+            assert.ok(out.analysisHTML.length <= 12000);
+            const sample = new p.dom.window.DOMParser().parseFromString(out.analysisHTML, 'text/html');
+            assert(sample.querySelector('main#long-article h1'));
+            assert.match(sample.body.textContent, /ENDING CONTENT MUST REMAIN/);
         } finally { p.close(); }
     });
     await check('site branding outside a generic body does not reject a complete content rule', async () => {
@@ -100,7 +106,7 @@ const { page, background, root, sourceFile } = require('./harness.cjs');
         } finally { p.close(); }
     });
     await check('cached rules also remove scripts and navigation clutter', async () => {
-        const p = page('<main><h1>Article</h1><p>Useful body</p><script>internalPayload()</script><nav>Unwanted navigation</nav></main>', undefined, [{ main: 'main', exclude: [], name: 'Article' }]);
+        const p = page('<main><h1>Article</h1><p>Useful body</p><script>internalPayload()</script><header role=banner><nav>Unwanted navigation</nav></header></main>', undefined, [{ main: 'main', exclude: [], name: 'Article' }]);
         try { const out = await p.extract(); assert.equal(out.usedRule, true); assert.match(out.html, /Useful body/); assert.doesNotMatch(out.html, /internalPayload|Unwanted navigation/); }
         finally { p.close(); }
     });

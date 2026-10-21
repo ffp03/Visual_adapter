@@ -1,0 +1,30 @@
+{
+  "parentVerified": true,
+  "manifestSha256": "2ab148f418676618637110584900ffe02adbbd284b3fcf529fc34e647a66852e",
+  "verifiedArtifactPaths": 1661,
+  "declaredArtifactBindings": 1661,
+  "sites": 22,
+  "pages": 44,
+  "categories": {
+    "Government/public information": 2,
+    "Technical documentation": 3,
+    "News": 3,
+    "Education": 5,
+    "Reference/collections": 3,
+    "Commerce": 3,
+    "Discussion": 3
+  },
+  "categoryCount": 7,
+  "provenance": {
+    "legacyPages": 8,
+    "supervisedPages": 36
+  },
+  "legacyReadinessLabels": {
+    "document-complete-and-visible-text": 8
+  },
+  "priorDomainOverlap": 0,
+  "allPairsHaveDistinctDestinationSourceAndReadingContent": true,
+  "targetMet": true,
+  "newModelCalls": 0,
+  "extractorRuns": 0
+}

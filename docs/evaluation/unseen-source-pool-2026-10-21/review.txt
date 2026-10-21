@@ -1,0 +1,1 @@
+No actionable findings in the scoped acceptance code or relevant active acquisition/supervision paths. Review was static only; no tests, captures, network calls, or sealed/fresh-data reads were performed.

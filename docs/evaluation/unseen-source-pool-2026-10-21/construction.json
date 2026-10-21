@@ -1,0 +1,27 @@
+{
+  "sourceManifestSha256": "2ab148f418676618637110584900ffe02adbbd284b3fcf529fc34e647a66852e",
+  "protocolSha256": "dadfc6f728783aaf4267cabf8e9d483514906e64fa9392408402e4c2771ce0ce",
+  "planSha256": "75d0decbd1095742de415eb16ccee3fe865500efba9803122fbc685beb3b183a",
+  "candidateDispositions": {
+    "first-two-source-eligible": 17,
+    "source-pair-unavailable": 19,
+    "prior-domain-excluded": 2,
+    "locked-accepted-pair": 5,
+    "qualified-but-quota-filled": 1,
+    "not-scheduled-before-stop": 2
+  },
+  "candidateCount": 46,
+  "review": {
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 66.86
+  },
+  "reviewModel": "gpt-6.1-sol",
+  "reviewEffort": "medium",
+  "reviewTokens": null,
+  "parentAuditCodeSha256": "0baef83785ebd328e369bb091214143cc40798259e164bb0d99aa82df29a3bf2",
+  "parentBoundaryTests": 5,
+  "prototypeRuntimeCheckpoint": "2d1b5effcfb1c3aa3e101f74ffa87b13184e682d",
+  "sourceManifestFrozenBeforeAnyPrototypeEvaluation": true,
+  "sourceContentNotExposedToImplementationWorker": true
+}

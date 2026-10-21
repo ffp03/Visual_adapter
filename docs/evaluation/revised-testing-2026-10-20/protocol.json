@@ -1,0 +1,47 @@
+{
+  "sealedAtUTC": "2026-10-21T03:53:29.489058+00:00",
+  "productionCommit": "e8c16799a87fd96b46eb57b0ae451933e2bfbe90",
+  "productionRawHashes": {
+    "extension/procedure-core.js": "01a1433a3ee99039bdb664851d700d0b40163c4c92f2dd634868d92712ab1fe2",
+    "extension/content.js": "012e620268c4d54b66dddbda19475cb5dddf3b243f46b734fb988199efab4162",
+    "extension/background.js": "0819ec515d61f245354098c9a9a010a405c73bfd8ad001cda66bf8c5fb39282a",
+    "extension/rule-service.js": "496bd26cc1d016e98747daa68fa8191ca204481ac2b23436b881acd49a5406b0",
+    "extension/sidepanel.js": "c020f55caeb4c974173e342a7ddef25375fc40420657e7900c72f8ba73f100f4",
+    "extension/manifest.json": "431693030e46de63986145adeda31123da96a1ef9c1cee7110c91fbb0b501053",
+    "backend/local-ai.cjs": "d316057a1223d112fadc9ceca59d8b9f50651d0eafd6cb3a556d90ec14c92367",
+    "backend/procedure-families.cjs": "d1e80de1cffbb6580b8ccfed564cb2abde233d5d4c929b847d5eeefd6c0757aa",
+    "backend/deepseek-runner.cjs": "9aacd10cc29bedd9790f483e0f0c58389dceeb812feb22e30da767e9c676a9b6",
+    "backend/codex-runner.cjs": "d41e2d43ee718fe1ec79443f41bf8c360dca24c5ad5d73d1d2e9563823b513a2"
+  },
+  "testingManifestSha256": "13a5fd461388db79753208620eed07a212aec9ea956152797fb48d29af7f5b4c",
+  "fixedTestingPages": 44,
+  "fixedTestingPairs": 22,
+  "originalCandidateSites": 40,
+  "referenceChangesPermitted": false,
+  "productionTuningFromTestingPermitted": false,
+  "approaches": [
+    "fallback",
+    "compiled-fresh",
+    "compiled-shared"
+  ],
+  "candidateSource": "Historical raw provider outputs verified against original44 completed request records; no new generation",
+  "sharedTransfer": "Compile first page only; apply same hash-bound procedure unchanged on paired transfer page",
+  "pilotIDs": [
+    "site01-1",
+    "site01-2",
+    "site02-1",
+    "site02-2"
+  ],
+  "paperGate": {
+    "primary": "compiled-shared all fixed checks pass without fallback",
+    "rateStrictlyGreaterThan": 0.8,
+    "minimumPassingPages": 36,
+    "denominator": 44,
+    "requireAll132MeasurementsComplete": true,
+    "runtimeRecoveryOrLegacyDeliveryNotCounted": true
+  },
+  "newModelRequests": 0,
+  "liveWebsiteRequests": 0,
+  "interpretation": "Re-evaluation of previously tested static44page corpus with retained candidates; does not test new compact-input model generation, cold API admission or independent accessibility/user outcomes",
+  "preMeasurementCorrection": "Pilot metadata corrected from four sites to two sites to match the reviewed four-page pilot; no measurements existed."
+}

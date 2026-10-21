@@ -1,0 +1,226 @@
+{
+  "status": "completed",
+  "productionBaseline": "e8c16799a87fd96b46eb57b0ae451933e2bfbe90",
+  "pages": 44,
+  "sitePairs": 22,
+  "screenedCandidates": 40,
+  "genuineMeasurements": 132,
+  "measurementErrors": 0,
+  "metrics": {
+    "fallback": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 41,
+      "noFallbackPages": 0,
+      "readingPassSites": 20,
+      "noFallbackSites": 0,
+      "ruleAppliedPages": 0,
+      "measurementErrors": 0
+    },
+    "compiled-fresh": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 40,
+      "noFallbackPages": 37,
+      "readingPassSites": 20,
+      "noFallbackSites": 17,
+      "ruleAppliedPages": 41,
+      "measurementErrors": 0
+    },
+    "compiled-shared": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 40,
+      "noFallbackPages": 32,
+      "readingPassSites": 20,
+      "noFallbackSites": 14,
+      "ruleAppliedPages": 36,
+      "measurementErrors": 0
+    }
+  },
+  "gate": {
+    "experimentComplete": true,
+    "paperUpdateAllowed": false,
+    "criterion": "Shared compiled-rule all-check page success without runtime fallback, strictly greater than80percent; all44 pages completed for all3 approaches",
+    "requiredPassingPages": 36,
+    "passedPages": 32,
+    "pageDenominator": 44,
+    "successRate": 0.7272727272727273,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 41,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 37,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 17
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 32,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 14
+      }
+    }
+  },
+  "parentAcceptance": {
+    "parentVerified": true,
+    "mode": "full",
+    "rows": 132,
+    "productionHashesMatchTrainingFreeze": true,
+    "metrics": {
+      "fallback": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 41,
+        "noFallbackPages": 0,
+        "readingPassSites": 20,
+        "noFallbackSites": 0,
+        "targetCount": 715,
+        "retained": 715
+      },
+      "compiled-fresh": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 40,
+        "noFallbackPages": 37,
+        "readingPassSites": 20,
+        "noFallbackSites": 17,
+        "targetCount": 715,
+        "retained": 715
+      },
+      "compiled-shared": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 40,
+        "noFallbackPages": 32,
+        "readingPassSites": 20,
+        "noFallbackSites": 14,
+        "targetCount": 715,
+        "retained": 715
+      }
+    },
+    "paperUpdateAllowed": false,
+    "requiredSharedPassingPages": 36,
+    "fixedPageDenominator": 44,
+    "fixedSiteDenominator": 22,
+    "noReferenceChanges": true,
+    "newModelRequests": 0,
+    "liveSiteRequests": 0,
+    "freezeSha256": "ae6c81fc89d7ae3362a62c03cab82273f31cabea43e3eb27744e854714377035",
+    "pilotAcceptanceSha256": "d73a7f4646f6f2ec548bfd2bb17440578898e305b68039f1e0b1d1ef42e46c3b"
+  },
+  "comparison": [
+    {
+      "before": "fallback",
+      "after": "fallback",
+      "baselineReadingPages": 30,
+      "revisedReadingPages": 41,
+      "baselineNoFallbackPages": 0,
+      "revisedNoFallbackPages": 0,
+      "baselineNoFallbackPairs": 0,
+      "revisedNoFallbackPairs": 0
+    },
+    {
+      "before": "fresh",
+      "after": "compiled-fresh",
+      "baselineReadingPages": 15,
+      "revisedReadingPages": 40,
+      "baselineNoFallbackPages": 13,
+      "revisedNoFallbackPages": 37,
+      "baselineNoFallbackPairs": 4,
+      "revisedNoFallbackPairs": 17
+    },
+    {
+      "before": "shared",
+      "after": "compiled-shared",
+      "baselineReadingPages": 19,
+      "revisedReadingPages": 40,
+      "baselineNoFallbackPages": 13,
+      "revisedNoFallbackPages": 32,
+      "baselineNoFallbackPairs": 4,
+      "revisedNoFallbackPairs": 14
+    }
+  ],
+  "failureComponents": {
+    "fallback": {
+      "missingTextPages": 0,
+      "missingLinkPages": 3,
+      "missingImagePages": 0,
+      "retainedNoisePages": 0,
+      "relativeURLPages": 0,
+      "unusedRuleReasons": {}
+    },
+    "compiled-fresh": {
+      "missingTextPages": 0,
+      "missingLinkPages": 4,
+      "missingImagePages": 0,
+      "retainedNoisePages": 0,
+      "relativeURLPages": 0,
+      "unusedRuleReasons": {
+        "model-region-must-match-exactly-once": 1,
+        "role-preservation-failed": 2
+      }
+    },
+    "compiled-shared": {
+      "missingTextPages": 0,
+      "missingLinkPages": 4,
+      "missingImagePages": 0,
+      "retainedNoisePages": 0,
+      "relativeURLPages": 0,
+      "unusedRuleReasons": {
+        "role-preservation-failed": 4,
+        "structural-scope-mismatch": 1,
+        "model-region-must-match-exactly-once": 2,
+        "region-must-match-exactly-once": 1
+      }
+    }
+  },
+  "sourceFreezeSha256": "ae6c81fc89d7ae3362a62c03cab82273f31cabea43e3eb27744e854714377035",
+  "fullSummarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573",
+  "newModelRequests": 0,
+  "liveSiteRequests": 0,
+  "productionChangedDuringTesting": false,
+  "referencesChanged": false,
+  "paperUpdated": false,
+  "parentChecks": {
+    "fullLocalSuitePassed": true,
+    "fullLocalSuiteSeconds": 217.86,
+    "focusedFinalTestsPassed": 17,
+    "runtimeFreezeReverified": true
+  },
+  "scope": "Same previously evaluated44 static testing snapshots and historical raw model candidates. Direct compiled-rule replay; not fresh model generation, cold API admission, independent human accessibility gold or new-corpus validation.",
+  "rawArtifacts": "Preserved in ignored workspace/task023/revised-testing/frozen-e8-v1; original source/AI artifacts remain unchanged.",
+  "workerPostprocessing": "Measurements and bound summary completed. Two compact-export errors stopped worker; parent independently completed and verified exports with explicit nullable-compilation and UTF-8 handling."
+}

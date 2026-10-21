@@ -1,0 +1,47 @@
+{
+  "parentVerified": true,
+  "mode": "pilot",
+  "rows": 12,
+  "productionHashesMatchTrainingFreeze": true,
+  "metrics": {
+    "fallback": {
+      "measuredPages": 4,
+      "measurementErrors": 0,
+      "readingPassPages": 4,
+      "noFallbackPages": 0,
+      "readingPassSites": 2,
+      "noFallbackSites": 0,
+      "targetCount": 134,
+      "retained": 134
+    },
+    "compiled-fresh": {
+      "measuredPages": 4,
+      "measurementErrors": 0,
+      "readingPassPages": 4,
+      "noFallbackPages": 4,
+      "readingPassSites": 2,
+      "noFallbackSites": 2,
+      "targetCount": 134,
+      "retained": 134
+    },
+    "compiled-shared": {
+      "measuredPages": 4,
+      "measurementErrors": 0,
+      "readingPassPages": 4,
+      "noFallbackPages": 3,
+      "readingPassSites": 2,
+      "noFallbackSites": 1,
+      "targetCount": 134,
+      "retained": 134
+    }
+  },
+  "paperUpdateAllowed": false,
+  "requiredSharedPassingPages": 36,
+  "fixedPageDenominator": 44,
+  "fixedSiteDenominator": 22,
+  "noReferenceChanges": true,
+  "newModelRequests": 0,
+  "liveSiteRequests": 0,
+  "freezeSha256": "ae6c81fc89d7ae3362a62c03cab82273f31cabea43e3eb27744e854714377035",
+  "pilotAcceptanceSha256": "d73a7f4646f6f2ec548bfd2bb17440578898e305b68039f1e0b1d1ef42e46c3b"
+}

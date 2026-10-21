@@ -1,0 +1,18 @@
+The harness does not enforce the declared production baseline or runtime stability, and measurement errors can both contaminate independent approaches and incorrectly satisfy completion requirements. Review used staged code and one small synthetic probe; no production changes or provider/site calls were made.
+
+Full review comments:
+
+- [P1] Verify production bytes against the declared frozen commit — C:/Dev/Visual_adapter/tests/local/revised-holdout-replay.cjs:85-88
+  If production files change before preparation, preflight accepts their current hashes and labels them as baseline e8c1679 without comparing them to that commit. The historical317 freeze contains no production bindings, so it cannot catch this. Compare every production file against the actual frozen baseline before creating the replay freeze.
+
+- [P2] Bind the execution runtime before allowing resumed measurements — C:/Dev/Visual_adapter/tests/local/revised-holdout-replay.cjs:155-157
+  If Chromium, Playwright or Node changes between pilot and full replay, verification still succeeds because none of those runtimes is bound into the freeze. Recording browser.version() in individual rows only documents drift after mixing measurements; it does not reject it. Freeze and verify the relevant runtime identities before launching or resuming.
+
+- [P2] Isolate missing shared seeds from the other approaches — C:/Dev/Visual_adapter/tests/local/revised-holdout-replay.cjs:170-172
+  When a seed page encounters a navigation or injection error before writing its seed artifact, its checkpoint is nevertheless completed. The transfer then throws here for the missing seed before measuring fallback or compiled-fresh, even though its fresh compilation has already succeeded. Record the shared measurement error separately and continue measuring the two independent approaches instead of propagating the seed's infrastructure failure into all three results.
+
+- [P2] Accept explicit measurement-error records in the reporting gate — C:/Dev/Visual_adapter/tests/local/revised-testing-gate.cjs:19-20
+  For any measurement error emitted by the replay harness, the gate throws Count/check mismatch because those records omit score.total and score.retained. A small synthetic probe reproduces this with the exact error-row shape. Handle measurement errors explicitly as unsuccessful, incomplete observations while retaining the fixed denominators, rather than preventing the parent from obtaining a gate verdict.
+
+- [P1] Require completed measurements before reporting paper eligibility — C:/Dev/Visual_adapter/tests/local/revised-holdout-replay.cjs:198-198
+  If36 shared pages pass and the remaining8 encounter measurement errors, the harness still reports paperGate:true: verifiedRows counts the synthetic error records as measured pages. This does not establish that all44 pages completed under all3 approaches. Require successful measurement completion for every page/approach separately from scientific pass/fail, and use the reporting gate consistently instead of this weaker duplicate predicate.

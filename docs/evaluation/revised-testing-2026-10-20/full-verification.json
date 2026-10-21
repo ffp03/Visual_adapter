@@ -1,0 +1,61 @@
+{
+  "freezeSha256": "ae6c81fc89d7ae3362a62c03cab82273f31cabea43e3eb27744e854714377035",
+  "pilotSha256": "d73a7f4646f6f2ec548bfd2bb17440578898e305b68039f1e0b1d1ef42e46c3b",
+  "fullSummarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573",
+  "boundRows": 132,
+  "completedPages": 44,
+  "gate": {
+    "experimentComplete": true,
+    "paperUpdateAllowed": false,
+    "criterion": "Shared compiled-rule all-check page success without runtime fallback, strictly greater than80percent; all44 pages completed for all3 approaches",
+    "requiredPassingPages": 36,
+    "passedPages": 32,
+    "pageDenominator": 44,
+    "successRate": 0.7272727272727273,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 41,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 37,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 17
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 32,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 14
+      }
+    }
+  },
+  "sourceProductionBaseline": "e8c16799a87fd96b46eb57b0ae451933e2bfbe90",
+  "baselineArtifactSha256": "6b7789a136a796a0ddefe5bcf7cb911663634a1eedeac9fbec3f6485b7561132",
+  "runtime": {
+    "node": "v22.17.0",
+    "v8": "12.4.254.21-node.26",
+    "chromiumFileVersion": "141.0.7355.0",
+    "playwright": "1.62.1",
+    "playwrightCore": "1.62.1"
+  },
+  "verifiedAt": "2026-10-21T04:01:55.740Z"
+}

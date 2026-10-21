@@ -1,0 +1,6 @@
+The gate correctly blocks incomplete experiments, but its measured-page count includes explicit measurement failures. All seven gate tests passed when run directly; a synthetic reproduction confirmed the reporting discrepancy.
+
+Review comment:
+
+- [P2] Exclude measurement errors from measuredPages — C:\Dev\Visual_adapter\tests\local\revised-testing-gate.cjs:39-39
+  When a policy has an explicit measurement-error row, `group.size` still counts it as measured. A synthetic reproduction with 43 genuine shared measurements and one navigation error reports `paperGate.metrics['compiled-shared'].measuredPages === 44`, while the replay metrics correctly report 43. Both appear in the same summary, overstating measurement coverage in the authoritative gate report. Count entries with `measurementComplete` instead, retaining 44 as the fixed denominator.

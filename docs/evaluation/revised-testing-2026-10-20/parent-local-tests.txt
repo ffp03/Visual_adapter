@@ -1,0 +1,495 @@
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 1.926s
+
+OK
+Preservation core: roles, expansion, exclusions, URL/base/fragments, structure and sanitization passed.
+TAP version 13
+# Subtest: balanced sample includes late structures within budget and leaves reading output complete
+ok 1 - balanced sample includes late structures within budget and leaves reading output complete
+  ---
+  duration_ms: 1985.3227
+  type: 'test'
+  ...
+# Subtest: sampling omits form values even inside selected text blocks, scripts and destinations
+ok 2 - sampling omits form values even inside selected text blocks, scripts and destinations
+  ---
+  duration_ms: 25.3642
+  type: 'test'
+  ...
+# Subtest: small budget reports omitted roles without slicing serialized HTML or inventing IDs
+ok 3 - small budget reports omitted roles without slicing serialized HTML or inventing IDs
+  ---
+  duration_ms: 71.5075
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4084.5824
+TAP version 13
+# Subtest: import is input/browser/provider safe and tags cannot escape owning workspace
+ok 1 - import is input/browser/provider safe and tags cannot escape owning workspace
+  ---
+  duration_ms: 2.1949
+  type: 'test'
+  ...
+# Subtest: original44 IDs,22 ordered pairs and40 candidates are mandatory
+ok 2 - original44 IDs,22 ordered pairs and40 candidates are mandatory
+  ---
+  duration_ms: 1.5306
+  type: 'test'
+  ...
+# Subtest: historical raw candidate is returned, historical normalization remains separate without current validator
+ok 3 - historical raw candidate is returned, historical normalization remains separate without current validator
+  ---
+  duration_ms: 24.3263
+  type: 'test'
+  ...
+# Subtest: all six selected historical artifacts reject tamper including full context and backend bytes
+ok 4 - all six selected historical artifacts reject tamper including full context and backend bytes
+  ---
+  duration_ms: 64.6333
+  type: 'test'
+  ...
+# Subtest: incomplete observations retain44-page/22-site denominators and cannot pass shared paper gate
+ok 5 - incomplete observations retain44-page/22-site denominators and cannot pass shared paper gate
+  ---
+  duration_ms: 1.7448
+  type: 'test'
+  ...
+# Subtest: individual result rows and HTML are hash verified, summary claims are ignored
+ok 6 - individual result rows and HTML are hash verified, summary claims are ignored
+  ---
+  duration_ms: 40.0795
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 294.2534
+TAP version 13
+# Subtest: strict threshold rejects35/44 and permits36/44 shared rule passes
+ok 1 - strict threshold rejects35/44 and permits36/44 shared rule passes
+  ---
+  duration_ms: 4.8897
+  type: 'test'
+  ...
+# Subtest: complete fallback and strong fresh results do not meet the shared no-fallback gate
+ok 2 - complete fallback and strong fresh results do not meet the shared no-fallback gate
+  ---
+  duration_ms: 1.8588
+  type: 'test'
+  ...
+# Subtest: partial studies retain44 denominator and cannot authorize paper updates
+ok 3 - partial studies retain44 denominator and cannot authorize paper updates
+  ---
+  duration_ms: 0.563
+  type: 'test'
+  ...
+# Subtest: duplicates, wrong site pairing and falsely retained noise are rejected
+ok 4 - duplicates, wrong site pairing and falsely retained noise are rejected
+  ---
+  duration_ms: 1.6328
+  type: 'test'
+  ...
+# Subtest: runtime supplementation and fallback labels cannot inflate no-fallback success
+ok 5 - runtime supplementation and fallback labels cannot inflate no-fallback success
+  ---
+  duration_ms: 0.9617
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 155.8687
+TAP version 13
+# Subtest: first complete example private; reload and same content at another identity do not admit; second distinct example admits with one runner call
+ok 1 - first complete example private; reload and same content at another identity do not admit; second distinct example admits with one runner call
+  ---
+  duration_ms: 1744.4667
+  type: 'test'
+  ...
+# Subtest: incomplete context never generates or admits; two structural families coexist on one host
+ok 2 - incomplete context never generates or admits; two structural families coexist on one host
+  ---
+  duration_ms: 1012.3404
+  type: 'test'
+  ...
+# Subtest: second selector failure retires admission attempt without automatic generation; explicit report resets family, never session cap
+ok 3 - second selector failure retires admission attempt without automatic generation; explicit report resets family, never session cap
+  ---
+  duration_ms: 320.8728
+  type: 'test'
+  ...
+# Subtest: concurrent seed/reload/second example coalesce and count distinct evidence once
+ok 4 - concurrent seed/reload/second example coalesce and count distinct evidence once
+  ---
+  duration_ms: 386.1658
+  type: 'test'
+  ...
+# Subtest: legacy and v2 requests share the global generation cap
+ok 5 - legacy and v2 requests share the global generation cap
+  ---
+  duration_ms: 262.6786
+  type: 'test'
+  ...
+# Subtest: unusable, unsupported essential media and unresolved relative validation context consume no runner call
+ok 6 - unusable, unsupported essential media and unresolved relative validation context consume no runner call
+  ---
+  duration_ms: 172.9488
+  type: 'test'
+  ...
+# Subtest: provider failure stays blocked until explicit report; retry consumes remaining cap without resetting it
+ok 7 - provider failure stays blocked until explicit report; retry consumes remaining cap without resetting it
+  ---
+  duration_ms: 956.2576
+  type: 'test'
+  ...
+# Subtest: optional nested article content does not fork the coarse root family
+ok 8 - optional nested article content does not fork the coarse root family
+  ---
+  duration_ms: 532.4315
+  type: 'test'
+  ...
+# Subtest: report during generation retires queued seed/reload without automatic replacement generation
+ok 9 - report during generation retires queued seed/reload without automatic replacement generation
+  ---
+  duration_ms: 518.8314
+  type: 'test'
+  ...
+# Subtest: eligible selector domain has server/client parity despite nav/footer duplicates
+ok 10 - eligible selector domain has server/client parity despite nav/footer duplicates
+  ---
+  duration_ms: 13233.8332
+  type: 'test'
+  ...
+# Subtest: oversized full sanitized body never generates, admits or publishes a pruned context
+ok 11 - oversized full sanitized body never generates, admits or publishes a pruned context
+  ---
+  duration_ms: 1233.3327
+  type: 'test'
+  ...
+# Subtest: small complete sanitized bodies admit stable ancestors that also apply on live wrappers
+ok 12 - small complete sanitized bodies admit stable ancestors that also apply on live wrappers
+  ---
+  duration_ms: 2546.1128
+  type: 'test'
+  ...
+# Subtest: complete sanitized body retains outside-reading class duplicates and never publishes false uniqueness
+ok 13 - complete sanitized body retains outside-reading class duplicates and never publishes false uniqueness
+  ---
+  duration_ms: 951.5907
+  type: 'test'
+  ...
+# Subtest: two actual reading matches remain ambiguous and are never published
+ok 14 - two actual reading matches remain ambiguous and are never published
+  ---
+  duration_ms: 640.3006
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 51664.7358
+{
+  "mode": "local provider doubles; no quality inference",
+  "results": [
+    {
+      "name": "missing rule displays local fallback; one failed mocked analyze request",
+      "passed": true
+    },
+    {
+      "name": "stale selector stops cache reapplication without provider retry",
+      "passed": true
+    },
+    {
+      "name": "invalid selector returns safe fallback",
+      "passed": true
+    },
+    {
+      "name": "cache failure resolves null; fallback remains and mocked analysis can be attempted",
+      "passed": true
+    },
+    {
+      "name": "matching shared rule uses production caller",
+      "passed": true
+    },
+    {
+      "name": "raw verification context is original DOM, not extracted fragment",
+      "passed": true
+    },
+    {
+      "name": "oversized original body is not truncated into a misleading verification sample",
+      "passed": true
+    },
+    {
+      "name": "a large head cannot replace the original article in verification context",
+      "passed": true
+    },
+    {
+      "name": "new backend source matches verification trigger",
+      "passed": true
+    },
+    {
+      "name": "a product summary rule cannot discard the substantive description",
+      "passed": true
+    },
+    {
+      "name": "long reading output remains complete while model context is bounded",
+      "passed": true
+    },
+    {
+      "name": "site branding outside a generic body does not reject a complete content rule",
+      "passed": true
+    },
+    {
+      "name": "a summary-only rule cannot silently discard substantive code and table content",
+      "passed": true
+    },
+    {
+      "name": "table rules retain the table wrapper and cell structure in the reading view",
+      "passed": true
+    },
+    {
+      "name": "navigation articles cannot replace main content and source DOM is preserved",
+      "passed": true
+    },
+    {
+      "name": "cached rules also remove scripts and navigation clutter",
+      "passed": true
+    },
+    {
+      "name": "links and images retain the source website URLs after transfer to the extension",
+      "passed": true
+    }
+  ]
+}
+{
+  "results": [
+    {
+      "name": "generated backend rule verifies original DOM against actual rule output",
+      "passed": true
+    },
+    {
+      "name": "verification skips stale-page or unavailable original context: {\"hostname\":\"other.example\",\"url\":\"https://other.example/private\"}",
+      "passed": true
+    },
+    {
+      "name": "verification skips stale-page or unavailable original context: {\"url\":\"https://example.org/different-article\"}",
+      "passed": true
+    },
+    {
+      "name": "verification skips stale-page or unavailable original context: {\"verificationContextUnavailable\":\"complete-body-exceeds-verifier-bound\"}",
+      "passed": true
+    },
+    {
+      "name": "fallback remains visible and schedules no refresh: {\"success\":false,\"status\":\"fallback\"}",
+      "passed": true
+    },
+    {
+      "name": "fallback remains visible and schedules no refresh: {\"success\":false,\"error\":\"offline\"}",
+      "passed": true
+    },
+    {
+      "name": "fallback remains visible and schedules no refresh: undefined",
+      "passed": true
+    },
+    {
+      "name": "supplemented procedure is kept without analysis or refresh loop",
+      "passed": true
+    },
+    {
+      "name": "local provisional response keeps basic view without refresh or polling",
+      "passed": true
+    },
+    {
+      "name": "local lookup outage keeps basic view without analysis message",
+      "passed": true
+    },
+    {
+      "name": "legacy server cached delivery sends no analysis and schedules no refresh",
+      "passed": true
+    }
+  ]
+}
+{"production_scorer_checks":3,"passed":3,"diagnostic_only":true,"clean_confidence":0.9}
+{"provenance_regressions":8,"passed":8}
+TAP version 13
+# Subtest: one generation is reused across pages and a server restart
+ok 1 - one generation is reused across pages and a server restart
+  ---
+  duration_ms: 453.0576
+  type: 'test'
+  ...
+# Subtest: concurrent requests share one generation; other hosts receive bounded backpressure
+ok 2 - concurrent requests share one generation; other hosts receive bounded backpressure
+  ---
+  duration_ms: 197.1693
+  type: 'test'
+  ...
+# Subtest: failures consume the attempt cap, remain uncached, and are recorded
+ok 3 - failures consume the attempt cap, remain uncached, and are recorded
+  ---
+  duration_ms: 73.4718
+  type: 'test'
+  ...
+# Subtest: browser origins, hostname, type and size are checked before inference
+ok 4 - browser origins, hostname, type and size are checked before inference
+  ---
+  duration_ms: 69.928
+  type: 'test'
+  ...
+# Subtest: verification is local only; reporting archives a rule rather than deleting it
+ok 5 - verification is local only; reporting archives a rule rather than deleting it
+  ---
+  duration_ms: 211.5808
+  type: 'test'
+  ...
+# Subtest: preprocessing removes active content and form values; invalid rules are rejected
+ok 6 - preprocessing removes active content and form values; invalid rules are rejected
+  ---
+  duration_ms: 51.4119
+  type: 'test'
+  ...
+# Subtest: local extension rule service sends no traffic to Firebase or the hosted backend
+ok 7 - local extension rule service sends no traffic to Firebase or the hosted backend
+  ---
+  duration_ms: 2.9759
+  type: 'test'
+  ...
+# Subtest: DeepSeek request pins current model, disables thinking, and requests bounded JSON
+ok 8 - DeepSeek request pins current model, disables thinking, and requests bounded JSON
+  ---
+  duration_ms: 1.9605
+  type: 'test'
+  ...
+# Subtest: hosted mode preserves anonymous Firebase GET and report-push contracts without SDK imports
+ok 9 - hosted mode preserves anonymous Firebase GET and report-push contracts without SDK imports
+  ---
+  duration_ms: 2.1909
+  type: 'test'
+  ...
+# Subtest: DeepSeek authentication errors stop without exposing provider content or retrying
+ok 10 - DeepSeek authentication errors stop without exposing provider content or retrying
+  ---
+  duration_ms: 1.6998
+  type: 'test'
+  ...
+# Subtest: DeepSeek incomplete outputs retain usage and are not cached
+ok 11 - DeepSeek incomplete outputs retain usage and are not cached
+  ---
+  duration_ms: 39.1507
+  type: 'test'
+  ...
+# Subtest: DeepSeek timeout aborts a request with no retry
+ok 12 - DeepSeek timeout aborts a request with no retry
+  ---
+  duration_ms: 25.3665
+  type: 'test'
+  ...
+# Subtest: shared secret loader reads only the requested key and supports quoted values
+ok 13 - shared secret loader reads only the requested key and supports quoted values
+  ---
+  duration_ms: 6.18
+  type: 'test'
+  ...
+# Subtest: caches from another model are regenerated and archived rather than mislabeled
+ok 14 - caches from another model are regenerated and archived rather than mislabeled
+  ---
+  duration_ms: 171.3299
+  type: 'test'
+  ...
+# Subtest: Codex arguments pin Luna and medium effort, JSON schema and ChatGPT auth
+ok 15 - Codex arguments pin Luna and medium effort, JSON schema and ChatGPT auth
+  ---
+  duration_ms: 145.0809
+  type: 'test'
+  ...
+# Subtest: Codex timeout terminates the child without a retry
+ok 16 - Codex timeout terminates the child without a retry
+  ---
+  duration_ms: 1861.2675
+  type: 'test'
+  ...
+# Subtest: local validation widens a post-only rule to retain sibling discussion content
+ok 17 - local validation widens a post-only rule to retain sibling discussion content
+  ---
+  duration_ms: 39.4589
+  type: 'test'
+  ...
+# Subtest: a legacy table-row selection is promoted to a stable complete table
+ok 18 - a legacy table-row selection is promoted to a stable complete table
+  ---
+  duration_ms: 32.7841
+  type: 'test'
+  ...
+# Subtest: model exclusions cannot delete the main page title
+ok 19 - model exclusions cannot delete the main page title
+  ---
+  duration_ms: 23.3682
+  type: 'test'
+  ...
+# Subtest: a title word in prose cannot substitute for the actual heading element
+ok 20 - a title word in prose cannot substitute for the actual heading element
+  ---
+  duration_ms: 15.4144
+  type: 'test'
+  ...
+# Subtest: a failed host does not consume more inference until explicitly reported
+ok 21 - a failed host does not consume more inference until explicitly reported
+  ---
+  duration_ms: 40.8488
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5852.1834
+TAP version 13
+# Subtest: concurrent processes cannot duplicate a reservation or exceed the aggregate fake cap
+ok 1 - concurrent processes cannot duplicate a reservation or exceed the aggregate fake cap
+  ---
+  duration_ms: 416.7097
+  type: 'test'
+  ...
+# Subtest: an interrupted-run lock is preserved and prevents a new inference
+ok 2 - an interrupted-run lock is preserved and prevents a new inference
+  ---
+  duration_ms: 4.0012
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 579.3539

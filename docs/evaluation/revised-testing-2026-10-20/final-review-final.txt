@@ -1,0 +1,1 @@
+The narrow delta correctly separates recordedPages from completed measurements while preserving the fixed denominator and completion gate. All seven relevant gate tests passed, including the 43 measured pages plus one explicit error regression.

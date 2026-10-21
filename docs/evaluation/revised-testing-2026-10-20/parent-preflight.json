@@ -1,0 +1,16 @@
+{
+  "captureBindingsVerified": 317,
+  "testingPages": 44,
+  "testingSites": 22,
+  "rawProviderChainsVerified": 44,
+  "frozenProductionFilesMatch": 10,
+  "originalManifestSha256": "13a5fd461388db79753208620eed07a212aec9ea956152797fb48d29af7f5b4c",
+  "paperCriterion": {
+    "approach": "compiled-shared",
+    "noFallback": true,
+    "strictlyGreaterThan": 0.8,
+    "minimumPassingPages": 36,
+    "denominator": 44
+  },
+  "newModelRequests": 0
+}

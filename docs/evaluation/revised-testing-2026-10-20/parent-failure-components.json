@@ -1,0 +1,34 @@
+{
+  "fallback": {
+    "missingTextPages": 0,
+    "missingLinkPages": 3,
+    "missingImagePages": 0,
+    "retainedNoisePages": 0,
+    "relativeURLPages": 0,
+    "unusedRuleReasons": {}
+  },
+  "compiled-fresh": {
+    "missingTextPages": 0,
+    "missingLinkPages": 4,
+    "missingImagePages": 0,
+    "retainedNoisePages": 0,
+    "relativeURLPages": 0,
+    "unusedRuleReasons": {
+      "model-region-must-match-exactly-once": 1,
+      "role-preservation-failed": 2
+    }
+  },
+  "compiled-shared": {
+    "missingTextPages": 0,
+    "missingLinkPages": 4,
+    "missingImagePages": 0,
+    "retainedNoisePages": 0,
+    "relativeURLPages": 0,
+    "unusedRuleReasons": {
+      "role-preservation-failed": 4,
+      "structural-scope-mismatch": 1,
+      "model-region-must-match-exactly-once": 2,
+      "region-must-match-exactly-once": 1
+    }
+  }
+}

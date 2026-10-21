@@ -129,3 +129,30 @@ reading outputs against that additive benchmark. It verifies the annotation
 manifest, original18 IDs/nine pairs and all individual artifacts, and makes no
 timing claims. Neither direct compiled replay nor additive rescoring measures
 cold service admission, newly generated rule quality or unseen generalization.
+
+## Frozen revised replay on the original44 testing pages
+
+`revised-holdout-replay.cjs` verifies the original317 capture bindings,44 raw
+provider/context/input/backend chains, exact44 IDs/22 ordered site pairs and the
+40-candidate denominator. Current production must match the committed e8c1679
+training freeze. Node, Chromium and Playwright runtime identities and module
+fingerprints are frozen separately and checked before launch/resume.
+
+Use `preflight`, then `prepare --tag=<unused-tag>`, then `pilot --tag=<tag>`.
+Full replay requires explicit parent acceptance via
+`full --tag=<tag> --accept-pilot=<pilot-checkpoint SHA256>`. Previously bound pilot
+measurements are verified and reused. No mode invokes a model, fetches a site or
+regenerates references. Original historical normalization remains separate from
+raw candidates and is never rederived through the changed validator.
+
+The authoritative `revised-testing-gate.cjs` result distinguishes recorded pages,
+genuinely measured pages and measurement errors. Paper permission is the boolean
+`paperGate.paperUpdateAllowed`, not the truthiness of the verdict object. It
+requires all44 pages genuinely measured under all3 policies and at least36 shared
+compiled-procedure page passes without runtime fallback. Partial studies, error
+rows, high fallback/fresh scores, legacy rules and recovery cannot authorize an
+update. Seven gate and ten replay tests run in `test:local` using synthetic data.
+
+The completed frozen replay and its unmet primary threshold are documented in
+`docs/evaluation/revised-testing-2026-10-20/`. Scientific failures remain in the
+fixed denominators, and production was not tuned from these testing results.

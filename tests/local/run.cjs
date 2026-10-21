@@ -14,6 +14,8 @@ if (mode === 'test') {
     run(python, ['-m', 'unittest', 'discover', '-s', 'tests/local', '-p', 'test_*.py']);
     run(process.execPath, ['tests/local/preservation-core-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/analysis-sample-test.cjs']);
+    run(process.execPath, ['--test', 'tests/local/revised-holdout-replay-test.cjs']);
+    run(process.execPath, ['--test', 'tests/local/revised-testing-gate-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/procedure-admission-test.cjs']);
     run(process.execPath, ['tests/local/control-flow.cjs']);
     run(process.execPath, ['tests/local/panel-flow.cjs']);

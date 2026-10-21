@@ -55,3 +55,48 @@ Parent review corrections: verification uses the complete original body only whe
 The cache-failure double follows FirebaseService.getRule and resolves null. This is indistinguishable from a cache miss to the current caller, so a mocked analysis attempt can occur; the tests do not guarantee zero provider requests during a real cache outage.
 
 Resuming now rejects a changed source/protocol/runtime rather than relabeling old measurements. Frozen worker benchmarks predate the parent review corrections and remain unchanged. Use a new safe output tag, for example --tag=parent-pilot, to retain a separate result set. Never overwrite old evidence merely to satisfy a provenance check.
+
+
+## Shared preservation procedure checks
+
+`preservation-core-test.cjs` exercises the shared browser/Node DOM core and runs in
+`test:local`. `preservation-native.cjs` additionally launches an isolated headless
+Chrome with messaging doubles and no site requests; set `PRESERVATION_CHROME` to
+an alternate Chrome executable. Its subprocess has a 90-second hard timeout.
+The native checks include delivery provenance and the panel checks ensure an
+already delivered procedure does not trigger repeated analysis.
+
+Schema v2 declares nonoverlapping reading regions, exclusions, coarse structural
+preconditions and compilation adjustments. Applying a fixed procedure checks the
+current full DOM and rejects missing reading roles; it never augments the output
+at runtime. Compile-time added regions are reported separately from runtime
+fallback and from unadjusted model selection. This is an empirical reading-task
+guard; application interactions, CSS-generated content and user outcomes are not
+verified. Server analysis samples remain explicitly incomplete source context.
+
+
+The local v2 route uses `GET /rules/<host>?protocol=2` and protocol-2 analyze/report
+requests. It keeps a separate private `procedures-v2` namespace; a legacy host
+rule is not multi-example admission. One bounded legacy model candidate remains
+provisional after its first complete sanitized reading example. A second distinct
+identity AND content example must pass the same fixed procedure before publication.
+Client identity hashes omit URL fragments and preserve queries; these identifiers
+are local prototype evidence, not trusted attestations. Family identity is derived
+on the server from versioned outermost semantic landmarks, without text or URLs.
+
+Analysis stays capped at 30,000 model-input characters. Complete validation is a
+separate complete client-sanitized BODY (including outside reading regions, original
+BODY tag/attributes and resolved destinations); oversized bodies are never pruned.
+It is
+subject to the existing 100,000-character and 262,144-byte request limits. Inputs
+and textarea values are cleared client-side. Incomplete/unusable contexts, cache
+lookup outages, failed matching families and unsupported essential material retain
+the basic view without another automatic runner call. Form application behavior
+is not verified. Both protocols share one session generation cap/concurrency bound.
+
+`procedure-admission-test.cjs` runs in `test:local`; it uses an ephemeral API and
+fake runner. `procedure-browser-test.cjs` additionally verifies the production
+content/background/service path in isolated Chromium, including privacy, live DOM
+updates during cache lookup and lookup-failure behavior. Saved development replay
+scripts require frozen source hashes; cold admission and GET-only warm reuse are
+separate resubstitution reports, never unseen performance or new generation.

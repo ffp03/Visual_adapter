@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     log('Content script not found. Injecting...');
                     await chrome.scripting.executeScript({
                         target: { tabId: tabId },
-                        files: ['content.js']
+                        files: ['procedure-core.js', 'content.js']
                     });
                     log('Injection successful. Retrying...');
                     // Wait a moment for script to initialize
@@ -210,13 +210,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     log("Scroll position restored.");
                 }
 
-                if (response.usedRule) {
+                if (response.usedRule || response.procedureDelivered) {
                     log("Success: Applied cached Smart Rule.");
                     const meta = document.createElement('div');
                     meta.style.color = 'green';
                     meta.style.marginTop = '10px';
-                    meta.textContent = "⚡ Smart Rule Applied (Zero Latency)";
+                    meta.textContent = response.supplementation ? 'Reading view ready (supporting content preserved)' : 'Saved reading rule applied';
                     readerView.appendChild(meta);
+                } else if (response.lookupAvailable === false) {
+                    const status = document.createElement('p');
+                    status.textContent = 'Using basic view. Saved reading procedures are temporarily unavailable.';
+                    readerView.appendChild(status);
                 } else {
                     log('No local rule. Checking Cloud...');
 
@@ -266,7 +270,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                                 // Get the full HTML for verification
                                 chrome.tabs.sendMessage(tabId, { action: "EXTRACT_CONTEXT", includeRawHTML: true }, (extractResponse) => {
-                                    if (extractResponse?.usedRule && extractResponse.rawHTML && extractResponse.html
+                                    if ((extractResponse?.usedRule || extractResponse?.procedureDelivered) && extractResponse.rawHTML && extractResponse.html
                                         && response.url && response.hostname
                                         && extractResponse.url === response.url
                                         && extractResponse.hostname === response.hostname) {
@@ -285,6 +289,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                         } else if (res.status === 'fallback') {
                             log('Cached selector did not match this page. Keeping basic view.');
                             banner.textContent = 'Saved rule did not match this page. Using basic view.';
+                        } else if (res.protocol === 2 && res.status === 'pending') {
+                            banner.textContent = res.reason === 'second-distinct-valid-example-required' || res.reason === 'distinct-identity-and-content-required'
+                                ? 'Using basic view. A second compatible page is needed to validate the saved reading procedure.'
+                                : 'Using basic view. Complete reading context is not available for validation.';
                         } else if (res.status === 'pending') {
                             log("Request sent to backend. Waiting for analysis...");
                             // Banner stays as "Analyzing..."

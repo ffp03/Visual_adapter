@@ -31,74 +31,45 @@ function cleanHTML(value) {
         return doc.body.outerHTML;
     } finally { dom.window.close(); }
 }
+const preservationCore = require('../extension/procedure-core.js');
+function compileProcedure(rule, html, { url, fullContext = false } = {}) {
+    const dom = new JSDOM(html, url ? { url } : undefined);
+    try {
+        const inventory = preservationCore.inspect(dom.window.document);
+        const procedure = preservationCore.compile(dom.window.document, rule, inventory);
+        procedure.context.completeSourceValidation = !!fullContext;
+        procedure.context.sourceURLKnown = !!url;
+        return { procedure, coverage: preservationCore.apply(dom.window.document, procedure, inventory).coverage,
+            validationContext: fullContext ? 'supplied-full-source-dom' : 'bounded-or-unspecified-analysis-context',
+            completeSourceValidation: !!fullContext, sourceURLKnown: !!url };
+    } finally { dom.window.close(); }
+}
+// Legacy return shape is retained. Its final application uses the same role guard
+// as Chromium; callers needing distinct regions use compileProcedure instead.
 function validateRule(rule, html) {
-    if (!rule || typeof rule.main !== 'string' || !rule.main.trim() || rule.main.length > 500
-        || typeof rule.name !== 'string' || rule.name.length > 120 || !Array.isArray(rule.exclude)
-        || rule.exclude.length > 30 || rule.exclude.some(x => typeof x !== 'string' || !x.trim() || x.length > 500)) {
-        throw Error('Invalid extraction rule');
-    }
     const dom = new JSDOM(html);
     try {
         const doc = dom.window.document;
-        const stableSelector = element => {
-            const tag = element.tagName.toLowerCase(), candidates = [];
-            if (element.id) candidates.push(tag + '[id=' + JSON.stringify(element.id) + ']');
-            if (element.classList.length) candidates.push(tag + [...element.classList].slice(0, 3).map(c => '[class~=' + JSON.stringify(c) + ']').join(''));
-            if (['MAIN', 'ARTICLE'].includes(element.tagName)) candidates.push(tag);
-            return candidates.find(selector => {
-                try { return selector.length <= 500 && doc.querySelectorAll(selector).length === 1 && doc.querySelector(selector) === element; }
-                catch { return false; }
-            });
-        };
-        let main = doc.querySelector(rule.main);
-        if (!main) throw Error('Rule must match a content container');
-        if (/^(TR|TD|TH|TBODY|THEAD|TFOOT|CAPTION)$/.test(main.tagName)) {
-            const table = main.closest('table'), selector = table && stableSelector(table);
-            if (!selector) throw Error('Table fragment needs a stable table container');
-            main = table; rule = { ...rule, main: selector };
+        const selected = typeof rule?.main === 'string' && preservationCore.matches(doc, rule.main)[0];
+        if (!selected || !/^(BODY|MAIN|ARTICLE|DIV|SECTION|UL|OL|TABLE|CENTER|TR|TD|TH|TBODY|THEAD|TFOOT|CAPTION)$/.test(selected.tagName)) throw Error('Rule must match a content container');
+        if (rule.exclude?.some(selector => selected.matches(selector) || doc.body.matches(selector))) throw Error('Exclusion would remove the content root');
+        const inventory = preservationCore.inspect(doc);
+        const procedure = preservationCore.compile(doc, rule, inventory);
+        let main = selected;
+        const nodes = procedure.regions.map(region => doc.querySelector(region.selector));
+        while (main && !nodes.every(node => main.contains(node))) main = main.parentElement;
+        if (!main || !doc.body.contains(main)) throw Error('Legacy rule cannot represent required regions');
+        let mainSelector = main === selected && !/^(TR|TD|TH|TBODY|THEAD|TFOOT|CAPTION)$/.test(selected.tagName) ? rule.main : main.tagName.toLowerCase();
+        if (main !== selected && main.id) mainSelector += '[id=' + JSON.stringify(main.id) + ']';
+        if (preservationCore.matches(doc, mainSelector).length !== 1) mainSelector = procedure.regions.length === 1 ? procedure.regions[0].selector : 'body';
+        const effective = { main: mainSelector, exclude: [], name: rule.name };
+        for (const exclusion of procedure.exclude) {
+            const trial = { ...effective, exclude: [...effective.exclude, exclusion] };
+            if (preservationCore.applyLegacy(doc, trial, inventory).accepted) effective.exclude.push(exclusion);
         }
-        if (!/^(BODY|MAIN|ARTICLE|DIV|SECTION|UL|OL|TABLE|CENTER)$/.test(main.tagName)) throw Error('Rule must match a content container');
-        const normalize = text => text.replace(/\s+/g, ' ').trim();
-        const blocks = [...doc.body.querySelectorAll('p,pre,tr,blockquote,[itemprop="text"]')]
-            .filter(e => e.tagName !== 'TR' || (!e.querySelector('tr') && !e.querySelector('p,pre,blockquote,[itemprop="text"]')))
-            .map(e => normalize(e.textContent)).filter(text => text.length >= 80).map(text => text.slice(0, 180));
-        const indices = blocks.length > 9 ? [0, 1, 2, Math.floor(blocks.length / 2), blocks.length - 3, blocks.length - 2, blocks.length - 1] : blocks.map((_, i) => i);
-        const anchors = [...new Set(indices.map(i => blocks[i]))];
-        const comments = [...doc.body.querySelectorAll('.commtext,[role="comment"],[itemprop="commentText"]')]
-            .map(e => normalize(e.textContent)).filter(text => text.length >= 20).map(text => text.slice(0, 180));
-        const commentAnchors = comments.length ? [comments[0], comments[Math.floor(comments.length / 2)], comments.at(-1)] : [];
-        const semantic = doc.querySelector('main,article,[role="main"]');
-        const titleElement = semantic?.querySelector('h1');
-        const title = normalize(titleElement?.textContent || '');
-        const safeExclusions = rule.exclude.filter(selector => {
-            if (doc.body.matches(selector) || semantic?.matches(selector)) throw Error('Exclusion would remove the content root');
-            return !titleElement || ![...doc.querySelectorAll(selector)].some(element => element === titleElement || element.contains(titleElement));
-        });
-        if (safeExclusions.length !== rule.exclude.length) rule = { ...rule, exclude: safeExclusions };
-        const usable = element => {
-            const clone = element.cloneNode(true);
-            for (const selector of rule.exclude) clone.querySelectorAll(selector).forEach(e => e.remove());
-            const text = normalize(clone.textContent);
-            const titleRetained = !title || [...clone.querySelectorAll('h1')].some(heading =>
-                (!titleElement.id || heading.id === titleElement.id) && normalize(heading.textContent) === title);
-            return !!text && titleRetained && commentAnchors.every(a => text.includes(a))
-                && (!anchors.length || anchors.filter(a => text.includes(a)).length >= Math.ceil(anchors.length / 2));
-        };
-        if (!usable(main)) {
-            // Widen locally rather than launching another model request when a rule
-            // selects only a summary/post and omits sibling descriptions or comments.
-            let replacement = null;
-            for (let parent = main.parentElement; parent && parent !== doc.body; parent = parent.parentElement) {
-                if (!/^(MAIN|ARTICLE|DIV|SECTION|UL|OL|TABLE|CENTER)$/.test(parent.tagName)) continue;
-                if (!usable(parent)) continue;
-                replacement = stableSelector(parent);
-                if (replacement) break;
-            }
-            if (!replacement) throw Error('Rule would omit substantive content; keep local fallback');
-            rule = { ...rule, main: replacement };
-        }
+        if (!preservationCore.applyLegacy(doc, effective, inventory).accepted) throw Error('Rule would omit required reading roles');
+        return effective;
     } finally { dom.window.close(); }
-    return { main: rule.main, exclude: rule.exclude, name: rule.name };
 }
 
 function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls = 20 } = {}) {
@@ -120,7 +91,7 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
     }
     async function generate(host, html) {
         const cached = read(host);
-        if (cached) return { success: true, rule: cached.rule, source: 'local-cache', provider, model };
+        if (cached) return { success: true, rule: cached.rule, procedure: cached.procedure, validation: cached.validation, source: 'local-cache', provider, model };
         if (inFlight.has(host)) return inFlight.get(host);
         if (failedHosts.has(host)) {
             const error = Error('Previous generation failed; keep the local fallback. Reporting the host explicitly enables another attempt.');
@@ -141,17 +112,18 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
             try {
                 result = await runner.generate(cleaned.slice(0, 30000));
                 const rule = validateRule(result.rule, cleaned);
+                const { procedure, ...validation } = compileProcedure(result.rule, cleaned);
                 const normalization = JSON.stringify(rule) === JSON.stringify(result.rule) ? null : {
                     originalMain: result.rule.main, appliedMain: rule.main,
                     droppedExclusions: result.rule.exclude.filter(selector => !rule.exclude.includes(selector)), reason: 'local-content-coverage-validation' };
-                const entry = { hostname: host, rule, modelRule: result.rule, normalization, provider, model, effort, servedModel: result.servedModel || null,
+                const entry = { hostname: host, rule, procedure, validation, modelRule: result.rule, normalization, provider, model, effort, servedModel: result.servedModel || null,
                     requestId, threadId: result.threadId || null, providerRequestId: result.requestId || null,
                     usage: result.usage, created: new Date().toISOString(), inputSha256 };
                 retire(host);
                 const temp = file(host) + '.' + randomUUID() + '.tmp';
                 fs.writeFileSync(temp, JSON.stringify(entry, null, 2)); fs.renameSync(temp, file(host));
                 status = 'completed';
-                return { success: true, rule, normalization, source: 'generated', provider, model, requestId };
+                return { success: true, rule, procedure, validation, normalization, source: 'generated', provider, model, requestId };
             } catch (error) {
                 failedHosts.add(host);
                 result ||= { usage: error.usage, requestId: error.requestId, servedModel: error.servedModel };
@@ -166,6 +138,19 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
         inFlight.set(host, job);
         try { return await job; } finally { inFlight.delete(host); }
     }
+    const families = require('./procedure-families.cjs').createFamilies({ directory, provider, model, cleanHTML,
+        generate: async (key, html) => {
+            if (inFlight.size || calls >= maxCalls) { const error = Error(calls >= maxCalls ? 'Generation allowance exhausted for this server session' : 'Generation is busy; keep the local fallback'); error.status = 429; throw error; }
+            const cleaned = cleanHTML(html), localRequestId = randomUUID(), inputSha256 = hash(cleaned.slice(0, 30000));
+            calls++;
+            const record = (event, result = {}) => fs.appendFileSync(path.join(directory, 'usage.jsonl'), JSON.stringify({ event, protocol: 2, requestId: localRequestId, provider, model, effort, inputSha256, providerRequestId: result.requestId || null, usage: result.usage || null, at: new Date().toISOString() }) + '\n');
+            record('started');
+            const job = Promise.resolve().then(() => runner.generate(cleaned.slice(0, 30000))); inFlight.set(key, job);
+            try { const result = await job; record('completed', result); return { ...result, localRequestId }; }
+            catch (error) { record('failed', error); throw error; }
+            finally { inFlight.delete(key); }
+        }
+    });
     const server = http.createServer(async (req, res) => {
         // Restrict browser callers and Host to prevent websites consuming the local account.
         if (!/^(127\.0\.0\.1|localhost):\d+$/.test(req.headers.host || '')) return json(res, 403, { error: 'Local host required' });
@@ -181,8 +166,10 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
             if (req.method === 'GET' && url.pathname === '/health') return json(res, 200,
                 { status: 'ok', provider, model, effort, calls, maxCalls, active: inFlight.size });
             if (req.method === 'GET' && url.pathname.startsWith('/rules/')) {
-                const entry = read(hostname(decodeURIComponent(url.pathname.slice(7))));
-                return json(res, 200, { rule: entry?.rule || null, provider, model });
+                const host = hostname(decodeURIComponent(url.pathname.slice(7)));
+                if (url.searchParams.get('protocol') === '2') return json(res, 200, { protocol: 2, rules: families.list(host), provider, model });
+                const entry = read(host);
+                return json(res, 200, { rule: entry?.rule || null, procedure: entry?.procedure || null, validation: entry?.validation || null, provider, model });
             }
             if (req.method !== 'POST' || !['/analyze', '/verify', '/report'].includes(url.pathname)) return json(res, 404, { error: 'Unknown endpoint' });
             if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return json(res, 415, { error: 'JSON required' });
@@ -193,11 +180,16 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
                 chunks.push(chunk);
             }
             const data = JSON.parse(Buffer.concat(chunks).toString('utf8')), host = hostname(data.hostname);
-            if (url.pathname === '/analyze') return json(res, 200, await generate(host, data.html));
+            if (url.pathname === '/analyze') return json(res, 200, data.protocol === 2 ? await families.analyze(host, data) : await generate(host, data.html));
+            if (url.pathname === '/report' && data.protocol === 2) { families.report(host, data.familyKey); return json(res, 200, { success: true, protocol: 2 }); }
             if (url.pathname === '/report') { retire(host); failedHosts.delete(host); return json(res, 200, { success: true }); }
             // Verification here is deterministic only; it never starts another model turn.
-            validateRule(data.rule, cleanHTML(data.rawHTML));
-            return json(res, 200, { success: true, verification: { status: 'local-only', modelVerification: false } });
+            if (data.rule?.schemaVersion === 2) {
+                const dom = new JSDOM(cleanHTML(data.rawHTML));
+                try { if (!preservationCore.apply(dom.window.document, data.rule).accepted) throw Error('Procedure did not preserve supplied context'); }
+                finally { dom.window.close(); }
+            } else validateRule(data.rule, cleanHTML(data.rawHTML));
+            return json(res, 200, { success: true, verification: { status: 'local-only', modelVerification: false, completeSourceValidation: false, context: 'supplied-bounded-context' } });
         } catch (error) {
             return json(res, error.status || (error instanceof SyntaxError ? 400 : 503),
                 { success: false, status: 'fallback', error: error.message });
@@ -218,4 +210,4 @@ if (require.main === module) {
     for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => { runner.close(); server.close(); });
 }
 
-module.exports = { createLocalServer, cleanHTML, validateRule, hostname };
+module.exports = { createLocalServer, cleanHTML, validateRule, compileProcedure, preservationCore, hostname };

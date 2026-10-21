@@ -26,27 +26,25 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 
     if (request.action === "REPORT_RULE") {
-        firebaseService.reportRule(request.hostname);
+        firebaseService.reportRule(request.hostname, request.familyKey);
         sendResponse({ success: true });
         return true;
     }
 
     if (request.action === "GET_RULES") {
         const hostname = request.hostname;
-        firebaseService.getRule(hostname).then(rule => {
-            // Firebase returns a single rule object, but content.js expects an array
-            const rules = rule ? [rule] : [];
-            sendResponse({ rules });
-        }).catch(err => {
-            console.error("Failed to get rules:", err);
-            sendResponse({ rules: [] });
-        });
+        const lookup = firebaseService.getRules ? firebaseService.getRules(hostname)
+            : firebaseService.getRule(hostname).then(rule => ({ rules: rule ? [rule] : [] }));
+        lookup.then(response => sendResponse(response)).catch(() => sendResponse({ rules: [], protocol: firebaseService.protocol, lookupAvailable: false }));
         return true;
     }
 });
 
 // --- Centralized Logic ---
 async function handleAnalysisRequest(context, sendResponse) {
+    if (firebaseService.protocol === 2 && (context.lookupAvailable !== true || ![1, 2].includes(context.localProtocol))) return sendResponse({ success: false, protocol: 2, status: 'fallback', reason: context.lookupAvailable === false ? 'procedure-lookup-unavailable' : 'unconfirmed-procedure-lookup' });
+    if (firebaseService.protocol === 2 && context.localProtocol === 1) return sendResponse({ success: false, protocol: 1, status: 'fallback', reason: 'legacy-server-does-not-support-admission' });
+    if (firebaseService.protocol === 2 && context.localProtocol === 2) return handleProcedureAnalysis(context, sendResponse);
     const hostname = context.hostname;
     const html = context.analysisHTML || context.html;
 
@@ -93,13 +91,13 @@ async function handleAnalysisRequest(context, sendResponse) {
 
             if (data.success && data.rule) {
                 console.log(`Background: Received rule from backend for ${hostname}`);
-                sendResponse({ success: true, rule: data.rule, source: 'backend' });
+                sendResponse({ success: true, rule: data.procedure || data.rule, source: 'backend' });
 
                 // Notify other tabs that rule is available
                 chrome.runtime.sendMessage({
                     action: 'UPDATE_RULE',
                     hostname: hostname,
-                    rule: data.rule
+                    rule: data.procedure || data.rule
                 }).catch(() => {
                     // Ignore errors if no listeners
                 });
@@ -122,6 +120,29 @@ async function handleAnalysisRequest(context, sendResponse) {
         console.error("Background: Error in analysis flow", error);
         sendResponse({ error: error.message });
     }
+}
+
+async function handleProcedureAnalysis(context, sendResponse) {
+    if (context.lookupAvailable === false) return sendResponse({ success: false, protocol: 2, status: 'fallback', reason: 'procedure-lookup-unavailable' });
+    if (context.ruleFailure) return sendResponse({ success: false, protocol: 2, status: 'fallback', reason: 'matching-family-failed' });
+    let exampleKey;
+    try {
+        const identity = new URL(context.url); identity.hash = '';
+        if (!['http:', 'https:'].includes(identity.protocol) || identity.hostname !== context.hostname) throw Error('Identity hostname mismatch');
+        exampleKey = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(identity.href)))].map(byte => byte.toString(16).padStart(2, '0')).join('');
+    } catch { return sendResponse({ success: false, protocol: 2, status: 'fallback', reason: 'example-identity-unavailable' }); }
+    const payload = { protocol: 2, hostname: context.hostname, html: context.analysisHTML || context.html,
+        validationHTML: context.validationHTML, validationComplete: context.validationComplete === true,
+        validationLimitation: context.validationLimitation, validationContextScope: context.validationContextScope, structuralDescriptor: context.structuralDescriptor, exampleKey };
+    let body = JSON.stringify(payload);
+    if (new TextEncoder().encode(body).length > 262144) {
+        delete payload.validationHTML; payload.validationComplete = false; payload.validationLimitation = 'complete-context-request-exceeds-byte-bound'; body = JSON.stringify(payload);
+    }
+    try {
+        const response = await fetch(`${getBackendURL()}/analyze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+        const data = await response.json();
+        sendResponse({ ...data, source: data.success ? 'local-admitted-procedure' : 'local-provisional' });
+    } catch (error) { sendResponse({ success: false, protocol: 2, status: 'fallback', error: error.message }); }
 }
 
 // --- Verification System ---

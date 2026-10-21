@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const { root, sourceFile } = require('./harness.cjs');
-async function run(analysis, verificationOverride = {}) {
+async function run(analysis, verificationOverride = {}, initialOverride = {}) {
     const dom = new JSDOM(fs.readFileSync(path.join(root, 'extension/sidepanel.html'), 'utf8'), {
         url: 'https://extension.invalid', runScripts: 'outside-only', virtualConsole: new VirtualConsole()
     });
@@ -17,7 +17,7 @@ async function run(analysis, verificationOverride = {}) {
         storage: { sync: { get: async () => ({ fontSize: 20, theme: 'black-white' }), set() {} } },
         scripting: { executeScript: async () => {} },
         tabs: { query: (query, cb) => cb ? cb([{ id: 1 }]) : Promise.resolve([{ id: 1 }]),
-            sendMessage: (id, request, cb) => { extracts.push(request); cb(request.includeRawHTML ? { ...pageContext, html, rawHTML, usedRule: true, ...verificationOverride } : { ...pageContext, html: '<p>Local fallback</p>', usedRule: false }); } },
+            sendMessage: (id, request, cb) => { extracts.push(request); cb(request.includeRawHTML ? { ...pageContext, html, rawHTML, usedRule: true, ...verificationOverride } : { ...pageContext, html: '<p>Local fallback</p>', usedRule: false, ...initialOverride }); } },
         runtime: { onMessage: { addListener() {} }, sendMessage: (message, cb) => { messages.push(message); if (cb) cb(analysis); } }
     };
     dom.window.eval(fs.readFileSync(sourceFile('extension/sidepanel.js'), 'utf8'));
@@ -57,6 +57,32 @@ async function run(analysis, verificationOverride = {}) {
             } finally { r.dom.window.close(); }
         });
     }
+    await test('supplemented procedure is kept without analysis or refresh loop', async () => {
+        const r = await run({ success: true, rule: { name: 'cached' } }, {}, { html: '<p>Preserved reading view</p>', usedRule: false, ruleApplied: true, procedureDelivered: true, supplementation: true, noFallback: false });
+        try {
+            assert.match(r.dom.window.document.getElementById('reader-view').textContent, /Preserved reading view/);
+            assert.equal(r.messages.filter(message => message.action === 'ANALYZE_PAGE').length, 0);
+            assert.equal(r.timers.length, 0);
+            assert.equal(r.extracts.length, 1);
+        } finally { r.dom.window.close(); }
+    });
+    await test('local provisional response keeps basic view without refresh or polling', async () => {
+        const r = await run({ success: false, protocol: 2, status: 'pending', admission: 'provisional', reason: 'second-distinct-valid-example-required' });
+        try {
+            assert.equal(r.messages.filter(message => message.action === 'ANALYZE_PAGE').length, 1);
+            assert.equal(r.timers.length, 0);
+            assert.match(r.dom.window.document.getElementById('reader-view').textContent, /Local fallback/);
+            assert.match(r.dom.window.document.getElementById('analysis-banner').textContent, /second compatible page/);
+        } finally { r.dom.window.close(); }
+    });
+    await test('local lookup outage keeps basic view without analysis message', async () => {
+        const r = await run(undefined, {}, { localProtocol: 2, lookupAvailable: false });
+        try { assert.equal(r.messages.length, 0); assert.equal(r.timers.length, 0); assert.match(r.dom.window.document.getElementById('reader-view').textContent, /Local fallback/); } finally { r.dom.window.close(); }
+    });
+    await test('legacy server cached delivery sends no analysis and schedules no refresh', async () => {
+        const r = await run(undefined, {}, { localProtocol: 1, usedRule: true, html: '<p>Legacy cached reading view</p>' });
+        try { assert.equal(r.messages.length, 0); assert.equal(r.timers.length, 0); assert.match(r.dom.window.document.getElementById('reader-view').textContent, /Legacy cached reading view/); } finally { r.dom.window.close(); }
+    });
     console.log(JSON.stringify({ results }, null, 2));
     if (process.argv[2]) fs.writeFileSync(process.argv[2], JSON.stringify({ results }, null, 2));
     if (results.some(r => !r.passed)) process.exitCode = 1;

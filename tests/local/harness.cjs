@@ -17,6 +17,7 @@ function page(html, url = 'https://example.org/page', rules = [], options = {}) 
         onMessage: { addListener: fn => listeners.push(fn) }
     } };
     dom.window.console = quiet;
+    if (process.env.LOCAL_BASELINE !== '1') dom.window.eval(fs.readFileSync(path.join(root, 'extension/procedure-core.js'), 'utf8'));
     dom.window.eval(fs.readFileSync(sourceFile('extension/content.js'), 'utf8'));
     return {
         dom,

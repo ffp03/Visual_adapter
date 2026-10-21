@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "full-suite-v2": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 300.67
+    },
+    "browser-v2": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 50.9
+    },
+    "preservation-browser-v2": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 14.14
+    },
+    "repaired-promoted-native-v2": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 58.97
+    },
+    "review-production-v2": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 176.46
+    }
+  },
+  "reviewModel": "gpt-6.1-sol",
+  "reviewEffort": "medium",
+  "reviewTokens": null,
+  "allFinalReviewFindingsResolved": true,
+  "providerPayloadTests": "local substitutes only; both runners; protocol2 and one generation across two examples"
+}

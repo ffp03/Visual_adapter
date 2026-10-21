@@ -1,0 +1,20 @@
+{
+  "runtimeAndTestSha256": {
+    "extension/procedure-core.js": "7372375dfc291866918e5d05b589601d5cfd305ac9a27892c0bbbd8c1c00c04a",
+    "extension/content.js": "bc6cff9124a6542136e48382e2252af98eaa9c187363125d0e5684a5967a5381",
+    "extension/background.js": "11cf782260b75eead33cb8b32deae85956f78baadd3c0b489dae9d28eeaf20cf",
+    "extension/rule-service.js": "496bd26cc1d016e98747daa68fa8191ca204481ac2b23436b881acd49a5406b0",
+    "backend/local-ai.cjs": "63163cf0fc5d9448763b8b9fcdf34759d0d7d286916279f6084bfe30f0c1549f",
+    "backend/procedure-families.cjs": "0e0fc52f0b59437936f35cf08c13de0bb42b4e6ffaecddc6bbc722647a7c2ced",
+    "backend/model-evidence.cjs": "1b49ac91e6fa68c3bbbf0cee30461a1b8e139b9b93c831ffbe270e0313bab595",
+    "backend/codex-runner.cjs": "150d4d3f02387dcfb05645a943ebad5dfe0a3ba75b84cbf342a092be26d4224d",
+    "backend/deepseek-runner.cjs": "ca0b5f888f9515b352b0b1e3c8779b46ab32c9478e4e0298f0471fc3fc740c56",
+    "tests/local/model-evidence-test.cjs": "b9d5e8dca3ddf4dbaaca7f6632a9f1573e5d6f85e84f38e17337086f56f5aceb",
+    "tests/local/run.cjs": "e4d96f53ffa86f26fca643049b67e22043f6d2f9045388ccf71284529c7d1012"
+  },
+  "developmentManifestSha256": "e1d75acdcdb22280126c02c75ecba700300f56fa7d4807ad5a1329113ec5838f",
+  "parentAuditSummarySha256": "7eec92e2115e24b42f26a532efb1bebe5b8e4619989743bd5f8c46e37a23ee39",
+  "newPrototypeModelCalls": 0,
+  "liveSiteCallsForRepair": 0,
+  "freshHoldoutInspectedForRepair": false
+}

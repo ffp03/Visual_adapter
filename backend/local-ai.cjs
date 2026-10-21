@@ -5,6 +5,7 @@ const { createHash, randomUUID } = require('node:crypto');
 const { JSDOM } = require('jsdom');
 const { CodexRunner } = require('./codex-runner.cjs');
 const { DeepSeekRunner } = require('./deepseek-runner.cjs');
+const { boundModelInput, modelInputText } = require('./model-evidence.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -89,7 +90,7 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
     function retire(host) {
         if (fs.existsSync(file(host))) fs.renameSync(file(host), path.join(archive, hash(host) + '-' + randomUUID() + '.json'));
     }
-    async function generate(host, html) {
+    async function generate(host, html, evidence) {
         const cached = read(host);
         if (cached) return { success: true, rule: cached.rule, procedure: cached.procedure, validation: cached.validation, source: 'local-cache', provider, model };
         if (inFlight.has(host)) return inFlight.get(host);
@@ -102,15 +103,15 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
             error.status = 429; throw error;
         }
         const job = (async () => {
-            const cleaned = cleanHTML(html);
+            const cleaned = cleanHTML(html), modelInput = boundModelInput(cleaned, evidence);
             calls++;
             const requestId = randomUUID();
-            const inputSha256 = hash(cleaned.slice(0, 30000));
+            const inputSha256 = hash(modelInputText(modelInput.html, modelInput.evidence));
             fs.appendFileSync(path.join(directory, 'usage.jsonl'), JSON.stringify({ event: 'started', requestId,
                 provider, model, effort, inputSha256, at: new Date().toISOString() }) + '\n');
             let result, status = 'failed';
             try {
-                result = await runner.generate(cleaned.slice(0, 30000));
+                result = await runner.generate(modelInput.html, modelInput.evidence);
                 const rule = validateRule(result.rule, cleaned);
                 const { procedure, ...validation } = compileProcedure(result.rule, cleaned);
                 const normalization = JSON.stringify(rule) === JSON.stringify(result.rule) ? null : {
@@ -139,13 +140,13 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
         try { return await job; } finally { inFlight.delete(host); }
     }
     const families = require('./procedure-families.cjs').createFamilies({ directory, provider, model, cleanHTML,
-        generate: async (key, html) => {
+        generate: async (key, html, evidence) => {
             if (inFlight.size || calls >= maxCalls) { const error = Error(calls >= maxCalls ? 'Generation allowance exhausted for this server session' : 'Generation is busy; keep the local fallback'); error.status = 429; throw error; }
-            const cleaned = cleanHTML(html), localRequestId = randomUUID(), inputSha256 = hash(cleaned.slice(0, 30000));
+            const cleaned = cleanHTML(html), modelInput = boundModelInput(cleaned, evidence), localRequestId = randomUUID(), inputSha256 = hash(modelInputText(modelInput.html, modelInput.evidence));
             calls++;
             const record = (event, result = {}) => fs.appendFileSync(path.join(directory, 'usage.jsonl'), JSON.stringify({ event, protocol: 2, requestId: localRequestId, provider, model, effort, inputSha256, providerRequestId: result.requestId || null, usage: result.usage || null, at: new Date().toISOString() }) + '\n');
             record('started');
-            const job = Promise.resolve().then(() => runner.generate(cleaned.slice(0, 30000))); inFlight.set(key, job);
+            const job = Promise.resolve().then(() => runner.generate(modelInput.html, modelInput.evidence)); inFlight.set(key, job);
             try { const result = await job; record('completed', result); return { ...result, localRequestId }; }
             catch (error) { record('failed', error); throw error; }
             finally { inFlight.delete(key); }
@@ -180,7 +181,7 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
                 chunks.push(chunk);
             }
             const data = JSON.parse(Buffer.concat(chunks).toString('utf8')), host = hostname(data.hostname);
-            if (url.pathname === '/analyze') return json(res, 200, data.protocol === 2 ? await families.analyze(host, data) : await generate(host, data.html));
+            if (url.pathname === '/analyze') return json(res, 200, data.protocol === 2 ? await families.analyze(host, data) : await generate(host, data.html, data.modelEvidence));
             if (url.pathname === '/report' && data.protocol === 2) { families.report(host, data.familyKey); return json(res, 200, { success: true, protocol: 2 }); }
             if (url.pathname === '/report') { retire(host); failedHosts.delete(host); return json(res, 200, { success: true }); }
             // Verification here is deterministic only; it never starts another model turn.

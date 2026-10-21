@@ -1,0 +1,13 @@
+# Bounded DOM evidence repair — 21 October 2026
+
+The repair addresses incomplete or misleading model input. The model receives a bounded structural sketch plus a separate optional evidence object: eligible full-DOM component counts, represented counts and actual locator/cardinality witnesses. IMG, SVG, MathML, audio, video and canvas have separate categories. Ancestor context and short existing text/ARIA/alt cues remain bounded; form values and destination URLs are excluded from this analysis packet. Both generators treat evidence as untrusted hints. It never substitutes for complete-source validation.
+
+The exact final model-data section, including evidence, section labels and HTML, is capped at12,000 characters for new clients. Optional evidence is forwarded through the background script, family service and server to both actual prompt builders. Old clients retain their legacy route. The family key, two-example admission, whole-source preservation guard and generation allowance are unchanged.
+
+Parent checks passed: full local suite(300.67s), both native browser checks(50.90s/14.14s), eight new input-path tests within that suite, and an offline native audit of all16 promoted development pages(58.97s). Maximum client model-data encoding before server cleaning was10,828 characters; exact final provider payloads were checked with local substitutes. The two OpenStax pages now represent6/348 and4/292 MathML elements, and the Indigo audio witness is1/1; counts explicitly disclose omitted elements. Generic article collisions remain visible even when only a few representatives fit.
+
+Independent native Codex review found two defects: BODY landmark attributes were lost when parsing the counting sketch, and JSON escapes could produce nonexistent CSS attribute locators. Both were fixed, covered by a native regression and followed by a clear final review. Token telemetry was unavailable.
+
+These are input-integrity and regression results, not a new extraction success rate. Historical rules were generated from earlier inputs; this repair has not been assessed with fresh model generation. Six of16 promoted pages still exceed the unchanged100k complete-BODY validation cap, and essential-media, reading-resource and transfer limitations remain. No new prototype model calls occurred. The running real backend was not restarted.
+
+The12 historical failing pages and4 site partners are now development data, alongside the original18 pages:34 pages/17 sites. The original44-page study is historical regression evidence and cannot be reused as an unseen test. Fresh candidate acquisition is source-only and sealed separately; no new source content informed the repair. Manuscript prose remains paused.

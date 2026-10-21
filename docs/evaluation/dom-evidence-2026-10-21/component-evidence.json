@@ -1,0 +1,2060 @@
+{
+  "pages": 16,
+  "modelDataMaximumCharacters": 10828,
+  "completeValidationPages": 10,
+  "rows": [
+    {
+      "id": "site01-1",
+      "modelDataCharacters": 10689,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 20,
+          "title": 2,
+          "heading": 29,
+          "prose": 67,
+          "code": 0,
+          "table": 1,
+          "list": 44,
+          "image": 62,
+          "svg": 118,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 1,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 5,
+          "title": 2,
+          "heading": 4,
+          "prose": 4,
+          "code": 0,
+          "table": 1,
+          "list": 3,
+          "image": 3,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 1,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 20,
+            "representedMatches": 5
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 62,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 118,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"main-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"asset:cbf019e5-ac62-4bce-a55f-e98c38362593\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"asset:17c9fcf4-83b7-4ae7-8b2f-4b684dc95e6c\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"main-heading\"]",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "img[class~=\"ssrcss-egie1y-Image\"][class~=\"edrdn950\"]",
+            "sourceMatches": 7,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"ssrcss-1knyx38-BadgeImage\"][class~=\"ezmsq4q0\"]",
+            "sourceMatches": 54,
+            "representedMatches": 2
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site01-2",
+      "modelDataCharacters": 10676,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 20,
+          "title": 1,
+          "heading": 107,
+          "prose": 88,
+          "code": 0,
+          "table": 1,
+          "list": 50,
+          "image": 66,
+          "svg": 132,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 1,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 3,
+          "title": 1,
+          "heading": 3,
+          "prose": 2,
+          "code": 0,
+          "table": 1,
+          "list": 4,
+          "image": 3,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 1,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 20,
+            "representedMatches": 3
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 66,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 132,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"main-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"asset:69fd12c9-01b6-49f8-80b2-82b31ad9180f\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"asset:ca8e32bc-5c08-4cd3-86f3-9c8482752ce9\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"main-heading\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"ssrcss-1knyx38-BadgeImage\"][class~=\"ezmsq4q0\"]",
+            "sourceMatches": 58,
+            "representedMatches": 2
+          },
+          {
+            "selector": "img[class~=\"ssrcss-cxzgis-CardImage\"][class~=\"e1332vp30\"]",
+            "sourceMatches": 4,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site12-1",
+      "modelDataCharacters": 10559,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 19,
+          "prose": 52,
+          "code": 0,
+          "table": 0,
+          "list": 5,
+          "image": 18,
+          "svg": 0,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 12,
+          "prose": 7,
+          "code": 0,
+          "table": 0,
+          "list": 5,
+          "image": 5,
+          "svg": 0,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 18,
+            "representedMatches": 5
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "[id=\"wp--skip-link--target\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"article-header__title\"][class~=\"wp-block-heading\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"custom-logo\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"wp-image-433672\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"attachment-autox32\"][class~=\"size-autox32\"]",
+            "sourceMatches": 1,
+            "representedMatches": 0
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site12-2",
+      "modelDataCharacters": 10320,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 1,
+          "title": 1,
+          "heading": 1,
+          "prose": 8,
+          "code": 0,
+          "table": 0,
+          "list": 1,
+          "image": 3,
+          "svg": 0,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 1,
+          "title": 1,
+          "heading": 1,
+          "prose": 4,
+          "code": 0,
+          "table": 0,
+          "list": 1,
+          "image": 3,
+          "svg": 0,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 3,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "[id=\"main-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article[class~=\"hwp-news-details\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"text-large\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "article",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>article"
+        }
+      }
+    },
+    {
+      "id": "site13-1",
+      "modelDataCharacters": 10828,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 16,
+          "title": 2,
+          "heading": 21,
+          "prose": 35,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 20,
+          "svg": 39,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 4,
+          "title": 2,
+          "heading": 3,
+          "prose": 3,
+          "code": 0,
+          "table": 0,
+          "list": 0,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 16,
+            "representedMatches": 4
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 20,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 39,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"main-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article[class~=\"c-carousel-image-slide\"][class~=\"has-caption\"]",
+            "sourceMatches": 6,
+            "representedMatches": 2
+          },
+          {
+            "selector": "article[class~=\"su-component-card\"][class~=\"su-relative\"]",
+            "sourceMatches": 6,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"su-m-0\"][class~=\"su-text-14\"]",
+            "sourceMatches": 1,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1[class~=\"su-font-bold\"][class~=\"su-rs-mt-4\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"su-inline-block\"][class~=\"su-max-w-[142px]\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"su-absolute\"][class~=\"su-object-cover\"]",
+            "sourceMatches": 6,
+            "representedMatches": 0
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site13-2",
+      "modelDataCharacters": 10708,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 7,
+          "title": 2,
+          "heading": 25,
+          "prose": 41,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 12,
+          "svg": 36,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 4,
+          "title": 2,
+          "heading": 5,
+          "prose": 3,
+          "code": 0,
+          "table": 0,
+          "list": 0,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 7,
+            "representedMatches": 4
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 12,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 36,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"main-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article[class~=\"su-component-card\"][class~=\"su-relative\"]",
+            "sourceMatches": 6,
+            "representedMatches": 3
+          },
+          {
+            "selector": "h1[class~=\"su-m-0\"][class~=\"su-text-14\"]",
+            "sourceMatches": 1,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1[class~=\"su-font-bold\"][class~=\"su-rs-mt-4\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"su-inline-block\"][class~=\"su-max-w-[142px]\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"su-absolute\"][class~=\"su-object-cover\"]",
+            "sourceMatches": 6,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site17-final1",
+      "modelDataCharacters": 10378,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 81,
+          "prose": 184,
+          "code": 0,
+          "table": 3,
+          "list": 38,
+          "image": 8,
+          "svg": 13,
+          "math": 348,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 4,
+          "prose": 17,
+          "code": 0,
+          "table": 3,
+          "list": 6,
+          "image": 2,
+          "svg": 2,
+          "math": 6,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 348,
+            "representedMatches": 6
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 8,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 13,
+            "representedMatches": 2
+          },
+          {
+            "selector": "main[class~=\"page-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"book-banner-chapter\"][class~=\"book-banner-text\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"navbar-header-image\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site17-final2",
+      "modelDataCharacters": 10378,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 83,
+          "prose": 171,
+          "code": 0,
+          "table": 0,
+          "list": 38,
+          "image": 5,
+          "svg": 13,
+          "math": 292,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 11,
+          "prose": 16,
+          "code": 0,
+          "table": 0,
+          "list": 6,
+          "image": 3,
+          "svg": 2,
+          "math": 4,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 292,
+            "representedMatches": 4
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 5,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 13,
+            "representedMatches": 2
+          },
+          {
+            "selector": "main[class~=\"page-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"book-banner-chapter\"][class~=\"book-banner-text\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"navbar-header-image\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site18-1",
+      "modelDataCharacters": 4613,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 0,
+          "article": 0,
+          "title": 1,
+          "heading": 7,
+          "prose": 2,
+          "code": 0,
+          "table": 1,
+          "list": 7,
+          "image": 2,
+          "svg": 1,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 0,
+          "article": 0,
+          "title": 1,
+          "heading": 7,
+          "prose": 2,
+          "code": 0,
+          "table": 1,
+          "list": 7,
+          "image": 2,
+          "svg": 1,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "unmarked",
+          "envelope": [
+            "body"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site18-2",
+      "modelDataCharacters": 5559,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 0,
+          "article": 0,
+          "title": 1,
+          "heading": 3,
+          "prose": 3,
+          "code": 0,
+          "table": 1,
+          "list": 2,
+          "image": 2,
+          "svg": 1,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 0,
+          "article": 0,
+          "title": 1,
+          "heading": 3,
+          "prose": 3,
+          "code": 0,
+          "table": 1,
+          "list": 2,
+          "image": 2,
+          "svg": 1,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"book_title\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"cover-art\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "unmarked",
+          "envelope": [
+            "body"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site23-1",
+      "modelDataCharacters": 8238,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 5,
+          "prose": 8,
+          "code": 0,
+          "table": 1,
+          "list": 5,
+          "image": 0,
+          "svg": 25,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 5,
+          "prose": 8,
+          "code": 0,
+          "table": 1,
+          "list": 5,
+          "image": 0,
+          "svg": 7,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 25,
+            "representedMatches": 7
+          },
+          {
+            "selector": "[id=\"main\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"end-of-life-eol\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site23-2",
+      "modelDataCharacters": 8185,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 1,
+          "prose": 1,
+          "code": 0,
+          "table": 0,
+          "list": 21,
+          "image": 0,
+          "svg": 9,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 1,
+          "prose": 1,
+          "code": 0,
+          "table": 0,
+          "list": 19,
+          "image": 0,
+          "svg": 5,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 9,
+            "representedMatches": 5
+          },
+          {
+            "selector": "[id=\"learn-nodejs\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site28-1",
+      "modelDataCharacters": 10412,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 0,
+          "heading": 14,
+          "prose": 37,
+          "code": 0,
+          "table": 0,
+          "list": 6,
+          "image": 7,
+          "svg": 24,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 0,
+          "heading": 3,
+          "prose": 10,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 3,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 7,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 24,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"main\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"header__heading-logo\"][class~=\"motion-reduce\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"lazyload\"]",
+            "sourceMatches": 5,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"kobo-modal__logo\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site28-2",
+      "modelDataCharacters": 10792,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 2,
+          "heading": 27,
+          "prose": 37,
+          "code": 0,
+          "table": 0,
+          "list": 9,
+          "image": 41,
+          "svg": 78,
+          "math": 0,
+          "audio": 1,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 2,
+          "heading": 5,
+          "prose": 3,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 3,
+          "svg": 3,
+          "math": 0,
+          "audio": 1,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 41,
+            "representedMatches": 3
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 78,
+            "representedMatches": 3
+          },
+          {
+            "selector": "[id=\"main\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"product__title\"][class~=\"js-product-title\"]",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "h1[class~=\"product__title\"][class~=\"bottom\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "audio[class~=\"product-preview-audio__player\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"header__heading-logo\"][class~=\"motion-reduce\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[id=\"Thumbnail-template--18997602582738__main-5\\a \"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"kobo-modal__logo\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": false,
+        "validationLimitation": "complete-sanitized-body-exceeds-100k",
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site31-1",
+      "modelDataCharacters": 8754,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 2,
+          "prose": 4,
+          "code": 0,
+          "table": 0,
+          "list": 1,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 1,
+          "heading": 2,
+          "prose": 4,
+          "code": 0,
+          "table": 0,
+          "list": 1,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"layout-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"mt-8\"][class~=\"via-title-global\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "img[class~=\"inject-svg\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[role=\"presentation\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    },
+    {
+      "id": "site31-2",
+      "modelDataCharacters": 9617,
+      "modelEvidence": {
+        "schemaVersion": 1,
+        "scope": "eligible-full-dom-hints-not-validation",
+        "sourceCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 2,
+          "heading": 2,
+          "prose": 5,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "representedCounts": {
+          "primary": 1,
+          "article": 0,
+          "title": 2,
+          "heading": 2,
+          "prose": 5,
+          "code": 0,
+          "table": 0,
+          "list": 2,
+          "image": 2,
+          "svg": 2,
+          "math": 0,
+          "audio": 0,
+          "video": 0,
+          "canvas": 0,
+          "navigation": 0,
+          "discussion": 0
+        },
+        "locators": [
+          {
+            "selector": "main",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "article",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "h1",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "math",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "audio",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "video",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "canvas",
+            "sourceMatches": 0,
+            "representedMatches": 0
+          },
+          {
+            "selector": "img",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "svg",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "[id=\"layout-content\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "h1[class~=\"mt-2\"][class~=\"via-title-global\"]",
+            "sourceMatches": 2,
+            "representedMatches": 2
+          },
+          {
+            "selector": "img[class~=\"inject-svg\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          },
+          {
+            "selector": "[role=\"presentation\"]",
+            "sourceMatches": 1,
+            "representedMatches": 1
+          }
+        ],
+        "limitations": [
+          "bounded-component-and-locator-witnesses",
+          "omitted-components-are-not-empty"
+        ]
+      },
+      "validation": {
+        "validationComplete": true,
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        }
+      }
+    }
+  ]
+}

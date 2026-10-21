@@ -62,7 +62,7 @@ function createFamilies({ directory, provider, model, generate, cleanHTML }) {
                 }
                 let generated;
                 try {
-                    generated = await generate('v2:' + key, data.html);
+                    generated = await generate('v2:' + key, data.html, data.modelEvidence);
                     if ((revisions.get(key) || 0) !== revision) return pending('family-retired-during-generation', familyKey);
                     const procedure = core.compile(dom.window.document, generated.rule, inventory);
                     procedure.familyKey = familyKey; procedure.context.completeSourceValidation = true;

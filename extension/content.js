@@ -4,7 +4,9 @@
 function analysisSample(doc, budget = 12000) {
     // Whole-document selection precedes serialization. A late table or discussion
     // competes for the same budget as an early paragraph, never a prefix cutoff.
-    const maximum = Number.isFinite(budget) ? Math.max(2000, Math.min(12000, budget)) : 12000;
+    const totalBudget = Number.isFinite(budget) ? Math.max(2000, Math.min(12000, budget)) : 12000;
+    const evidenceBudget = Math.min(3000, Math.max(1000, Math.floor(totalBudget * .28)));
+    const maximum = totalBudget - evidenceBudget - 100;
     const norm = text => (text || '').replace(/\s+/g, ' ').trim();
     const skip = 'script,style,noscript,iframe,object,embed,template,input,textarea,select,option';
     const elements = [...doc.body.querySelectorAll('*')].filter(node => !node.closest(skip));
@@ -14,7 +16,12 @@ function analysisSample(doc, budget = 12000) {
         heading: elements.filter(node => node.matches('h1,h2,h3,h4,h5,h6')),
         table: elements.filter(node => node.matches('table')),
         code: elements.filter(node => node.matches('pre,code') && !node.parentElement.closest('pre,code')),
-        image: elements.filter(node => node.matches('img,svg')),
+        image: elements.filter(node => node.matches('img')),
+        svg: elements.filter(node => node.matches('svg')),
+        math: elements.filter(node => node.matches('math')),
+        audio: elements.filter(node => node.matches('audio')),
+        video: elements.filter(node => node.matches('video')),
+        canvas: elements.filter(node => node.matches('canvas')),
         caption: elements.filter(node => node.matches('figcaption,caption')),
         list: elements.filter(node => node.matches('ul,ol,dl')),
         discussion: elements.filter(node => node.matches('[role="comment"],[itemprop="commentText"]')),
@@ -32,7 +39,7 @@ function analysisSample(doc, budget = 12000) {
         while ((node = walker.nextNode()) && text.length < 192) {
             if (!node.parentElement?.closest(skip)) text += ' ' + node.nodeValue.slice(0, 192);
         }
-        const value = norm(text).slice(0, 96); cues.set(element, value); return value;
+        const value = norm(element.getAttribute('alt') || element.getAttribute('aria-label') || text).slice(0, 96); cues.set(element, value); return value;
     }
     const totals = Object.fromEntries(Object.entries(groups).map(([kind, nodes]) => [kind, nodes.length]));
     const textTags = 'h1,h2,h3,h4,h5,h6,p,pre,code,td,th,li,dt,dd,blockquote,a,figcaption,caption,span,small';
@@ -58,7 +65,7 @@ function analysisSample(doc, budget = 12000) {
         }
         for (const node of ordered) {
             if (node !== doc.body) copies.get(node.parentElement).appendChild(copies.get(node));
-            if (nodes.has(node) && (node.matches(textTags) || !node.children.length)) {
+            if (nodes.has(node) && (node.matches(textTags + ',math,audio,video,canvas,img,svg') || !node.children.length)) {
                 // A single short cue is enough to identify a role; never an article
                 // body, code file, form value, destination URL or image payload.
                 const text = cue(node);
@@ -100,7 +107,39 @@ function analysisSample(doc, budget = 12000) {
     for (const [kind, nodes] of Object.entries(groups)) {
         for (let i = 0; i < nodes.length && i < 12; i++) add(nodes[Math.floor(i * nodes.length / Math.min(nodes.length, 12))], kind);
     }
-    return { html, context: { complete: false, kind: 'balanced-structural-sample', maxCharacters: maximum, characters: html.length,
+    const componentSelectors = { primary: 'main,[role="main"]', article: 'article', title: 'h1', heading: 'h1,h2,h3,h4,h5,h6',
+        prose: 'p,blockquote', code: 'pre,code', table: 'table', list: 'ul,ol,dl', image: 'img', svg: 'svg', math: 'math', audio: 'audio', video: 'video', canvas: 'canvas',
+        navigation: 'nav,[role="navigation"]', discussion: '[role="comment"],[itemprop="commentText"]' };
+    const sampleDoc = new DOMParser().parseFromString(html, 'text/html');
+    const eligibleMatches = (document, selector) => PreservationCore.matches(document, selector);
+    const sourceCounts = {}, representedCounts = {}, locators = [];
+    for (const [kind, selector] of Object.entries(componentSelectors)) {
+        sourceCounts[kind] = eligibleMatches(doc, selector).length;
+        representedCounts[kind] = eligibleMatches(sampleDoc, selector).length;
+    }
+    const evidence = { schemaVersion: 1, scope: 'eligible-full-dom-hints-not-validation', sourceCounts, representedCounts,
+        locators, limitations: ['bounded-component-and-locator-witnesses', 'omitted-components-are-not-empty'] };
+    // JSON string escapes are not CSS string escapes (for example a newline).
+    const cssString = value => '"' + value.replace(/["\\\x00-\x1f\x7f]/g, character => '\\' + character.charCodeAt(0).toString(16) + ' ') + '"';
+    const addLocator = (selector, originatingNode) => {
+        if (!selector || selector.length > 240 || locators.some(item => item.selector === selector)) return;
+        const sourceMatches = eligibleMatches(doc, selector);
+        if (originatingNode && !sourceMatches.includes(originatingNode)) return;
+        const item = { selector, sourceMatches: sourceMatches.length, representedMatches: eligibleMatches(sampleDoc, selector).length };
+        locators.push(item); if (JSON.stringify(evidence).length > evidenceBudget) locators.pop();
+    };
+    for (const selector of ['main', 'article', 'h1', 'math', 'audio', 'video', 'canvas', 'img', 'svg']) addLocator(selector);
+    for (const selector of ['main,article,[role="main"]', 'h1', 'math', 'audio', 'video', 'canvas', 'img']) {
+        const nodes = eligibleMatches(doc, selector);
+        for (const index of positions(nodes)) {
+            const node = nodes[index], tag = node.tagName.toLowerCase();
+            if (node.id && node.id.length <= 160) addLocator('[id=' + cssString(node.id) + ']', node);
+            else if (node.classList.length) addLocator(tag + [...node.classList].slice(0, 2).filter(value => value.length <= 80).map(value => '[class~=' + cssString(value) + ']').join(''), node);
+            else if (node.getAttribute('role')) addLocator('[role=' + cssString(node.getAttribute('role')) + ']', node);
+        }
+    }
+    return { html, evidence, context: { complete: false, kind: 'balanced-structural-sample', maxCharacters: maximum, characters: html.length,
+        modelCharacters: html.length + JSON.stringify(evidence).length, modelCharacterLimit: totalBudget, evidenceCharacters: JSON.stringify(evidence).length,
         sourceElements: elements.length, selectedElements: selected.size, roleCounts: totals,
         representedRoles: [...covered], unrepresentedRoles: Object.keys(groups).filter(kind => totals[kind] && !covered.has(kind)),
         textCueLimit: 96, cuesMayContainContent: true, requiresFullSourceValidation: true } };
@@ -208,6 +247,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     url: window.location.href,
                     html: html || "",
                     analysisHTML: analysis?.html,
+                    modelEvidence: analysis?.evidence,
                     hostname: window.location.hostname,
                     usedRule: usedRule,
                     ruleFailure: !ruleApplied && !!outcome.ruleFailure,

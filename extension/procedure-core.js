@@ -237,20 +237,55 @@
             unsupportedInteraction: scope.roots.some(root => root.matches('input,textarea,form,select,button') || root.querySelector('input,textarea,form,select,button')) ? ['application-controls-not-verified'] : [],
             descriptor: familyDescriptor(doc, scope) };
     }
-    function assess(doc, reader, inventory = inspect(doc)) {
-        const target = typeof reader === 'string' ? (() => { const div = doc.createElement('div'); div.innerHTML = reader; return div; })() : reader;
-        const available = new Map();
+    function sourceHints(doc, inventory) {
         const hints = new Map();
         for (const role of inventory.roles.filter(role => role.signature)) {
             const tag = role.node.tagName === 'BODY' ? 'div' : role.node.tagName.toLowerCase();
             if (!hints.has(tag)) hints.set(tag, new Set());
             hints.get(tag).add(norm(clean(role.node, doc).textContent).length);
         }
+        return hints;
+    }
+    // These caches live only for one synchronous apply. Eviction or an oversized
+    // entry merely repeats the original work; neither can affect acceptance.
+    function boundedMemo() {
+        const entries = new Map(); let characters = 0;
+        return {
+            get: key => entries.get(key)?.value,
+            put(key, value, size) {
+                if (size > 2000000) return;
+                while (entries.size >= 2048 || characters + size > 2000000) {
+                    const oldest = entries.keys().next().value;
+                    characters -= entries.get(oldest).size; entries.delete(oldest);
+                }
+                entries.set(key, { value, size }); characters += size;
+            }
+        };
+    }
+    function readerSignature(node, doc, context) {
+        if (!context) return signature(node, doc, true);
+        const ancestry = [];
+        for (let parent = node.parentElement; parent; parent = parent.parentElement) ancestry.push([parent.namespaceURI, parent.tagName]);
+        const key = JSON.stringify([context.base, node.namespaceURI, node.tagName, ancestry, node.outerHTML]);
+        let result = context.signatures.get(key);
+        if (result === undefined) {
+            result = signature(node, doc, true);
+            context.signatures.put(key, result, key.length + result.length);
+        }
+        return result;
+    }
+    function assess(doc, reader, inventory = inspect(doc)) {
+        return assessWithContext(doc, reader, inventory);
+    }
+    function assessWithContext(doc, reader, inventory, context) {
+        const target = typeof reader === 'string' ? (() => { const div = doc.createElement('div'); div.innerHTML = reader; return div; })() : reader;
+        const available = new Map();
+        const hints = context ? (context.hints ||= sourceHints(doc, inventory)) : sourceHints(doc, inventory);
         const tags = [...hints.keys()];
         // Only index role-bearing tags, never every ancestor subtree.
         for (const node of tags.length ? all(target, tags.join(',')) : []) {
             if (!hints.get(node.tagName.toLowerCase()).has(norm(node.textContent).length)) continue;
-            const key = signature(node, doc, true); available.set(key, (available.get(key) || 0) + 1);
+            const key = readerSignature(node, doc, context); available.set(key, (available.get(key) || 0) + 1);
         }
         const missing = [], consumedText = new Set();
         for (const role of inventory.roles) {
@@ -271,7 +306,7 @@
             boundary: inventory.boundary, limits: inventory.limits, unsupported: inventory.unsupported, unsupportedInteraction: inventory.unsupportedInteraction,
             guarantee: 'deterministic-local-role-check' };
     }
-    function render(doc, regions, exclude) {
+    function render(doc, regions, exclude, context) {
         const wrapper = doc.createElement('div');
         const selected = regions.map(region => {
             const selected = matches(doc, region.selector);
@@ -281,7 +316,16 @@
         if (outermost(selected).length !== selected.length) throw Error('overlapping-regions');
         selected.sort((a, b) => a === b ? 0 : a.compareDocumentPosition(b) & 2 ? 1 : -1);
         for (const node of selected) {
-            const clone = clean(node, doc);
+            let template = context?.regions.get(node);
+            let clone;
+            if (template) clone = template.cloneNode(true);
+            else {
+                clone = clean(node, doc);
+                if (context) {
+                    const size = clone.outerHTML.length;
+                    if (size <= 2000000) context.regions.put(node, clone.cloneNode(true), size);
+                }
+            }
             for (const exclusion of exclude || []) all(clone, exclusion).forEach(n => n.remove());
             // A detached matching root cannot remove itself from its parent.
             if (!(exclude || []).some(s => clone.matches(s))) wrapper.appendChild(clone);
@@ -307,6 +351,8 @@
                 return candidates;
             });
             if (options.some(values => !values.length)) throw Error('region-must-match-exactly-once');
+            const context = options.some(values => values.length > 1)
+                ? { base: doc.baseURI, hints: null, regions: boundedMemo(), signatures: boundedMemo() } : undefined;
             const selected = [], stateLimit = Math.min(16384, 64 * procedure.regions.length * 4);
             function search(index) {
                 if (visitedStates >= stateLimit) { stateBudgetExceeded = true; return null; }
@@ -320,8 +366,8 @@
                 const nodes = selected.map(choice => choice.node);
                 if (new Set(nodes).size !== nodes.length || outermost(nodes).length !== nodes.length) { lastReason = 'overlapping-regions'; return null; }
                 const chosenSelectors = selected.map(choice => choice.selector);
-                const reader = render(doc, chosenSelectors.map(selector => ({ selector })), procedure.exclude);
-                const coverage = assess(doc, reader, inventory); lastCoverage = coverage;
+                const reader = render(doc, chosenSelectors.map(selector => ({ selector })), procedure.exclude, context);
+                const coverage = assessWithContext(doc, reader, inventory, context); lastCoverage = coverage;
                 if (!coverage.accepted) { lastReason = 'role-preservation-failed'; return null; }
                 return { accepted: true, html: reader.innerHTML, reason: null, coverage, chosenSelectors,
                     alternativeUsed: chosenSelectors.some((value, i) => value !== procedure.regions[i].selector), attemptedCombinations, visitedStates };

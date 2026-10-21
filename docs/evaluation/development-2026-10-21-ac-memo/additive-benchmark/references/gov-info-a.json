@@ -1,0 +1,85 @@
+{
+  "title": "Renew or replace your adult passport: Overview - GOV.UK",
+  "targets": [
+    {
+      "text": "Renew or replace your adult passport",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "How long it takes",
+      "tag": "H2",
+      "id": "how-long-it-takes"
+    },
+    {
+      "text": "Tracking your passport application",
+      "tag": "H2",
+      "id": "tracking-your-passport-application"
+    },
+    {
+      "text": "Getting your new passport",
+      "tag": "H2",
+      "id": "getting-your-new-passport"
+    },
+    {
+      "text": "Related content",
+      "tag": "H2",
+      "id": "related-nav-related_items-cbf54fc5"
+    },
+    {
+      "text": "It costs £102 to renew or replace your passport if you apply online or £115.50 if you fill in a paper form.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "If you need a passport urgently, you can find out more about the Online Premium or 1 week Fast Track services.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "You can track your passport application using your application reference number.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "post it through your letterbox",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "main h1",
+      "text": "Overview",
+      "tag": "H1",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main .gem-c-govspeak p",
+      "text": "Your new passport will be sent to you by courier or Royal Mail. They’ll either:",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Replace a lost, stolen or damaged passport",
+      "url": "https://www.gov.uk/renew-adult-passport/replace",
+      "originalHref": "/renew-adult-passport/replace"
+    },
+    {
+      "text": "get a passport for a child",
+      "url": "https://www.gov.uk/get-a-child-passport",
+      "originalHref": "/get-a-child-passport"
+    }
+  ],
+  "images": [],
+  "noise": [
+    "GOV.UK Navigation menu Menu Menu Services and information Benefits Births, death, marriages and care Business and self-employed Childcare an"
+  ],
+  "paragraphs": 6,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

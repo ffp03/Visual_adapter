@@ -1,0 +1,53 @@
+{
+  "title": "Quotes to Scrape",
+  "targets": [
+    {
+      "text": "Quotes to Scrape",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“Try not to become a man of success. Rather become a man of value.”",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .text",
+      "text": "“A day without sunshine is like, you know, night.”",
+      "tag": "SPAN",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .author",
+      "text": "Albert Einstein",
+      "tag": "SMALL",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".quote .author",
+      "text": "Steve Martin",
+      "tag": "SMALL",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [],
+  "images": [],
+  "noise": [],
+  "paragraphs": 0,
+  "regionTag": "BODY",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

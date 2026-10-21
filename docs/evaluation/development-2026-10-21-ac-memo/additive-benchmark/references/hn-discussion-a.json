@@ -1,0 +1,72 @@
+{
+  "title": "My YC app: Dropbox - Throw away your USB drive | Hacker News",
+  "targets": [
+    {
+      "text": "1. For a Linux user, you can already build such a system yourself quite trivially by getting an FTP account, mounting it locally with curlftpfs, and then using SVN or CVS on the mo",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Ladies & Gentlemen, the WORLD'S LIGHTEST FILE CABINET. Great for cross-country roadtrips! =)",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Sorry for all the negativity, I guess I'm trying to play devil's advocate here. It's a wonderful product you got going there, but I think you will have to work really hard.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Hacker Newsnew | past | comments | ask | show | jobs | submitlogin",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "selector": ".titleline > a",
+      "text": "My YC app: Dropbox - Throw away your USB drive",
+      "tag": "A",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".commtext",
+      "text": "I have a few qualms with this app:1. For a Linux user, you can already build such a system yourself quite trivially by getting an FTP account, mounting it locally with curlftpfs, a",
+      "tag": "DIV",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".commtext",
+      "text": "Was Dropbox your first idea, or did you start from another point of inspiration? How long did it take to get to a workable demo?Great job, Drew!",
+      "tag": "DIV",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": ".commtext",
+      "text": "The Coda guys asked this question nearly 20 years ago.http://www.coda.cs.cmu.edu/Sorry for being a Coda troll.",
+      "tag": "DIV",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "My YC app: Dropbox - Throw away your USB drive",
+      "url": "http://www.getdropbox.com/u/2/screencast.html",
+      "originalHref": "http://www.getdropbox.com/u/2/screencast.html"
+    },
+    {
+      "text": "http://www.aaronsw.com/weblog/lazybackup",
+      "url": "http://www.aaronsw.com/weblog/lazybackup",
+      "originalHref": "http://www.aaronsw.com/weblog/lazybackup"
+    }
+  ],
+  "images": [],
+  "noise": [],
+  "paragraphs": 51,
+  "regionTag": "BODY",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

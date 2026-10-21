@@ -1,0 +1,1 @@
+No actionable defects found in the memoization diff against 8fbfb47 or procedure-memoization-test.cjs. All eight focused tests passed when run directly; the --test launcher was blocked by sandbox spawn restrictions. Review remained within the requested scope.

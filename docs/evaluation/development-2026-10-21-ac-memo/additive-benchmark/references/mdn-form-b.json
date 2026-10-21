@@ -1,0 +1,141 @@
+{
+  "title": "<form> HTML form element - HTML | MDN",
+  "targets": [
+    {
+      "text": "<form> HTML form element",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Attributes",
+      "tag": "H2",
+      "id": "attributes"
+    },
+    {
+      "text": "Attributes for form submission",
+      "tag": "H3",
+      "id": "attributes_for_form_submission"
+    },
+    {
+      "text": "Technical summary",
+      "tag": "H2",
+      "id": "technical_summary"
+    },
+    {
+      "text": "Specifications",
+      "tag": "H2",
+      "id": "specifications"
+    },
+    {
+      "text": "Browser compatibility",
+      "tag": "H2",
+      "id": "browser_compatibility"
+    },
+    {
+      "text": "Help improve MDN",
+      "tag": "H2",
+      "id": "feedback"
+    },
+    {
+      "text": "This feature is well established and works across many devices and browser versions. It’s been available across browsers since July 2015.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Controls the annotations and what kinds of links the form creates. Annotations include external, nofollow, opener, noopener, and noreferrer. Link types include help, prev, next, se",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "This value can be overridden by a formtarget attribute on a <button>, <input type=\"submit\">, or <input type=\"image\"> element.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "<form action=\"\" method=\"get\" class=\"form-example\"> <div class=\"form-example\"> <label for=\"name\">Enter your name: </label> <input type=\"text\" name=\"name\" id=\"name\" required /> </div",
+      "tag": "PRE",
+      "id": null
+    },
+    {
+      "text": "Content categories Flow content, palpable content",
+      "tag": "TR",
+      "id": null
+    },
+    {
+      "text": "See full compatibility",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "#examples",
+      "text": "Examples",
+      "tag": "H2",
+      "elementId": "examples",
+      "id": "examples"
+    },
+    {
+      "selector": "section[aria-labelledby=\"attributes\"] p",
+      "text": "This element includes the global attributes.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "section[aria-labelledby=\"attributes\"] p",
+      "text": "Controls whether inputted text is automatically capitalized and, if so, in what manner. See the autocapitalize global attribute page for more information.",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main pre",
+      "text": "form.form-example { display: table; } div.form-example { display: table-row; } label, input { display: table-cell; margin-bottom: 10px; } label { padding-right: 10px; }",
+      "tag": "PRE",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main pre",
+      "text": "document.querySelectorAll(\"form\").forEach((form) => { form.addEventListener(\"submit\", (event) => { event.preventDefault(); }); });",
+      "tag": "PRE",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main table tr",
+      "text": "Implicit ARIA role form",
+      "tag": "TR",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main table tr",
+      "text": "HTML# the-form-element",
+      "tag": "TR",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "See full compatibility",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form#browser_compatibility",
+      "originalHref": "#browser_compatibility"
+    },
+    {
+      "text": "Browser compatibility",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form#browser_compatibility",
+      "originalHref": "#browser_compatibility"
+    }
+  ],
+  "images": [],
+  "noise": [
+    "MDN HTML HTML: Markup language HTML reference Elements Global attributes Attributes See all… HTML guides Responsive images HTML cheatsheet D",
+    "HTML HTML: Markup language HTML reference Elements Global attributes Attributes See all… HTML guides Responsive images HTML cheatsheet Date "
+  ],
+  "paragraphs": 17,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

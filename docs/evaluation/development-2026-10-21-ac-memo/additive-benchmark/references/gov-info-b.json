@@ -1,0 +1,85 @@
+{
+  "title": "Getting your first adult passport: Who can apply - GOV.UK",
+  "targets": [
+    {
+      "text": "Getting your first adult passport",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "How long it takes",
+      "tag": "H2",
+      "id": "how-long-it-takes"
+    },
+    {
+      "text": "Ways to apply",
+      "tag": "H2",
+      "id": "ways-to-apply"
+    },
+    {
+      "text": "If you have a non-British passport",
+      "tag": "H2",
+      "id": "if-you-have-a-non-british-passport"
+    },
+    {
+      "text": "Related content",
+      "tag": "H2",
+      "id": "related-nav-related_items-ca72c43e"
+    },
+    {
+      "text": "If you need a passport to travel urgently for medical treatment or because a friend or family member is seriously ill or has died, call the Passport Adviceline.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "If you have dual citizenship (‘dual nationality’) and have a non-British passport, the name and gender on your non-British passport must match the name and gender you want on your ",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "If they’re different, change the details on your non-British passport before you apply for a new British passport.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "you’re a British national",
+      "tag": "LI",
+      "id": null
+    },
+    {
+      "selector": "main h1",
+      "text": "Who can apply",
+      "tag": "H1",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "main .gem-c-govspeak p",
+      "text": "You can apply for a first adult passport if all of the following apply:",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "What documents you need to apply",
+      "url": "https://www.gov.uk/apply-first-adult-passport/what-documents-you-need-to-apply",
+      "originalHref": "/apply-first-adult-passport/what-documents-you-need-to-apply"
+    },
+    {
+      "text": "Apply with a paper form",
+      "url": "https://www.gov.uk/apply-first-adult-passport/apply-by-post",
+      "originalHref": "/apply-first-adult-passport/apply-by-post"
+    }
+  ],
+  "images": [],
+  "noise": [
+    "GOV.UK Navigation menu Menu Menu Services and information Benefits Births, death, marriages and care Business and self-employed Childcare an"
+  ],
+  "paragraphs": 3,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

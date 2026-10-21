@@ -1,0 +1,8 @@
+{
+  "identicalReadingArtifacts": 54,
+  "identicalProcedureHashes": 54,
+  "allQualityChecksIdentical": true,
+  "older": "ac-dev-v3",
+  "newer": "ac-memo-v1",
+  "timingFieldsExcluded": true
+}

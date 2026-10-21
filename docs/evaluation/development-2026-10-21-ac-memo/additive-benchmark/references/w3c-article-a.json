@@ -1,0 +1,146 @@
+{
+  "title": "Introduction to Web Accessibility | Web Accessibility Initiative (WAI) | W3C",
+  "targets": [
+    {
+      "text": "Introduction to Web Accessibility",
+      "tag": "H1",
+      "id": null
+    },
+    {
+      "text": "Accessibility in Context",
+      "tag": "H2",
+      "id": "context"
+    },
+    {
+      "text": "What is Web Accessibility",
+      "tag": "H2",
+      "id": "what"
+    },
+    {
+      "text": "More Info on What is Accessibility",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Accessibility is Important for Individuals, Businesses, Society",
+      "tag": "H2",
+      "id": "important"
+    },
+    {
+      "text": "More Info on Accessibility is Important",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Making the Web Accessible",
+      "tag": "H2",
+      "id": "making"
+    },
+    {
+      "text": "More Info on Making the Web Accessible",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Making Your Website Accessible",
+      "tag": "H3",
+      "id": "website"
+    },
+    {
+      "text": "More Info on Making Your Website Accessible",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Evaluating Accessibility",
+      "tag": "H2",
+      "id": "evaluate"
+    },
+    {
+      "text": "More Info on Evaluating Accessibility",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "Alternative Text for Images",
+      "tag": "H3",
+      "id": "alternative-text-for-images"
+    },
+    {
+      "text": "Keyboard Input",
+      "tag": "H3",
+      "id": "keyboard-input"
+    },
+    {
+      "text": "Transcripts for Audio",
+      "tag": "H3",
+      "id": "transcripts-for-audio"
+    },
+    {
+      "text": "More Examples",
+      "tag": "H3",
+      "id": null
+    },
+    {
+      "text": "For More Information",
+      "tag": "H2",
+      "id": "more-info"
+    },
+    {
+      "text": "Help improve this page",
+      "tag": "H2",
+      "id": null
+    },
+    {
+      "text": "When websites and web tools are properly designed and coded, people with disabilities can use them. However, currently many sites and tools are developed with accessibility barrier",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Web accessibility depends on several components working together, including web technologies, web browsers and other \"user agents\", authoring tools, and websites.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "text": "Please share your ideas, suggestions, or comments via e-mail to the publicly-archived list wai@w3.org or via GitHub.",
+      "tag": "P",
+      "id": null
+    },
+    {
+      "selector": "#what + p",
+      "text": "Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can:",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    },
+    {
+      "selector": "#evaluate + p",
+      "text": "When developing or redesigning a website, evaluate accessibility early and throughout the development process to identify accessibility problems early, when it is easier to address",
+      "tag": "P",
+      "elementId": null,
+      "id": null
+    }
+  ],
+  "links": [
+    {
+      "text": "Accessibility in Context",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/#context",
+      "originalHref": "#context"
+    },
+    {
+      "text": "What is Web Accessibility",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/#what",
+      "originalHref": "#what"
+    }
+  ],
+  "images": [],
+  "noise": [
+    "Skip to Content Change Text Size or Colors This page in: Englishالعربية čeština Deutsch Ελληνικά español français Bahasa Indonesia 한국어 polsk",
+    "Accessibility FundamentalsPlanning & PoliciesDesign & DevelopTest & EvaluateTeach & AdvocateStandards/Guidelines"
+  ],
+  "paragraphs": 30,
+  "regionTag": "MAIN",
+  "shell": false,
+  "scorable": true,
+  "policy": "Source-only deterministic primary-region annotation; headings, first/middle/last paragraphs, representative structures, links/images and external navigation. Not human gold labels."
+}

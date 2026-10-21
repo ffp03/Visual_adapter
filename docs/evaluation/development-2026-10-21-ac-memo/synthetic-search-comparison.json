@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-21T14:23:50.717Z",
+  "engine": "Node/JSDOM instrumented inclusive times",
+  "sourceHashes": {
+    "frozen": "cb79e324eab6ee968d77e3a01bf9b98de50408bcb078be09acc044edda550a0b",
+    "memoized": "7372375dfc291866918e5d05b589601d5cfd305ac9a27892c0bbbd8c1c00c04a"
+  },
+  "rows": [
+    {
+      "mode": "frozen",
+      "paragraphsPerCandidate": 8,
+      "sourceCharacters": 19525,
+      "sourceRoles": 192,
+      "inspectMs": 673.9564,
+      "applyMs": 7953.508800000001,
+      "accepted": false,
+      "reason": "selector-search-budget-exhausted",
+      "attemptedCombinations": 64,
+      "visitedStates": 88,
+      "outputSha256": "634f902bd0412382730a322ec8f871213b3b91cee86d4cee21d798f43b151bf7",
+      "stats": {
+        "clean": {
+          "calls": 15744,
+          "ms": 6228.822399999993
+        },
+        "render": {
+          "calls": 64,
+          "ms": 1700.2506000000035
+        },
+        "signature": {
+          "calls": 3072,
+          "ms": 1670.225099999975
+        },
+        "assess": {
+          "calls": 64,
+          "ms": 6215.513600000001
+        }
+      }
+    },
+    {
+      "mode": "memoized",
+      "paragraphsPerCandidate": 8,
+      "sourceCharacters": 19525,
+      "sourceRoles": 192,
+      "inspectMs": 676.1839999999993,
+      "applyMs": 1878.6666999999998,
+      "accepted": false,
+      "reason": "selector-search-budget-exhausted",
+      "attemptedCombinations": 64,
+      "visitedStates": 88,
+      "outputSha256": "634f902bd0412382730a322ec8f871213b3b91cee86d4cee21d798f43b151bf7",
+      "stats": {
+        "clean": {
+          "calls": 327,
+          "ms": 248.96999999997752
+        },
+        "render": {
+          "calls": 64,
+          "ms": 1445.2265999999945
+        },
+        "signature": {
+          "calls": 120,
+          "ms": 111.28820000000997
+        },
+        "assessWithContext": {
+          "calls": 64,
+          "ms": 380.600800000002
+        }
+      }
+    },
+    {
+      "mode": "frozen",
+      "paragraphsPerCandidate": 20,
+      "sourceCharacters": 47989,
+      "sourceRoles": 480,
+      "inspectMs": 1171.4454999999998,
+      "applyMs": 28560.6673,
+      "accepted": false,
+      "reason": "selector-search-budget-exhausted",
+      "attemptedCombinations": 64,
+      "visitedStates": 88,
+      "outputSha256": "da4ccc4024a43192ce7aa75513c0c325c133a99cb74e96334dddd993bdf68a41",
+      "stats": {
+        "clean": {
+          "calls": 38784,
+          "ms": 22832.65190000016
+        },
+        "render": {
+          "calls": 64,
+          "ms": 5251.432800000017
+        },
+        "signature": {
+          "calls": 7680,
+          "ms": 6151.617999999984
+        },
+        "assess": {
+          "calls": 64,
+          "ms": 23212.07520000002
+        }
+      }
+    },
+    {
+      "mode": "memoized",
+      "paragraphsPerCandidate": 20,
+      "sourceCharacters": 47989,
+      "sourceRoles": 480,
+      "inspectMs": 1119.5646999999954,
+      "applyMs": 4872.686099999999,
+      "accepted": false,
+      "reason": "selector-search-budget-exhausted",
+      "attemptedCombinations": 64,
+      "visitedStates": 88,
+      "outputSha256": "da4ccc4024a43192ce7aa75513c0c325c133a99cb74e96334dddd993bdf68a41",
+      "stats": {
+        "clean": {
+          "calls": 795,
+          "ms": 549.6043000000573
+        },
+        "render": {
+          "calls": 64,
+          "ms": 3957.9769999999917
+        },
+        "signature": {
+          "calls": 300,
+          "ms": 217.78900000008434
+        },
+        "assessWithContext": {
+          "calls": 64,
+          "ms": 821.8102999999901
+        }
+      }
+    }
+  ],
+  "equivalent": true
+}

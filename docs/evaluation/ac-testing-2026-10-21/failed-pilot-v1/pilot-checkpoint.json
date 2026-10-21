@@ -1,0 +1,71 @@
+{
+  "freezeSha256": "0342fc072bb01ebc4ac84fb549d1dde6d248dbbda4f735253b1a49f951029956",
+  "ids": [
+    "site01-1",
+    "site01-2",
+    "site02-1",
+    "site02-2"
+  ],
+  "checkpoints": [
+    {
+      "file": "checkpoint-0001.json",
+      "sha256": "7dc38d57673344c4baac8ce0272f8f76d32d8f3d63b54f9b7a8e395ffb1b8294"
+    },
+    {
+      "file": "checkpoint-0002.json",
+      "sha256": "7eda5e9047f21f896f9f6ae4b51d1235cde9a41e72fd92e121f9f8b34866e8ea"
+    },
+    {
+      "file": "checkpoint-0003.json",
+      "sha256": "899282cfc29d201f123fdc65a0689638dbbb2224b91eac4c2a299f9630c6e209"
+    },
+    {
+      "file": "checkpoint-0004.json",
+      "sha256": "bbefbf25327a6b9725afc632a76077f4f6b3e8c5033475b908d7e842e728c27d"
+    }
+  ],
+  "metrics": {
+    "fallback": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 4,
+      "missingPages": 40,
+      "readingPassPages": 4,
+      "noFallbackPages": 0,
+      "readingPassSites": 2,
+      "noFallbackSites": 0,
+      "ruleAppliedPages": 0,
+      "measurementErrors": 0
+    },
+    "compiled-fresh": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 4,
+      "missingPages": 40,
+      "readingPassPages": 4,
+      "noFallbackPages": 4,
+      "readingPassSites": 2,
+      "noFallbackSites": 2,
+      "ruleAppliedPages": 4,
+      "measurementErrors": 0
+    },
+    "compiled-shared": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 3,
+      "missingPages": 40,
+      "readingPassPages": 3,
+      "noFallbackPages": 3,
+      "readingPassSites": 1,
+      "noFallbackSites": 1,
+      "ruleAppliedPages": 3,
+      "measurementErrors": 1
+    }
+  }
+}

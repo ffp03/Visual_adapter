@@ -1,0 +1,6 @@
+The replay runtime binding remains incomplete. All 10 synthetic paper-gate tests passed; alternative/family tests did not complete during review. No testing bodies or individual outcomes were inspected, and these checks establish no scientific generality.
+
+Review comment:
+
+- [P2] Bind Chromium's runtime dependencies as well as its executable — C:\Dev\Visual_adapter\tests\local\ac-holdout-replay.cjs:52-55
+  On Windows, Chromium executes substantial browser code from companion binaries such as `chrome.dll`, but the runtime fingerprint binds only `chrome.exe` alongside Node and Playwright modules. Replacing a companion binary without changing the launcher therefore passes `verifyRuntime`, allowing pilot and full replay to use different browser implementations despite the exact frozen-runtime requirement. Include Chromium's required binaries and resources in the runtime identity and add a synthetic companion-file drift test.

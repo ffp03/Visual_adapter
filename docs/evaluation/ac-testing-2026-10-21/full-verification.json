@@ -1,0 +1,62 @@
+{
+  "freezeSha256": "4b3f76e295cc5b5795df6e03c7cb1036ce2d81a6716d112162393cb84e537329",
+  "boundRows": 132,
+  "gate": {
+    "experimentComplete": true,
+    "paperUpdateAllowed": false,
+    "criterion": "All132 genuine complete observations without measurement errors; shared no-fallback pages/pairs Pareto-improve32/14, preserving shared reading40pages/20pairs",
+    "baseline": {
+      "sharedNoFallbackPages": 32,
+      "sharedNoFallbackSites": 14,
+      "sharedReadingPages": 40,
+      "sharedReadingSites": 20,
+      "summarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573"
+    },
+    "noFallbackNonRegression": true,
+    "strictNoFallbackImprovement": false,
+    "readingPreserved": true,
+    "passedPages": 32,
+    "passedSites": 14,
+    "pageDenominator": 44,
+    "siteDenominator": 22,
+    "successRate": 0.7272727272727273,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 41,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 37,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 17
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 32,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 14
+      }
+    }
+  },
+  "summarySha256": "b322d5a88d1cf474dc6f9c9aa5e419fa68c8c3c919e19f2273a7caa75d0147c3",
+  "runtimeReverified": true,
+  "fullSummarySha256": "b322d5a88d1cf474dc6f9c9aa5e419fa68c8c3c919e19f2273a7caa75d0147c3"
+}

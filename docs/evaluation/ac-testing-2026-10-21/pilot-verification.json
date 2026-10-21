@@ -1,0 +1,61 @@
+{
+  "freezeSha256": "4b3f76e295cc5b5795df6e03c7cb1036ce2d81a6716d112162393cb84e537329",
+  "boundRows": 12,
+  "gate": {
+    "experimentComplete": false,
+    "paperUpdateAllowed": false,
+    "criterion": "All132 genuine complete observations without measurement errors; shared no-fallback pages/pairs Pareto-improve32/14, preserving shared reading40pages/20pairs",
+    "baseline": {
+      "sharedNoFallbackPages": 32,
+      "sharedNoFallbackSites": 14,
+      "sharedReadingPages": 40,
+      "sharedReadingSites": 20,
+      "summarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573"
+    },
+    "noFallbackNonRegression": false,
+    "strictNoFallbackImprovement": false,
+    "readingPreserved": false,
+    "passedPages": 3,
+    "passedSites": 1,
+    "pageDenominator": 44,
+    "siteDenominator": 22,
+    "successRate": 0.06818181818181818,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 4,
+        "completePages": 4,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 2,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 4,
+        "completePages": 4,
+        "noFallbackPages": 4,
+        "measurementErrors": 0,
+        "completeSites": 2,
+        "noFallbackSites": 2
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 4,
+        "completePages": 4,
+        "noFallbackPages": 3,
+        "measurementErrors": 0,
+        "completeSites": 2,
+        "noFallbackSites": 1
+      }
+    }
+  },
+  "summarySha256": "5d0f2b152e1a2c300169a94c90cca1f2c1704878ab7d8f31cc598fc22bdff2d2",
+  "runtimeReverified": true
+}

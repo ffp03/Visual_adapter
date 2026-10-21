@@ -1,0 +1,9 @@
+Two synthetic reproductions show descriptor instability rejecting otherwise fully preserving procedures. All nine alternatives/family tests passed, including the corrected rejected-search diagnostics fixture.
+
+Full review comments:
+
+- [P2] Exclude heading descendants from narrative classification — C:\Dev\Visual_adapter\extension\procedure-core.js:109-110
+  For `<main><h1>Title</h1><article><p>Body</p></article></main>`, wrapping the heading text in `<span>` changes the descriptor from `article` to `document`: the span is counted as narrative outside the article even though its heading parent is excluded. This makes an unchanged, fully preserving `main` procedure fail with `structural-scope-mismatch` solely because of a presentation wrapper. Exclude heading ancestry when identifying narrative text.
+
+- [P2] Exclude comment-contained articles from entry classification — C:\Dev\Visual_adapter\extension\procedure-core.js:107-109
+  Adding `<section role="comment"><article><p>Optional comment</p></article></section>` beside the main article changes its descriptor from `article` to `collection`. Comment prose is excluded from `narrative`, but comment-contained articles still contribute to `articles`, incorrectly treating feedback as collection entries. A previously valid `main` procedure consequently fails structural matching despite preserving all current content. Filter comment ancestry consistently when collecting articles.

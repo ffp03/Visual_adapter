@@ -1,0 +1,6 @@
+Found one reproducible diagnostics defect on fallback. All eight alternatives/family tests passed; admission execution and broader checks remain unverified.
+
+Review comment:
+
+- [P2] Preserve search-attempt diagnostics when falling back — C:\Dev\Visual_adapter\extension\content.js:214-214
+  When a compatible procedure tries combinations but fails preservation or exhausts its search budget, `tryApplyRules` discards `result.attemptedCombinations` before continuing. This response consequently reports zero attempts despite actual search work. A synthetic preservation-failure case returns two attempts from `core.apply` but zero from content extraction. Preserve rejected-search diagnostics before continuing so fallback responses accurately report the search performed.

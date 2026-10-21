@@ -1,0 +1,280 @@
+{
+  "status": "completed",
+  "productionBaseline": "f21ba71091f94e08461455f3d8dbdc8ac02853a9",
+  "pages": 44,
+  "sitePairs": 22,
+  "screenedCandidates": 40,
+  "genuineMeasurements": 132,
+  "measurementErrors": 0,
+  "metrics": {
+    "fallback": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 41,
+      "noFallbackPages": 0,
+      "readingPassSites": 20,
+      "noFallbackSites": 0,
+      "ruleAppliedPages": 0,
+      "measurementErrors": 0
+    },
+    "compiled-fresh": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 40,
+      "noFallbackPages": 37,
+      "readingPassSites": 20,
+      "noFallbackSites": 17,
+      "ruleAppliedPages": 41,
+      "measurementErrors": 0
+    },
+    "compiled-shared": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 44,
+      "measuredPages": 44,
+      "missingPages": 0,
+      "readingPassPages": 40,
+      "noFallbackPages": 32,
+      "readingPassSites": 20,
+      "noFallbackSites": 14,
+      "ruleAppliedPages": 36,
+      "measurementErrors": 0
+    }
+  },
+  "gate": {
+    "experimentComplete": true,
+    "paperUpdateAllowed": false,
+    "criterion": "All132 genuine complete observations without measurement errors; shared no-fallback pages/pairs Pareto-improve32/14, preserving shared reading40pages/20pairs",
+    "baseline": {
+      "sharedNoFallbackPages": 32,
+      "sharedNoFallbackSites": 14,
+      "sharedReadingPages": 40,
+      "sharedReadingSites": 20,
+      "summarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573"
+    },
+    "noFallbackNonRegression": true,
+    "strictNoFallbackImprovement": false,
+    "readingPreserved": true,
+    "passedPages": 32,
+    "passedSites": 14,
+    "pageDenominator": 44,
+    "siteDenominator": 22,
+    "successRate": 0.7272727272727273,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 41,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 37,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 17
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 44,
+        "measuredPages": 44,
+        "completePages": 40,
+        "noFallbackPages": 32,
+        "measurementErrors": 0,
+        "completeSites": 20,
+        "noFallbackSites": 14
+      }
+    }
+  },
+  "parentAcceptance": {
+    "parentVerified": true,
+    "mode": "full",
+    "rows": 132,
+    "productionHashesMatchTrainingFreeze": true,
+    "metrics": {
+      "fallback": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 41,
+        "noFallbackPages": 0,
+        "readingPassSites": 20,
+        "noFallbackSites": 0,
+        "targetCount": 715,
+        "retained": 715
+      },
+      "compiled-fresh": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 40,
+        "noFallbackPages": 37,
+        "readingPassSites": 20,
+        "noFallbackSites": 17,
+        "targetCount": 715,
+        "retained": 715
+      },
+      "compiled-shared": {
+        "measuredPages": 44,
+        "measurementErrors": 0,
+        "readingPassPages": 40,
+        "noFallbackPages": 32,
+        "readingPassSites": 20,
+        "noFallbackSites": 14,
+        "targetCount": 715,
+        "retained": 715
+      }
+    },
+    "paperUpdateAllowed": false,
+    "baselineSharedNoFallbackPages": 32,
+    "baselineSharedNoFallbackPairs": 14,
+    "fixedPageDenominator": 44,
+    "fixedSiteDenominator": 22,
+    "noReferenceChanges": true,
+    "newModelRequests": 0,
+    "liveSiteRequests": 0,
+    "freezeSha256": "4b3f76e295cc5b5795df6e03c7cb1036ce2d81a6716d112162393cb84e537329",
+    "pilotAcceptanceSha256": "02f2f3d099c6d9ad75cbfaf68d155ec92647b4f8cbebcb74fa3186f6b13125ee",
+    "pilotExpansionAllowed": null,
+    "fullRunAuthorizedByVerifiedPilot": true
+  },
+  "comparison": [
+    {
+      "approach": "fallback",
+      "previousReadingPages": 41,
+      "currentReadingPages": 41,
+      "previousNoFallbackPages": 0,
+      "currentNoFallbackPages": 0,
+      "previousNoFallbackSites": 0,
+      "currentNoFallbackSites": 0
+    },
+    {
+      "approach": "compiled-fresh",
+      "previousReadingPages": 40,
+      "currentReadingPages": 40,
+      "previousNoFallbackPages": 37,
+      "currentNoFallbackPages": 37,
+      "previousNoFallbackSites": 17,
+      "currentNoFallbackSites": 17
+    },
+    {
+      "approach": "compiled-shared",
+      "previousReadingPages": 40,
+      "currentReadingPages": 40,
+      "previousNoFallbackPages": 32,
+      "currentNoFallbackPages": 32,
+      "previousNoFallbackSites": 14,
+      "currentNoFallbackSites": 14
+    }
+  ],
+  "diagnostics": {
+    "fallback": {
+      "alternativeDeliveries": 0,
+      "allCheckAlternativeDeliveries": 0,
+      "failedLinkChecks": 3,
+      "retainedTargets": 715
+    },
+    "compiled-fresh": {
+      "alternativeDeliveries": 0,
+      "allCheckAlternativeDeliveries": 0,
+      "failedLinkChecks": 5,
+      "retainedTargets": 715
+    },
+    "compiled-shared": {
+      "alternativeDeliveries": 0,
+      "allCheckAlternativeDeliveries": 0,
+      "failedLinkChecks": 5,
+      "retainedTargets": 715
+    }
+  },
+  "sourceFreezeSha256": "4b3f76e295cc5b5795df6e03c7cb1036ce2d81a6716d112162393cb84e537329",
+  "fullSummarySha256": "b322d5a88d1cf474dc6f9c9aa5e419fa68c8c3c919e19f2273a7caa75d0147c3",
+  "newModelRequests": 0,
+  "liveSiteRequests": 0,
+  "productionChangedDuringTesting": false,
+  "referencesChanged": false,
+  "paperUpdateAuthorizedByMeasuredImprovement": false,
+  "scope": "Repeated evaluation of same44 static snapshots and historical raw candidates. No joint transfer recompilation, fresh model generation, cold API admission or independent new-corpus validation.",
+  "rawArtifacts": "Preserved in ignored workspace/task023/ac-testing/frozen-ac-v1; original captures/candidates unchanged.",
+  "previousPilot": {
+    "tag": "frozen-ac-v1",
+    "recorded": 12,
+    "genuine": 11,
+    "operationalErrors": 1,
+    "expansionStopped": true,
+    "repair": "synthetic-only per-apply memoization; all54developmentreadingoutputs unchanged"
+  },
+  "finalFullPhaseSeconds": 261.75,
+  "coverageImproved": false,
+  "componentTimingDiagnostic": {
+    "values": {
+      "previous": {
+        "fallback": {
+          "medianMs": 77.10000002384186,
+          "maxMs": 1413.3999999761581,
+          "p95NearestRankMs": 859.5,
+          "pages": 44
+        },
+        "compiled-fresh": {
+          "medianMs": 17.099999994039536,
+          "maxMs": 1318.4000000357628,
+          "p95NearestRankMs": 683.6000000238419,
+          "pages": 44
+        },
+        "compiled-shared": {
+          "medianMs": 24.950000017881393,
+          "maxMs": 2103.900000035763,
+          "p95NearestRankMs": 747,
+          "pages": 44
+        }
+      },
+      "current": {
+        "fallback": {
+          "medianMs": 185.14999997615814,
+          "maxMs": 3748.899999976158,
+          "p95NearestRankMs": 2495,
+          "pages": 44
+        },
+        "compiled-fresh": {
+          "medianMs": 50.09999996423721,
+          "maxMs": 2580.7999999523163,
+          "p95NearestRankMs": 1901.8999999761581,
+          "pages": 44
+        },
+        "compiled-shared": {
+          "medianMs": 59.0,
+          "maxMs": 3979.7999999523163,
+          "p95NearestRankMs": 1815.5,
+          "pages": 44
+        }
+      }
+    },
+    "limit": "Separate runs under variable machine load, not controlled evidence of user-facing speed or a causal performance comparison."
+  },
+  "perPageDecisionComparison": {
+    "compared": 132,
+    "changed": 0,
+    "fields": [
+      "complete",
+      "noFallbackPass",
+      "usedRule"
+    ]
+  }
+}

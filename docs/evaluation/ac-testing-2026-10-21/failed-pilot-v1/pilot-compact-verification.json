@@ -1,0 +1,276 @@
+{
+  "freezeSha256": "0342fc072bb01ebc4ac84fb549d1dde6d248dbbda4f735253b1a49f951029956",
+  "pilotCheckpointSha256": "a9d14ee5c430f79c7804c35d81905778f1f1ab5ae66fcd5a3f718435bd298d80",
+  "pilotSummarySha256": "8dcd3b2efeebc272c6bc6b9c251a39e1f985e653290c5022336f93d9d56f409b",
+  "recordedRows": 12,
+  "genuineMeasurements": 11,
+  "metrics": {
+    "fallback": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 4,
+      "missingPages": 40,
+      "readingPassPages": 4,
+      "noFallbackPages": 0,
+      "readingPassSites": 2,
+      "noFallbackSites": 0,
+      "ruleAppliedPages": 0,
+      "measurementErrors": 0
+    },
+    "compiled-fresh": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 4,
+      "missingPages": 40,
+      "readingPassPages": 4,
+      "noFallbackPages": 4,
+      "readingPassSites": 2,
+      "noFallbackSites": 2,
+      "ruleAppliedPages": 4,
+      "measurementErrors": 0
+    },
+    "compiled-shared": {
+      "fixedPages": 44,
+      "fixedSites": 22,
+      "originalCandidates": 40,
+      "recordedPages": 4,
+      "measuredPages": 3,
+      "missingPages": 40,
+      "readingPassPages": 3,
+      "noFallbackPages": 3,
+      "readingPassSites": 1,
+      "noFallbackSites": 1,
+      "ruleAppliedPages": 3,
+      "measurementErrors": 1
+    }
+  },
+  "paperGate": {
+    "experimentComplete": false,
+    "paperUpdateAllowed": false,
+    "criterion": "All132 genuine complete observations without measurement errors; shared no-fallback pages/pairs Pareto-improve32/14, preserving shared reading40pages/20pairs",
+    "baseline": {
+      "sharedNoFallbackPages": 32,
+      "sharedNoFallbackSites": 14,
+      "sharedReadingPages": 40,
+      "sharedReadingSites": 20,
+      "summarySha256": "e2d2f8e5c18b72501910327d51a7f96586c90b140bbb82f32f2e5dae2da11573"
+    },
+    "noFallbackNonRegression": false,
+    "strictNoFallbackImprovement": false,
+    "readingPreserved": false,
+    "passedPages": 3,
+    "passedSites": 1,
+    "pageDenominator": 44,
+    "siteDenominator": 22,
+    "successRate": 0.06818181818181818,
+    "metrics": {
+      "fallback": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 4,
+        "completePages": 4,
+        "noFallbackPages": 0,
+        "measurementErrors": 0,
+        "completeSites": 2,
+        "noFallbackSites": 0
+      },
+      "compiled-fresh": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 4,
+        "completePages": 4,
+        "noFallbackPages": 4,
+        "measurementErrors": 0,
+        "completeSites": 2,
+        "noFallbackSites": 2
+      },
+      "compiled-shared": {
+        "pageDenominator": 44,
+        "siteDenominator": 22,
+        "recordedPages": 4,
+        "measuredPages": 3,
+        "completePages": 3,
+        "noFallbackPages": 3,
+        "measurementErrors": 1,
+        "completeSites": 1,
+        "noFallbackSites": 1
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "site01-1",
+      "approach": "fallback",
+      "complete": true,
+      "noFallback": false,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 0,
+      "chosenSelectors": [],
+      "procedureSha256": null
+    },
+    {
+      "id": "site01-1",
+      "approach": "compiled-fresh",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "main"
+      ],
+      "procedureSha256": "dca9742ae3ac58cd493a117522782c8c1a7a3897c6d3694c9aaf0d1edad78f1b"
+    },
+    {
+      "id": "site01-1",
+      "approach": "compiled-shared",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "main"
+      ],
+      "procedureSha256": "dca9742ae3ac58cd493a117522782c8c1a7a3897c6d3694c9aaf0d1edad78f1b"
+    },
+    {
+      "id": "site01-2",
+      "approach": "fallback",
+      "complete": true,
+      "noFallback": false,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 0,
+      "chosenSelectors": [],
+      "procedureSha256": null
+    },
+    {
+      "id": "site01-2",
+      "approach": "compiled-fresh",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "div[class~=\"ssrcss-1imfos9-PageStack\"][class~=\"e1k195vp1\"]"
+      ],
+      "procedureSha256": "d7b562e3fcd2fa371ff67704df05b8b852e6fd8b66ffb6998d2e758c398a5728"
+    },
+    {
+      "id": "site01-2",
+      "approach": "compiled-shared",
+      "complete": false,
+      "noFallback": false,
+      "measurementComplete": false,
+      "measurementError": "page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "id": "site02-1",
+      "approach": "fallback",
+      "complete": true,
+      "noFallback": false,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 0,
+      "chosenSelectors": [],
+      "procedureSha256": null
+    },
+    {
+      "id": "site02-1",
+      "approach": "compiled-fresh",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "body"
+      ],
+      "procedureSha256": "c1572ca72128a123332c6e934d5c05716420f7bd1bab42bdd77ff75391a4d7cd"
+    },
+    {
+      "id": "site02-1",
+      "approach": "compiled-shared",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "body"
+      ],
+      "procedureSha256": "c1572ca72128a123332c6e934d5c05716420f7bd1bab42bdd77ff75391a4d7cd"
+    },
+    {
+      "id": "site02-2",
+      "approach": "fallback",
+      "complete": true,
+      "noFallback": false,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 0,
+      "chosenSelectors": [],
+      "procedureSha256": null
+    },
+    {
+      "id": "site02-2",
+      "approach": "compiled-fresh",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "body"
+      ],
+      "procedureSha256": "189c6549b56e9cf59e51ca3b6208747afcc9fa3b8c29b56c63df9405481d7f57"
+    },
+    {
+      "id": "site02-2",
+      "approach": "compiled-shared",
+      "complete": true,
+      "noFallback": true,
+      "measurementComplete": true,
+      "alternativeUsed": false,
+      "attemptedCombinations": 1,
+      "chosenSelectors": [
+        "body"
+      ],
+      "procedureSha256": "c1572ca72128a123332c6e934d5c05716420f7bd1bab42bdd77ff75391a4d7cd"
+    }
+  ],
+  "samples": [
+    {
+      "id": "site01-1",
+      "characters": 11981,
+      "sameAsDirect": true
+    },
+    {
+      "id": "site01-2",
+      "characters": 11966,
+      "sameAsDirect": true
+    },
+    {
+      "id": "site02-1",
+      "characters": 10707,
+      "sameAsDirect": true
+    },
+    {
+      "id": "site02-2",
+      "characters": 11976,
+      "sameAsDirect": true
+    }
+  ],
+  "newGenerationCalls": 0,
+  "liveSiteCalls": 0,
+  "stop": "Parent audit required; no full replay performed"
+}

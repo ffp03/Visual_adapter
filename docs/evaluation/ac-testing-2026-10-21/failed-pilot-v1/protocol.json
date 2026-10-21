@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-21T14:03:06.162032+00:00",
+  "authorization": "User selected A+C, then same44 rerun and paper update on improvement.",
+  "development": "Original18 pages and synthetic fixtures only. Previously known aggregate performance, no individual44 inspection to develop revision.",
+  "freeze": "Runtime8fbfb4773ff8d2a92a0ab2f283ae2d683828ff05 reviewed and committed before re-evaluation. No runtime changes after testing.",
+  "design": "Same44 static sources,22ordered pairs,40originalcandidates; original reference checks/scorer/raw model candidates unchanged. Fresh compiles each own candidate, shared compiles seed only and applies same artifact unchanged on transfer.",
+  "pilot": "First2originaleligible ordered pairs; parent verifies all12measurements and checksums before expanding.",
+  "baseline": {
+    "sharedNoFallbackPages": 32,
+    "sharedNoFallbackPairs": 14,
+    "sharedReadingPages": 40,
+    "sharedReadingPairs": 20
+  },
+  "paperGate": "All132 genuine measurements, noerrors; sharedNFpages/pairs do not decline and at leastone increases; sharedreading at least40pages20pairs.",
+  "scope": "Repeated evaluation of same previously tested corpus, retained-candidate compilation; not fresh independent holdout, new model generation quality, cold admission coverage or human accessibility ground truth.",
+  "newModelCalls": 0,
+  "liveSiteCalls": 0
+}

@@ -1,0 +1,50 @@
+{
+  "parentVerified": true,
+  "mode": "pilot",
+  "rows": 12,
+  "productionHashesMatchTrainingFreeze": true,
+  "metrics": {
+    "fallback": {
+      "measuredPages": 4,
+      "measurementErrors": 0,
+      "readingPassPages": 4,
+      "noFallbackPages": 0,
+      "readingPassSites": 2,
+      "noFallbackSites": 0,
+      "targetCount": 134,
+      "retained": 134
+    },
+    "compiled-fresh": {
+      "measuredPages": 4,
+      "measurementErrors": 0,
+      "readingPassPages": 4,
+      "noFallbackPages": 4,
+      "readingPassSites": 2,
+      "noFallbackSites": 2,
+      "targetCount": 134,
+      "retained": 134
+    },
+    "compiled-shared": {
+      "measuredPages": 3,
+      "measurementErrors": 1,
+      "readingPassPages": 3,
+      "noFallbackPages": 3,
+      "readingPassSites": 1,
+      "noFallbackSites": 1,
+      "targetCount": 55,
+      "retained": 55
+    }
+  },
+  "paperUpdateAllowed": false,
+  "baselineSharedNoFallbackPages": 32,
+  "baselineSharedNoFallbackPairs": 14,
+  "fixedPageDenominator": 44,
+  "fixedSiteDenominator": 22,
+  "noReferenceChanges": true,
+  "newModelRequests": 0,
+  "liveSiteRequests": 0,
+  "freezeSha256": "0342fc072bb01ebc4ac84fb549d1dde6d248dbbda4f735253b1a49f951029956",
+  "pilotAcceptanceSha256": "a9d14ee5c430f79c7804c35d81905778f1f1ab5ae66fcd5a3f718435bd298d80",
+  "pilotExpansionAllowed": false,
+  "reason": "One operational timeout;11genuine/12recorded. Parent stopped expansion."
+}

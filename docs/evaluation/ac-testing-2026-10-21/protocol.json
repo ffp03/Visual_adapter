@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-21T14:33:27.243260+00:00",
+  "authorization": "User selected A+C, then same44 rerun and paper update on improvement.",
+  "development": "Original18 pages and synthetic fixtures only. Previously known aggregate performance, no individual44 inspection to develop revision.",
+  "freeze": "Runtimef21ba71091f94e08461455f3d8dbdc8ac02853a9 reviewed,18developmentpagespassed, committed/pushed before repeatedpilot. Freeze8905c05033bee339bc9109dda99b27cacc308647f59d2bc403b986d2ea1a6870. No runtimechangesaftertesting.",
+  "design": "Same44 static sources,22ordered pairs,40originalcandidates; original reference checks/scorer/raw model candidates unchanged. Fresh compiles each own candidate, shared compiles seed only and applies same artifact unchanged on transfer.",
+  "pilot": "First2originaleligible ordered pairs; parent verifies all12measurements and checksums before expanding.",
+  "baseline": {
+    "sharedNoFallbackPages": 32,
+    "sharedNoFallbackPairs": 14,
+    "sharedReadingPages": 40,
+    "sharedReadingPairs": 20
+  },
+  "paperGate": "All132 genuine measurements, noerrors; sharedNFpages/pairs do not decline and at leastone increases; sharedreading at least40pages20pairs.",
+  "scope": "Repeated evaluation of same previously tested corpus, retained-candidate compilation; not fresh independent holdout, new model generation quality, cold admission coverage or human accessibility ground truth.",
+  "newModelCalls": 0,
+  "liveSiteCalls": 0,
+  "priorFailedPilot": {
+    "tag": "frozen-ac-v1",
+    "genuine": 11,
+    "recorded": 12,
+    "issue": "sharedsearch exceededunchanged90spagedeadline; expansionstopped",
+    "repair": "pureper-applymemoizationdevelopedonsynthetics;54developmentoutputsandqualityrecordsbyte/fieldidentical; no44bodyinspectionforrepair"
+  }
+}

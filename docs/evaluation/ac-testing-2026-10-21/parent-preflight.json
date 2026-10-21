@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-21T14:35:51.261823+00:00",
+  "pages": 44,
+  "sitePairs": 22,
+  "originalBindings": 317,
+  "verifiedInputs": 587,
+  "newModelCalls": 0,
+  "liveSiteCalls": 0,
+  "productionBaseline": "f21ba71091f94e08461455f3d8dbdc8ac02853a9",
+  "productionFreezeSHA256": "8905c05033bee339bc9109dda99b27cacc308647f59d2bc403b986d2ea1a6870"
+}

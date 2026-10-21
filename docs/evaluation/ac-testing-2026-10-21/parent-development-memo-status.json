@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "node",
+      "tests/local/training-development.cjs",
+      "replay",
+      "--tag=ac-memo-v1"
+    ],
+    "exit": 0,
+    "elapsedSeconds": 156.29
+  },
+  {
+    "command": [
+      "node",
+      "tests/local/training-development.cjs",
+      "union",
+      "--tag=ac-memo-v1"
+    ],
+    "exit": 0,
+    "elapsedSeconds": 31.67
+  }
+]

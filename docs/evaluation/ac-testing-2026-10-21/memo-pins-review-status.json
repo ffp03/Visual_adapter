@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 66.45,
+  "requested_model": "gpt-6.1-sol",
+  "requested_effort": "medium",
+  "tokens": null,
+  "thread_id": "01a15ee1-ac3e-7ed0-b227-2e389693636a"
+}

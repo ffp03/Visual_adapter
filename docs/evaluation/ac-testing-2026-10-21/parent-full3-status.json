@@ -1,0 +1,10 @@
+[
+  {
+    "command": [
+      "node",
+      "tests/local/run.cjs"
+    ],
+    "exit": 0,
+    "elapsedSeconds": 192.15
+  }
+]

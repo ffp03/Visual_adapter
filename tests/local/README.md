@@ -1,6 +1,44 @@
 # TASK-023 local checks
 
-These entry points do not load credentials, start the backend, call providers, or access Firebase. Do not run the legacy suites as a group.
+## Current study and historical experiments
+
+The final 21 October study develops the method on 34 pages/17 sites and reserves
+44 pages/22 new sites for separate evaluation. A success-selected 32-page cohort
+checks retention using saved candidates; it is not an unseen sample. All 32
+retained pages passed the strict reading checks and both compiled policies
+without fallback. Complete reading success, success without fallback, and
+generation demand/cost are separate measures. Correctness runs do not establish
+a comparative latency result.
+
+`study-preparation.cjs` prepares bounded model inputs and separate complete
+validation contexts from an explicit saved-source manifest, then scores fallback,
+per-page compilation and fixed first-page transfer. It uses isolated Chromium,
+blocks source scripts/network requests and preserves the fixed page denominator.
+`study-preparation-test.cjs` exercises old development fixtures only.
+
+`study-generation-test.cjs` uses fake requests and synthetic ledgers. The separate
+`study-generation.cjs run` command performs paid inference only with a hash-bound
+plan and approval, using the owning credential route and one shared attempt/cost
+ledger. It has no automatic retry or allowance-reset command. Never run it merely
+to check installation. Study inputs, authorizations and provider receipts remain
+under ignored `workspace/task023/`; the checked-in support scripts contain no
+credentials or captured article bodies.
+
+Current model evidence is capped at 12,000 characters. Complete service validation
+is separate: the unchanged uncompressed route permits 100,000 characters, while
+the lossless gzip route permits 1 MiB decoded, 128 KiB compressed and ratio 100,
+within the 262,144-byte request limit. Passing transport checks is not an accuracy
+result. Existing local procedures still face their own full-DOM applicability and
+preservation checks.
+
+The sections below document earlier experiments and limits at their recorded
+dates. In particular, the former 36/44 paper-update gate and 30,000-character
+analysis setting are historical. The author has superseded that manuscript gate;
+current paper claims must follow accepted final-study evidence rather than the
+old gate's boolean. Historical result files and frozen protocols remain intact.
+
+The original offline entry points below do not load credentials, start the
+backend, call providers, or access Firebase. Do not run legacy suites as a group.
 
 Windows setup (existing Node dependencies; Python uses only its standard library):
 

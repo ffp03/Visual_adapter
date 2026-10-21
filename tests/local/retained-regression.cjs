@@ -1,0 +1,82 @@
+// Offline regression only. Never reads the sealed fresh44 tree or calls providers.
+const fs=require('fs'),path=require('path'),vm=require('vm'),{createHash}=require('crypto');
+const old=require('./ac-holdout-replay.cjs');
+const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'workspace/task023/refresh-20261021/retained-regression-v4');
+const HIST=path.join(ROOT,'workspace/task023/holdout-20261019'),AC=path.join(ROOT,'workspace/task023/ac-testing/frozen-ac-v2');
+const NODE='C:/Users/final/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe';
+const PW='C:/Users/final/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright',CHROME='C:/Users/final/AppData/Local/Chromium/Application/chrome.exe';
+const hash=b=>createHash('sha256').update(b).digest('hex'),read=f=>JSON.parse(fs.readFileSync(f,'utf8')),write=(f,x)=>fs.writeFileSync(f,typeof x==='string'?x:JSON.stringify(x,null,2),{flag:'wx'});
+const passed=r=>r.measurementComplete===true&&!r.measurementError&&r.score?.complete===true&&r.score.noFallbackPass===true&&r.delivery?.ruleApplied===true&&r.delivery?.noFallback===true&&r.delivery?.procedureDelivered===true;
+function runtimeOptions(){
+ const data=read(path.join(OUT,'runtime-version.json'));
+ if(path.resolve(data.chromiumPath)!==path.resolve(CHROME)||hash(fs.readFileSync(CHROME))!==data.chromiumSha256)throw Error('Observed Chromium version/executable binding drift');
+ return{versions:{node:process.version,v8:process.versions.v8,chromiumFileVersion:data.chromiumFileVersion,playwright:read(path.join(PW,'package.json')).version,playwrightCore:read(path.join(path.dirname(PW),'playwright-core/package.json')).version}};
+}
+function prepare(){
+ const started=Date.now(),trace=stage=>console.log(JSON.stringify({stage,elapsedMs:Date.now()-started}));trace('prepare-start');
+ if(fs.existsSync(path.join(OUT,'freeze.json')))throw Error('Immutable regression already prepared');fs.mkdirSync(OUT,{recursive:true});
+ const original=old.historicalInputs();trace('historical-inputs-verified');const oldFreeze=read(path.join(AC,'freeze.json'));
+ if(hash(fs.readFileSync(path.join(AC,'freeze.json')))!==fs.readFileSync(path.join(AC,'freeze.sha256'),'utf8').trim())throw Error('Historical replay freeze checksum mismatch');
+ old.verifyFiles(AC,oldFreeze.snapshot);trace('old-snapshots-verified');
+ const cohortPath='workspace/task023/refresh-20261021/retained-regression-v1/cohort-manifest.json',cohortBytes=fs.readFileSync(path.join(ROOT,cohortPath));
+ if(hash(cohortBytes)!=='c019d9726bc65db7fcc86b265b66ea60dcaefa4f7c1a6c6ac829560c1a36434d')throw Error('Accepted cohort anchor changed');
+ const cohort=JSON.parse(cohortBytes),bindings=Object.values(cohort).find(v=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===236);
+ if(!bindings)throw Error('Expected236 cohort bindings');old.verifyFiles(ROOT,bindings);
+ const summaryBytes=fs.readFileSync(path.join(AC,'full-summary.json'));
+ if(hash(summaryBytes)!==cohort.oldSummarySha256)throw Error('Accepted old summary changed');
+ const expected=JSON.parse(summaryBytes).rows.filter(r=>r.approach==='compiled-shared'&&passed(r)).map(r=>r.id).sort();
+ if(JSON.stringify(expected)!==JSON.stringify(cohort.pages.map(p=>p.id).sort()))throw Error('Cohort selection drift');
+ const previous={rows:cohort.pages.map(p=>read(path.join(AC,p.id+'-compiled-shared.json'))),files:{}};
+ if(previous.rows.some(r=>!passed(r)||r.approach!=='compiled-shared'))throw Error('Prior success row changed');
+ trace('cohort32-old-rows-verified');
+ const shared=previous.rows.filter(r=>r.approach==='compiled-shared'),ids=new Set(shared.filter(passed).map(r=>r.id));if(ids.size!==32)throw Error('Expected32 prior successful pages');
+ const selected=original.manifest.pages.filter(p=>ids.has(p.id));
+ const devPath='workspace/task023/refresh-20261021/development/manifest.json',development=read(path.join(ROOT,devPath)),originalDev=read(path.join(ROOT,development.originalDevelopmentManifest));
+ const developmentIds=new Set([...development.pages,...(originalDev.pages||[])].map(p=>p.id));
+ const pages=selected.map(p=>({...p,cohort:'retained-prior-success-regression-not-unseen',developmentOverlap:developmentIds.has(p.id),originalSharedSeedId:original.manifest.pages.find(s=>s.site===p.site&&s.position===1).id}));
+ if(pages.filter(p=>p.developmentOverlap).length!==4)throw Error('Expected4 promoted successful partners');
+ const sites=original.manifest.dispositions.filter(s=>s.eligible&&pages.some(p=>p.site===s.index));
+ const pilotSites=sites.filter(s=>pages.filter(p=>p.site===s.index).length===2).slice(0,2),pilot=pages.filter(p=>pilotSites.some(s=>s.index===p.site));if(pilot.length!==4)throw Error('Expected first2 complete original passing pairs');
+ const production=Object.fromEntries([...old.PRODUCTION,'backend/model-evidence.cjs','backend/validation-transport.cjs'].map(f=>[f,hash(fs.readFileSync(path.join(ROOT,f)))]));
+ trace('before-git-head');const head=require('child_process').execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8',timeout:15000,windowsHide:true}).trim();if(head!=='fa3ae3a849910868093de5253a202b385b3bc57a')throw Error('Current baseline drift');trace('head-verified');
+ const inputs={...original.inputs,[devPath]:hash(fs.readFileSync(path.join(ROOT,devPath))),[development.originalDevelopmentManifest]:hash(fs.readFileSync(path.join(ROOT,development.originalDevelopmentManifest)))};
+ for(const f of ['freeze.json','freeze.sha256','full-summary.json'])inputs['workspace/task023/ac-testing/frozen-ac-v2/'+f]=hash(fs.readFileSync(path.join(AC,f)));
+ Object.assign(inputs,bindings);inputs[cohortPath]=hash(cohortBytes);inputs['workspace/task023/refresh-20261021/retained-regression-v4/runtime-version.json']=hash(fs.readFileSync(path.join(OUT,'runtime-version.json')));
+ const manifest={at:new Date().toISOString(),baseline:head,selection:'Frozen-ac-v2 shared noFallback AND all strict checks; never unseen',pages,sites:sites.map(s=>({site:s.index,selectedPages:pages.filter(p=>p.site===s.index).map(p=>p.id),originalSeedId:original.manifest.pages.find(p=>p.site===s.index&&p.position===1).id})),pilotIds:pilot.map(p=>p.id),priorPages:44,priorCandidates:40,selectedPages:32,selectedSites:sites.length,developmentOverlap:pages.filter(p=>p.developmentOverlap).map(p=>p.id),separateSealedFreshCohort:{pages:44,manifestSha256:'2ab148f418676618637110584900ffe02adbbd284b3fcf529fc34e647a66852e',read:false},claim:'Current-runtime regression with old real raw candidates; no generation/admission/new-sample claim'};
+ write(path.join(OUT,'manifest.json'),manifest);write(path.join(OUT,'original-manifest.json'),original.manifest);const needle='for(let i=0;i<3;i++)';
+ if(original.scorerSource.split(needle).length!==2)throw Error('Exactly one original timing-repeat loop required');
+ const qualitySource=original.scorerSource.replace(needle,'for(let i=0;i<1;i++)');
+ write(path.join(OUT,'original-strict-scorer.js'),original.scorerSource);write(path.join(OUT,'strict-scorer.js'),qualitySource);
+ const self=['tests/local/retained-regression.cjs','tests/local/ac-holdout-replay.cjs','workspace/task023/refresh-20261021/owned_job.py','workspace/task023/refresh-20261021/retained_batch.cjs'];
+ trace('before-runtime-identity');const freeze={at:new Date().toISOString(),baseline:head,production,inputs,self:Object.fromEntries(self.map(f=>[f,hash(fs.readFileSync(path.join(ROOT,f)))])),runtime:old.runtimeIdentity(runtimeOptions()),manifestSha256:hash(fs.readFileSync(path.join(OUT,'manifest.json'))),originalManifestSha256:hash(fs.readFileSync(path.join(OUT,'original-manifest.json'))),originalScorerSha256:hash(original.scorerSource),scorerSha256:hash(qualitySource),correctnessRunsPerPolicy:1,timingRepeatsExcluded:true,pageSeconds:90,pilotSeconds:300,providerCalls:0,liveSiteCalls:0};trace('runtime-verified');write(path.join(OUT,'freeze.json'),freeze);write(path.join(OUT,'freeze.sha256'),hash(fs.readFileSync(path.join(OUT,'freeze.json'))));
+ return{selectedPages:32,selectedSites:sites.length,developmentOverlap:4,pilotIds:manifest.pilotIds,manifestSha256:freeze.manifestSha256,freezeSha256:hash(fs.readFileSync(path.join(OUT,'freeze.json')))};
+}
+function verify(){const freeze=read(path.join(OUT,'freeze.json'));if(hash(fs.readFileSync(path.join(OUT,'freeze.json')))!==fs.readFileSync(path.join(OUT,'freeze.sha256'),'utf8').trim())throw Error('Freeze checksum drift');for(const files of[freeze.production,freeze.inputs,freeze.self])old.verifyFiles(ROOT,files);old.verifyRuntime(freeze.runtime,runtimeOptions());for(const[f,h]of[['manifest.json',freeze.manifestSha256],['original-manifest.json',freeze.originalManifestSha256],['strict-scorer.js',freeze.scorerSha256]])if(hash(fs.readFileSync(path.join(OUT,f)))!==h)throw Error('Frozen snapshot drift');return freeze;}
+async function measure(cfg){
+ verify();const manifest=read(path.join(OUT,'original-manifest.json')),entry=manifest.pages.find(p=>p.id===cfg.id);if(!entry)throw Error('Only original old44 identities allowed');
+ if(!path.resolve(cfg.output).startsWith(OUT+path.sep))throw Error('Measurement output escapes regression owner');
+ if(cfg.savedSeedRule&&entry.position!==1)throw Error('Supplied seed rule may compile ONLY on original first page');
+ const output=cfg.output,raw=fs.readFileSync(path.join(HIST,entry.id,'source.html'),'utf8'),candidate=read(path.join(HIST,entry.id,'provider-result.json')).rule,refs=read(path.join(HIST,entry.id,'references.json'));
+ const scorer=vm.runInNewContext('('+fs.readFileSync(path.join(OUT,'strict-scorer.js'),'utf8')+')'),{chromium}=require(PW);let browser,pageTimer;const rows=[];
+ try{
+  browser=await chromium.launch({executablePath:CHROME,headless:true,timeout:20000});const pg=await browser.newPage();pageTimer=setTimeout(()=>pg.close().catch(()=>{}),90000);await pg.route('**/*',r=>r.request().isNavigationRequest()&&r.request().frame()===pg.mainFrame()?r.fulfill({status:200,contentType:'text/html',body:raw.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi,'')}):r.abort());await pg.goto(entry.finalUrl,{timeout:20000,waitUntil:'domcontentloaded'});await pg.addScriptTag({content:fs.readFileSync(path.join(ROOT,'extension/procedure-core.js'),'utf8')});
+  const compile=rule=>pg.evaluate(candidate=>{try{return{procedure:PreservationCore.compile(document,candidate)}}catch(e){return{error:e.message}}},rule);const fresh=await compile(candidate);let seed;
+  if(cfg.savedSeedRule){const supplied=fs.readFileSync(cfg.savedSeedRule);if(hash(supplied)!==cfg.savedSeedRuleSha256)throw Error('Saved API rule drift');seed={id:entry.id,site:entry.site,...await compile(JSON.parse(supplied).rule)};}
+  else if(entry.position===1)seed={id:entry.id,site:entry.site,...fresh};
+  else if(cfg.seedPath&&cfg.seedSha256){const bytes=fs.readFileSync(cfg.seedPath);if(hash(bytes)!==cfg.seedSha256)throw Error('Shared seed drift');seed=JSON.parse(bytes);}
+  else seed={measurementError:'Original seed has no completed bound compilation'};
+  if(entry.position===1&&cfg.seedOutput)write(cfg.seedOutput,seed);
+  if(seed.procedure&&(seed.id!==manifest.pages.find(p=>p.site===entry.site&&p.position===1).id||seed.site!==entry.site))throw Error('Original shared seed identity mismatch');
+  if(cfg.compileOnly){if(entry.position!==1)throw Error('Compile-only requires original seed');write(path.join(output,'result.json'),{compilationOnly:true,seedId:entry.id,complete:true});return[];}
+  await pg.evaluate(()=>{window.__rules=[];window.__listeners=[];window.chrome||={};window.chrome.runtime={sendMessage:async()=>({rules:window.__rules}),onMessage:{addListener:f=>window.__listeners.push(f)}};});await pg.addScriptTag({content:fs.readFileSync(path.join(ROOT,'extension/content.js'),'utf8')});
+  const sample=await pg.evaluate(async()=>{const direct=analysisSample(document),out=await new Promise(r=>window.__listeners[0]({action:'EXTRACT_CONTEXT'},{},r));return{html:out.analysisHTML,context:out.analysisContext,sameAsDirect:out.analysisHTML===direct.html};});if(!sample.html||sample.html.length>12000||!sample.sameAsDirect)throw Error('Frozen analysis sampling limit/integrity failed');write(path.join(output,'analysis.html'),sample.html);write(path.join(output,'sampling.json'),{characters:sample.html.length,context:sample.context,sameAsDirect:true});
+  await old.executePolicies([['fallback',null],['compiled-fresh',fresh],['compiled-shared',seed]],async(approach,compilation)=>{const procedure=compilation?.procedure||null;await pg.evaluate(p=>{window.__rules=p?[p]:[];},procedure);const measured=await pg.evaluate(scorer,refs),{html,analysisHTML,...delivery}=measured.out;delete measured.out;measured.noFallbackPass=measured.complete===true&&delivery.noFallback===true&&delivery.ruleApplied===true&&delivery.procedureDelivered===true;const row={id:entry.id,site:entry.site,position:entry.position,approach,score:measured,delivery,compilation,diagnostics:old.rowDiagnostics(delivery,compilation),measurementComplete:true,procedureSha256:procedure?hash(JSON.stringify(procedure)):null,sharedSeedId:manifest.pages.find(p=>p.site===entry.site&&p.position===1).id,sourceSha256:entry.sha256,referenceSha256:entry.referenceSha256,rawCandidateSha256:hash(fs.readFileSync(path.join(HIST,entry.id,'provider-result.json'))),savedSeedRuleSha256:cfg.savedSeedRuleSha256||null,engine:browser.version(),claim:cfg.diagnosticVariant?'Development supplied-live-rule diagnostic; original source/references; fixed compiled seed transfer; no admission claim':'Retained prior-success regression; old raw candidates; no API admission/new generation claim',diagnosticVariant:cfg.diagnosticVariant||null,suppliedProviderSha256:cfg.suppliedProviderSha256||null};write(path.join(output,approach+'.html'),html||'');write(path.join(output,approach+'.json'),row);rows.push(row);},async(approach,error)=>{const row=old.errorRow(entry,approach,error);write(path.join(output,approach+'.html'),'');write(path.join(output,approach+'.json'),row);rows.push(row);});
+ }finally{clearTimeout(pageTimer);if(browser)await Promise.race([browser.close().catch(()=>{}),new Promise(r=>setTimeout(r,3000))]);}
+ write(path.join(output,'result.json'),{id:entry.id,rows,complete:rows.length===3&&rows.every(r=>r.measurementComplete===true&&!r.measurementError)});return rows;
+}
+function savedRulePairPlan({seedId,providerFile,tag}){
+ verify();if(!/^[a-z0-9-]+$/.test(tag||''))throw Error('Bounded unique tag required');const original=read(path.join(OUT,'original-manifest.json')),seed=original.pages.find(p=>p.id===seedId&&p.position===1);if(!seed)throw Error('Original seed required');const pair=original.pages.filter(p=>p.site===seed.site);const dev=read(path.join(ROOT,'workspace/task023/refresh-20261021/development/manifest.json'));if(pair.some(p=>!dev.pages.some(d=>d.id===p.id)))throw Error('Saved-rule entry accepts OLD promoted development pairs only');
+ const allowed=path.join(ROOT,'workspace/task023/refresh-20261021/fresh-development-pilot/live-v2')+path.sep;if(!path.resolve(providerFile).startsWith(allowed))throw Error('Provider artifact outside parent old-development pilot');const bytes=fs.readFileSync(providerFile);if(!Object.hasOwn(JSON.parse(bytes),'rule'))throw Error('Saved raw provider rule missing');const directory=path.join(OUT,'saved-rule-pairs',tag);fs.mkdirSync(directory,{recursive:true});if(fs.readdirSync(directory).length)throw Error('Saved-rule output tag exists');const seedPath=path.join(directory,'seed-procedure.json');const configs=pair.map(p=>({id:p.id,mode:'measure-page',output:path.join(directory,p.id),diagnosticVariant:tag,suppliedProviderSha256:hash(bytes),...(p.position===1?{savedSeedRule:providerFile,savedSeedRuleSha256:hash(bytes),seedOutput:seedPath}:{seedPath,seedSha256:null})}));write(path.join(directory,'plan.json'),{pair:pair.map(p=>p.id),providerSha256:hash(bytes),configs,condition:'Controller must bind seedSha256 only after successful seed child completion; transfer NEVER recompiles supplied seed rule',freshPolicy:'Original saved per-page raw candidates; supplied live rule changes shared seed only'});return{directory,configs};
+}
+module.exports={prepare,verify,measure,passed,savedRulePairPlan,OUT};
+if(require.main===module){Promise.resolve().then(()=>process.argv[2]==='prepare'?prepare():measure(read(process.argv[2]))).then(r=>{console.log(JSON.stringify(r));}).catch(e=>{console.error(e.stack);process.exitCode=1;});}

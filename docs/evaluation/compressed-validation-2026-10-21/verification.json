@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "full-suite-v3": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 405.24
+    },
+    "browser-v3": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 83.71
+    },
+    "preservation-browser-v3": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 58.11
+    },
+    "repaired-promoted-native-v3": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 90.42
+    },
+    "review-transport-v1": {
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 142.19
+    }
+  },
+  "reviewModel": "gpt-6.1-sol",
+  "reviewEffort": "medium",
+  "reviewTokens": null,
+  "providerCalls": 0
+}

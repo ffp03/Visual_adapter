@@ -5,6 +5,7 @@
     else root.PreservationCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
     'use strict';
+    const validationLimits = Object.freeze({ legacyCharacters: 100000, decodedBytes: 1048576, compressedBytes: 131072, expansionRatio: 100, requestBytes: 262144, encoding: 'gzip-base64-v1' });
     const NOISE = 'script,style,link,noscript,iframe,object,embed,template,svg animate,svg set,svg animateMotion,svg animateTransform,footer,[role="banner"],[role="contentinfo"]';
     const BLOCKS = 'h1,h2,h3,h4,h5,h6,p,pre,code,table,ul,ol,dl,blockquote,figure,img,a[href],[role="comment"],[itemprop="commentText"]';
     const norm = value => (value || '').replace(/\s+/g, ' ').trim();
@@ -443,8 +444,31 @@
         // decline admission; the bounded model sample is a separate input.
         const body = clean(doc.body, doc, true);
         const html = body.outerHTML;
-        return html.length <= 100000 ? { validationHTML: html, validationComplete: true, validationContextScope: 'complete-client-sanitized-body', interactionValuesOmitted: true, structuralDescriptor: inventory.descriptor }
+        return html.length <= validationLimits.legacyCharacters ? { validationHTML: html, validationComplete: true, validationContextScope: 'complete-client-sanitized-body', interactionValuesOmitted: true, structuralDescriptor: inventory.descriptor }
             : { validationComplete: false, validationLimitation: 'complete-sanitized-body-exceeds-100k', structuralDescriptor: inventory.descriptor };
     }
-    return { descriptorVersion: DESCRIPTOR_VERSION, matches, inspect, compile, apply, assess, applyLegacy, fallback, validationContext, descriptor: doc => inspect(doc).descriptor };
+    async function prepareValidationContext(doc, inventory = inspect(doc), analysis = {}) {
+        const html = clean(doc.body, doc, true).outerHTML;
+        const metadata = { validationContextScope: 'complete-client-sanitized-body', interactionValuesOmitted: true, structuralDescriptor: inventory.descriptor };
+        // Mirror the background's complete request fields, including JSON escaping
+        // and UTF-8, rather than treating JavaScript character count as byte size.
+        const request = { protocol: 2, hostname: analysis.hostname || doc.location?.hostname || '', html: analysis.html || '', modelEvidence: analysis.modelEvidence,
+            validationHTML: html, validationComplete: true, validationContextScope: metadata.validationContextScope, structuralDescriptor: inventory.descriptor, exampleKey: '0'.repeat(64) };
+        if (html.length <= validationLimits.legacyCharacters && new TextEncoder().encode(JSON.stringify(request)).length <= validationLimits.requestBytes)
+            return { ...metadata, validationHTML: html, validationComplete: true };
+        const incomplete = reason => ({ ...metadata, validationComplete: false, validationLimitation: reason });
+        const decoded = new TextEncoder().encode(html);
+        if (decoded.length > validationLimits.decodedBytes) return incomplete('complete-sanitized-body-exceeds-decoded-byte-bound');
+        if (new TextDecoder().decode(decoded) !== html) return incomplete('complete-context-non-roundtrip-utf8');
+        if (typeof CompressionStream !== 'function') return incomplete('complete-context-compression-unavailable');
+        try {
+            const compressed = new Uint8Array(await new Response(new Blob([decoded]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer());
+            if (compressed.length > validationLimits.compressedBytes) return incomplete('complete-context-exceeds-compressed-byte-bound');
+            if (decoded.length > compressed.length * validationLimits.expansionRatio) return incomplete('complete-context-exceeds-expansion-ratio');
+            let binary = '';
+            for (let offset = 0; offset < compressed.length; offset += 8192) binary += String.fromCharCode(...compressed.subarray(offset, offset + 8192));
+            return { ...metadata, validationComplete: true, validationTransport: { encoding: validationLimits.encoding, data: btoa(binary), decodedBytes: decoded.length } };
+        } catch { return incomplete('complete-context-compression-failed'); }
+    }
+    return { validationLimits, prepareValidationContext, descriptorVersion: DESCRIPTOR_VERSION, matches, inspect, compile, apply, assess, applyLegacy, fallback, validationContext, descriptor: doc => inspect(doc).descriptor };
 });

@@ -1,0 +1,1 @@
+No actionable new defects found in the scoped diff against HEAD 576fa15. Reviewed transport decoding, request sizing, legacy fallback, admission and quota paths; performed synthetic decoder probes only, leaving full tests and the development-input audit to the parent.

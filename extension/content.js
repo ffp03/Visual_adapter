@@ -224,9 +224,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     html = extractMainContent(outcome);
                 }
 
+                const analysis = ruleApplied || outcome.lookupAvailable === false ? null : analysisSample(document);
                 const localContext = {};
                 if (outcome.localProtocol === 2 && outcome.lookupAvailable !== false && !ruleApplied) {
-                    try { Object.assign(localContext, PreservationCore.validationContext(document, outcome.inventory)); }
+                    try { Object.assign(localContext, await PreservationCore.prepareValidationContext(document, outcome.inventory, { hostname: window.location.hostname, html: analysis?.html, modelEvidence: analysis?.evidence })); }
                     catch { localContext.validationComplete = false; localContext.validationLimitation = 'reading-context-preparation-unavailable'; }
                 }
                 const verificationContext = {};
@@ -242,7 +243,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     }
                 }
 
-                const analysis = ruleApplied || outcome.lookupAvailable === false ? null : analysisSample(document);
                 sendResponse({
                     url: window.location.href,
                     html: html || "",

@@ -1,0 +1,364 @@
+{
+  "pages": 16,
+  "completeValidationBefore": 10,
+  "completeValidationAfter": 16,
+  "compressedPages": 6,
+  "maximumRequestBytes": 110987,
+  "maximumClientModelDataCharacters": 10828,
+  "rows": [
+    {
+      "id": "site01-1",
+      "requestBytes": 41671,
+      "modelDataCharacters": 10689,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 336788,
+          "compressedBytes": 22660
+        }
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site01-2",
+      "requestBytes": 66676,
+      "modelDataCharacters": 10676,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 476499,
+          "compressedBytes": 41435
+        }
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site12-1",
+      "requestBytes": 57358,
+      "modelDataCharacters": 10559,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site12-2",
+      "requestBytes": 23343,
+      "modelDataCharacters": 10320,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "article",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>article"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site13-1",
+      "requestBytes": 39982,
+      "modelDataCharacters": 10828,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 102334,
+          "compressedBytes": 21374
+        }
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site13-2",
+      "requestBytes": 110987,
+      "modelDataCharacters": 10708,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site17-final1",
+      "requestBytes": 64887,
+      "modelDataCharacters": 10378,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 380065,
+          "compressedBytes": 40251
+        }
+      },
+      "unsupported": [
+        "unrepresented-math"
+      ]
+    },
+    {
+      "id": "site17-final2",
+      "requestBytes": 69381,
+      "modelDataCharacters": 10378,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 568318,
+          "compressedBytes": 43667
+        }
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site18-1",
+      "requestBytes": 79812,
+      "modelDataCharacters": 4613,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "unmarked",
+          "envelope": [
+            "body"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site18-2",
+      "requestBytes": 27039,
+      "modelDataCharacters": 5559,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "unmarked",
+          "envelope": [
+            "body"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site23-1",
+      "requestBytes": 45846,
+      "modelDataCharacters": 8238,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site23-2",
+      "requestBytes": 36096,
+      "modelDataCharacters": 8185,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site28-1",
+      "requestBytes": 76260,
+      "modelDataCharacters": 10412,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site28-2",
+      "requestBytes": 54782,
+      "modelDataCharacters": 10792,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true,
+        "transport": {
+          "encoding": "gzip-base64-v1",
+          "decodedBytes": 188734,
+          "compressedBytes": 32421
+        }
+      },
+      "unsupported": [
+        "unrepresented-audio"
+      ]
+    },
+    {
+      "id": "site31-1",
+      "requestBytes": 24472,
+      "modelDataCharacters": 8754,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    },
+    {
+      "id": "site31-2",
+      "requestBytes": 29181,
+      "modelDataCharacters": 9617,
+      "validation": {
+        "validationContextScope": "complete-client-sanitized-body",
+        "interactionValuesOmitted": true,
+        "structuralDescriptor": {
+          "version": 3,
+          "policy": "semantic-reading-envelope",
+          "archetype": "document",
+          "envelope": [
+            "primary"
+          ],
+          "topology": "reading>blocks"
+        },
+        "validationComplete": true
+      },
+      "unsupported": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "baseCommit": "576fa157037afd8ef3c354dcd3bd235c11e900ea",
+  "observedSourceSha256": {
+    "extension/procedure-core.js": "dd6e97c8ab3f960f099c78ee13830bab7b094fbc633353a6a339e71964a07d75",
+    "extension/content.js": "c83d2a5949578d55d0cbd3590457337cf61cf62a55a140823c556e37041ece09",
+    "extension/background.js": "3792a1833cb614e37d0ffee12609862948a226a8f37416d8e7927ae11f136efe",
+    "extension/rule-service.js": "496bd26cc1d016e98747daa68fa8191ca204481ac2b23436b881acd49a5406b0",
+    "backend/local-ai.cjs": "2b5ed460a3ce9c69f3b4578e7932c7d60a891b826aee277d62e3598806368046",
+    "backend/procedure-families.cjs": "cc6a7023c24e159e876bedae7c7719aa15bcaf4d162189d780b731734fb665fa",
+    "backend/model-evidence.cjs": "1b49ac91e6fa68c3bbbf0cee30461a1b8e139b9b93c831ffbe270e0313bab595",
+    "backend/validation-transport.cjs": "8707e55e22d1f6bae0f984ce7d69aa6a8da5a6aae94ba0930d2d649fd05239a0",
+    "backend/codex-runner.cjs": "150d4d3f02387dcfb05645a943ebad5dfe0a3ba75b84cbf342a092be26d4224d",
+    "backend/deepseek-runner.cjs": "ca0b5f888f9515b352b0b1e3c8779b46ab32c9478e4e0298f0471fc3fc740c56",
+    "tests/local/model-evidence-test.cjs": "b9d5e8dca3ddf4dbaaca7f6632a9f1573e5d6f85e84f38e17337086f56f5aceb",
+    "tests/local/validation-transport-test.cjs": "e547649d12b7b322693186aeb55fd963c79070badc1a59564ddf6d52c0ac7aac",
+    "tests/local/run.cjs": "d1ce8c490911f69ec1c8a3048eb428c18bb7fb0b2383d91872b71f70008f7b72"
+  },
+  "gitCanonicalBlobSha1": {
+    "extension/procedure-core.js": "229108d10a58a1967cd45a11e5dafe937c69b9f6",
+    "extension/content.js": "857da0eb8d02f00fa208b4d4f72b8e38a80c9029",
+    "extension/background.js": "e58d451e795170aa515e237546facc13cbff1a28",
+    "extension/rule-service.js": "a523462fd77758936a69d845fa24797b2f24e31b",
+    "backend/local-ai.cjs": "e637c1d7b966f677fe220b2147c451aebd8d3c49",
+    "backend/procedure-families.cjs": "541b0e3dc74c3b896734be15ec252709986c024a",
+    "backend/model-evidence.cjs": "da156069fe492d81e8aceb65fbf451b4be74c870",
+    "backend/validation-transport.cjs": "fd552df305a5a764dae8061dcbe209f94466fe6d",
+    "backend/codex-runner.cjs": "befcede90f45aaf4a1e7a321cc7b339b7845a497",
+    "backend/deepseek-runner.cjs": "c2c4f8c6b3baaf4a9e52c1d7822904a12c40dcd0",
+    "tests/local/model-evidence-test.cjs": "db46aebcc5e2ad94cd9d5d70c40254c35d4badeb",
+    "tests/local/validation-transport-test.cjs": "91d706f1ec43d2976e7382bdea00e025b4781df8",
+    "tests/local/run.cjs": "8f56e791f95f7966c8b9aabe9e15cd5397ab3311"
+  },
+  "developmentManifestSha256": "e1d75acdcdb22280126c02c75ecba700300f56fa7d4807ad5a1329113ec5838f",
+  "nativeAuditSha256": "9ad046aba62ac3063a553710bdd693ec58be03e0615aa20d6075b051b6d2b1a5",
+  "newPrototypeModelCalls": 0,
+  "freshHoldoutUsedForDevelopment": false
+}

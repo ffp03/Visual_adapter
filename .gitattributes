@@ -2,3 +2,5 @@
 docs/evaluation/development-2026-10-20/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/evaluation/revised-testing-2026-10-20/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/evaluation/dom-evidence-2026-10-21/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/evaluation/compressed-validation-2026-10-21/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/evaluation/unseen-source-pool-2026-10-21/** -text whitespace=trailing-space,space-before-tab,cr-at-eol

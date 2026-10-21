@@ -17,6 +17,7 @@ if (mode === 'test') {
     run(process.execPath, ['--test', 'tests/local/procedure-memoization-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/analysis-sample-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/model-evidence-test.cjs']);
+    run(process.execPath, ['--test', 'tests/local/validation-transport-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/revised-holdout-replay-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/revised-testing-gate-test.cjs']);
     run(process.execPath, ['--test', 'tests/local/ac-holdout-replay-test.cjs']);

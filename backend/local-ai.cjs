@@ -6,6 +6,7 @@ const { JSDOM } = require('jsdom');
 const { CodexRunner } = require('./codex-runner.cjs');
 const { DeepSeekRunner } = require('./deepseek-runner.cjs');
 const { boundModelInput, modelInputText } = require('./model-evidence.cjs');
+const { decodeValidation, limits: validationLimits } = require('./validation-transport.cjs');
 
 const ROOT = path.resolve(__dirname, '..');
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -20,7 +21,10 @@ function hostname(value) {
     return result;
 }
 function cleanHTML(value) {
-    if (typeof value !== 'string' || !value.trim() || value.length > 100000) throw Error('HTML must contain 1 to 100000 characters');
+    return sanitizeHTML(value, validationLimits.legacyCharacters);
+}
+function sanitizeHTML(value, maximum) {
+    if (typeof value !== 'string' || !value.trim() || value.length > maximum) throw Error('HTML must contain 1 to ' + maximum + ' characters');
     const dom = new JSDOM(value);
     try {
         const doc = dom.window.document;
@@ -140,6 +144,10 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
         try { return await job; } finally { inFlight.delete(host); }
     }
     const families = require('./procedure-families.cjs').createFamilies({ directory, provider, model, cleanHTML,
+        readValidation: data => {
+            const decoded = decodeValidation(data);
+            return decoded && sanitizeHTML(decoded.html, decoded.compressed ? validationLimits.decodedBytes : validationLimits.legacyCharacters);
+        },
         generate: async (key, html, evidence) => {
             if (inFlight.size || calls >= maxCalls) { const error = Error(calls >= maxCalls ? 'Generation allowance exhausted for this server session' : 'Generation is busy; keep the local fallback'); error.status = 429; throw error; }
             const cleaned = cleanHTML(html), modelInput = boundModelInput(cleaned, evidence), localRequestId = randomUUID(), inputSha256 = hash(modelInputText(modelInput.html, modelInput.evidence));

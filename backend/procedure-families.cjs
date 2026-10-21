@@ -5,7 +5,7 @@ const { createHash, randomUUID } = require('node:crypto');
 const { JSDOM } = require('jsdom');
 const core = require('../extension/procedure-core');
 const digest = value => createHash('sha256').update(value).digest('hex');
-function createFamilies({ directory, provider, model, generate, cleanHTML }) {
+function createFamilies({ directory, provider, model, generate, cleanHTML, readValidation = data => data.validationComplete === true && typeof data.validationHTML === 'string' ? cleanHTML(data.validationHTML) : null }) {
     const cache = path.join(directory, 'procedures-v2'), archive = path.join(cache, 'archive');
     fs.mkdirSync(archive, { recursive: true });
     const jobs = new Map(), revisions = new Map();
@@ -26,9 +26,10 @@ function createFamilies({ directory, provider, model, generate, cleanHTML }) {
     const pending = (reason, familyKey, count = 0) => ({ success: false, protocol: 2, status: 'pending', admission: 'provisional', reason, familyKey, examples: count });
     const admitted = entry => ({ success: true, protocol: 2, status: 'admitted', admission: 'admitted', familyKey: entry.familyKey, rule: entry.procedure, procedure: entry.procedure, examples: entry.examples.length, source: 'local-admitted-procedure' });
     async function analyze(host, data) {
-        if (data.validationComplete !== true || typeof data.validationHTML !== 'string') return pending(data.validationLimitation || 'complete-validation-context-required');
+        const cleaned = readValidation(data);
+        if (!cleaned) return pending(data.validationLimitation || 'complete-validation-context-required');
         if (!/^[a-f0-9]{64}$/.test(data.exampleKey || '')) throw Error('A one-way example identity is required');
-        const cleaned = cleanHTML(data.validationHTML), dom = new JSDOM(cleaned);
+        const dom = new JSDOM(cleaned);
         let inventory, familyKey, contentKey;
         try {
             inventory = core.inspect(dom.window.document);

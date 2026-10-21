@@ -133,11 +133,11 @@ async function handleProcedureAnalysis(context, sendResponse) {
         exampleKey = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(identity.href)))].map(byte => byte.toString(16).padStart(2, '0')).join('');
     } catch { return sendResponse({ success: false, protocol: 2, status: 'fallback', reason: 'example-identity-unavailable' }); }
     const payload = { protocol: 2, hostname: context.hostname, html: context.analysisHTML || context.html, modelEvidence: context.modelEvidence,
-        validationHTML: context.validationHTML, validationComplete: context.validationComplete === true,
+        validationHTML: context.validationHTML, validationTransport: context.validationTransport, validationComplete: context.validationComplete === true,
         validationLimitation: context.validationLimitation, validationContextScope: context.validationContextScope, structuralDescriptor: context.structuralDescriptor, exampleKey };
     let body = JSON.stringify(payload);
     if (new TextEncoder().encode(body).length > 262144) {
-        delete payload.validationHTML; payload.validationComplete = false; payload.validationLimitation = 'complete-context-request-exceeds-byte-bound'; body = JSON.stringify(payload);
+        delete payload.validationHTML; delete payload.validationTransport; payload.validationComplete = false; payload.validationLimitation = 'complete-context-request-exceeds-byte-bound'; body = JSON.stringify(payload);
     }
     try {
         const response = await fetch(`${getBackendURL()}/analyze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });

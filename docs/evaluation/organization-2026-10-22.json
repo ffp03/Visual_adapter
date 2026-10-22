@@ -1,0 +1,90 @@
+{
+  "utc": "2026-10-22T13:52:30.622045+00:00",
+  "purpose": "Relocate extension evaluation supervision and acceptance helpers; original bytes preserved; historical paths inside are provenance, not current commands.",
+  "moves": [
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-engineering-launch-report.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-engineering-launch-report.json",
+      "bytes": 621,
+      "sha256": "03440a6d3c2029cc46339d43ddef10334ca4238c29f6f1d8d1647f58651a88ab"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-engineering-final-report.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-engineering-final-report.json",
+      "bytes": 1418,
+      "sha256": "88c6e1d4dab2a920f7c423eeb47e309dc760055df38a08b06a5200c0cf595cc8"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v2\\accept_results.py",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v2\\accept_results.py",
+      "bytes": 5972,
+      "sha256": "ccaccc612146f365ccac602dc04450fe1e9f5e7a54417b1edfd7dac89c86b6c9"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v2\\supervision-start.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v2\\supervision-start.json",
+      "bytes": 487,
+      "sha256": "c316d6a5039bfabc98014296ec72043c36b4eb91ff75da17fcd542ceaba40318"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v2\\supervision-outcome.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v2\\supervision-outcome.json",
+      "bytes": 538,
+      "sha256": "62edec5b9a593ccd41dc5f79488c7eb1fe656c0c6aacae75af7392742deccf96"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\accept_alignment.py",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\accept_alignment.py",
+      "bytes": 3848,
+      "sha256": "833ca577af10cd970dc2a953f2e6ce1443b582055598646ab429783353369d23"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\accept_development.py",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\accept_development.py",
+      "bytes": 5564,
+      "sha256": "2334a8e9d8b37692ef0035fcf700ba44d6e62910fb61edac3beb41bd10b9318e"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\delegation-final.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\delegation-final.json",
+      "bytes": 1915,
+      "sha256": "d98c7469d5becc9aa9dd4b5f682c462dbc01251a977c1b1dd945dcb6410fb3e2"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\implementation-start.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\implementation-start.json",
+      "bytes": 574,
+      "sha256": "d08e346d3d2c13561e1ea5672b53cd3e9fa4db9a25f6ad1c9e167ead858efece"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\review-start.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\review-start.json",
+      "bytes": 521,
+      "sha256": "266629245e06411d2d6865f5e682ec4b7c1ce06501a6fe583c09804f95969592"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\review-timeout.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\review-timeout.json",
+      "bytes": 549,
+      "sha256": "df1e2c7d6db96569d6299c06b4c973da7cfa9f2d3b06ec0c79bdef81d8ced076"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\task023-preservation-20261020-implementation-complete.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\task023-preservation-20261020-implementation-complete.json",
+      "bytes": 676,
+      "sha256": "85f448d7c8ff51226bb0b6fcd314ffe61a8fa523d0e5601ed861e646eea7b3a8"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\task023-preservation-review-final.json",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\task023-preservation-review-final.json",
+      "bytes": 651,
+      "sha256": "f15fd9929c35c359bad006fe8763771b56fdc377899d187a4899e4aff483eb43"
+    },
+    {
+      "old": "C:\\Dev\\paper-agent\\workspace\\task023-v3\\report_completion.py",
+      "new": "C:\\Dev\\Visual_adapter\\workspace\\task023\\archive\\imported-paper-agent-2026-10-22\\task023-v3\\report_completion.py",
+      "bytes": 4102,
+      "sha256": "6272dff37e9fe81ad261237a2ef11ad1c4e949f3928224fd43d3a94dd810f352"
+    }
+  ]
+}

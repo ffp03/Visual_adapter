@@ -1,72 +1,65 @@
-# Local AI case-study backend
+# Use the local Visual Adapter
 
-The prototype defaults to `http://127.0.0.1:7861` and **DeepSeek Flash**, using `DEEPSEEK_API_KEY` from the process environment or `~/.env.shared`. The backend reads only that shared-file entry. It never puts the key in the extension, responses, logs or tracked configuration. Gemini is not called or used as a fallback.
-
-Use Node.js 22.13 or newer and install the root dependencies. From the repository root:
+From the project root, install the root Node dependencies if needed, then run:
 
 ```text
+npm install
 npm run start:local
 ```
 
-Reload the unpacked `extension` in Chrome. Open a page and the Visual Adapter side panel. The first uncached hostname sends a page sample to the local backend; it requests a JSON selector rule from `deepseek-flash` with thinking disabled and a 1,024-token output limit. Later compatible pages reuse the rule. `http://127.0.0.1:7861/health` shows the actual selected provider/model and session attempt count. Change both `LOCAL_AI_PORT` and `extension/backend-config.js` if a different port is needed.
+Use Node.js 22.13 or newer. The backend listens only on 127.0.0.1:7861. Its health
+endpoint reports the actual provider, model, attempt count and session limit.
+The configured route is DeepSeek Flash with thinking disabled; the server reads
+only DEEPSEEK_API_KEY from the process environment or ~/.env.shared. The key is
+not included in the extension package. No Gemini fallback is used.
 
-Local mode routes lookup, generation, verification and reporting to this backend, without production Firebase traffic. Cached rules and a usage ledger are under ignored `workspace/local-ai/<provider>-<model>/`. The cache persists across restarts and is shared across local tabs. Hostnames are convenient keys, not proof that every layout is compatible. A stale rule retains the heuristic reading view and does not automatically regenerate. Reporting a rule archives it and makes the next request eligible for generation. This is a local cache, not a cloud distribution service for other users.
+In Chrome, open chrome://extensions, enable Developer mode and load the project's
+extension folder. For an existing installation from that folder, reload the
+extension and refresh open website tabs so their content scripts are updated.
+Open the Visual Adapter side panel from Chrome's extensions menu.
 
-Each server session permits at most 20 attempted generations by default, including failures. `LOCAL_AI_MAX_CALLS` can lower the limit to 1–20. There is one active generation, same-host request deduplication, a 60-second provider timeout, and no automatic retries. Each model input is bounded to 30,000 HTML characters. Restarting the server renews the session count, so a corpus experiment also needs an aggregate budget outside this process. Actual usage is recorded when available; list-price estimates do not establish billed charges.
+## What runs locally
 
-Scripts, active embeds, event handlers and form values are stripped, but other page content can still be sensitive. The remaining page sample goes to DeepSeek on generation. This is not complete redaction, anonymity or a formal privacy guarantee. The server binds only to loopback and rejects ordinary website origins and nonlocal Host headers. Do not expose it publicly. Cached selector names can reveal page context even though the usage ledger contains only identifiers, hashes, metadata and token counters.
+Local mode sends lookup, admission and generation requests to the loopback
+backend and keeps rules and usage under workspace/local-ai/<provider>-<model>.
+It does not use production Firebase. Cache state persists across server starts.
+The basic reading view remains available when a procedure is unavailable or
+rejected. An incompatible procedure does not automatically start paid renewal.
 
-The backend checks selector syntax, a matching content container, and nonempty output before caching. These checks do not establish semantic accuracy or accessibility compliance. `/verify` performs deterministic local checks only; it does not start a model verification/refinement loop. This preserves fallback and avoids surprise inference calls.
+The browser inspects the full source DOM and sends a balanced model sample with
+a 12,000-character ceiling. The model proposes selectors and exclusions. Full
+sanitized BODY context is separate and supports deterministic validation: up to
+100,000 characters uncompressed, or 1 MiB decoded through the lossless gzip route,
+with a 128 KiB compressed limit and 100:1 ratio limit, inside the 262,144-byte request
+bound. Incomplete or unsupported contexts retain the basic view. These limits
+and role checks do not establish semantic completeness or WCAG conformance.
 
-The current validation also protects the actual title heading, samples substantive paragraphs/code/table content and common comment markers, and can widen a narrow selector to a stable ancestor. Table-row selections are normalized to complete table containers. Exclusions that would delete the primary heading are dropped, and the original model rule plus normalization metadata are retained. The reader keeps full content separately from the bounded model sample, resolves source links/images for the extension panel, and uses local fallback when these checks reject a rule. These are practical heuristics, not a semantic correctness guarantee.
+The first valid example creates a provisional procedure. A second distinct
+identity and content example must pass that same procedure before it can enter
+the shared local lookup. Each later use still checks applicability and content
+preservation. A hostname can contain several incompatible layouts.
 
-A generation/provider failure is remembered for that host during the server session. Further requests keep fallback without another inference attempt. An explicit report or a server restart enables another attempt; neither bypasses an experiment's separate aggregate budget.
+Page samples reach DeepSeek during generation. Complete sanitized validation
+content reaches the local backend but is not the LLM prompt. Form values,
+scripts and active embeds are removed; other page text can remain sensitive.
+Routine reuse is local, while lookup metadata remains observable. This prototype
+does not implement anonymous requests or a cloud distribution service.
 
-An explicit alternative uses **Codex Luna at medium effort**, with existing ChatGPT CLI authentication:
+## Session limits and alternatives
 
-```text
-npm run start:codex
-```
+The server defaults to 20 attempted generations per session, one active request,
+a 60-second provider timeout, a 1,024-token output limit and no automatic retries.
+LOCAL_AI_MAX_CALLS can lower the limit to 1–20. Restarting renews the session count;
+interactive use is separate from the frozen study's aggregate ledger. The
+backend's defensive model-input ceiling is 30,000 characters; the browser's
+structural sample is bounded more tightly. A provider failure is remembered for
+that host during the session. Explicit reporting can invalidate a cached rule.
 
-Use `codex login` with ChatGPT first. On Windows the launcher finds the npm-installed native executable; `CODEX_BIN` can specify another full executable path. The Codex runner uses an ephemeral read-only session, a JSON schema, disabled shell/web/apps/delegation, a 60-second process-tree timeout, and a child environment without provider API keys. It consumes Codex allowance, not a separate OpenAI API key. Its model-token ceiling is not enforced by the input/time bounds. This optional route requires its own authorized inference budget. No automatic provider switching occurs.
+An optional `npm run start:codex` route uses Codex Luna with medium effort and
+existing ChatGPT CLI sign-in. It consumes Codex allowance and has no automatic
+provider switch. Its use needs the applicable authorization. No separate OpenAI
+API key is required. The hosted Gemini path is legacy and was not redeployed.
 
-The legacy hosted path can be deliberately selected with `BACKEND_CONFIG.current = 'production'`. Its rule lookup/reporting uses Firebase REST with the same anonymous database paths, avoiding unsupported worker imports. Live hosted-service behavior has not been checked. Its Gemini credentials are currently reported invalid by the user; it is not a working fallback.
-
-Run `npm run test:local` for existing regressions and HTTP/cache/provider-double checks. A live routing smoke check is separate from a fresh-AI/shared-rule experiment; neither frozen paper timings nor the v1 manuscript results change merely because this backend changes.
-
-Provider references checked 2026-10-19: [DeepSeek API](https://api-docs.deepseek.com/api/create-chat-completion/), [model and pricing](https://api-docs.deepseek.com/quick_start/pricing/), [Codex non-interactive mode](https://learn.chatgpt.com/docs/non-interactive-mode).
-
-## Current structural sampling and preservation route
-
-The extension now builds a balanced structural sample with a 12,000-character
-ceiling. It inspects the whole BODY locally before selecting examples. It keeps
-original container paths and bounded, complete ID/class/role attributes, includes
-representatives of headings, tables, code, images/captions, lists, discussions and
-navigation, and samples repeated siblings at early/middle/late positions. Text
-cues are limited to96 characters; form values, scripts, destination URLs and image
-payloads are omitted from this model sample. Oversized attributes are omitted,
-not truncated into nonexistent selectors. The sample is serialized as valid HTML
-within its budget, rather than cutting an HTML prefix. Provider-side30,000-character
-limits remain a separate defensive bound. Characters are not billed-token counts.
-
-The sample is explicitly incomplete. Its role-count/representation diagnostics do
-not prove that every important instance was selected. The model proposes a CSS
-procedure; the compiler and runtime separately inspect the full source DOM for
-required reading roles and relationships. They retain navigation inside semantic
-reading regions while removing global navigation, preserve precise observed
-selectors, and drop exclusions without seed evidence. Compilation adjustments,
-unadjusted model selection, rule delivery and fallback remain separately labeled.
-
-Local protocol2 shares only admitted procedures. Its first complete example is
-private/provisional; a second distinct identity and content example must pass the
-same procedure before publication. A separate sanitized BODY, capped at100,000
-characters and262,144 request bytes, currently goes to the backend for deterministic
-validation. It is not the LLM input. This upload can disclose page content to the
-backend; compact model input alone does not establish article privacy or anonymity.
-Large/incomplete contexts remain pending with the basic view. Session budgets and
-automatic-retry restrictions are unchanged.
-
-Development replay supplies retained historical candidates and tests compiled
-procedures directly through production extraction in isolated Chromium. It does
-not measure fresh model generation from the new sample or corpus-wide API
-admission. See the local testing guide for these separate endpoints.
+See WORKSPACE_GUIDE.md for test evidence and folder ownership. Historical study
+tools under tests/local must retain their frozen inputs and do not run as part
+of normal browsing.

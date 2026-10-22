@@ -1,0 +1,29 @@
+{
+  "package": "C:\\Dev\\Visual_adapter\\workspace\\releases\\2026-10-22-local\\visual-adapter-local-2026-10-22.zip",
+  "packageSha256": "a765f8f549a7d63eca3d72a328da1e4c1837e23960e539f875a921fbfd66dce1",
+  "runtimeProductionCommit": "2d1b5effcfb1c3aa3e101f74ffa87b13184e682d",
+  "sourceCommitBeforeDocumentation": "d7129399da7776228ba9ab6fc6ac41b9104991d4",
+  "extensionManifestVersion": "1.0",
+  "extensionFiles": {
+    "extension/backend-config.js": "fea24ad70c25e18880387247a921ac9f710ec4b61986321ef509e52ddad2025d",
+    "extension/background.js": "3792a1833cb614e37d0ffee12609862948a226a8f37416d8e7927ae11f136efe",
+    "extension/content.js": "c83d2a5949578d55d0cbd3590457337cf61cf62a55a140823c556e37041ece09",
+    "extension/firebase-config.js": "4722563c4e257016b9eba81b7c86d342df7e7dff586ca2357ea02961ccb462de",
+    "extension/firebase-service.js": "569d7316f80cffb58d70e16634e63ea8eccc47d59e35d9866cfe2cb5cb8e25fe",
+    "extension/icons/icon128.png": "6c8acd225181a2146de937f68559f355319cb247a8f4b6a61c44a640ad322eb5",
+    "extension/icons/icon16.png": "6c8acd225181a2146de937f68559f355319cb247a8f4b6a61c44a640ad322eb5",
+    "extension/icons/icon48.png": "6c8acd225181a2146de937f68559f355319cb247a8f4b6a61c44a640ad322eb5",
+    "extension/manifest.json": "431693030e46de63986145adeda31123da96a1ef9c1cee7110c91fbb0b501053",
+    "extension/options.css": "f677185b0b1f0a5c778c8c300856b7154f3729e3869a0b11a2caee072fc9ee46",
+    "extension/options.html": "099fb13a62c9cf382ce2587ab1e3a0b5279b945ba900345f3df31921333b3ea1",
+    "extension/options.js": "970d7409510a8b5824e2b137a71753d7a7d5e3389e9c212c90640201fea1e38d",
+    "extension/procedure-core.js": "dd6e97c8ab3f960f099c78ee13830bab7b094fbc633353a6a339e71964a07d75",
+    "extension/rule-service.js": "496bd26cc1d016e98747daa68fa8191ca204481ac2b23436b881acd49a5406b0",
+    "extension/sidepanel.css": "eb580390c19a05ffba04b7cc454470d419d3983b4a8d16f963fd200d115711bd",
+    "extension/sidepanel.html": "78da66232d5820964570aaebe077886c792d5ffcca9456dfdb3d2326bf08d8de",
+    "extension/sidepanel.js": "c020f55caeb4c974173e342a7ddef25375fc40420657e7900c72f8ba73f100f4"
+  },
+  "allPackageFilesMatchCurrentSource": true,
+  "privateProviderKeyIncluded": false,
+  "backendIncluded": false
+}

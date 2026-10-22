@@ -1,136 +1,49 @@
 # Visual Adapter
 
-AI-powered Chrome extension that transforms complex web pages into clean, accessible reading experiences for low-vision users.
+Chrome extension for a configurable reading view, with AI-generated adaptation
+procedures, checked reuse and a basic local fallback.
 
-The current local prototype uses **DeepSeek** through the shared-secret key, with a persistent local rule cache and heuristic fallback. Start it with `npm run start:local`, then reload the unpacked extension. [Local setup and limits](docs/LOCAL_AI.md). An optional `npm run start:codex` route uses Codex Luna; the hosted Gemini deployment is not the default.
+## Use the current extension
 
-[![Version](https://img.shields.io/badge/version-3.0-blue.svg)](https://github.com/your-repo)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+1. From this project folder, run `npm run start:local` (Node.js 22.13 or newer).
+   The local backend uses DeepSeek through the existing shared-secret key.
+2. Open `chrome://extensions`, enable Developer mode, choose **Load unpacked**,
+   and select this project's `extension` folder. If already installed from that
+   folder, press its **Reload** button and refresh the website tab.
+3. Click **Visual Adapter for Low Vision** in Chrome's extensions menu to open
+   the reading panel. Set the text size, font and colours in the panel.
 
----
+The backend must remain running. Its status is at
+http://127.0.0.1:7861/health. A date-labelled ZIP and exact file hashes are kept
+in `workspace/releases/`; the unpacked `extension` folder is the current source.
+No build step is required for that folder. The local backend is a separate
+process and is not included in the extension-only ZIP.
 
-## ✨ Features
+Current runtime changes include balanced DOM evidence within 12,000 characters,
+deterministic preservation checks, complete validation contexts with lossless
+compression, multi-example procedure admission and local fallback. The runtime
+files match the final study's production revision `2d1b5ef`. This identifies the
+tested code; individual pages can still require fallback.
 
-- 🤖 **AI-Powered Extraction** - The local DeepSeek backend analyzes HTML structure
-- ⚡ **Instant Loading** - Cached rules load in <0.5s
-- 🎨 **High-Contrast Themes** - 6 accessibility-focused themes
-- 📝 **Customizable Typography** - Adjust font size and family
-- 🌐 **Universal Compatibility** - Works on any website
-- 🔄 **Shared Learning** - Rules shared across all users
+## Project layout
 
----
+| Location | Purpose |
+|---|---|
+| `extension/` | Loadable Chrome extension |
+| `backend/` | Local API, provider adapter and validation |
+| `tests/local/` | Maintained regression and study tools |
+| `docs/LOCAL_AI.md` | Setup, provider selection and local data handling |
+| `docs/WORKSPACE_GUIDE.md` | Experiment folders, provenance and relocated history |
+| `docs/evaluation/` | Tracked protocols and sanitized study records |
+| `workspace/task023/` | Original captures, request receipts and evaluation evidence |
+| `workspace/local-ai/` | Persistent cache and interactive usage ledger |
+| `workspace/releases/` | Extension packages and package manifests |
 
-## 🚀 Quick Start
+Run `npm run test:local` for offline regressions. It uses fixtures and provider
+doubles. Paid generation and live website collection are separate, explicitly
+authorized operations; never use a study-generation command as an installation
+check. See [testing details](tests/local/README.md).
 
-### For Users
-
-1. **Install Extension**:
-   - Download from Chrome Web Store (coming soon)
-   - Or load unpacked: `chrome://extensions` → Load unpacked → Select the `extension` folder
-
-2. **Use Extension**:
-   - Click extension icon to open side panel
-   - Content extracts automatically
-   - Adjust theme and font size in settings
-
-### For Developers
-
-```bash
-# 1. Start backend
-cd backend
-npm install
-export GEMINI_API_KEY="your_key"
-node index.js
-
-# 2. Load extension
-# Chrome → chrome://extensions → Load unpacked → Select the extension folder
-
-# 3. Test
-# Visit any website and click extension icon
-```
-
----
-
-## 📚 Documentation
-
-- **[Architecture](docs/ARCHITECTURE.md)** - System design and data flow
-- **[Deployment](docs/DEPLOYMENT.md)** - Deploy to Hugging Face Spaces
-- **[Development](docs/DEVELOPMENT.md)** - Development setup and testing
-- **[Backend README](backend/README.md)** - Backend API documentation
-
----
-
-## 🏗️ Architecture
-
-```
-Chrome Extension → Firebase (check cache) → Backend Server → Gemini AI
-                                                    ↓
-                                            Save rule to Firebase
-```
-
-**V3.0 Highlights**:
-- Direct HTTP communication (no polling)
-- Centralized backend on Hugging Face Spaces
-- Shared rule caching via Firebase
-- 50-70% faster than V2.4
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology |
-|-----------|------------|
-| **Frontend** | Chrome Extension (Manifest V3) |
-| **Backend** | Node.js 18 |
-| **Database** | Firebase Realtime Database |
-| **AI Model** | Google Gemini 2.5 Flash |
-| **Hosting** | Hugging Face Spaces (free) |
-
----
-
-## 📊 Performance
-
-| Metric | V2.4 | V3.0 | Improvement |
-|--------|------|------|-------------|
-| First Visit | 3-8s | 2-5s | 40% faster |
-| Repeat Visit | 1-2s | <0.5s | 75% faster |
-| Rule Sharing | No | Yes | ∞ |
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! See [Development Guide](docs/DEVELOPMENT.md) for:
-- Development setup
-- Code style guidelines
-- Testing procedures
-- Commit message format
-
----
-
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-## 🔗 Links
-
-- [Chrome Web Store](#) (coming soon)
-- [Documentation](docs/)
-- [Issue Tracker](#)
-- [Changelog](CHANGELOG.md)
-
----
-
-## 📧 Contact
-
-- **Project Maintainer**: [Your Name]
-- **Email**: your.email@example.com
-- **Issues**: [GitHub Issues](#)
-
----
-
-**Version**: 3.0  
-**Last Updated**: November 21, 2025  
-**Status**: Production Ready ✅
+The default is the local DeepSeek route. The optional Codex route is documented
+in [local setup](docs/LOCAL_AI.md). The old hosted Gemini configuration is not
+the current tested deployment. No Chrome Web Store release has been published.

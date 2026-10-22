@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-22",
+  "extensionFiles": 17,
+  "packageSha256": "a765f8f549a7d63eca3d72a328da1e4c1837e23960e539f875a921fbfd66dce1",
+  "packageAllCurrentFilesByteExact": true,
+  "runtimeMatchesEvaluatedProductionCommit": "2d1b5effcfb1c3aa3e101f74ffa87b13184e682d",
+  "relocatedFiles": 14,
+  "allRelocatedBytesVerified": true,
+  "relocationManifest": "docs/evaluation/organization-2026-10-22.json",
+  "workspaceGuide": "docs/WORKSPACE_GUIDE.md",
+  "checks": {
+    "pure-checks": {
+      "timedOut": true,
+      "cleanup": {
+        "terminationRequested": true,
+        "rootExited": true,
+        "activeProcesses": 0
+      },
+      "exitCode": 124,
+      "elapsedSeconds": 121.01
+    },
+    "native-core": {
+      "timedOut": true,
+      "cleanup": {
+        "terminationRequested": true,
+        "rootExited": true,
+        "activeProcesses": 0
+      },
+      "exitCode": 124,
+      "elapsedSeconds": 100.98
+    },
+    "decoder-check": {
+      "timedOut": false,
+      "cleanup": {
+        "terminationRequested": true,
+        "rootExited": true,
+        "activeProcesses": 0
+      },
+      "exitCode": 0,
+      "elapsedSeconds": 2.93
+    },
+    "browser-admission": {
+      "timedOut": true,
+      "cleanup": {
+        "terminationRequested": true,
+        "rootExited": true,
+        "activeProcesses": 0
+      },
+      "exitCode": 124,
+      "elapsedSeconds": 181.38
+    }
+  },
+  "browserAssertionsReachedCompletion": true,
+  "browserProcessExitTimedOut": true,
+  "newBrowserCheckIsFullyPassed": false,
+  "checkInterpretation": "Exact package/runtime and relocation checks pass; focused strict validation decoder passes. Two broad initial checks timed out under busy host. Browser admission assertions completed, but the process did not exit before its bound, so this is not a clean new full-suite pass. All owned test process trees were cleaned. No study or production result is relabeled.",
+  "nativeReview": "Prior package-audit and launcher-overwrite findings fixed and accepted by later full scopes; wrapper containment finding fixed, guard regressions pass and final scoped review clear.",
+  "nativeReviewReportSha256": "5c548052501fba60bc1369d0c7aef6e90e648a14a78b9d4879b9b9c953f73a1b",
+  "reviewModel": "gpt-6.1-sol",
+  "reviewEffort": "medium",
+  "reviewTokens": null,
+  "backendHealthAtAcceptance": {
+    "status": "ok",
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "effort": "thinking-disabled",
+    "calls": 0,
+    "maxCalls": 20,
+    "active": 0
+  },
+  "startupProviderCalls": 0,
+  "testProviderCalls": 0,
+  "cloudDeploymentUpdated": false
+}

@@ -75,14 +75,18 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
      output main/exclude/name only (backend/deepseek-runner.cjs, backend/model-evidence.cjs).
    - Frozen October study: workspace/task023/refresh-20261021/final-study-v1 (do not modify).
    - Reviewer checklist: C:\Users\final\Downloads\AIIPCC69233 Revision Checklist.docx.
-5. **What is still running (updated 2026-11-21 ~00:40):**
-   - WP-A1 eval capture (gpt-6-luna high), ~183/200 pages; runs/WP-A1.*
-   - WP-A3 lint L1-L6 + dev re-annotation under guideline v2 (gpt-6.1-sol high, 150 min); runs/WP-A3.*
-   - WP-D1 extension consent/family flow/manual fallback (gpt-6.1-sol medium, 170 min); runs/WP-D1.*
-   - Done and accepted: WP-B1..B4 (scorer, 46 tests), WP-C1..C4 part 1 (agent, gate, ledger, 55 tests).
-     WP-C4 stopped by the coordinator before tuning: dev references were not fit to tune on.
-   - Codex review 1 (dilab-5080) findings fixed; a second review of all new code is due before commit.
-   - Next: when WP-A3 passes, rerun the dev scoreboard (P0/P1) and resume WP-C (thread in
-     runs/WP-C1.thread) for the capability tuning (DESIGN 6a); then evaluation references (WP-A4,
-     guideline v2, stronger model, parallel batches) and the 40-page audit Doc.
+5. **What is still running (updated 2026-11-21 ~02:30):**
+   - WP-A4 evaluation references, 3 parallel fresh workers (gpt-6.1-sol high): eval-01..13,
+     eval-14..27, eval-28..40; logs runs/WP-A4-<from>.*; watchdogs at 175 min (watchdog-A4-*.log).
+   - WP-C6 runtime-boundary fix from review 2 (agent thread in runs/WP-C1.thread), watchdog 48 min.
+   - Done/accepted: corpus (WP-A3b: 60 dev pages pass lint L1-L6, 200 eval captures pass L5/L6,
+     12 dev sites, 40 eval sites); extension (WP-D4: 12 tests, sandboxed panel, consent per
+     induction, clear deletes); scorer (46 tests); agent (66 tests).
+   - Reviews: review 1 and 2 (dilab-5080) findings fixed or being fixed; a final review of all code
+     is due before the code commit. NOTE: commit 1b30875 accidentally included unreviewed
+     extension changes (git commit -a); disclosed to the user; review covers it.
+   - Next: after WP-C6, resume WP-C for capability tuning (DESIGN 6a) on the valid 60-page dev
+     set, scoreboard vs P0/P1; freeze; then evaluation run (P0-P4, ablations, models) and the
+     40-page audit Doc for the user/Randy.
+   - Worker time caps: `timeout` does not stop codex.exe on Windows; use runs/watchdog.ps1.
    - Ledger: 146 paid dev requests, $0.04; 41 local-model requests.

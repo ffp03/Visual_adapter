@@ -75,16 +75,14 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
      output main/exclude/name only (backend/deepseek-runner.cjs, backend/model-evidence.cjs).
    - Frozen October study: workspace/task023/refresh-20261021/final-study-v1 (do not modify).
    - Reviewer checklist: C:\Users\final\Downloads\AIIPCC69233 Revision Checklist.docx.
-5. **What is still running (started 2026-11-20, local Codex CLI, full access):**
-   - WP-A1 capture + dev references, gpt-6-luna high, 175 min cap. Brief and logs:
-     workspace/revision/briefs/WP-A1-capture.md, workspace/revision/runs/WP-A1.*
-   - WP-B1 harness/scorer/P0/P1/P2-nr, gpt-6.1-sol medium, 155 min cap (runs/WP-B1.*)
-   - WP-C1 v3 rules/gate/agent loop/ledger, gpt-6.1-sol high, 175 min cap, up to 250 dev
-     DeepSeek requests (runs/WP-C1.*)
-   - WP-C1 run 1 finished 2026-11-21: 33 tests pass; P4 admitted 5/8 dev sites; 68 dev
-     DeepSeek requests, $0.023. Problems decided in DESIGN section 7a. WP-C2 (run 2, resumed
-     session, 150 min cap) implements 7a, bounded history, 2,000 cap, local model runner and dev
-     run 2 (runs/WP-C2.*). WP-B1 resumed after scoring decisions (runs/WP-B1.*).
-   - Check: tail of runs/<WP>.jsonl; result in runs/<WP>.result.md. On completion: inspect,
-     rerun tests, then dispatch eval-reference drafting (WP-A2) and the extension work (WP-D1).
-   - Note: gpt-6.2-sol is rejected for this ChatGPT account ("model_not_found"); gpt-6.1-sol used.
+5. **What is still running (updated 2026-11-21 ~00:40):**
+   - WP-A1 eval capture (gpt-6-luna high), ~183/200 pages; runs/WP-A1.*
+   - WP-A3 lint L1-L6 + dev re-annotation under guideline v2 (gpt-6.1-sol high, 150 min); runs/WP-A3.*
+   - WP-D1 extension consent/family flow/manual fallback (gpt-6.1-sol medium, 170 min); runs/WP-D1.*
+   - Done and accepted: WP-B1..B4 (scorer, 46 tests), WP-C1..C4 part 1 (agent, gate, ledger, 55 tests).
+     WP-C4 stopped by the coordinator before tuning: dev references were not fit to tune on.
+   - Codex review 1 (dilab-5080) findings fixed; a second review of all new code is due before commit.
+   - Next: when WP-A3 passes, rerun the dev scoreboard (P0/P1) and resume WP-C (thread in
+     runs/WP-C1.thread) for the capability tuning (DESIGN 6a); then evaluation references (WP-A4,
+     guideline v2, stronger model, parallel batches) and the 40-page audit Doc.
+   - Ledger: 146 paid dev requests, $0.04; 41 local-model requests.

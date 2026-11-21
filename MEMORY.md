@@ -1,0 +1,1 @@
+- [2026-11-21] On Windows Git Bash, `timeout <n> codex exec ...` kills only the shell; codex.exe keeps running past the cap (WP-A1 ran ~5 h on a 175 min cap). Enforce worker time caps by stopping the codex.exe process tree. → propose: skill:subagent-use

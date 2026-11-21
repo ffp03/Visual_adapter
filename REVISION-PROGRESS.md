@@ -75,6 +75,10 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
    - WP-B1 harness/scorer/P0/P1/P2-nr, gpt-6.1-sol medium, 155 min cap (runs/WP-B1.*)
    - WP-C1 v3 rules/gate/agent loop/ledger, gpt-6.1-sol high, 175 min cap, up to 250 dev
      DeepSeek requests (runs/WP-C1.*)
+   - WP-C1 run 1 finished 2026-11-21: 33 tests pass; P4 admitted 5/8 dev sites; 68 dev
+     DeepSeek requests, $0.023. Problems decided in DESIGN section 7a. WP-C2 (run 2, resumed
+     session, 150 min cap) implements 7a, bounded history, 2,000 cap, local model runner and dev
+     run 2 (runs/WP-C2.*). WP-B1 resumed after scoring decisions (runs/WP-B1.*).
    - Check: tail of runs/<WP>.jsonl; result in runs/<WP>.result.md. On completion: inspect,
      rerun tests, then dispatch eval-reference drafting (WP-A2) and the extension work (WP-D1).
    - Note: gpt-6.2-sol is rejected for this ChatGPT account ("model_not_found"); gpt-6.1-sol used.

@@ -15,6 +15,12 @@ rerun on a larger corpus. This project owns methodology and extension; the manus
 revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadline 2026-11-26.
 
 **Done means:**
+- (Added 2026-11-21 on the user's word: "improve the agent's capability of creating a better
+  site wise rule. the goal is to surpass the existing rule base methods".) The site-wise agent
+  rule (P4) beats the deterministic reader and Mozilla Readability on held-out pages (clean pass
+  and noise leakage, site-clustered intervals). Capability is improved iteratively on development
+  sites until it surpasses them there, then frozen and evaluated once; the evaluation result is
+  reported as measured.
 - Rule generation is an evaluated multi-page agent procedure whose output is not forced to
   equal the reader's, scored against references independent of the reader.
 - 40 sites x 5 pages corpus, new and held-out pages recorded, with a user/Randy audit of

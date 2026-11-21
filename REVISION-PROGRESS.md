@@ -2,7 +2,10 @@
 
 ## Goal block: methodology and extension revision (started 2026-11-20)
 
-Status: drafted 2026-11-20, awaiting user confirmation of goal, "done means" and milestones.
+Status: confirmed by the user 2026-11-20 ("the task is quite straight forward... no need to stop
+for me to review. you can continue all the way"). Change 2026-11-20 on the user's word: the
+"(user checks)" milestones no longer stop the work; progress is shared and work continues. The
+reference audit (milestone 4) is still done by the user/Randy, in parallel. Design: docs/revision/DESIGN-2026-11.md.
 
 **Goal:** answer the AIIPCC69233 reviewers with new evidence. The current design makes
 agent-generated rules only match the deterministic (rule-based) reader, which defeats the
@@ -40,7 +43,7 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
 7. Sanitized export to the paper project plus result summary. Check: summary in chat or a
    Google Doc. (user checks)
 
-**Current step:** milestone 1 not started; waiting for goal-block confirmation.
+**Current step:** milestone 1 done 2026-11-20 (docs/revision/DESIGN-2026-11.md). Milestones 2-3 under way: workers WP-A1 (capture), WP-B1 (harness), WP-C1 (agent loop) running.
 
 ## START HERE (2026-11-20)
 
@@ -65,4 +68,12 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
      output main/exclude/name only (backend/deepseek-runner.cjs, backend/model-evidence.cjs).
    - Frozen October study: workspace/task023/refresh-20261021/final-study-v1 (do not modify).
    - Reviewer checklist: C:\Users\final\Downloads\AIIPCC69233 Revision Checklist.docx.
-5. **What is still running:** nothing.
+5. **What is still running (started 2026-11-20, local Codex CLI, full access):**
+   - WP-A1 capture + dev references, gpt-6-luna high, 175 min cap. Brief and logs:
+     workspace/revision/briefs/WP-A1-capture.md, workspace/revision/runs/WP-A1.*
+   - WP-B1 harness/scorer/P0/P1/P2-nr, gpt-6.1-sol medium, 155 min cap (runs/WP-B1.*)
+   - WP-C1 v3 rules/gate/agent loop/ledger, gpt-6.1-sol high, 175 min cap, up to 250 dev
+     DeepSeek requests (runs/WP-C1.*)
+   - Check: tail of runs/<WP>.jsonl; result in runs/<WP>.result.md. On completion: inspect,
+     rerun tests, then dispatch eval-reference drafting (WP-A2) and the extension work (WP-D1).
+   - Note: gpt-6.2-sol is rejected for this ChatGPT account ("model_not_found"); gpt-6.1-sol used.

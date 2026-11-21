@@ -1,0 +1,200 @@
+[
+ {
+  "oldSite": "fresh-site01",
+  "category": "Government/public information",
+  "host": "www.cdc.gov",
+  "oldUrls": [
+   "https://www.cdc.gov/sleep/about/index.html",
+   "https://www.cdc.gov/physical-activity-basics/about/index.html"
+  ]
+ },
+ {
+  "oldSite": "fresh-site02",
+  "category": "Technical documentation",
+  "host": "fastapi.tiangolo.com",
+  "oldUrls": [
+   "https://fastapi.tiangolo.com/tutorial/first-steps/",
+   "https://fastapi.tiangolo.com/tutorial/path-params/"
+  ]
+ },
+ {
+  "oldSite": "fresh-site11",
+  "category": "Technical documentation",
+  "host": "www.typescriptlang.org",
+  "oldUrls": [
+   "https://www.typescriptlang.org/docs/handbook/intro.html",
+   "https://www.typescriptlang.org/download"
+  ]
+ },
+ {
+  "oldSite": "fresh-site12",
+  "category": "Technical documentation",
+  "host": "numpy.org",
+  "oldUrls": [
+   "https://numpy.org/doc/stable",
+   "https://numpy.org/case-studies/deeplabcut-dnn"
+  ]
+ },
+ {
+  "oldSite": "fresh-site03",
+  "category": "News",
+  "host": "sciencedaily.com",
+  "oldUrls": [
+   "https://sciencedaily.com/releases/2026/10/261018084421.htm",
+   "https://sciencedaily.com/releases/2026/09/260930020309.htm"
+  ]
+ },
+ {
+  "oldSite": "original-07",
+  "category": "Education",
+  "host": "news.yale.edu",
+  "oldUrls": [
+   "https://news.yale.edu/2026/10/19/marcela-effect-women-faculty-forum-honors-leader-health-care-equity",
+   "https://news.yale.edu/2026/10/15/nato-new-haven-former-ambassador-shares-lessons-diplomacy"
+  ]
+ },
+ {
+  "oldSite": "additional-01",
+  "category": "Education",
+  "host": "statlect.com",
+  "oldUrls": [
+   "https://statlect.com/fundamentals-of-probability/conditional-probability",
+   "https://statlect.com/fundamentals-of-probability/independent-events"
+  ]
+ },
+ {
+  "oldSite": "additional-03",
+  "category": "Education",
+  "host": "mathsisfun.com",
+  "oldUrls": [
+   "https://mathsisfun.com/algebra/logarithms.html",
+   "https://mathsisfun.com/algebra/quadratic-equation.html"
+  ]
+ },
+ {
+  "oldSite": "additional-04",
+  "category": "Education",
+  "host": "openintro.org",
+  "oldUrls": [
+   "https://openintro.org/book/os/",
+   "https://openintro.org/book/ims/"
+  ]
+ },
+ {
+  "oldSite": "additional-11",
+  "category": "Reference/collections",
+  "host": "ncatlab.org",
+  "oldUrls": [
+   "https://ncatlab.org/nlab/show/group",
+   "https://ncatlab.org/nlab/show/functor"
+  ]
+ },
+ {
+  "oldSite": "additional-12",
+  "category": "Reference/collections",
+  "host": "proofwiki.org",
+  "oldUrls": [
+   "https://proofwiki.org/wiki/Definition:Group",
+   "https://proofwiki.org/wiki/Definition:Ring"
+  ]
+ },
+ {
+  "oldSite": "reserve-08",
+  "category": "Reference/collections",
+  "host": "www.bbcgoodfood.com",
+  "oldUrls": [
+   "https://www.bbcgoodfood.com/premium/healthy-mediterranean-diet-meal-plan",
+   "https://www.bbcgoodfood.com/review/best-stainless-steel-frying-pans"
+  ]
+ },
+ {
+  "oldSite": "original-09",
+  "category": "Education",
+  "host": "news.berkeley.edu",
+  "oldUrls": [
+   "https://news.berkeley.edu/2026/10/15/watch-did-ancient-humans-really-throw-spears-at-mammoths-a-berkeley-archaeologist-says-no/",
+   "https://news.berkeley.edu/2026/10/16/berkeley-talks-michael-pollan-and-christof-koch-talk-psychedelics-and-consciousness/"
+  ]
+ },
+ {
+  "oldSite": "reserve-07",
+  "category": "Commerce",
+  "host": "www.adafruit.com",
+  "oldUrls": [
+   "https://www.adafruit.com/product/6501",
+   "https://www.adafruit.com/product/6065"
+  ]
+ },
+ {
+  "oldSite": "additional-13",
+  "category": "Discussion",
+  "host": "discourse.jupyter.org",
+  "oldUrls": [
+   "https://discourse.jupyter.org/t/jupyterhub-on-k8s-500-internal-server-error-redirect-loop-detected-notebook-has-jupyterhub-version-unknown-likely-0-8-but-the-hub-expects-4-1-5-try-installing-jupyterhub-4-1-5-in-the-user-environment-if-you-continue-to-have-problems/38192",
+   "https://discourse.jupyter.org/t/q-values-set-in-authenticator-post-auth-hook-are-not-available-in-spawner-auth-state-hook-when-using-azureadoauthenticator/38501"
+  ]
+ },
+ {
+  "oldSite": "additional-15",
+  "category": "Discussion",
+  "host": "discuss.ocaml.org",
+  "oldUrls": [
+   "https://discuss.ocaml.org/t/parameter-sdl-createtexturefromsurface-surface-is-invalid-issue-with-a-successfully-created-surface-from-tsdl-image/18615",
+   "https://discuss.ocaml.org/t/https-ocaml-org-p-ocaml-latest-versions-seems-to-have-wrong-misleading-release-dates/17791"
+  ]
+ },
+ {
+  "oldSite": "additional-14",
+  "category": "Discussion",
+  "host": "forum.posit.co",
+  "oldUrls": [
+   "https://forum.posit.co/t/unable-to-deploy-r-based-shiny-app-to-posit-connect-cloud-possibly-because-a-required-package-is-a-private-github-repo/217546",
+   "https://forum.posit.co/t/tidyverse-2-0-0-causes-segmentation-faults-when-publishing-shiny-apps-to-shinyapps-io-or-posit-connect-cloud/216835"
+  ]
+ },
+ {
+  "oldSite": "additional-16",
+  "category": "Commerce",
+  "host": "sparkfun.com",
+  "oldUrls": [
+   "https://sparkfun.com/sparkfun-thing-plus-esp32-wroom-usb-c.html",
+   "https://sparkfun.com/sparkfun-redboard-plus.html"
+  ]
+ },
+ {
+  "oldSite": "additional-18",
+  "category": "Commerce",
+  "host": "pololu.com",
+  "oldUrls": [
+   "https://pololu.com/product/2135",
+   "https://pololu.com/product/3768"
+  ]
+ },
+ {
+  "oldSite": "original-05",
+  "category": "Government/public information",
+  "host": "www.nasa.gov",
+  "oldUrls": [
+   "https://www.nasa.gov/humans-in-space/astronauts/la-nasa-refuerza-artemis-anade-una-mision-y-perfecciona-su-arquitectura-general/",
+   "https://www.nasa.gov/missions/moon-base/nasa-jpl-testing-readies-voyager-technologies-lander-for-moon-mission/"
+  ]
+ },
+ {
+  "oldSite": "additional-05",
+  "category": "News",
+  "host": "www.quantamagazine.org",
+  "oldUrls": [
+   "https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/",
+   "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/"
+  ]
+ },
+ {
+  "oldSite": "additional-06",
+  "category": "News",
+  "host": "theconversation.com",
+  "oldUrls": [
+   "https://theconversation.com/do-you-think-teachers-are-similar-to-coaches-pastors-or-something-else-it-depends-on-where-you-live-294029",
+   "https://theconversation.com/polytechnic-universities-focus-on-practical-career-oriented-skills-offering-an-alternative-to-traditional-universities-268349"
+  ]
+ }
+]

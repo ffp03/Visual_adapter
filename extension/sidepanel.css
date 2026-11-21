@@ -9,6 +9,16 @@
     --line-height: 1.6;
 }
 
+#layout-controls { padding: 10px 16px; border-bottom: 1px solid var(--border-color); max-height: 45vh; overflow: auto; flex-shrink: 0; }
+#controls { max-height: 28vh; flex-shrink: 0; overflow-y: auto; box-sizing: border-box; }
+#reader-view { min-height: 0; }
+body > header { flex-shrink: 0; }
+#layout-controls button { font: inherit; padding: 6px 10px; cursor: pointer; }
+#layout-controls label { display: inline-block; margin-right: 12px; }
+#layout-controls p { margin: 6px 0; }
+#cue-sample { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 120px; overflow: auto; font-size: 14px; }
+[hidden] { display: none !important; }
+
 body {
     margin: 0;
     padding: 0;

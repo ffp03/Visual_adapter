@@ -154,7 +154,7 @@ async function tryApplyRules(outcome = {}) {
         outcome.ruleFailure = false;
         outcome.inventory = PreservationCore.inspect(document);
         for (const rule of rules) {
-            const result = rule.schemaVersion === 2
+            const result = rule.schemaVersion === 3 ? ProcedureV3.useTime(document, rule) : rule.schemaVersion === 2
                 ? PreservationCore.apply(document, rule, outcome.inventory) : PreservationCore.applyLegacy(document, rule, outcome.inventory);
             outcome.attemptedCombinations = (outcome.attemptedCombinations || 0) + (result.attemptedCombinations || 0);
             if (!result.accepted) {
@@ -176,13 +176,14 @@ async function tryApplyRules(outcome = {}) {
             outcome.coverage = result.coverage;
             outcome.chosenSelectors = result.chosenSelectors || [];
             outcome.alternativeUsed = !!result.alternativeUsed;
-            outcome.procedureDelivered = rule.schemaVersion === 2;
+            outcome.procedureDelivered = [2, 3].includes(rule.schemaVersion);
+            outcome.schemaVersion = rule.schemaVersion;
             outcome.compilationAdjusted = !!rule.compilationAdjusted;
             outcome.pureModelSelection = rule.schemaVersion === 2 ? !!rule.pureModelSelection && !result.alternativeUsed : null;
             outcome.addedRegions = rule.addedRegions || [];
             outcome.supplementation = !!rule.supplementation;
             outcome.modelSelectionSuperseded = !!rule.modelSelectionSuperseded;
-            outcome.delivery = rule.schemaVersion === 2 ? (rule.supplementation ? 'supplemented-procedure' : 'validated-procedure') : 'legacy-rule';
+            outcome.delivery = rule.schemaVersion === 3 ? 'v3-rule' : rule.schemaVersion === 2 ? (rule.supplementation ? 'supplemented-procedure' : 'validated-procedure') : 'legacy-rule';
             outcome.procedureAdjustments = rule.schemaVersion === 2 ? rule.adjustments || [] : [];
             return result.html;
         }
@@ -210,12 +211,19 @@ function extractMainContent(outcome = {}) {
 
 // --- Message Listener ---
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'GENERATION_SNAPSHOT') {
+        try {
+            sendResponse({ url: location.href, hostname: location.hostname,
+                sanitizedHtml: ProcedureV3.clean(document.body, document, true).outerHTML });
+        } catch (error) { sendResponse({ error: error.message }); }
+        return;
+    }
     if (request.action === "EXTRACT_CONTEXT") {
         (async () => {
             try {
                 // 1. Try Cached Rules
                 const outcome = {};
-                let html = await tryApplyRules(outcome);
+                let html = request.basicView ? null : await tryApplyRules(outcome);
                 const ruleApplied = !!html;
                 const usedRule = ruleApplied;
 
@@ -224,12 +232,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     html = extractMainContent(outcome);
                 }
 
-                const analysis = ruleApplied || outcome.lookupAvailable === false ? null : analysisSample(document);
+                const analysis = null; // Generation snapshots use an explicit local disclosure route.
                 const localContext = {};
-                if (outcome.localProtocol === 2 && outcome.lookupAvailable !== false && !ruleApplied) {
-                    try { Object.assign(localContext, await PreservationCore.prepareValidationContext(document, outcome.inventory, { hostname: window.location.hostname, html: analysis?.html, modelEvidence: analysis?.evidence })); }
-                    catch { localContext.validationComplete = false; localContext.validationLimitation = 'reading-context-preparation-unavailable'; }
-                }
                 const verificationContext = {};
                 if (request.includeRawHTML) {
                     // The verifier's model prompt accepts 5,000 original-context characters.
@@ -262,6 +266,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     ruleRejectionDetail: outcome.ruleRejectionDetail,
                     incompatibleFamilies: outcome.incompatibleFamilies || [],
                     delivery: outcome.delivery,
+                    schemaVersion: outcome.schemaVersion,
                     taskScope: 'reading',
                     applicationFunctionalityVerified: false,
                     coverage: outcome.coverage,

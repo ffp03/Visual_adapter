@@ -77,7 +77,8 @@ function validateRule(rule, html) {
     } finally { dom.window.close(); }
 }
 
-function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls = 20 } = {}) {
+function createLocalServer({ runner = process.env.LOCAL_AI_FAKE_RUNNER === '1'
+    ? new (require('./layout-fake-runner.cjs').LayoutFakeRunner)() : new DeepSeekRunner(), runtimeRunner, runtimeRoot = ROOT, directory, maxCalls = 20 } = {}) {
     const provider = runner.provider || 'test-double', model = runner.model || 'test-model', effort = runner.effort || 'unavailable';
     directory ||= path.join(ROOT, 'workspace/local-ai', provider + '-' + model);
     if (!Number.isInteger(maxCalls) || maxCalls < 1 || maxCalls > 20) throw Error('maxCalls must be from 1 to 20');
@@ -86,6 +87,21 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
     const inFlight = new Map();
     const failedHosts = new Set();
     let calls = 0;
+    let runtimeActive = 0;
+    if (!runtimeRunner) {
+        const agents = require('./agent/runners.cjs');
+        runtimeRunner = runner.provider === 'scripted' ? runner : runner.provider === 'codex' ? new agents.CodexRunner()
+            : runner.provider === 'deepseek' ? new agents.DeepSeekRunner() : null;
+        if (!runtimeRunner) throw Error('Explicit runtimeRunner required for this provider');
+    }
+    const layouts = require('./runtime-layouts.cjs').createRuntimeLayouts({ directory, root: runtimeRoot, runner: runtimeRunner,
+        session: {
+            acquire() {
+                if (inFlight.size || runtimeActive || calls >= maxCalls) throw Object.assign(Error('Generation busy or session allowance exhausted'), { status: 429 });
+                calls++; runtimeActive++;
+            },
+            release() { runtimeActive--; }
+        } });
     const file = host => path.join(cache, hash(host) + '.json');
     function read(host) {
         try { const entry = JSON.parse(fs.readFileSync(file(host), 'utf8')); return entry.hostname === host && entry.provider === provider && entry.model === model ? entry : null; }
@@ -173,23 +189,33 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
         try {
             const url = new URL(req.url, 'http://127.0.0.1');
             if (req.method === 'GET' && url.pathname === '/health') return json(res, 200,
-                { status: 'ok', provider, model, effort, calls, maxCalls, active: inFlight.size });
+                { status: 'ok', provider, model, effort, calls, maxCalls, active: inFlight.size + runtimeActive });
             if (req.method === 'GET' && url.pathname.startsWith('/rules/')) {
                 const host = hostname(decodeURIComponent(url.pathname.slice(7)));
+                if (url.searchParams.get('protocol') === '3') return json(res, 200, { protocol: 3, rules: [...layouts.list(host), ...families.list(host)], provider, model });
                 if (url.searchParams.get('protocol') === '2') return json(res, 200, { protocol: 2, rules: families.list(host), provider, model });
                 const entry = read(host);
                 return json(res, 200, { rule: entry?.rule || null, procedure: entry?.procedure || null, validation: entry?.validation || null, provider, model });
             }
-            if (req.method !== 'POST' || !['/analyze', '/verify', '/report'].includes(url.pathname)) return json(res, 404, { error: 'Unknown endpoint' });
+            if (req.method !== 'POST' || !['/analyze', '/verify', '/report', '/disclose', '/generate', '/generation/status', '/generation/send', '/pending/clear'].includes(url.pathname)) return json(res, 404, { error: 'Unknown endpoint' });
             if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return json(res, 415, { error: 'JSON required' });
             const chunks = []; let bytes = 0;
             for await (const chunk of req) {
                 bytes += chunk.length;
-                if (bytes > 262144) return json(res, 413, { error: 'Request too large' });
+                if (bytes > 2097152) return json(res, 413, { error: 'Request too large' });
                 chunks.push(chunk);
             }
-            const data = JSON.parse(Buffer.concat(chunks).toString('utf8')), host = hostname(data.hostname);
-            if (url.pathname === '/analyze') return json(res, 200, data.protocol === 2 ? await families.analyze(host, data) : await generate(host, data.html, data.modelEvidence));
+            const data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+            if (url.pathname === '/pending/clear') return json(res, 200, layouts.clear());
+            const host = hostname(data.hostname);
+            if (url.pathname === '/disclose') return json(res, 200, layouts.disclose(data));
+            if (url.pathname === '/generate') return json(res, 200, await layouts.generate(data));
+            if (url.pathname === '/generation/status') return json(res, 200, layouts.status(data));
+            if (url.pathname === '/generation/send') return json(res, 200, layouts.approve(data));
+            // Legacy generation is intentionally closed: old panels must not
+            // silently upload or spend when they encounter a missing rule.
+            if (url.pathname === '/analyze') return json(res, 403, { success: false, status: 'fallback', error: 'Explicit v3 disclosure and consent required' });
+            if (url.pathname === '/report' && data.protocol === 3) { layouts.report(host); families.report(host); retire(host); failedHosts.delete(host); return json(res, 200, { success: true, protocol: 3 }); }
             if (url.pathname === '/report' && data.protocol === 2) { families.report(host, data.familyKey); return json(res, 200, { success: true, protocol: 2 }); }
             if (url.pathname === '/report') { retire(host); failedHosts.delete(host); return json(res, 200, { success: true }); }
             // Verification here is deterministic only; it never starts another model turn.
@@ -205,16 +231,18 @@ function createLocalServer({ runner = new DeepSeekRunner(), directory, maxCalls 
         }
     });
     server.requestTimeout = 15000;
-    server.on('close', () => runner.close?.());
+    server.on('close', () => { layouts.close(); runtimeRunner.close?.(); runner.close?.(); });
     return server;
 }
 
 if (require.main === module) {
-    const runner = process.argv.includes('--codex') ? new CodexRunner() : new DeepSeekRunner();
+    const runner = process.env.LOCAL_AI_FAKE_RUNNER === '1' ? new (require('./layout-fake-runner.cjs').LayoutFakeRunner)()
+        : process.argv.includes('--codex') ? new CodexRunner() : new DeepSeekRunner();
     if (runner.checkLogin) runner.checkLogin();
     const port = Number(process.env.LOCAL_AI_PORT || 7861);
     const maxCalls = Number(process.env.LOCAL_AI_MAX_CALLS || 20);
-    const server = createLocalServer({ runner, maxCalls });
+    const server = createLocalServer({ runner, maxCalls, directory: process.env.LOCAL_AI_DIRECTORY,
+        runtimeRoot: process.env.LOCAL_AI_FAKE_RUNNER === '1' ? process.env.LOCAL_AI_TEST_ROOT || ROOT : ROOT });
     server.listen(port, '127.0.0.1', () => console.log(`Visual Adapter: ${runner.provider} ${runner.model} (${runner.effort}) at http://127.0.0.1:${port}; max ${maxCalls} generations, no automatic retries.`));
     for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => { runner.close(); server.close(); });
 }

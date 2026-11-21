@@ -1,65 +1,126 @@
 # Use the local Visual Adapter
 
-From the project root, install the root Node dependencies if needed, then run:
+Use Node.js 22.13 or newer. From the project root run:
 
 ```text
 npm install
 npm run start:local
 ```
 
-Use Node.js 22.13 or newer. The backend listens only on 127.0.0.1:7861. Its health
-endpoint reports the actual provider, model, attempt count and session limit.
-The configured route is DeepSeek Flash with thinking disabled; the server reads
-only DEEPSEEK_API_KEY from the process environment or ~/.env.shared. The key is
-not included in the extension package. No Gemini fallback is used.
+The backend binds only to 127.0.0.1:7861. Load the unpacked extension/ folder
+from chrome://extensions (Developer mode), then open Visual Adapter's side
+panel. Reload an existing extension installation and refresh its website tabs.
 
-In Chrome, open chrome://extensions, enable Developer mode and load the project's
-extension folder. For an existing installation from that folder, reload the
-extension and refresh open website tabs so their content scripts are updated.
-Open the Visual Adapter side panel from Chrome's extensions menu.
+## Reading and consent
 
-## What runs locally
+Opening the panel performs a host-only rule lookup. Admitted v3 rules run the
+procedure-v3 use-time check against the live DOM. If it fails, the existing basic
+reader renders instead. Saved v2 procedures still use their existing applicability
+and preservation checks. Missing, failed and rejected rules never automatically
+start generation, verification, renewal, or a provider request. The legacy
+/analyze generation endpoint now refuses requests, including from older panels.
 
-Local mode sends lookup, admission and generation requests to the loopback
-backend and keeps rules and usage under workspace/local-ai/<provider>-<model>.
-It does not use production Firebase. Cache state persists across server starts.
-The basic reading view remains available when a procedure is unavailable or
-rejected. An incompatible procedure does not automatically start paid renewal.
+The panel shows "Improve this site's layout". To prepare its redacted cue sample,
+the extension sends a sanitized BODY snapshot and its page URL/tab identifier
+to the loopback backend's /disclose route. This is local-only preflight: no page
+example is registered or written to disk, and nothing is sent to a model provider.
+The backend uses backend/agent/outline.cjs Views, not a browser approximation.
+The snapshot can contain sensitive page text. Lookup/preflight metadata is
+observable locally; this prototype does not implement anonymous requests.
 
-The browser inspects the full source DOM and sends a balanced model sample with
-a 12,000-character ceiling. The model proposes selectors and exclusions. Full
-sanitized BODY context is separate and supports deterministic validation: up to
-100,000 characters uncompressed, or 1 MiB decoded through the lossless gzip route,
-with a 128 KiB compressed limit and 100:1 ratio limit, inside the 262,144-byte request
-bound. Incomplete or unsupported contexts retain the basic view. These limits
-and role checks do not establish semantic completeness or WCAG conformance.
+Click "Send and generate" to consent to retaining that exact snapshot locally.
+The one-time backend-issued token binds the tab, URL and sanitized snapshot;
+changing the page, refreshing its disclosure, reusing the token or restarting the
+backend invalidates the consent. The first example is pending: the panel says a
+second distinct page is needed, and the provider character count is zero.
+A second page must have a different URL and different text and belong to the
+same structural family (the existing deterministic structural descriptor). Other
+families keep separate pending examples. Failed families stay in basic view until
+explicitly reported or their pending examples are cleared.
 
-The first valid example creates a provisional procedure. A second distinct
-identity and content example must pass that same procedure before it can enter
-the shared local lookup. Each later use still checks applicability and content
-preservation. A hostname can contain several incompatible layouts.
+With two examples, the backend runs the existing P4 runtime agent, including its
+gate and ledger guard. Exact disclosure of future adaptive requests is impossible
+before the model chooses its next action, so this implementation requires a
+separate "Send and generate" click for **every provider turn**. Registering the
+second example prepares the first request locally; it does not send it. The panel
+then shows the actual provider/model, exact count and redacted sample for that
+request. Each later query/outline/preview turn pauses in the same way. There are
+at most six turns and no automatic provider retries. Waiting consent expires
+after two minutes. The provider never receives either complete example DOM.
 
-Page samples reach DeepSeek during generation. Complete sanitized validation
-content reaches the local backend but is not the LLM prompt. Form values,
-scripts and active embeds are removed; other page text can remain sensitive.
-Routine reuse is local, while lookup metadata remains observable. This prototype
-does not implement anonymous requests or a cloud distribution service.
+The character count is JavaScript UTF-16 string length of the complete serialized
+provider JSON request, including system instructions, model/settings, messages
+and JSON escapes. It is not a token or UTF-8 byte estimate. The displayed cue
+sample is copied from the actual message content within that payload. The SHA-256
+uses its UTF-8 serialized bytes and matches inputSha256 in the runtime usage
+ledger. A zero-character registration click genuinely sends no provider payload.
+Each disclosed request is saved locally before transport for audit.
 
-## Session limits and alternatives
+Only a gate-admitted rule enters lookup. A third compatible page uses the saved
+rule without sending page text to the provider. The always-visible Basic view
+switch bypasses the rule. Turning it off tries the saved rule again. "Report
+problem" immediately renders the basic reader and retires the host's v3 and v2
+rules through /report; a failed report is shown explicitly. No report generates
+a replacement.
 
-The server defaults to 20 attempted generations per session, one active request,
-a 60-second provider timeout, a 1,024-token output limit and no automatic retries.
-LOCAL_AI_MAX_CALLS can lower the limit to 1–20. Restarting renews the session count;
-interactive use is separate from the frozen study's aggregate ledger. The
-backend's defensive model-input ceiling is 30,000 characters; the browser's
-structural sample is bounded more tightly. A provider failure is remembered for
-that host during the session. Explicit reporting can invalidate a cached rule.
+## What leaves the browser and what stays local
 
-An optional `npm run start:codex` route uses Codex Luna with medium effort and
-existing ChatGPT CLI sign-in. It consumes Codex allowance and has no automatic
-provider switch. Its use needs the applicable authorization. No separate OpenAI
-API key is required. The hosted Gemini path is legacy and was not redeployed.
+The browser sends host lookup metadata and, for local disclosure/consented
+generation, the sanitized BODY, page URL and tab identifier to 127.0.0.1.
+Scripts, active embeds, handlers, unsafe destinations and form values are stripped
+using procedure-v3 cleaning semantics. Source HTML is bounded to 1 MiB UTF-8;
+the request envelope is bounded to 2 MiB to accommodate JSON escaping. Larger or
+unavailable contexts retain the basic view.
 
-See WORKSPACE_GUIDE.md for test evidence and folder ownership. Historical study
-tools under tests/local must retain their frozen inputs and do not run as part
-of normal browsing.
+Only the agent's de-identified outlines, queries, previews and bounded action
+history, together with system instructions and model settings, reach the provider.
+Cues default to 60 characters after the agent's redaction of emails, phone
+numbers, URL paths, long digit runs and handles. Names and free-text personal
+details can remain: redaction is not anonymization or a privacy guarantee.
+
+The default runtime provider is DeepSeek Flash with thinking disabled; its key
+comes from DEEPSEEK_API_KEY or ~/.env.shared and is never packaged in the
+extension. There is no provider fallback. npm run start:codex explicitly selects
+the Codex runtime runner with existing CLI sign-in and consumes Codex allowance;
+it requires the applicable authorization. No production Firebase is used by the
+default local configuration.
+
+Consented examples stay under workspace/local-ai/runtime-examples/. Runtime
+payloads, pending/admitted family records, archives and usage stay under
+workspace/local-ai/ (provider/model subdirectories). The runtime policy does not
+modify the development/evaluation corpus or study ledger. LOCAL_AI_MAX_CALLS
+defaults to 20 and can be lowered to 1-20. Every guarded agent turn reserves one
+session attempt while awaiting its click; cancellation/expiry can therefore
+consume an attempt without a provider call. Only one turn is active at once.
+Restarting resets the session allowance; local examples and admitted rules persist.
+An interrupted two-page induction is marked failed on restart and requires clearing
+pending examples or reporting before a new attempt; it never resumes a provider
+request automatically.
+
+Options has "Clear pending examples". It removes pending and failed examples
+from active registration and cancels outstanding consent jobs. Under the project's
+retention rule originals are moved into a local archive, not erased from disk.
+Admitted rules and their evidence remain. Reporting also archives rule records.
+This is not a data-erasure control.
+
+## Offline checks
+
+No paid or local model is needed:
+
+```text
+node --test tests/revision/extension/routes.test.cjs
+node --test tests/revision/extension/content.test.cjs
+node --test tests/revision/extension/browser.test.cjs
+```
+
+The browser test uses installed Chrome and playwright-core with a fresh isolated
+profile, real unpacked extension, worker and content scripts, and a local fixture
+site. It renders the production panel in an extension tab rather than automating
+Chrome's native sidebar shell. Only the backend loopback port differs in the
+isolated extension copy. LOCAL_AI_FAKE_RUNNER=1 selects the scripted runner;
+it never falls through to a provider. Test artifacts stay under
+workspace/local-ai/wp-d1-*/. Fake outputs check control flow, not model quality
+or accessibility conformance.
+
+The study tools and tests/local historical captures remain separate. Do not run
+archived acceptance scripts or live study generation as installation checks.

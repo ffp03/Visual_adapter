@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('clear-pending-examples').addEventListener('click', async () => {
+        const status = document.getElementById('pending-status');
+        try {
+            const result = await chrome.runtime.sendMessage({ action: 'CLEAR_PENDING_EXAMPLES' });
+            if (!result?.success) throw Error(result?.error || 'Backend unavailable');
+            status.textContent = 'Pending examples cleared from active storage. Originals remain in the local archive.';
+        } catch (error) { status.textContent = error.message; }
+    });
     const appContainer = document.getElementById('app-container');
     const steps = document.querySelectorAll('.wizard-step');
     const previewContent = document.getElementById('preview-content');

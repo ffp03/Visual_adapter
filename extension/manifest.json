@@ -19,6 +19,7 @@
       ],
       "js": [
         "procedure-core.js",
+        "procedure-v3.js",
         "content.js"
       ]
     }

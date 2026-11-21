@@ -57,7 +57,8 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
      browser; Claude designs, supervises and reviews.
    - Pilot first; widen only after the user checks milestones 2 and 3.
 3. **What is open:**
-   - pc11 local model connection details (user; blocks only the second-model runs).
+   - pc11 local model: details received 2026-11-20 (Qwen3.8-27B-abliterated at claude-host:8780, recorded in DESIGN section 4); /v1/models answered.
+   - Request cap: agent loop needs ~1,100-1,200 DeepSeek requests; asked user 2026-11-20 to raise 1,000 -> 2,000 (keep $5). Blocks only the evaluation run.
    - Goal-block confirmation (user; blocks milestone 1).
 4. **What the next unit meets:**
    - Diagnosis: acceptance gate and compiler (extension/procedure-core.js inspect/compile)

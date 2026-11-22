@@ -54,6 +54,28 @@ review + evidence audit, code committed c48c870 and pushed). Milestone 7 deliver
 user's check: export in paper repo (b077ea9, parent pointer 0d354ca), results Doc. Milestone 4
 audit pending with the user/Randy.
 
+## Failure analysis and next-phase proposal (2026-11-22 ~16:00 UTC, waiting for the user)
+
+Read-only, from the v5 score (scripts: workspace/revision/analysis/2026-11-22-failure-analysis/).
+- P4's noise is mostly small in-content widgets (Reply, Copy, Fork, "Was this helpful?"): 433 of
+  1,152 noise units; P4 leaks 78-79% of them, P1 5%. Upper bound if widgets were removed with no
+  content loss: P4-off clean 36.7 -> 55.0% (also author/share/promo/recommended: 67.5%); P1 27.5%.
+- P1 misses content on 77/120 pages (items 81%, lede 78%, price/specs ~60%, description 33%,
+  heading 23%); P4-off misses almost nothing (recall 99.8%).
+- Fallbacks to the noisy reader P0: P4-on 28 pages (18 DeepSeek provider errors, 6 sites), P4-off
+  34 pages (gate rejects on p1: H1 missing 4 sites, generic anchor 2, G6 baseline regression 3...).
+- Whole-page switching P1/P4 by output length does not win (clean <= 33%); best-of oracle 51%.
+- By page type: P4-off wins documentation 18/26; P1 wins discussion 9/18 vs 4; products 0-3/21 all.
+- Diagnosis: P1 and the reader are only inputs (hints) to the agent; the output is one static CSS
+  rule; Readability's cleaning is never applied to it; fallback is P0, not P1.
+Proposed (asked the user): 1. approach A rule region + Readability-style widget clean-up +
+Readability fallback (offline trial on dev sites first, no model calls) / B Readability first +
+LLM site rule that adds back / removes / C both. 2. eval sites are no longer blind: A develop on
+dev, score on eval as a declared post-hoc second evaluation / B also capture fresh held-out sites.
+New milestones pending the user's yes (goal change -> change-review section A before adoption).
+Skill lessons 1/4/5 (MEMORY.md): user left the review to the director; run as one batch later,
+not blocking.
+
 ## START HERE (2026-11-22, 14:20 UTC, claude-host)
 
 1. **Done this block:** Codex review (dilab-5080, gpt-6.1-sol high) of the frozen harness: 7

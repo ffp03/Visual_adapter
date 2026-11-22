@@ -95,6 +95,12 @@ out or count as failures (user called them a bug to fix first).
   When #69 gives a route, adapt m8-lab.sh (now mounts ~/.env.shared) to it.
   2026-11-22 later: user asked to use their laptop meanwhile. thinkpad-2024 is on the tailnet but
   SSH port 22 is closed, so claude-host cannot drive it; asked the user how (laptop session vs SSH).
+  User chose A: a Codex session on the laptop runs them. Package (code + context-m8 + iteration-8 +
+  ledger, no secrets, sha256 830c0190...) on branch m8-laptop-transfer; laptop-run.cjs (install|check|
+  run|pack) in analysis/2026-11-22-m8; results come back on branch m8-laptop-results as
+  transfer/m8-laptop-results.tar.gz (staged changed files + SHA256SUMS). Merge here: ledger prefix
+  check then take it, copy results/capability-agent-8-* and iteration-8, re-score 12 sites.
+  rerun.cjs now maps both C:\ and /home/randy paths (pre-change copy in workspace/archive/2026-11-22-m8-laptop).
   Ready: iteration-8 (output results/capability-agent-8-1795375429159), wrapper
   workspace/revision/ld/m8-lab.sh (mounts ~/.env.shared read-only, one process per site, heap
   6 GB, dev-07 dev-09..12, P4-on then P4-off). Submit: ld submit --only dilab-5080 --reason ...

@@ -56,6 +56,12 @@ need to fix them first"):
    stored candidates shows clutter removals now pass while removals of article content are still
    refused, and the re-run with thinking on has no output-limit failures; development sites
    re-scored (DeepSeek within the existing cap).
+   DONE 2026-11-22 21:20 UTC: 117 DeepSeek requests over the 12 dev sites (laptop ran the 5 large
+   ones), all generated, 0 output-limit (59 with thinking); 12 sites re-scored, AI rule only:
+   P4-on page pass 44.4 (run 7: 47.2; the one page lost is dev-11-p3 at 9.8% clutter, 5% line),
+   P1 19.4, P0 11.1, AI-P1 +25.0 [+11.1, +41.7]; P4-off rule on 8/12 sites (no rule: dev-01, 03,
+   04 use-time, 08). Table: analysis/2026-11-22-m8/table-12sites.txt (scores-12.csv). dev-12 fails
+   for every reader on order only (2 of 715 near-identical units cannot be placed, tau set to 0).
 9. Find why the agent misses the remaining clutter on the other failing pages, and fix the
    cause. Check: before/after table on development sites. (user checks)
 10. (Proposed, not yet agreed) Rerun P4 on the 40 evaluation sites with the fixes, scored on
@@ -64,7 +70,11 @@ Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).
 
-**Current step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
+**Current step (2026-11-22 21:20 UTC):** milestone 8 DONE (see list); now milestone 9. Laptop results merged
+(ledger prefix-checked: 6626 -> 6764 lines, 1,844 paid, 809 dev, $1.75; pre-merge copy in
+workspace/archive/2026-11-22-m8-laptop/). Branches m8-laptop-transfer / m8-laptop-results can be deleted later.
+
+**Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900
   (ledger.cjs, ledger.test.cjs, DESIGN 9: milestone 8-9 re-runs; at most 1,935 paid in total).
 - Full agent suite via ld 305374: 108 tests, 96 pass, 12 fail, all `settled-file-hash-mismatch:

@@ -87,8 +87,11 @@ out or count as failures (user called them a bug to fix first).
   now passes (P4-off eval-18, #content-recommended-products), 11 still refused (G2, recirc, ...),
   6 no saved rule. Intermediate refusals are not stored, so the full effect needs a fresh eval run
   (milestone 10). ld route failed first (regate skips symlinked folders; fixed by copying).
-- Waiting on the user: how to run the 5 large dev sites (A claude-host 3 GB / B ld key route /
-  C report 7 sites); claude-host had 4.1 GB available at 18:50.
+- User chose B (ld key route) and said: do not use dilab-5090. Probe ld 305377 on dilab-5080:
+  DeepSeek reachable from host and docker (401), no ~/.env.shared there. Asked the user: A DeepSeek
+  key only on 5080 (0600 file mounted read-only) / B dotfiles bootstrap on 5080 / C ask
+  load-dispatcher for a secrets feature. Then: run dev-07, dev-09..12 there (--only dilab-5080),
+  merge the ledger copy (append-only check) and outputs, re-score 12 sites.
 - Milestone 9 lead (evalvary.py): 74% of clutter characters leaked on eval P4-on pages vary per
   page (recommended, widget, promo, related); the system treats per-page text as unique content
   (gate G3/G4/G6 and the agent's repeat flags). Dev leaks the same way (date/URL boilerplate).

@@ -88,6 +88,13 @@ nogate-table.py. 7 small sites done locally (nogate.jsonl); 5 large on ld dilab-
 outputs workspace/revision/ld-out-nogate -> nogate-large.jsonl. Partial (7 sites, 21 pages):
 P4-on first rule no check passes 13/21 vs 11/21 with check. load-dispatcher#69 is RESOLVED:
 ld submit --secret DEEPSEEK_API_KEY (key held on dilab-5080), so AI re-runs need no laptop.
+No-check baseline DONE (23:20 UTC; nogate-table-12.txt; large sites ld dilab-5080): page pass over all
+36 pages (higher is better): P4-on first rule no check 44.4, last rule no check 44.4, with check 44.4
+(identical: the check never changed a thinking-on outcome); P4-off first 38.9, last 50.0, with check
+30.6 (the check refused the final rules of dev-01/03/04/08 -> no rule -> fail; -19.4 points).
+First rules keep 92% of content (dev-12, dev-06 losses); the agent's later turns repair it to 99-100%.
+All versions fail mainly on clutter >5% (~16 pages). Next: failure analysis of the AI's own clutter
+choices (did its view show the clutter?), then report to the user.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

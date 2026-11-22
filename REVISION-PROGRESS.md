@@ -67,6 +67,12 @@ Draft done-means: workspace/revision/analysis/2026-11-22-goal-change/new.txt (co
 on both page pass and clutter share (no 2-point margin); full pipeline incl. fallback; thresholds
 95%/tau 0.9 from the frozen scorer, 5% new (sensitivity 2/10/20%); deciding data = user's choice
 (fresh sites vs existing 40, asked). Redraft shown to the user; re-read after their answer, then adopt.
+  16:30 UTC user: measures are correct, not to be discussed as post hoc; say higher/lower is
+  better; compare the AI rule without fallback. Redraft 2 (new.txt) read by Codex (reading2.txt):
+  high = pages with no rule dropped vs counted as fail -> asked the user (A leave out + report
+  count / B count as fail). Rule-only numbers (rule.py): P4-on rule on 92/120 pages, 31/40 sites;
+  same pages pass 50.0 vs P1 31.5 (+18.5 [+3.3, +33.3]), clutter 8.7 vs 7.6 (+1.1 [-1.4, +3.7]),
+  recall 99.5 vs 86.2. Counting no-rule as fail: 38.3 vs 27.5 (+10.8 [-1.7, +23.3]).
 
 ## Failure analysis and next-phase proposal (2026-11-22 ~16:00 UTC, waiting for the user)
 

@@ -64,11 +64,27 @@ Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).
 
-**Current step (2026-11-22 ~17:30 UTC):** milestone 8 in progress. WP-F1 (codex-remote,
-gpt-6.1-sol high, brief scratchpad WP-F1-brief.md, copied to workspace/revision/briefs/WP-F1.md)
-fixes bugs A and B with tests and writes tests/revision/eval/regate-trials.cjs; output
-WP-F1-out.txt in the session scratchpad. Then: review the patch, apply, run tests, re-gate the
-stored development candidates, dev re-run, then milestone 9 (evaluation re-gate waits for 10).
+**Current step (2026-11-22 ~17:15 UTC):** milestone 8, code done, not yet proven. WP-F1 patch
+(codex-remote dilab-5080) applied in the working tree, UNCOMMITTED, plus my fixes: clutter
+markers split into whole-word (ad, ads, nav, menu, share, popup, modal, pager, shopping, gdpr,
+navbar, sharing) and prefix stems (related, recommend, promo, sponsor, social, newsletter,
+subscri, cookie, consent, banner, breadcrumb, footer, sidebar, paginat, outbrain, taboola,
+widget, advert, navigation); html/body and any element holding h1/main/article are never
+clutter; DeepSeek thinking timeout 300 s (16,384-token cap). Files: backend/agent/{runners,
+ledger,loop}.cjs, extension/procedure-v3.js, tests/revision/agent/{index.js,procedure.test.cjs,
+runners.test.cjs,regate.test.cjs}, tests/revision/eval/regate-trials.cjs. Originals archived
+in workspace/archive/2026-11-22-pre-WP-F1/ (SHA256SUMS). Focused tests 37/37 + runners 14/14.
+Full agent suite not run yet (run via ld). Re-gate finding: stored trials keep only the final
+rule (intermediate refused proposals are not saved); dev run7 trials (dev-runs/capability/
+2026-11-21T07-04-41-280Z/iteration-4/P4-on-trials.jsonl, all admitted) had only 2 G4 refusals
+(div.not-prose.mt-6, Links-styles container), neither clutter-marked, so the stored dev data
+cannot prove the fix. NEXT: (1) full agent tests via ld; (2) fresh dev re-run of P4-on and
+P4-off with the new code (12 dev sites, ~100 DeepSeek requests, within the user's 2,000/$5 cap;
+dev allowance 780 has 88 left -> raise it, record why); route as run7 (capability-run.cjs) via
+ld with network; (3) dev scoreboard on the new measures (page pass / clutter / recall, rule
+only) vs run7 and P0/P1, checking output-limit count = 0 and which exclusions the gate now
+passes; (4) report to the user in one line, then milestone 9. Independent Codex review of the
+gate change once milestones 8-9 code is final (gate = trusted check).
 
 ## Why the AI rule fails (2026-11-22 ~17:00 UTC; user: no-rule sites are a bug, fix first)
 

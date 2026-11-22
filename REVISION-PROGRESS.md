@@ -74,8 +74,10 @@ audit pending with the user/Randy.
 4. **Housekeeping done:** 6 service-use records (codex x3, local-llm x2, google-workplace);
    subagent report appended (WP-E4d/e, WP-E5a, review; 10.9M tokens, ~95% cached). Token review
    not written: per-task share of the weekly quota is not measurable from the host readings.
-5. **Waiting for the user:** milestone 7 check (Doc); memory triage of the 5 MEMORY.md lines
-   (asked in chat 14:20 UTC). Offered earlier, not asked again: P4-local paired comparison.
+5. **Waiting for the user:** milestone 7 check (Doc; goal/achieved/failed summary given in chat
+   ~15:30 UTC). Memory triage answered: 1 yes, 3 dropped, 4 yes, 5 yes generalized (long jobs show
+   progress while running); 1/4/5 drafted in MEMORY.md and wait for change-review (T2, ~7 Codex
+   jobs per skill; asked the user whether to run now). 2: user did not understand; re-explained, waiting. Offered earlier, not asked again: P4-local paired comparison.
 6. **Nothing is running.** No watchdogs armed.
 
 ## START HERE (2026-11-22, 06:20 EST, claude-host) - superseded by the 14:20 UTC block.

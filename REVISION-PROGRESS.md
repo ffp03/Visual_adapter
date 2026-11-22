@@ -109,6 +109,10 @@ iteration-9, prompt 62501d9f, output results/capability-agent-9-1795390118486), 
 dilab-5080 with --secret DEEPSEEK_API_KEY (workspace/revision/ld/m9-lab.sh, dev-02 first as the one-case
 check), outputs workspace/revision/ld-out-m9. Then: merge ledger (prefix check), score with check and
 without (nogate-style on iteration 9), before/after table to the user (milestone 9 check).
+Attempt 1 (ld 305407) VOID: the empty output folder was not uploaded, dev-02 output write failed,
+STOP after the dev-02 check (4 requests, merged into the ledger: 1,848 paid, 813 dev, $1.75; files in
+workspace/archive/2026-11-22-m9-attempt1-void). m9-lab.sh now creates the output folder; resubmitted
+(00:00 UTC). score.cjs labels iteration-9 rows m9; nogate.cjs takes --iteration=9.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

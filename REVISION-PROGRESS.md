@@ -48,11 +48,27 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
    complete accounting, every attempt counted, site-clustered intervals.
 7. Sanitized export to the paper project plus result summary. Check: summary in chat or a
    Google Doc. (user checks)
+Added 2026-11-22 with the user's "A" (after: "We need to consider that is a bug in our system and
+need to fix them first"):
+8. Fix the two bugs: DeepSeek thinking output cap (4,096 tokens all spent on reasoning, logged as
+   provider-error) and the gate (G3/G4/G6) refusing removal of recommended/related/promo blocks
+   whose text differs per page. Check: tests pass; on the development sites, re-gating the
+   stored candidates shows clutter removals now pass while removals of article content are still
+   refused, and the re-run with thinking on has no output-limit failures; development sites
+   re-scored (DeepSeek within the existing cap).
+9. Find why the agent misses the remaining clutter on the other failing pages, and fix the
+   cause. Check: before/after table on development sites. (user checks)
+10. (Proposed, not yet agreed) Rerun P4 on the 40 evaluation sites with the fixes, scored on
+   the new measures. Needs the user's OK for DeepSeek requests beyond the 2,000 cap.
+Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-goal-change/
+new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
+out or count as failures (user called them a bug to fix first).
 
-**Current step (2026-11-22 14:20 UTC):** milestone 6 DONE (evaluation under freeze v5, Codex
-review + evidence audit, code committed c48c870 and pushed). Milestone 7 delivered, waiting for the
-user's check: export in paper repo (b077ea9, parent pointer 0d354ca), results Doc. Milestone 4
-audit pending with the user/Randy.
+**Current step (2026-11-22 ~17:30 UTC):** milestone 8 in progress. WP-F1 (codex-remote,
+gpt-6.1-sol high, brief scratchpad WP-F1-brief.md, copied to workspace/revision/briefs/WP-F1.md)
+fixes bugs A and B with tests and writes tests/revision/eval/regate-trials.cjs; output
+WP-F1-out.txt in the session scratchpad. Then: review the patch, apply, run tests, re-gate the
+stored development candidates, dev re-run, then milestone 9 (evaluation re-gate waits for 10).
 
 ## Why the AI rule fails (2026-11-22 ~17:00 UTC; user: no-rule sites are a bug, fix first)
 

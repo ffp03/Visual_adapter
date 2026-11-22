@@ -80,7 +80,14 @@ menu items) and large clutter lower down is never shown; its output list is the 
 per-page body ("Frequently Bought Together", W3C "Tests" details boxes, Blogger/MDN/GOV.UK date or
 URL lines) counts as unique for the agent and the gate. Proposed to the user (A feedback only /
 B feedback + gate / C), with a P4-on before/after on the 12 dev sites (~60 requests; dev 809/900,
-paid 1,844/2,000; large sites on the laptop again). Waiting for the answer.
+paid 1,844/2,000; large sites on the laptop again). SUPERSEDED by the user's questions (22:00):
+the gate was never shown to be needed; no AI-only baseline existed. User chose A: build the
+no-check baseline from saved rules (no AI requests): analysis/2026-11-22-m8/nogate.cjs (first and
+last rule per site/policy from the ledger payloads, render only, scored on p3-p5) and
+nogate-table.py. 7 small sites done locally (nogate.jsonl); 5 large on ld dilab-5080 (no key),
+outputs workspace/revision/ld-out-nogate -> nogate-large.jsonl. Partial (7 sites, 21 pages):
+P4-on first rule no check passes 13/21 vs 11/21 with check. load-dispatcher#69 is RESOLVED:
+ld submit --secret DEEPSEEK_API_KEY (key held on dilab-5080), so AI re-runs need no laptop.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

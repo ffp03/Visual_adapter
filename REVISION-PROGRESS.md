@@ -54,6 +54,21 @@ review + evidence audit, code committed c48c870 and pushed). Milestone 7 deliver
 user's check: export in paper repo (b077ea9, parent pointer 0d354ca), results Doc. Milestone 4
 audit pending with the user/Randy.
 
+## Why the AI rule fails (2026-11-22 ~17:00 UTC; user: no-rule sites are a bug, fix first)
+
+P4-on, 92 pages with a rule, 46 fail: 42 on clutter > 5% (median 13%); content/title/order rare.
+Leaked clutter text: recommended 52%, widgets 23%, promo 9%. 9 sites fail on all 3 pages.
+- Bug A (ours): DeepSeek thinking used the whole 4,096 output-token cap (reasoning_tokens 4096,
+  no answer), logged as provider-error "Error": 6 P4-on sites, 7 P4-cue0, 7 P4-full, 1 P4 dev.
+- Bug B (ours): gate G4/G6 refused the agent's removal of real clutter (recirc, related-articles,
+  recommended-products, site-footer, global-navigation, shipping-promo...) because such blocks
+  differ per page and the reader P0 keeps them: refusals on 10 P4-on / 14 P4-off sites; explains
+  8/42 (P4-on) and 13/40 (P4-off) clutter-failing pages and several no-rule sites.
+- Open C: on the other ~34 clutter-failing pages the agent never tried to remove the block (why
+  unknown; check what it is shown). No-rule P4-off: G2 h1-missing 4 sites, G1 generic anchor 2.
+Proposed milestones to the user (waiting for yes). Rerun needs DeepSeek OK (cap 2,000 requests,
+1,727 used). Scripts: analysis/2026-11-22-failure-analysis/why.py.
+
 ## Measures change (2026-11-22 ~15:50 UTC, waiting for the user's yes on exact text)
 
 User: "I want to use what makes sense instead what we decided before" (on the measures). Correction

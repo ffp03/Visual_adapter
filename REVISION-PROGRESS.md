@@ -95,6 +95,15 @@ No-check baseline DONE (23:20 UTC; nogate-table-12.txt; large sites ld dilab-508
 First rules keep 92% of content (dev-12, dev-06 losses); the agent's later turns repair it to 99-100%.
 All versions fail mainly on clutter >5% (~16 pages). Next: failure analysis of the AI's own clutter
 choices (did its view show the clutter?), then report to the user.
+Clutter failure analysis DONE (clutter-seen.cjs/.jsonl; P4-on, 16 pages over 5%): 11 pages the agent's
+view SHOWED the clutter and it kept it (dev-01 "Originally published on Blogger", dev-03 "Help improve
+MDN", dev-06-p3 GOV.UK "Updates to this page" 45%, dev-09 Keychron gallery text + "Frequently Bought
+Together", dev-11 "Stay organized with collections"); 2 on sample pages but not shown (dev-08 BBC share
+line, 37 chars); 1 not on the sample pages at all (dev-07-p4 W3C "Tests" boxes); 2 partial overlaps
+(dev-06 p4/p5). Cause: the agent's prompt defines clutter narrower than the answer-key guideline
+(DESIGN 3 noise kinds): it names only share/related/recommended/newsletter/promo/nav/sidebars, says
+"retain author and date metadata", and says to remove "evidence-backed" noise (repeat-flagged) only;
+author-boilerplate and widgets are never named. Proposed prompt fix to the user (waiting).
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

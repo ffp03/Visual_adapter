@@ -64,7 +64,30 @@ Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).
 
-**Current step (2026-11-22 ~17:15 UTC):** milestone 8, code done, not yet proven. WP-F1 patch
+**Current step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
+- Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900
+  (ledger.cjs, ledger.test.cjs, DESIGN 9: milestone 8-9 re-runs; at most 1,935 paid in total).
+- Full agent suite via ld 305374: 108 tests, 96 pass, 12 fail, all `settled-file-hash-mismatch:
+  extension/procedure-v3.js` (the v5 freeze pins the old gate; expected until a v6 freeze).
+- Dev re-run (claude-host, analysis/2026-11-22-m8/rerun.cjs; run 7 context and exact prompt
+  b838e299; iteration-6 = dev-01..06, iteration-7 = dev-08; outputs results/capability-agent-6-
+  1795368380909 and -7-1795369448092): 71 DeepSeek requests, all generated (0 output-limit, 0
+  provider-error; Bug A fixed). dev-07 (w3.org) void twice (heap out of memory mid-site);
+  dev-09..12 not run: their pages need >1 GB heap (keychron 3.4+2.5 MB HTML = 450 MB parsed) and
+  ld has no route for the DeepSeek key. Harness note: policyRun keeps every site's DOMs (memory
+  grows per site); one process per site avoids it. Asked the user how to run the 5 large sites.
+- Scoreboard (7 sites, 21 pages, AI rule only; table-7sites.txt): P4-on page pass 52.4 before and
+  after (P1 23.8, P0 9.5; higher is better), clutter 6.8 -> 6.6% (lower is better). The old gate
+  accepts the same admitted rules (oldgate-iter6.jsonl): on dev the clutter fix changes nothing,
+  because the refused exclusions there are not clutter-named (Blogger "Originally published",
+  BBC Links container, MDN header). P4-off: 3/7 sites with a rule (G4 on those blocks; MDN G2;
+  wikipedia family:no-matching-anchors at use time).
+- Running: ld va-m8-regate (eval v5 final rules re-gated with the new gate, read-only; map
+  analysis/2026-11-22-m8/eval-trials.json; output stage workspace/revision/ld-out-regate).
+- Milestone 9 lead (evalvary.py): 74% of clutter characters leaked on eval P4-on pages vary per
+  page (recommended, widget, promo, related); the system treats per-page text as unique content
+  (gate G3/G4/G6 and the agent's repeat flags). Dev leaks the same way (date/URL boilerplate).
+Older 17:15 note: milestone 8, code done, not yet proven. WP-F1 patch
 (codex-remote dilab-5080) applied in the working tree, UNCOMMITTED, plus my fixes: clutter
 markers split into whole-word (ad, ads, nav, menu, share, popup, modal, pager, shopping, gdpr,
 navbar, sharing) and prefix stems (related, recommend, promo, sponsor, social, newsletter,

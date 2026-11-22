@@ -73,6 +73,14 @@ out or count as failures (user called them a bug to fix first).
 **Current step (2026-11-22 21:20 UTC):** milestone 8 DONE (see list); now milestone 9. Laptop results merged
 (ledger prefix-checked: 6626 -> 6764 lines, 1,844 paid, 809 dev, $1.75; pre-merge copy in
 workspace/archive/2026-11-22-m8-laptop/). Branches m8-laptop-transfer / m8-laptop-results can be deleted later.
+Milestone 9 cause found (iteration-8 payloads, outline.cjs suspicions()): the preview feedback's
+keptBoilerplate list is in page order, capped at 40, no sizes, so tiny nav links fill it (Keychron: 40
+menu items) and large clutter lower down is never shown; its output list is the first 40 elements
+(Keychron: 40 of 40 empty images/li). Repeat flags are exact text, so a block with a fixed heading and
+per-page body ("Frequently Bought Together", W3C "Tests" details boxes, Blogger/MDN/GOV.UK date or
+URL lines) counts as unique for the agent and the gate. Proposed to the user (A feedback only /
+B feedback + gate / C), with a P4-on before/after on the 12 dev sites (~60 requests; dev 809/900,
+paid 1,844/2,000; large sites on the laptop again). Waiting for the answer.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

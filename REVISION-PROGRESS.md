@@ -49,12 +49,36 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
 7. Sanitized export to the paper project plus result summary. Check: summary in chat or a
    Google Doc. (user checks)
 
-**Current step (2026-11-22 06:20):** milestone 6 evaluation DONE under freeze v5 (all policies
-incl. P4-local on 40 sites; final score). Remaining for milestone 6: independent Codex review of
-the uncommitted evaluation code, then commit/push. Then milestone 7 (sanitized export, results
-Doc). Milestone 4 audit pending with the user/Randy.
+**Current step (2026-11-22 14:20 UTC):** milestone 6 DONE (evaluation under freeze v5, Codex
+review + evidence audit, code committed c48c870 and pushed). Milestone 7 delivered, waiting for the
+user's check: export in paper repo (b077ea9, parent pointer 0d354ca), results Doc. Milestone 4
+audit pending with the user/Randy.
 
-## START HERE (2026-11-22, 06:20 EST, claude-host)
+## START HERE (2026-11-22, 14:20 UTC, claude-host)
+
+1. **Done this block:** Codex review (dilab-5080, gpt-6.1-sol high) of the frozen harness: 7
+   findings (carry trusts row hashes; broad v3->v4 operational exemption; v5 receipt and test
+   receipt not rechecked; direct `eval-run run` misses carried jobs and bypasses lock/4-slot cap;
+   resumed wallMs). Code left frozen; read-only audit workspace/revision/audit/review-audit-v5.py
+   -> review-audit-v5.json: 0 problems (450 carried jobs, 1,390 scored rows, 490 receipts, peak 4
+   local). Written up in backend/agent/EVALUATION.md. Any later freeze must fix (1)-(7) first.
+2. **Committed** c48c870 (128 files, LF; the 3 CRLF frozen files ledger.cjs, procedure-core.js,
+   deepseek-runner.cjs kept byte-exact with -text in .gitattributes; all 67 committed frozen files
+   match freeze v5). ~230 CRLF-only noise files still unstaged on purpose; backend/__pycache__ untracked.
+3. **Export:** paper-agent/workspaces/visual-adapter-aiipcc-2026/inputs/results/2026-11-22-revision-evaluation/
+   (README with tables and limitations, report.md, report.json, per-page.csv, hashes.json), script
+   workspace/revision/export/export-v5.py. **Results Doc** (private, workplace route, text verified):
+   https://docs.google.com/document/d/1X4c4W5oWh5jQDaIJYOE9qi4qYwgJAtWcIoOgJ2oo5ww/edit
+   (built by workspace/revision/export/publish-doc.py from results-doc-v5.json; publish-report.py
+   in backend/agent points at the old helper name algoma_reports.py, left unchanged).
+4. **Housekeeping done:** 6 service-use records (codex x3, local-llm x2, google-workplace);
+   subagent report appended (WP-E4d/e, WP-E5a, review; 10.9M tokens, ~95% cached). Token review
+   not written: per-task share of the weekly quota is not measurable from the host readings.
+5. **Waiting for the user:** milestone 7 check (Doc); memory triage of the 5 MEMORY.md lines
+   (asked in chat 14:20 UTC). Offered earlier, not asked again: P4-local paired comparison.
+6. **Nothing is running.** No watchdogs armed.
+
+## START HERE (2026-11-22, 06:20 EST, claude-host) - superseded by the 14:20 UTC block.
 
 1. **Where the work is:** evaluation complete. Freeze v5
    b555d00affc2781ab7ee492493fa99950f0a31dd6d58972eee81c84908044351 (v4 + local-http.cjs

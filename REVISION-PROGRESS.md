@@ -93,6 +93,8 @@ out or count as failures (user called them a bug to fix first).
   permission classifier; the user's B meant a dispatcher key route, so instead: issue
   https://github.com/ffp03/load-dispatcher/issues/69 (job secret route). Do NOT copy secrets.
   When #69 gives a route, adapt m8-lab.sh (now mounts ~/.env.shared) to it.
+  2026-11-22 later: user asked to use their laptop meanwhile. thinkpad-2024 is on the tailnet but
+  SSH port 22 is closed, so claude-host cannot drive it; asked the user how (laptop session vs SSH).
   Ready: iteration-8 (output results/capability-agent-8-1795375429159), wrapper
   workspace/revision/ld/m8-lab.sh (mounts ~/.env.shared read-only, one process per site, heap
   6 GB, dev-07 dev-09..12, P4-on then P4-off). Submit: ld submit --only dilab-5080 --reason ...

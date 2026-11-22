@@ -54,6 +54,20 @@ review + evidence audit, code committed c48c870 and pushed). Milestone 7 deliver
 user's check: export in paper repo (b077ea9, parent pointer 0d354ca), results Doc. Milestone 4
 audit pending with the user/Randy.
 
+## Measures change (2026-11-22 ~15:50 UTC, waiting for the user's yes on exact text)
+
+User: "I want to use what makes sense instead what we decided before" (on the measures). Correction
+told to the user: clean pass allows up to 20% of clutter pieces plus order tau >= 0.9 (not zero
+pieces, as said earlier). Recomputed on v5 outputs (newm.py in analysis/2026-11-22-failure-analysis):
+pass@5% clutter (content chars >= 95%, title, order): P0 23.3, P1 27.5, P4-on 43.3, P4-off 43.3,
+P4-local 34.2; P4-on minus P1 +15.8 [+3.3, +28.3], minus P0 +20.0 [+9.2, +32.5]; clutter share
+P4-on minus P1 +1.9 [-1.7, +5.3] (not shown no-worse at 2 points); recall chars +15.9 [+10.0, +23.0].
+Draft done-means: workspace/revision/analysis/2026-11-22-goal-change/new.txt (copied below when adopted); Codex reading running
+(codex-remote, medium) done: reading-1.txt in analysis/2026-11-22-goal-change. Acted: superiority kept
+on both page pass and clutter share (no 2-point margin); full pipeline incl. fallback; thresholds
+95%/tau 0.9 from the frozen scorer, 5% new (sensitivity 2/10/20%); deciding data = user's choice
+(fresh sites vs existing 40, asked). Redraft shown to the user; re-read after their answer, then adopt.
+
 ## Failure analysis and next-phase proposal (2026-11-22 ~16:00 UTC, waiting for the user)
 
 Read-only, from the v5 score (scripts: workspace/revision/analysis/2026-11-22-failure-analysis/).

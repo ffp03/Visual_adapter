@@ -1,0 +1,21 @@
+# Not needed by the revision evaluation jobs (2026-11-21)
+.git/
+.venv/
+Visual_adapter_v1_backup/
+Visual_adapter_v2.4_backup/
+Visual_adapter_v3_backup/
+hf-deploy/
+log/
+workspace/archive/
+workspace/codex-luna*/
+workspace/experiment-lock*/
+workspace/ui-check*/
+workspace/task023/
+workspace/local-ai/
+workspace/maintenance/
+workspace/releases/
+workspace/tools/*.tar.xz
+workspace/revision/archive/
+workspace/revision/runs/
+workspace/revision/results/synthetic-containment-*/
+workspace/revision/ld-out*/

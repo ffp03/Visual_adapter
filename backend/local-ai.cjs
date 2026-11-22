@@ -197,7 +197,7 @@ function createLocalServer({ runner = process.env.LOCAL_AI_FAKE_RUNNER === '1'
                 const entry = read(host);
                 return json(res, 200, { rule: entry?.rule || null, procedure: entry?.procedure || null, validation: entry?.validation || null, provider, model });
             }
-            if (req.method !== 'POST' || !['/analyze', '/verify', '/report', '/disclose', '/generate', '/generation/status', '/generation/send', '/pending/clear'].includes(url.pathname)) return json(res, 404, { error: 'Unknown endpoint' });
+            if (req.method !== 'POST' || !['/analyze', '/verify', '/report', '/disclose', '/generate', '/generation/status', '/generation/history', '/generation/send', '/pending/clear'].includes(url.pathname)) return json(res, 404, { error: 'Unknown endpoint' });
             if (!/^application\/json(?:;|$)/i.test(req.headers['content-type'] || '')) return json(res, 415, { error: 'JSON required' });
             const chunks = []; let bytes = 0;
             for await (const chunk of req) {
@@ -206,12 +206,13 @@ function createLocalServer({ runner = process.env.LOCAL_AI_FAKE_RUNNER === '1'
                 chunks.push(chunk);
             }
             const data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
-            if (url.pathname === '/pending/clear') return json(res, 200, layouts.clear());
+            if (url.pathname === '/pending/clear') return json(res, 200, await layouts.clear());
             const host = hostname(data.hostname);
             if (url.pathname === '/disclose') return json(res, 200, layouts.disclose(data));
             if (url.pathname === '/generate') return json(res, 200, await layouts.generate(data));
             if (url.pathname === '/generation/status') return json(res, 200, layouts.status(data));
-            if (url.pathname === '/generation/send') return json(res, 200, layouts.approve(data));
+            if (url.pathname === '/generation/history') return json(res, 200, layouts.sent(host));
+            if (url.pathname === '/generation/send') return json(res, 403, { error: 'Per-turn consent is retired; refresh induction disclosure' });
             // Legacy generation is intentionally closed: old panels must not
             // silently upload or spend when they encounter a missing rule.
             if (url.pathname === '/analyze') return json(res, 403, { success: false, status: 'fallback', error: 'Explicit v3 disclosure and consent required' });

@@ -49,9 +49,287 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
 7. Sanitized export to the paper project plus result summary. Check: summary in chat or a
    Google Doc. (user checks)
 
-**Current step:** milestone 1 done 2026-11-20 (docs/revision/DESIGN-2026-11.md). Milestones 2-3 under way: workers WP-A1 (capture), WP-B1 (harness), WP-C1 (agent loop) running.
+**Current step (2026-11-22 06:20):** milestone 6 evaluation DONE under freeze v5 (all policies
+incl. P4-local on 40 sites; final score). Remaining for milestone 6: independent Codex review of
+the uncommitted evaluation code, then commit/push. Then milestone 7 (sanitized export, results
+Doc). Milestone 4 audit pending with the user/Randy.
 
-## START HERE (2026-11-20)
+## START HERE (2026-11-22, 06:20 EST, claude-host)
+
+1. **Where the work is:** evaluation complete. Freeze v5
+   b555d00affc2781ab7ee492493fa99950f0a31dd6d58972eee81c84908044351 (v4 + local-http.cjs
+   Content-Length fix; v4 archived in freeze/archive/v4/). Final report:
+   workspace/revision/results/eval-v5-score-1795327652409/report.md (+report.json, rows.jsonl,
+   summary.json); non-local policies identical to the v4 score. Clean pass: P0 10.0, P1 26.7,
+   P4-on 26.7, P4-off 36.7, P4-local 30.0, Codex 70.0 (10 sites). Ledger 2,146 requests, 1,727
+   paid, $1.624317132, pending 0. Details: item 5 of the 14:35 block (03:05-06:15 entries).
+2. **Results already shown to the user** (table in chat 06:20). Offered: an extra, labelled
+   P4-local minus P4-on paired comparison (not in the frozen pair list); no answer yet, do not
+   add it unasked.
+3. **Next, in order:** (a) Codex review (codex-remote, or sudo codex-job in place since workspace/
+   is git-ignored) of the uncommitted code: backend/agent/{eval-run,eval-score,runners,runtime,
+   eval-freeze,local-http,eval-carry,eval-v4,eval-v5}.cjs and their tests; risks: carried rows
+   cannot change, freeze/carry bindings, the monotonic-clock edit, Content-Length fix; give the
+   diff/brief/design, ranked findings only. (b) Commit by explicit path with LF (231 tracked files
+   are CRLF-only noise: do not commit them), pull --rebase, push. Note backend/agent/ and
+   tests/revision/ show as untracked: check .gitignore/what was committed before. (c) Sanitized
+   export to paper-agent/workspaces/visual-adapter-aiipcc-2026. (d) Results Google Doc.
+   (e) Housekeeping: service-use records (DeepSeek, Codex, local-llm), subagent-use Algoma report
+   (WP-E4d/e, WP-E5a: gpt-6.1-sol high), token review if >10% weekly Codex, memory triage.
+4. **Route facts:** only dilab-5090 ld jobs reach the local model (load-dispatcher#66, resolved by
+   the issues conversation; nothing more needed). ld uploads take 10-25 min (project ~2.5 GB after
+   .ldignore). Scripts in workspace/revision/ld/ (in-place.sh, local-v5.sh, score-v5.sh,
+   check-docker.sh). The void v4 local run (all 411) is kept unmerged in ld-out-local/stage.
+5. **Running (13:26 UTC):** Codex review on dilab-5080 (gpt-6.1-sol high; brief in the session
+   scratchpad, output there as review-out.txt; if lost, `codex-remote result` without --host).
+   Prepared meanwhile: commit set = 9 real tracked changes (MEMORY, REVISION-PROGRESS,
+   backend/local-ai.cjs, docs/LOCAL_AI.md, docs/revision/DESIGN-2026-11.md, extension/{background.js,
+   options.html, options.js, sidepanel.css, sidepanel.html, sidepanel.js}) + untracked .ldignore,
+   backend/agent/, backend/{layout-fake-runner,runtime-disclosure,runtime-layouts}.cjs,
+   docs/revision/corpus-manifest.json, extension/{archive/,procedure-v3.js,reader-frame.js},
+   tests/revision/ (not backend/__pycache__). Working copies are CRLF and frozen by hash: stage LF
+   blobs via hash-object/update-index, do not rewrite working files. Export script:
+   workspace/revision/export/export-v5.py SCORE_DIR OUT_DIR COMMIT (target
+   paper .../inputs/results/2026-11-22-revision-evaluation/, plus a README with limitations).
+
+## START HERE (2026-11-21, 14:35 EST, claude-host) - superseded by the 2026-11-22 06:20 block.
+
+1. **Where the work is:** conversation moved to claude-host. Freeze v4 unit not resumed yet. Checked
+   here: 501 of 505 v3 frozen files match their hashes; 4 differ (WP-E4b edits): backend/agent/
+   eval-run.cjs, eval-score.cjs, runners.cjs, runtime.cjs. Also touched after v3: new
+   backend/agent/local-http.cjs, EVALUATION.md, tests/revision/agent/{evaluation,runtime,reader-view}.test.cjs,
+   new tests/revision/eval/policies/p1-reader-view.cjs. Half-written step: freeze/archive/v3/
+   (copies, 14:27 UTC) exists while the active freeze is still v3. Ledger 5,697 lines, last event
+   13:49 UTC; WP-E4c never ran (laptop network). Local model service up, same model as frozen.
+2. **Route constraints found:** briefs/ and runs/ are git-ignored, so a codex-remote job does not
+   see them (inline the briefs). P4-Codex needs the `codex` CLI with ChatGPT login and Node on one
+   machine: claude-host has the login but no Node; ld workers have Node but no login. 231 tracked
+   files show as modified only because of CRLF from the Windows copy; 11 have real changes (commit
+   by path, keep LF).
+3. **Plan proposed to the user (14:35):** (1) codex-remote job: finish code fixes 1a-1e and the P1
+   split, offline probe, carry tooling, targeted tests; (2) ld: npm ci + full suites; (3) ld: freeze
+   v4 + carry + P1 regen + dev P1 re-score; (4) Codex on 9 sites; (5) final score via ld; (6) local
+   model 40 sites; then verify, review, commit, export, Doc, housekeeping.
+4. **What is open:** user chose 1A/2A ("go with your plan", 14:38): Codex comparator on claude-host
+   with project-local Node; local model through ld. Audit unchanged.
+5. **What is still running (17:35 EST):** P4-Codex 9 sites done on claude-host (27/27 ok, ~10 min,
+   455 MB; log runs/v4-codex.jsonl). P1 regenerated 40 sites + dev re-score via ld 305297 (89 s /
+   1.0 GB, 56 s / 1.5 GB), merged from ld-out-p1-merged/stage (no overwrite, no ledger change);
+   dev result results/dev-P1-v4-1795299482483/summary.json: P4-on minus Reader View P1 clean +27.8,
+   recall +15.6; P1 titleFirst 13.9%. **Blocker:** ld jobs cannot reach claude-host:8780 from
+   dilab-5090 or dilab-pc12 (connect timeout; DNS fine) -> load-dispatcher#66; local run not
+   started (zero local requests). Asked the user how to run it. Running: ld 305301 v4 score
+   (local pending; ld/score.sh, stage ld-out-score).
+   v4 score (local pending) done via ld 305301 (124 s, 3.9 GB peak):
+   results/eval-v4-score-1795300320565/report.md. Clean pass: P0 10.0, P1 26.7, P3 17.5, P4-on 26.7,
+   P4-off 36.7, Codex 70.0 (10 sites); P4-on minus P1 clean 0.0 [-15.8, 15.8], noise +31.9 (worse),
+   recall +18.9; P4-off minus P4-on clean +10.0 [-0.8, 21.7]; Codex minus P4-on clean +33.3 [10, 63].
+   Waiting on the user: where to run the local model (A claude-host / B wait for #66 / C not run).
+   **2026-11-22 02:50 EST:** user: "LD works now" (ld jobs may reach claude-host:8780). Submitted
+   ld va-v4-local (in-place.sh + ld/local.sh, DOCKER_NET=host, STAGE=workspace/revision/ld-out-local,
+   --mem 4G, --sync-every 600). First try landed on dilab-pc12 and failed fast (exit 4, model
+   unreachable, zero requests). #66 resolved by the issues conversation: only dilab-5090 jobs reach
+   claude-host:8780 (5080 contained, lab PCs denied) -> resubmitted with --only dilab-5090.
+   Next: check first sites' content, merge ld-out-local/stage (no overwrite), score --include-local
+   via ld (STAGE=ld-out-score2), Codex review, commit, export, Doc. (#66 needs no more from us.)
+   **03:05 EST: v4 P4-local run is void, NOT merged.** ld 305326 on dilab-5090 ran 40 sites in 63 s
+   (2.5 GB peak): all 40 requests provider-error `provider-http-411`, all 120 outputs fallback.
+   Cause: frozen v4 backend/agent/local-http.cjs (node:http, new in v4) writes the body chunked
+   with no Content-Length; the model portal (/home/randy/Dev/image-portal portal/server.py:113)
+   deliberately refuses chunked bodies (curl check: chunked 411, Content-Length 400). v3 used
+   global fetch (sets Content-Length). Evidence kept unmerged in workspace/revision/ld-out-local/
+   stage (results eval-P4-local-2026-11-22T02-56-*, its ledger copy with 40 request/result pairs).
+   Real ledger and results unchanged (zero v4 local requests recorded). Fix needs a frozen file
+   change -> asked the user: A freeze v5 (Content-Length fix + test, full checks via ld, carry all
+   v4 rows, run P4-local under v5) / B ask image-portal to accept chunked / C report local not run.
+   **03:20 EST: user chose A (freeze v5).** Running Codex WP-E5a in place (sudo codex-job, gpt-6.1-sol
+   high, brief workspace/revision/briefs/WP-E5a-freeze-v5.md, output runs/WP-E5a.result.md): the
+   Content-Length fix + 411 test, v4->v5 freeze/carry/generate/score tooling, carry dry-run, v5
+   RUNBOOK. Then (coordinator): full checks via ld (check-docker.sh) -> freeze v5 -> verify -> carry
+   dry-run/write -> P4-local 40 sites on ld --only dilab-5090 -> score --include-local via ld ->
+   Codex review of all uncommitted code -> commit/push -> export -> Doc.
+   **04:55 EST:** WP-E5a done (30 min; result runs/WP-E5a.result.md): local-http.cjs one-line
+   Content-Length fix (sha e426f178...136d), new backend/agent/eval-v5.cjs + tests; I re-ran
+   runners 11/11, eval-v5 6/6, eval-carry 5/5. Full checks via ld 305327 (Docker+Chrome, pc12):
+   144/144 + 14/14, receipt workspace/revision/evaluation/checks-1795322159358/receipt.json.
+   **Freeze v5 b555d00affc2781ab7ee492493fa99950f0a31dd6d58972eee81c84908044351** created (292 s,
+   claude-host, v4 archived to freeze/archive/v4/) and verified. Carry written (5 s):
+   results/eval-v5-carry-b555d00affc2, 450 jobs / 1,350 rows / 0 requests, index
+   evaluation/v5/carry-index.json. Submitted ld va-v5-local (--only dilab-5090, ld/local-v5.sh,
+   STAGE=workspace/revision/ld-out-local5); .ldignore now also skips workspace/revision/ld-out*/.
+   Next: check early outputs are ok:true, merge stage (no overwrite; ledger = job copy appended),
+   score --include-local via ld, review, commit, export, Doc.
+   **05:55 EST: P4-local under v5 done** (ld 305334 on dilab-5090, 1,875 s incl. ~24 min model
+   start, 2.2 GB peak): 40/40 sites, 199 requests all 200/generated, 0 pending; trials 24 accepted,
+   12 gate-rejected, 4 invalid; outputs 64 ok / 56 fallback. Merged ld-out-local5/stage (1,396 new
+   files, cp -n; ledger replaced by the staged copy after checking it is the real ledger + 597
+   appended lines; old ledger archived workspace/archive/ledger.jsonl.pre-v5-local-2026-11-22, sha
+   28604f8c...; new 0f353225...). Ledger: 2,146 requests, 1,727 paid, $1.624317132, pending 0.
+   **06:15 EST: final v5 score done** (ld 305338, 130 s, 3.8 GB peak; merged 4 new files):
+   results/eval-v5-score-1795327652409/{report.md,report.json,rows.jsonl,summary.json}. Every
+   non-local policy field is identical to the v4 score (checked: 0 differences). P4-local clean
+   30.0, recall 0.984, noise 0.493, complete 95.8, noFallback 22.5, 56 fallbacks (gate G3/G4/G6),
+   199 requests. The frozen pair list has no P4-local pair (none was planned). MILESTONE DONE:
+   local model on 40 sites + final score. Next: Codex review of all uncommitted code, commit
+   (LF, explicit paths), pull --rebase, push, sanitized export, results Doc, housekeeping.
+   Earlier (17:05 EST): full checks passed in Docker+Chrome (142/142 + 14/14;
+   receipt workspace/revision/evaluation/checks-1795297263206/receipt.json). **Freeze v4
+   4c711a25c01d16721d010b50f69d90cefc24d21275489bb66425ea3cd7bcb861** created and verified (130 s,
+   250 MB, on claude-host). Carry written: results/eval-v4-carry-4c711a25c01d, index
+   evaluation/v4/carry-index.json (401 jobs, 1,203 rows, 0 requests). Carry records hold absolute
+   /home/randy/Dev/Visual_adapter paths, so ld steps run in Docker with the project mounted at that
+   path (workspace/revision/ld/in-place.sh stages changed files to ld-out/stage for merging).
+   Running: ld va-v4-p1 (P1 regen 40 sites + dev-score; ld/p1-dev.sh) and P4-Codex 9 sites on
+   claude-host (scope va-v4-codex, MemoryMax 3G, log runs/v4-codex.jsonl; P1 writes no ledger
+   entries, so the two do not conflict). Next: merge stage, score via ld, local 40 via ld.
+   Earlier (16:35 EST): ld check job 1 (305287, dilab-pc7): 141/142 agent/eval
+   tests passed; capture suite timed out (needs Google Chrome; no worker or claude-host has it).
+   Failed test: score coverage, `invalid-latencyMs` (negative wall-clock duration under WSL load).
+   Fixed by me: eval-run.cjs durations use performance.now() (6 spots; original archived as
+   workspace/archive/eval-run.cjs.pre-monotonic-2026-11-21); evaluation.test.cjs 15/15 locally.
+   Now: ld job va-v4-check2 = check inside Docker node:24-bookworm with Chrome installed by
+   playwright-core (workspace/revision/ld/check-docker.sh); first receipt kept in ld-out-check1/.
+   Earlier (15:30 EST): WP-E4e done (runs/WP-E4e.result.md): fixes 1a-1e + split
+   complete, 47 targeted tests pass, probe keeps P3/P4 evidence hashes (split-probe-1795290562305.json),
+   carry dry-run clean (1,203 rows, 401 jobs, 500 unchanged hashes, 200 loader records; changed
+   files allowlisted as operational: eval-run, eval-score, runners, runtime, eval-freeze path map).
+   New: backend/agent/eval-carry.cjs, eval-v4.cjs; command sequence in
+   workspace/revision/evaluation/v4/RUNBOOK.md. Now: `eval-run.cjs check` through ld
+   (workspace/revision/ld/check.sh, outputs ld-out/; .ldignore added at the root). Note: dilab-5080 is
+   contained (no tailnet), so the local-model job must go to a worker that reaches claude-host:8780.
+   Earlier entry (14:47 EST): WP-E4e (resend of WP-E4d, which stopped at once on
+   read-only ACL masks from the copy; masks restored with setfacl m::rwX outside .git; output
+   runs/WP-E4e.result.md, log /var/log/codex-jobs/20261121T194700Z-claude-host-929cc5a8.jsonl).
+   Attempt-1 finding: saved run-7 pointers hold Windows absolute paths (resolve at read time).
+   Original entry: WP-E4d Codex job in place on claude-host (`sudo codex-job`,
+   gpt-6.1-sol high, 7200 s cap; brief briefs/WP-E4d-claude-host.md; output runs/WP-E4d.result.md;
+   host log /var/log/codex-jobs/20261121T193912Z-claude-host-478a9e54.jsonl). Scope: finish fixes +
+   split, probe, carry tooling with dry-run, targeted tests; no requests, no freeze. Route change:
+   in place on claude-host because the job needs the git-ignored workspace. Setup done: Node 24.22.3
+   at workspace/tools/node (checksum verified); Windows node_modules archived to
+   workspace/archive/2026-11-21-windows-node-modules/; npm ci at root and backend (frozen
+   package-lock.json hash unchanged). Next: inspect result, ld full suites + `eval-run.cjs check`,
+   then freeze v4/carry, P1 regen, dev re-score (ld), Codex 9 sites (claude-host), score, local (ld).
+
+## START HERE (2026-11-21, 12:55 EST) - superseded by the 14:35 block (moved to claude-host).
+
+1. **Where the work is:** freeze v4 unit (WP-E4) half-done and stopped. Its worker (Codex thread
+   01a1fd7e-9e04-74f1-af9b-b1bc7eda9bd9, local CLI) had edited backend/agent/runners.cjs,
+   backend/agent/runtime.cjs, tests/revision/agent/reader-view.test.cjs and added
+   tests/revision/eval/policies/p1-reader-view.cjs; no freeze v4 yet, no carry records, no
+   regeneration. Freeze v3 9c430042... still verifies. Ledger 1,908 requests, 1,727 paid,
+   ~$1.62, zero pending. The user is moving this conversation to the VM (claude-host) through
+   another agent (2026-11-21 12:55); the laptop's network could not reach chatgpt.com.
+2. **What is settled:**
+   - v3 partial report is the current result:
+     workspace/revision/results/eval-v3-partial-score-1795269394298/report.md (and runs/WP-E3.result.md).
+     P4-on ties P1 on clean pass (26.67% each); P4-off 36.67% (+10.0 [-6.7, 26.7] vs P1);
+     agent rules far more complete (+52.5) and higher recall (+18.9), more noise (+31.9).
+     Target (beat readers on clean and noise) not demonstrated; reported as measured. The main
+     configuration stays P4-on (frozen before evaluation); P4-off is reported as a variant.
+   - P1 split ruling (briefs/WP-E4b-p1-split.md): agent evidence and G6 keep the v3 Readability
+     wrapper byte-identical; only the scored P1 baseline uses the Reader View rendering.
+   - v4 fixes: briefs/WP-E4-freeze-v4.md (1a-1e). No P3/P4 regeneration (would exceed the cap).
+   - Local model: the user's "continue" (12:39) is read as yes to rerunning it on 40 sites under
+     v4 (option A); stated to the user, not contradicted yet.
+3. **What is open:** audit (milestone 4, user/Randy, does not block). Confirm with the user only
+   if they say "continue" meant otherwise.
+4. **What the next unit meets:** resume the Codex thread with briefs/WP-E4c-resume.md (re-check
+   edited files, then finish WP-E4b: fixes, freeze v4, P1 regeneration, Codex on 9 sites, final
+   score; no local requests). Then a local-model run on 40 sites under v4 (at most 4 at once;
+   the user's local-LLM rules). Then: verify, independent Codex review of the uncommitted code,
+   commit by explicit path, pull --rebase, push, sanitized export to the paper project, results
+   Doc, housekeeping (service-use DeepSeek record, Algoma subagent report, token review, memory
+   triage). All code changes since 09b1cdd are uncommitted; data lives in git-ignored workspace/.
+   Keep the machine awake during runs (the laptop sleep cost 3 h; a slept run loses in-flight
+   requests). Watchdogs (runs/watchdog.ps1) are Windows-only and pause during sleep.
+5. **What is still running:** nothing. All workers, waiters and watchdogs stopped at 12:50.
+
+## START HERE (2026-11-21, 09:20 EST) - superseded by the 12:55 block; items 3 and 5 are out of date.
+
+1. **Where the work is:** WP-E3 full evaluation (freeze v3 9c430042...) finished all DeepSeek
+   policies on 40 sites and stopped on the local transport fault (local calls cut at ~321 s, Node
+   HTTP client 300 s default; 35 local and 9 Codex sites unrun). Partial report:
+   workspace/revision/results/eval-v3-partial-score-1795269394298/report.md. Main result: P4-on
+   ties P1 on clean pass (26.67% each), recall +18.9, complete +52.5, noise leakage +31.9 (worse);
+   P4-off clean 36.67% (+10.0 [-6.7, 26.7] vs P1). Target (beat readers on clean and noise) not
+   demonstrated. Ledger 1,727 paid, ~$1.62, zero pending.
+2. **What is settled:** freeze v4 for the four review-3 fixes plus the local transport fix
+   (briefs/WP-E4-freeze-v4.md); P1 regenerated, Codex on 9 sites, final score; no local requests.
+3. **What is open:** user decision (asked 09:15): A. rerun the local model on 40 sites under v4
+   (~3-4 h) or B. report it as not run. Blocks only the local run. Audit (milestone 4) unchanged.
+4. **What the next unit meets:** WP-E4 result with freeze v4 hash and final report; then local run
+   if A, verify, Codex review of uncommitted code, commit by path, push, sanitized export, results
+   Doc, housekeeping (service-use DeepSeek record, Algoma report, token review, memory triage).
+5. **What is still running:** nothing (12:50). The laptop slept 09:30-12:38; WP-E4b had edited
+   runners.cjs, runtime.cjs, reader-view.test.cjs and added p1-reader-view.cjs, no freeze yet, zero
+   pending requests. After waking, this network cannot reach chatgpt.com (DNS fine, connections
+   time out; google and api.openai.com fine), so WP-E4b and a resume (WP-E4c) were stopped. To
+   resume: on a network that reaches chatgpt.com, `codex exec resume 01a1fd7e...` with
+   briefs/WP-E4c-resume.md (re-check edited files, then finish WP-E4b). Older entry: WP-E4b (resumed thread 01a1fd7e..., runs/WP-E4b.jsonl, result
+   runs/WP-E4b.result.md, watchdog 175 min from 09:26 EST; waiter in the conversation). WP-E4
+   stopped at 09:24 (runs/WP-E4-stop1.result.md): P1 output feeds P3/P4 evidence and G6, so a P1
+   change would break carry. Ruling (briefs/WP-E4b-p1-split.md): agent evidence keeps the v3
+   wrapper byte-identical; the scored P1 baseline uses a new Reader View rendering file.
+
+## START HERE (2026-11-21, 04:45 EST) - superseded by the 09:20 block; its running items are out of date.
+
+1. **Where the work is:** tuning closed. Iteration 5 (WP-C9: gate link-density fix + widget hints)
+   regressed (12/36 clean vs run 7's 17) and was reverted under the 6a rule (DESIGN 7b Outcome;
+   archive workspace/revision/archive/iteration5-reverted-2026-11-21/). Frozen configuration =
+   run 7 (prompt b838e299..., procedure-v3 316e7ba0..., outline ef9da79c..., P4 thinking on).
+   Dev scoreboard to report: P4-on 17/36 clean, recall 99.9%, noise leakage 25.1%, char share
+   6.8%; P1 1/36, 79.2%, 19.9%, 9.6%; P0 0/36, 97.2%, 68.5%, 15.5%.
+2. **What is settled (coordinator):** DESIGN 7b + Outcome, 9a budget, dev allowance 780 (692 used);
+   createDOM strips <style> (tests/revision/eval/dom.cjs; neutral on 60 dev pages; fixes eval-23
+   hang; old file archived in workspace/revision/archive/dom-style-strip-2026-11-21/).
+3. **What is open:** milestone 4 audit (user/Randy; does not block the run): private Doc
+   https://docs.google.com/document/d/1X7raCoPq4MWFVbFUdRGlHKJlcieyMDWEfe4RP9bnm7E/edit , folder
+   https://drive.google.com/drive/folders/1VwOAfaPS7Rcu2LEKgbkxtOjdXKJIK5sQ ; 40 pages, one held-out
+   page per site, seed in workspace/revision/audit/audit-sample.json (draw-sample.cjs,
+   build-audit-doc.cjs, publish-audit.py, audit-publish-receipt.json). Corrections from the audit
+   are applied blind to policy outputs and the scoreboard re-scored; generation is not rerun.
+   Eval lint: 200/200 pass, dev 60/60 (2026-11-21 ~04:50).
+4. **What the next unit meets:** freeze v2 370a379b... (WP-E2, 05:40): P1 renders Readability's
+   title+byline (Firefox Reader View); accounting from site receipts. Dev re-score with fixed P1:
+   P1 7/36 clean, recall 84.3%, noise 19.9%, chars 9.3%; P4-on minus P1: clean +27.8 [-2.8, 61.1],
+   complete +52.8 [27.8, 77.8], recall +15.6 [6.7, 26.8], noise +5.2 [-20.1, 25.4], chars -2.5
+   [-9.7, 2.9]. eval-02 sample: all 13 policies ran (P4-on 0/3 clean: excluded every `details`;
+   P4-off, cue 0, cue full, local, Codex 3/3; P2 = P0; P2-nr 3/3); 31 requests (22 DeepSeek,
+   3 local, 6 Codex). Applicability and three sites (eval-08/18/19, 15 pages) blocked by the
+   loader's host rule (bare domain vs www.) -> freeze v3 in WP-E3 (one leading www. ignored).
+   Measured estimate for 39 sites: 858 paid + 117 local + 54 Codex requests, ~4.5 h sequential.
+5. **What is still running:** WP-E3 full evaluation (resumed thread 01a1fd7e..., runs/WP-E3.jsonl,
+   result runs/WP-E3.result.md, watchdog 345 min from 05:46 EST). Freeze v3 9c430042... (05:58).
+   Final review 3 done (06:05): 4 should-fix findings, workspace/revision/briefs/REVIEW-3-findings.md,
+   to be fixed after WP-E3 in freeze v4 (P1 regenerated free, re-score). Then: verify, commit by
+   path, push, export, report Doc, housekeeping.
+
+## START HERE (2026-11-21, 04:40 EST) - superseded by the 04:45 block (WP-C9 finished and was reverted).
+
+1. **Where the work is:** tuning run 7 (WP-C8) finished: on the 36 held-out dev pages P4 thinking
+   on = 17/36 clean, recall 99.9%, noise leakage 25.1%, noise character share 6.8%; P1 = 1/36,
+   79.2%, 19.9%, 9.6%; P0 = 0/36, 97.2%, 68.5%, 15.5%. Clean pass beats both; unit noise
+   leakage does not yet beat P1 (CI spans zero). Report Doc (private, owning route):
+   https://docs.google.com/document/d/16VJsXgkSYlX-3uxlJpBeCg1-jZAebYmAqn_r3afy4nM/edit
+   Iteration 5 (WP-C9) is under way with the gate link-density fix and widget suspicion (7b).
+2. **What is settled (coordinator, 2026-11-21):** DESIGN 7b (link density counts an enclosing
+   anchor; bug fix, no threshold change); dev allowance 780 (ledger.cjs + test); DESIGN 9a
+   evaluation budget (P4 thinking on is the main configuration; P3 on each site's p3 only).
+3. **What is open:** jsdom hangs on eval-23's 150 KB stylesheet in createDOM (P0/P1/scorer/lint;
+   the agent's loader already strips styles). Planned fix: strip <style> in
+   tests/revision/eval/dom.cjs createDOM, after a neutrality check on the 60 dev pages (P0/P1
+   output and extracted-text hashes identical) and a scan of all pages for parse time. Then rerun
+   eval lint (`node tests/revision/capture/check-reference.cjs --eval --write`): eval-40-p4 still
+   needs its re-stamp under the L4 1,000-character threshold (199/200 stamped pass).
+4. **What the next unit meets:** after WP-C9: accept or reject iteration 5; freeze (prompt, views,
+   gate hashes; evaluation freeze file); evaluation per DESIGN 9a; audit Doc (40 pages, one per
+   site); redaction audit; final Codex review; commit by path; export.
+5. **What is still running:** WP-C9 local Codex (runs/WP-C9.jsonl, result runs/WP-C9.result.md,
+   watchdog runs/WP-C9.watchdog.log, 160 min from ~04:30 EST); neutrality check and parse scan in
+   the session scratchpad (temporary).
+
+## START HERE (2026-11-20) - superseded by the 2026-11-21 04:40 block; its running items are out of date.
 
 1. **Where the work is:** diagnosis done, plan agreed in outline; nothing implemented or run.
 2. **What is settled (user, 2026-11-20):**

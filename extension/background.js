@@ -31,9 +31,8 @@ chrome.runtime.onMessage.addListener((request, sender, respond) => {
         if (['ANALYZE_PAGE', 'TRIGGER_VERIFICATION'].includes(request.action)) return { status: 'fallback', error: 'Explicit consent required' };
         if (!ownPage(sender)) throw Error('Extension panel or options page required');
         if (request.action === 'DISCLOSE_LAYOUT') return post('/disclose', await pageSnapshot(request.tabId));
-        if (request.action === 'GENERATE_LAYOUT') return post('/generate', { ...await pageSnapshot(request.tabId), token: request.token });
-        if (request.action === 'SEND_LAYOUT_PAYLOAD') return post('/generation/send', {
-            ...await pageSnapshot(request.tabId), job: request.job, payloadHash: request.payloadHash });
+        if (request.action === 'GENERATE_LAYOUT') return post('/generate', { ...await pageSnapshot(request.tabId), token: request.token, payloadHash: request.payloadHash });
+        if (request.action === 'LAYOUT_HISTORY') return post('/generation/history', { hostname: request.hostname });
         if (request.action === 'LAYOUT_STATUS') {
             const tab = await chrome.tabs.get(request.tabId);
             if (!tab?.url) throw Error('Page closed');

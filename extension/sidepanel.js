@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const el = id => document.getElementById(id);
-    const reader = el('reader-view'), status = el('layout-status'), disclosure = el('layout-disclosure');
+    const status = el('layout-status'), disclosure = el('layout-disclosure');
     const send = el('send-generate'), basic = el('basic-view'), report = el('report-problem');
-    let tabId, currentURL, currentHost, preview, job, payloadHash, epoch = 0, pollTimer;
+    let tabId, currentURL, currentHost, preview, job, epoch = 0, pollTimer;
     const settings = { fontSize: 20, theme: 'black-white', ...await chrome.storage.sync.get(['fontSize', 'theme', 'fontFamily']) };
+    const readerCSS = await (await fetch(chrome.runtime.getURL('sidepanel.css'))).text();
+    let readingHTML = '';
+    function renderReader(html) {
+        readingHTML = html || '';
+        el('reader-frame').srcdoc = ReaderFrame.build(readingHTML, document, readerCSS, settings);
+    }
     const message = async data => {
         const result = await chrome.runtime.sendMessage(data);
         if (!result || result.error) throw Error(result?.error || 'Local backend unavailable');
@@ -13,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.className = 'theme-' + settings.theme;
         document.documentElement.style.setProperty('--font-size', settings.fontSize + 'px');
         if (settings.fontFamily) document.body.style.fontFamily = settings.fontFamily;
+        renderReader(readingHTML);
         el('font-display').textContent = settings.fontSize + 'px';
         el('size-slider').value = settings.fontSize;
         chrome.storage.sync.set(settings);
@@ -28,13 +35,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     function showDisclosure(data) {
         el('provider-model').textContent = data.provider + ' / ' + data.model;
         el('payload-characters').textContent = String(data.characters);
+        el('maximum-characters').textContent = String(data.maximumTotalCharacters);
         el('cue-sample').textContent = data.sample || '';
         disclosure.hidden = false; send.disabled = false;
     }
+    function showReceipts(data) {
+        const container = el('sent-payloads'); container.replaceChildren();
+        el('payload-count').textContent = String(data.payloadCount || 0);
+        el('payload-history').hidden = !data.payloadCount;
+        for (const receipt of data.receipts || []) {
+            const details = document.createElement('details');
+            const summary = document.createElement('summary');
+            summary.textContent = 'Request ' + receipt.turn + ': ' + receipt.characters + ' characters';
+            const hash = document.createElement('p'); hash.textContent = 'SHA-256: ' + receipt.payloadHash;
+            const sample = document.createElement('pre'); sample.textContent = receipt.sample;
+            const payload = document.createElement('pre'); payload.textContent = receipt.payload;
+            const full = document.createElement('details'), label = document.createElement('summary');
+            label.textContent = 'Full serialized payload'; full.append(label, payload);
+            details.append(summary, hash, sample, full); container.append(details);
+        }
+    }
     async function refresh(forceBasic = false) {
         const mine = ++epoch;
-        clearTimeout(pollTimer); job = null; payloadHash = null; preview = null;
+        clearTimeout(pollTimer); job = null; preview = null;
         disclosure.hidden = true; send.disabled = true;
+        el('payload-history').hidden = true;
         try {
             const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
             if (!tab || !/^https?:/.test(tab.url || '')) throw Error('Open a web page and refresh');
@@ -48,9 +73,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             if (mine !== epoch) return;
             if (result?.error) throw Error(result.error);
-            reader.innerHTML = result.html || '';
+            renderReader(result.html);
             basic.checked = forceBasic || !result.ruleApplied; report.disabled = !result.ruleApplied;
             status.textContent = result.ruleApplied ? 'Saved reading rule applied.' : 'Using basic view.';
+            const history = await message({ action: 'LAYOUT_HISTORY', hostname: currentHost });
+            if (mine !== epoch) return;
+            showReceipts(history);
             if (!result.ruleApplied) {
                 const data = await message({ action: 'DISCLOSE_LAYOUT', tabId });
                 if (mine !== epoch) return;
@@ -65,11 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (tab.url !== currentURL) throw Error('Page changed; refresh the view');
             const data = await message({ action: 'LAYOUT_STATUS', tabId, job });
             if (mine !== epoch) return;
-            if (data.status === 'awaiting-consent') {
-                payloadHash = data.payloadHash; showDisclosure(data);
-                status.textContent = 'Provider request ' + data.turn + ' is ready. Review the exact payload count and redacted cues, then click Send and generate.';
-                return;
-            }
+            showReceipts(data);
             if (data.status === 'admitted') { await refresh(); return; }
             if (data.status === 'failed') { status.textContent = 'Using basic view. Generation failed or was rejected: ' + (data.reason || 'unknown'); send.disabled = true; return; }
             status.textContent = data.status === 'preparing' ? 'Preparing local evidence; nothing sent to the provider.' : 'Generating the reading rule...';
@@ -79,12 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     send.addEventListener('click', async () => {
         const mine = epoch; send.disabled = true;
         try {
-            let data;
-            if (job && payloadHash) {
-                data = await message({ action: 'SEND_LAYOUT_PAYLOAD', tabId, job, payloadHash }); payloadHash = null;
-            } else {
-                data = await message({ action: 'GENERATE_LAYOUT', tabId, token: preview?.token }); preview = null;
-            }
+            const data = await message({ action: 'GENERATE_LAYOUT', tabId, token: preview?.token, payloadHash: preview?.payloadHash }); preview = null;
             if (mine !== epoch) return;
             if (data.status === 'pending') { status.textContent = data.reason; disclosure.hidden = true; return; }
             if (data.status === 'admitted') { await refresh(); return; }
@@ -98,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const host = currentHost, target = tabId;
         try {
             const data = await chrome.tabs.sendMessage(target, { action: 'EXTRACT_CONTEXT', basicView: true });
-            reader.innerHTML = data.html || ''; basic.checked = true;
+            renderReader(data.html); basic.checked = true;
             status.textContent = 'Using basic view. Reporting problem...';
             await message({ action: 'REPORT_RULE', hostname: host });
             status.textContent = 'Problem reported. Rule retired. Using basic view.';
@@ -108,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     chrome.tabs.onActivated.addListener(() => refresh());
     chrome.tabs.onUpdated.addListener((id, info) => { if (id === tabId && info.status === 'complete') refresh(); });
     el('clear-cache-btn').addEventListener('click', async () => {
-        try { await message({ action: 'CLEAR_PENDING_EXAMPLES' }); status.textContent = 'Pending examples cleared from active storage.'; } catch (error) { showError(error); }
+        try { await message({ action: 'CLEAR_PENDING_EXAMPLES' }); status.textContent = 'Pending examples deleted.'; } catch (error) { showError(error); }
     });
     el('toggle-console-btn').addEventListener('click', () => {
         const console = el('debug-console'); console.style.display = console.style.display === 'none' ? 'block' : 'none';

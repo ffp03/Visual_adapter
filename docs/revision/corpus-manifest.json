@@ -1,0 +1,4300 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-21T06:43:42.341Z",
+  "annotationGuidelineVersion": 2,
+  "sites": [
+    {
+      "split": "dev",
+      "siteId": "dev-01",
+      "host": "blog.python.org",
+      "category": "Blog",
+      "pages": [
+        {
+          "pageId": "dev-01-p1",
+          "url": "https://blog.python.org/2024/02/python-3122-and-3118-are-now-available.html",
+          "finalUrl": "https://blog.python.org/2024/02/python-3122-and-3118-are-now-available/",
+          "sha256": "a74b431eae62c3b9dea09360c9a2f665b4140a33cb713d194949f848e3793b7a",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:30:29.870Z",
+          "referenceSha256": "4b213a1078be12cbecbeced64c9e6507759822bb6c640ac5fc903b408e4dd561",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-01-p2",
+          "url": "https://blog.python.org/2024/01/python-3130-alpha-3-is-now-available/",
+          "finalUrl": "https://blog.python.org/2024/01/python-3130-alpha-3-is-now-available/",
+          "sha256": "21df12eaebfc3b2b65b3461ab29e6580afb846cf36269a5be0b57b915c6a660a",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:31:39.245Z",
+          "referenceSha256": "efbe946cb845739599556cbbf54f1f50b70df79439e3c23fa8a91db87384a204",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-01-p3",
+          "url": "https://blog.python.org/2023/12/python-3117-is-now-available/",
+          "finalUrl": "https://blog.python.org/2023/12/python-3117-is-now-available/",
+          "sha256": "81c2770162668429f6267083807ec7f3da1da86413518069ee66b3b985738780",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:31:50.972Z",
+          "referenceSha256": "bdad3699972037ed80206bc37aaf434a602cc491d6e9a2e8d7ab9299df0c7c85",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-01-p4",
+          "url": "https://blog.python.org/2023/10/python-3120-final-now-available/",
+          "finalUrl": "https://blog.python.org/2023/10/python-3120-final-now-available/",
+          "sha256": "a60229e712902a1ecef7f29653fad6d141a2faf6c3ee145a78f9b5c939233c56",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:32:00.870Z",
+          "referenceSha256": "1d3fe3fd316202aaf8fa80e4e6ee1d0fdf8049ded70da6a77764124eb1245e36",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-01-p5",
+          "url": "https://blog.python.org/2024/04/python-3119-is-now-available/",
+          "finalUrl": "https://blog.python.org/2024/04/python-3119-is-now-available/",
+          "sha256": "a5687cc8e6bf1ac947929810147684f2a47df3dd9affbf2d3ea370446b2e0894",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:32:09.949Z",
+          "referenceSha256": "0968b7908f7024c97eb74a45167073a3d070aa72098359f7501b79f753c379ef",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-02",
+      "host": "books.toscrape.com",
+      "category": "Commerce",
+      "pages": [
+        {
+          "pageId": "dev-02-p1",
+          "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html",
+          "finalUrl": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html",
+          "sha256": "141286540ee6f08d00742cd1191c0e35fd0b0b70b6888e6b879004232ee9d562",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:32:16.096Z",
+          "referenceSha256": "fd1e48afe2053799f1a19eec4ee07f83b0377765c1b4e56413f9e0e324a1abd1",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-02-p2",
+          "url": "https://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html",
+          "finalUrl": "https://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html",
+          "sha256": "1ed5a6cb8352739d8a247af9b68ee246524f25609771315bdd7a92a7a5b5b9d7",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:37:19.643Z",
+          "referenceSha256": "c479a456c870f132d9853694592b209fc166fbe1519e41c9e331ea3d66bce313",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-02-p3",
+          "url": "https://books.toscrape.com/catalogue/soumission_998/index.html",
+          "finalUrl": "https://books.toscrape.com/catalogue/soumission_998/index.html",
+          "sha256": "152c78fb5762999433df37022ed921784c6c54878738300952f8be7ff01f9abf",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:37:27.281Z",
+          "referenceSha256": "d503c7ba5dc513cdfd3b6d4d7787f4c777db0b7ed5d7244362e6c10502d09a6d",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-02-p4",
+          "url": "https://books.toscrape.com/catalogue/sharp-objects_997/index.html",
+          "finalUrl": "https://books.toscrape.com/catalogue/sharp-objects_997/index.html",
+          "sha256": "2293631144a8247c339fda73636438a770098785d2a82f774150321967910914",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:37:33.431Z",
+          "referenceSha256": "f60887dd022ee605c1ded071a2fcab6809f7a23223b8eb1a2cf79e793ef54e14",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-02-p5",
+          "url": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+          "finalUrl": "https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html",
+          "sha256": "e45538e65cf1590cee04559332b9fa8b4dbd3156ff6f65d71bc2e37b1aa534c8",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:37:39.451Z",
+          "referenceSha256": "bcb2692b3c313b4108de7089b4e485935b21d5b6a6759b2851a28e924769ed01",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-03",
+      "host": "developer.mozilla.org",
+      "category": "Technical documentation",
+      "pages": [
+        {
+          "pageId": "dev-03-p1",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction",
+          "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction",
+          "sha256": "8ad4f0ad8a9c0921889f8cb1359943616db6bff9e4d30a9469ed7c4010d39554",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:37:52.823Z",
+          "referenceSha256": "e734e7183766cc901e66e131e25ca5d66b58e553a8d167ca798c04edef010a78",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 2,
+            "kinds": [
+              "code"
+            ]
+          }
+        },
+        {
+          "pageId": "dev-03-p2",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types",
+          "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types",
+          "sha256": "e781396562c2c668f92d300d78785c7d8767e8f6838cd80c6e8f1b9e20614023",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:38:21.649Z",
+          "referenceSha256": "60d863479b6c2ecb8388134749f52405d7c9f77f27c8e758000fddd78bf23282",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 46,
+            "kinds": [
+              "code"
+            ]
+          }
+        },
+        {
+          "pageId": "dev-03-p3",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+          "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+          "sha256": "7eb636def727f5816f1abd558f4560819d8ceccc4d298acce49d7005a8525f0b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:38:41.637Z",
+          "referenceSha256": "427cef6d22ef919e4d2e2f65eaebf6f12a5f90b2846f39f0838751febe32e826",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 20,
+            "kinds": [
+              "code"
+            ]
+          }
+        },
+        {
+          "pageId": "dev-03-p4",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration",
+          "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration",
+          "sha256": "67e9ce26676bc00ca5e4dd5f58fb7d473b3d392c333b5f4fd76ac692a116552d",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:39:00.100Z",
+          "referenceSha256": "75a707d8e32e052ad8f2136fbd856c1fe5802d302c21ac17d5ab75215aa423a0",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 21,
+            "kinds": [
+              "code"
+            ]
+          }
+        },
+        {
+          "pageId": "dev-03-p5",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions",
+          "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions",
+          "sha256": "b4580551c89be7bf6ecfb150f2d184282a3161cb305272b786843b7311148d21",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:39:26.785Z",
+          "referenceSha256": "b6c659c5a55b77b5180eaa92d760ea0e523eba5bf576ca40624450ed7bab09df",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 36,
+            "kinds": [
+              "code"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-04",
+      "host": "en.wikipedia.org",
+      "category": "Reference/collections",
+      "pages": [
+        {
+          "pageId": "dev-04-p1",
+          "url": "https://en.wikipedia.org/wiki/HTML",
+          "finalUrl": "https://en.wikipedia.org/wiki/HTML",
+          "sha256": "7c8ef10ba72e603896f6c5b3e5838c975ec38c3fb6776bf268179fa5700c78f5",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:39:39.738Z",
+          "referenceSha256": "984a412b9693c62fe6cb1e5aa75cf4753eb03892b9444b504faf31c32491f79a",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-04-p2",
+          "url": "https://en.wikipedia.org/wiki/Cascading_Style_Sheets",
+          "finalUrl": "https://en.wikipedia.org/wiki/CSS",
+          "sha256": "d9544479bd1fb9bfa15c9ac13ef0ad4e6dab1a7aaf0dd6fa18e9bdb904c4775f",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:40:17.272Z",
+          "referenceSha256": "b1a32c94675b7e08406233dc585f90c2c79c55f70ae51a6af8a4779824af2ed4",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-04-p3",
+          "url": "https://en.wikipedia.org/wiki/JavaScript",
+          "finalUrl": "https://en.wikipedia.org/wiki/JavaScript",
+          "sha256": "4091aadb693dcb1086790ad9a6f52d7b3babb84e5d2e809c51491e3ce0d4d52f",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:40:29.938Z",
+          "referenceSha256": "5eb83a869d6470d659aacd722c76c30ed1de271e6e33b21a496212a655135e3d",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-04-p4",
+          "url": "https://en.wikipedia.org/wiki/HTTP",
+          "finalUrl": "https://en.wikipedia.org/wiki/HTTP",
+          "sha256": "80fd858fe568be388b1e2cce1b6cc0cc7c9e702f72e683788590da2653b6ae06",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:40:43.797Z",
+          "referenceSha256": "c9959ccc14e701ed31d4ada79e252a655f369ec29a0227dd40d7e16afc59b00f",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-04-p5",
+          "url": "https://en.wikipedia.org/wiki/World_Wide_Web",
+          "finalUrl": "https://en.wikipedia.org/wiki/World_Wide_Web",
+          "sha256": "fabb6a679fc2db04a60c5ec4f402b0a23699b813fbb5bae9f50187be9d214d78",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T03:41:12.863Z",
+          "referenceSha256": "6e35a14ae98e83d818ff9596ab83aa317def74f1c0b8328f022d6f781f109645",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-05",
+      "host": "news.ycombinator.com",
+      "category": "Discussion",
+      "pages": [
+        {
+          "pageId": "dev-05-p1",
+          "url": "https://news.ycombinator.com/item?id=8863",
+          "finalUrl": "https://news.ycombinator.com/item?id=8863",
+          "sha256": "a142c9968151d2b4a0de796c42ab55ad7ee684ed012a29a35e89927504cc348e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:41:23.265Z",
+          "referenceSha256": "c3cc0412162fd04aaca4c7f6818d09430b58206c045c8a565a118f982c7ca832",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-05-p2",
+          "url": "https://news.ycombinator.com/item?id=1",
+          "finalUrl": "https://news.ycombinator.com/item?id=1",
+          "sha256": "494bdb23150b547f26b9fa83893b511b8f890c95f8ee927daea27b76c8183d29",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:41:30.232Z",
+          "referenceSha256": "4981ea4f93919692c6e28b273efbc229045fbea318e58d5c5ad5b9d741fbbfd2",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-05-p3",
+          "url": "https://news.ycombinator.com/item?id=2",
+          "finalUrl": "https://news.ycombinator.com/item?id=2",
+          "sha256": "04671751db4a03cd91a01f7db53b8d771a1a336f266484b3591063b67fb5f6c8",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:41:36.680Z",
+          "referenceSha256": "a1d113e2dc32b931f9a9f2e8cda38492169614e6627c6b2dd783a85dc5afe911",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-05-p4",
+          "url": "https://news.ycombinator.com/item?id=3",
+          "finalUrl": "https://news.ycombinator.com/item?id=3",
+          "sha256": "f18f7f0995259fad4758ffd9f7d1e0febd6960fb873ff8f151b841c85b3b9e72",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:41:42.878Z",
+          "referenceSha256": "68b63bcf9e65ac6fabfd0a304eb665d803cb4fd0119385e376bd0e99037c662f",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-05-p5",
+          "url": "https://news.ycombinator.com/item?id=4",
+          "finalUrl": "https://news.ycombinator.com/item?id=4",
+          "sha256": "ec486263c059df64207a947761e12fb1eb0abb9f8463a81bb78e81d1a97230f0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:41:49.131Z",
+          "referenceSha256": "16a1306ab73c9b45b99cada21c4b41bd722050192cd87bc8a6b3a52453dd9b5e",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-06",
+      "host": "www.gov.uk",
+      "category": "Government/public information",
+      "pages": [
+        {
+          "pageId": "dev-06-p1",
+          "url": "https://www.gov.uk/guidance/managing-candidates-through-pre-employment-checks-vx",
+          "finalUrl": "https://www.gov.uk/guidance/managing-candidates-through-pre-employment-checks-vx",
+          "sha256": "98c89e1bf673db47818d46286eac3f8f10d31f38221e9962a7657aab8eb52d56",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:07:39.495Z",
+          "referenceSha256": "2099d819dd900177b9dbebfd4239325018e7ac835bb907b8f9dc25cd4afeb722",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-06-p2",
+          "url": "https://www.gov.uk/guidance/guide-to-governance-and-management-frameworks",
+          "finalUrl": "https://www.gov.uk/guidance/guide-to-governance-and-management-frameworks",
+          "sha256": "8f13ad953bdfd10ddc32f66d8f8f20c82b99b1a04725570e0721aca5bbf1fa8a",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:07:54.832Z",
+          "referenceSha256": "1ec9437cce804c8a64a0104b94173b9937ee4a7916c5a949b73d50aecbc42598",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-06-p3",
+          "url": "https://www.gov.uk/guidance/check-genuine-hmrc-contact-that-uses-more-than-one-communication-method",
+          "finalUrl": "https://www.gov.uk/guidance/check-genuine-hmrc-contact-that-uses-more-than-one-communication-method",
+          "sha256": "e7c636e9a404b603d454ae1dc103374aa79dfc026d226f7a2c5872c41cd1c4ad",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:08:12.596Z",
+          "referenceSha256": "1da67901be1ed79c5b25ba47c15adfadb7c5b1cc60144871c6a7840c9597ae2c",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-06-p4",
+          "url": "https://www.gov.uk/guidance/resilience-guidance-and-doctrine",
+          "finalUrl": "https://www.gov.uk/guidance/resilience-guidance-and-doctrine",
+          "sha256": "6a96e7e50c58ea8e0d1120cb9b1f892843604aa40380bf0b6f50124d9e541288",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:08:22.822Z",
+          "referenceSha256": "84bb897469cb6b5cefc455cb7e85844fbbcff79a1de7e09679e02b22b4973786",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-06-p5",
+          "url": "https://www.gov.uk/guidance/find-data-ethics-guidance-standards-and-frameworks",
+          "finalUrl": "https://www.gov.uk/guidance/find-data-ethics-guidance-standards-and-frameworks",
+          "sha256": "2b62fdfd76d68e9060998c0ad15c36ae19391939357a94f790b41baca609aee9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:08:33.259Z",
+          "referenceSha256": "9185fbab3f8ade2d737fad3732412954aaf1f718882aa008f0673d703d0f8cbe",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-07",
+      "host": "www.w3.org",
+      "category": "Technical documentation",
+      "pages": [
+        {
+          "pageId": "dev-07-p1",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "finalUrl": "https://www.w3.org/TR/WCAG22/",
+          "sha256": "a658c206f66294de9d55e36b38ffeddbbec925dfa8285f098a5c9082ea0d7fe8",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:46:47.130Z",
+          "referenceSha256": "8344029277894c2af8eadcfd51229c691f85d1177ff17f4d22d94d8a603fe333",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-07-p2",
+          "url": "https://www.w3.org/TR/css-nesting-1/",
+          "finalUrl": "https://www.w3.org/TR/css-nesting-1/",
+          "sha256": "7f52ab597efe95e7ce9ccd6a7bc1ad06072ad80b52295361b8e982ed21ca47cd",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:02:02.177Z",
+          "referenceSha256": "7649000498e67f780e6fca4ea969fcf29606707bf28c618095d8be6875a5cfbd",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-07-p3",
+          "url": "https://www.w3.org/TR/css-values-4/",
+          "finalUrl": "https://www.w3.org/TR/css-values-4/",
+          "sha256": "a4cf57f2fb3da7a360843d502b2894629083fb564a4b2b180474d296b5506964",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:47:33.323Z",
+          "referenceSha256": "7368df2a75e22cadf78841fe3a5370ce43a655d39483085cc945ae29736ed966",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-07-p4",
+          "url": "https://www.w3.org/TR/css-flexbox-1/",
+          "finalUrl": "https://www.w3.org/TR/css-flexbox-1/",
+          "sha256": "8cf73256eabf2f9e0feebf20fa912f57c126127acf6d62a06975a10e8b7884af",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:48:14.005Z",
+          "referenceSha256": "4e2898b622678e123cab4cb0889d164797977b918f8ee87f7428b31defbdc11d",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-07-p5",
+          "url": "https://www.w3.org/TR/css-grid-2/",
+          "finalUrl": "https://www.w3.org/TR/css-grid-2/",
+          "sha256": "3d9491e155497191ae64a831fd3180ea511a93c031800c2b7077554e5f662e01",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T03:49:07.442Z",
+          "referenceSha256": "5e374f6a82ad48edb28e0ff0c8053be1c6b9ecebb6a583939d9d5d1593aaf0b9",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-08",
+      "host": "www.bbc.com",
+      "category": "News",
+      "pages": [
+        {
+          "pageId": "dev-08-p1",
+          "url": "https://www.bbc.com/news/articles/cxnv4zvmdy0jo",
+          "finalUrl": "https://www.bbc.com/news/articles/cxnv4zvmdy0jo",
+          "sha256": "2f39fb65323c466e238ede68331022a7d0d344b2c0e5ea2ecde6cf3ecdb296d3",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:28:16.229Z",
+          "referenceSha256": "a27aa3d901a081cbc46275d350e26dec038eb6498afdec942394ef5790cf3be3",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-08-p2",
+          "url": "https://www.bbc.com/news/articles/cqgm0zlkgrm2o",
+          "finalUrl": "https://www.bbc.com/news/articles/cqgm0zlkgrm2o",
+          "sha256": "dd023dcf52f492f958c50995eef6cc1f25c595d0cbc8b564163e94be02c9e4b0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:28:29.566Z",
+          "referenceSha256": "130c37765cdb3b6b5fce8204ba8a07648f990ad1c5a0ff502872412a3f8f24e0",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-08-p3",
+          "url": "https://www.bbc.com/news/articles/c6pqr2g7w059o",
+          "finalUrl": "https://www.bbc.com/news/articles/c6pqr2g7w059o",
+          "sha256": "2ba4f9d9082399e4d194a20a9b609bb2b43d2e7cd722a5ac6d17d76066cfbb1d",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:28:38.353Z",
+          "referenceSha256": "a30077faf580e731e624589d8400d4894e00ff3111bda33b8e667465626a173b",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-08-p4",
+          "url": "https://www.bbc.com/news/articles/c64gn0gy8rj3o",
+          "finalUrl": "https://www.bbc.com/news/articles/c64gn0gy8rj3o",
+          "sha256": "4d14d3e5dd946916ff183dd7c3815a96e84abacd551ae81ddafda2cc44270a4a",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:28:47.628Z",
+          "referenceSha256": "9fedae95984c66bc4053b727ccbb319eddd43896fffd5e34430d172e4e44e284",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-08-p5",
+          "url": "https://www.bbc.com/news/articles/cwvg21gyl650o",
+          "finalUrl": "https://www.bbc.com/news/articles/cwvg21gyl650o",
+          "sha256": "e140b09e2a7867834e1f6d82cdc3862be416a37202386227b054c74b13f264f0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:28:56.907Z",
+          "referenceSha256": "9460df5c7a847aedeb03170c66e938c70809e2a60b75ab861c1292554340ff91",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-09",
+      "host": "www.keychron.com",
+      "category": "Product pages",
+      "harderDevelopmentSite": true,
+      "pages": [
+        {
+          "pageId": "dev-09-p1",
+          "url": "https://www.keychron.com/products/keychron-q1-qmk-custom-mechanical-keyboard-knob-version",
+          "finalUrl": "https://www.keychron.com/products/keychron-q1",
+          "sha256": "d5e62e2edaf0bc35ce4b6768897cc8f479264260e3d3934b7da8d15d92d71e86",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:03:47.148Z",
+          "referenceSha256": "85a2ea00b4fdc353f06f54b1c093014e410f499785f2a2ddcade8447d51d66a7",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-09-p2",
+          "url": "https://www.keychron.com/products/keychron-q2-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "finalUrl": "https://www.keychron.com/products/keychron-q2-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "sha256": "9980ae261b58f4d8b90713659785d4692b3b346c4b0dd233aba51b3892c736b2",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T06:13:54.280Z",
+          "referenceSha256": "404def0075de7ba6150c724c315593f0765f2d886a3db55ad68db13f3cc7b5b5",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-09-p3",
+          "url": "https://www.keychron.com/products/keychron-q3-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "finalUrl": "https://www.keychron.com/products/keychron-q3-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "sha256": "f889841438b49b8d9f3c9c398020c2c21dc5addb14eb57ca0a17f7d76342d8a9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T06:14:48.360Z",
+          "referenceSha256": "0b62f10ebfd21afdeb31b43e7872c413aa9b841a19c0c4ee096642611cbdfa5b",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-09-p4",
+          "url": "https://www.keychron.com/products/keychron-q4-pro-qmk-via-wireless-custom-mechanical-keyboard",
+          "finalUrl": "https://www.keychron.com/products/keychron-q4-pro-qmk-via-wireless-custom-mechanical-keyboard",
+          "sha256": "adb33310e9170f74fbf7295c3c08f48187bc468accd79dc5d933a35fa8138e73",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T06:15:24.869Z",
+          "referenceSha256": "4c3ee46c55e0aa07f6769e8cc9404a35c78dd4b4f36ecdb3c824676613f9773c",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-09-p5",
+          "url": "https://www.keychron.com/products/keychron-q5-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "finalUrl": "https://www.keychron.com/products/keychron-q5-max-qmk-via-wireless-custom-mechanical-keyboard",
+          "sha256": "57d3a0fd20612dd12a6f0cdd438662524dfd0089525bb215da463b93bdd5de38",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T06:16:01.450Z",
+          "referenceSha256": "1ab2f05bb16b85565f31009e5d474a57964ec00465d01641caa1dfde7b0468db",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-10",
+      "host": "discuss.ardupilot.org",
+      "category": "Forum/Q&A threads",
+      "harderDevelopmentSite": true,
+      "pages": [
+        {
+          "pageId": "dev-10-p1",
+          "url": "https://discuss.ardupilot.org/t/25-years-learning-to-fly-everything-comes-to-those-that-wait-ardupilot-sailboat-gazebo/112130",
+          "finalUrl": "https://discuss.ardupilot.org/t/25-years-learning-to-fly-everything-comes-to-those-that-wait-ardupilot-sailboat-gazebo/112130",
+          "sha256": "428426953b18deb898f804b69e411ddace76b944f370a85f17fe1456b46276cd",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:07:04.405Z",
+          "referenceSha256": "81079cf49971d8a0c8d345bc5e5faaeb1fa735baa2488321203be967e86f1fee",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-10-p2",
+          "url": "https://discuss.ardupilot.org/t/cube-orange-showing-flat-10-00v-battery-voltage-0-with-pb01a25-power-brick-mini/146251",
+          "finalUrl": "https://discuss.ardupilot.org/t/cube-orange-showing-flat-10-00v-battery-voltage-0-with-pb01a25-power-brick-mini/146251",
+          "sha256": "23a8de3654fe88c5ec19d8097cb5bf76b75c50eacdce2a5ea2cfd3334fb3cafc",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:07:27.643Z",
+          "referenceSha256": "2877a66d7dde8514df05554f69eeb42e262b4731764b20cfed2127d07f8e77ba",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-10-p3",
+          "url": "https://discuss.ardupilot.org/t/phone-browser-as-an-ardupilot-ground-station-over-an-expresslrs-tx-backpack-no-app-no-laptop/146197",
+          "finalUrl": "https://discuss.ardupilot.org/t/phone-browser-as-an-ardupilot-ground-station-over-an-expresslrs-tx-backpack-no-app-no-laptop/146197",
+          "sha256": "8f2fe4ffe85f7e6489e4d6bf1dc50bf650e8a713bf61c2ff371b3f8a66c14594",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:07:50.465Z",
+          "referenceSha256": "9227d60795b4bf3f33e0f94a6eab8f7544df32b93cbacaa06b93d8aeb978aff2",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-10-p4",
+          "url": "https://discuss.ardupilot.org/t/mission-planner-3-0-rewritten-cross-platform-ui-windows-linux-native-net-10/146255",
+          "finalUrl": "https://discuss.ardupilot.org/t/mission-planner-3-0-rewritten-cross-platform-ui-windows-linux-native-net-10/146255",
+          "sha256": "e0e430a86973039fd0d16668185bdfaea3f74ff30d927733c454b10090d85339",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:08:13.949Z",
+          "referenceSha256": "2e3ec0dd39d721115aaa734e72087593b69d7694e3c599233c75521e447dc9a5",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-10-p5",
+          "url": "https://discuss.ardupilot.org/t/using-ai-without-the-slop-or-how-i-learned-to-love-and-hate-the-machine-at-the-same-time/146239",
+          "finalUrl": "https://discuss.ardupilot.org/t/using-ai-without-the-slop-or-how-i-learned-to-love-and-hate-the-machine-at-the-same-time/146239",
+          "sha256": "b18beb754034a377295a49f7c8e14a77df8431986f9215e6e82abe015bec6018",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:08:36.346Z",
+          "referenceSha256": "b71dbc9ec60e76787be1499a7b8da1e428387b69db1ea0c9b74f85b772fadeba",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-11",
+      "host": "developer.chrome.com",
+      "category": "Client-rendered site",
+      "harderDevelopmentSite": true,
+      "pages": [
+        {
+          "pageId": "dev-11-p1",
+          "url": "https://developer.chrome.com/docs/devtools/overview/",
+          "finalUrl": "https://developer.chrome.com/docs/devtools/overview/",
+          "sha256": "b548a51029cc2e3efaf33e47201c25f0ab87bb677e2d7461d05845b4992ce84d",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:08:46.677Z",
+          "referenceSha256": "c3006f3a4e3b48163720a39c8bcdf08286b17f066a7e916dca8ff4a069cdc6bf",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-11-p2",
+          "url": "https://developer.chrome.com/docs/devtools/dom/",
+          "finalUrl": "https://developer.chrome.com/docs/devtools/dom/",
+          "sha256": "36c7e8aad911cab4956ed0f4e7d305433c36760f8e496fcfa06cae4d3a522871",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:08:59.811Z",
+          "referenceSha256": "7d0f4f9216d7c30b894fe966c60f0100929acf9e8dcc743933364326ca4a74f3",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-11-p3",
+          "url": "https://developer.chrome.com/docs/devtools/console/",
+          "finalUrl": "https://developer.chrome.com/docs/devtools/console/",
+          "sha256": "1af4193ee7565d885994958b682fa1d64f9cde280b848b803d619e9577d0849c",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:09:08.492Z",
+          "referenceSha256": "a61a49e9dde286b6c54dbc55fde8930eddec1097f372ca8d985a11f3106d5cb7",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-11-p4",
+          "url": "https://developer.chrome.com/docs/devtools/network/",
+          "finalUrl": "https://developer.chrome.com/docs/devtools/network/",
+          "sha256": "2b42a050691c7c3ab5d1f41c67ab87eb87ab74ed1e57de4da509c37922acaddd",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:09:22.579Z",
+          "referenceSha256": "59f903a1e28a994501813b3b1bffd5cef2eb9b8728e46657c93aca93008d1037",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-11-p5",
+          "url": "https://developer.chrome.com/docs/devtools/performance/",
+          "finalUrl": "https://developer.chrome.com/docs/devtools/performance/",
+          "sha256": "6a69e859c0bf29f514934ffdca0af17e1d306b3274fdb74ccecac31ed02537c2",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:09:34.120Z",
+          "referenceSha256": "841e0d6d3544738ae428a86cd97a03d96c27603b16bb15548814d5da73567d8d",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "dev",
+      "siteId": "dev-12",
+      "host": "www.rfc-editor.org",
+      "category": "Site without main/article markup",
+      "harderDevelopmentSite": true,
+      "pages": [
+        {
+          "pageId": "dev-12-p1",
+          "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+          "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.html",
+          "sha256": "ca76a1452113f3dc7ac9f0c99d450cb96890a097055b6193729bb03618d6695d",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:10:24.446Z",
+          "referenceSha256": "aa5e73f071690828df017881f60e4c56d788cb5bc15c7d1c136a54cbdd749813",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-12-p2",
+          "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+          "finalUrl": "https://www.rfc-editor.org/rfc/rfc9111.html",
+          "sha256": "531353f964d4b87790b002fab2a686f854b001d6ce6a0e303f8664e745e112d2",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:10:43.607Z",
+          "referenceSha256": "b3b38f5887d75675e434150551ac06038dd52d494ad7df8dbed3ac8ed83749d7",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-12-p3",
+          "url": "https://www.rfc-editor.org/rfc/rfc9112.html",
+          "finalUrl": "https://www.rfc-editor.org/rfc/rfc9112.html",
+          "sha256": "cb02824d1f4b623dfffde8495945ad1aa560aa58338d201c070514ba764bd0b3",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:11:00.951Z",
+          "referenceSha256": "f74ed7cc3809bdbe91442d5b7ca6d5ef82b962c249fa6f2fb766be76c8356a3a",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-12-p4",
+          "url": "https://www.rfc-editor.org/rfc/rfc9113.html",
+          "finalUrl": "https://www.rfc-editor.org/rfc/rfc9113.html",
+          "sha256": "57d906ffc6cc1cca389349454c9f6a613f6e849088d9a5e518752d221bbd3529",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:11:25.977Z",
+          "referenceSha256": "26249a267895b1655fa4ed26ea9a7f440a702bb9c5510feaa1b9a9dc31cb8353",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        },
+        {
+          "pageId": "dev-12-p5",
+          "url": "https://www.rfc-editor.org/rfc/rfc9114.html",
+          "finalUrl": "https://www.rfc-editor.org/rfc/rfc9114.html",
+          "sha256": "2441e3213da8020339645429d353facb324ccdb51b01a394537b03ec9945a67f",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:11:46.779Z",
+          "referenceSha256": "4deb39262bee864d37aeb89e0d31a02e3fdc7883397ff2825e771435eb09921b",
+          "guidelineVersion": 2,
+          "referenceLint": "reference-lint.json",
+          "contentOutsideDom": {
+            "count": 0,
+            "kinds": []
+          }
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-01",
+      "host": "www.cdc.gov",
+      "category": "Government/public information",
+      "oldSite": "fresh-site01",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-01-p1",
+          "url": "https://www.cdc.gov/sleep/about/index.html",
+          "finalUrl": "https://www.cdc.gov/sleep/about/index.html",
+          "sha256": "7855f3982f968da50c3960b5b1ea90ef15bfdf8a90d7643dad1240a44819e6e5",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:11:14.573Z"
+        },
+        {
+          "pageId": "eval-01-p2",
+          "url": "https://www.cdc.gov/physical-activity-basics/about/index.html",
+          "finalUrl": "https://www.cdc.gov/physical-activity-basics/about/index.html",
+          "sha256": "6176a6b2957a255d6556b83e3f81f7f38b5935eb1c51de48004f5da0547bd3d7",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:11:39.955Z"
+        },
+        {
+          "pageId": "eval-01-p3",
+          "url": "https://www.cdc.gov/sleep/data-research/facts-stats/children-sleep-facts-and-stats.html",
+          "finalUrl": "https://www.cdc.gov/sleep/data-research/facts-stats/children-sleep-facts-and-stats.html",
+          "sha256": "e3c78dee2b31a60ab9785f59213be1880d55aa512075ce377ef805a8dacced06",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:51:57.227Z"
+        },
+        {
+          "pageId": "eval-01-p4",
+          "url": "https://www.cdc.gov/sleep/data-research/facts-stats/adults-sleep-facts-and-stats.html",
+          "finalUrl": "https://www.cdc.gov/sleep/data-research/facts-stats/adults-sleep-facts-and-stats.html",
+          "sha256": "c0d8fa5de0e917c38f450b6c2df3f9cf809f060be3513769be0ee50aea4239be",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:52:27.085Z"
+        },
+        {
+          "pageId": "eval-01-p5",
+          "url": "https://www.cdc.gov/sleep/resources/index.html",
+          "finalUrl": "https://www.cdc.gov/sleep/resources/index.html",
+          "sha256": "c87bc0a717f1969878e636badf4081421e4f6070726195f9a3e4dd8a92ee5049",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:53:09.764Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-02",
+      "host": "fastapi.tiangolo.com",
+      "category": "Technical documentation",
+      "oldSite": "fresh-site02",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-02-p1",
+          "url": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "finalUrl": "https://fastapi.tiangolo.com/tutorial/first-steps/",
+          "sha256": "88e707d6f4da2bfd17c83fddf0e611663ada272472d0679fed4572c7ce35cc17",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:11:58.291Z"
+        },
+        {
+          "pageId": "eval-02-p2",
+          "url": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "finalUrl": "https://fastapi.tiangolo.com/tutorial/path-params/",
+          "sha256": "25a878c4817e7885f0b22400b6df9fa7bbab3920377f4b01a61087d2986ac37f",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:12:09.449Z"
+        },
+        {
+          "pageId": "eval-02-p3",
+          "url": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "finalUrl": "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/",
+          "sha256": "c954a7e0b72fa150c79864ea0d38e084552510d5d53c8a5f793b140b3104ed31",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:12:23.155Z"
+        },
+        {
+          "pageId": "eval-02-p4",
+          "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/",
+          "finalUrl": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/",
+          "sha256": "4d2f477cba4456a43c1c85a843f75b27db67a8306817822fd95f0cd9b01f4e5d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:12:32.386Z"
+        },
+        {
+          "pageId": "eval-02-p5",
+          "url": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "finalUrl": "https://fastapi.tiangolo.com/tutorial/query-params-str-validations/",
+          "sha256": "450c2f27801dead20e6aa5d2080d52b18c87ee317f8e8cc21c916719af25f743",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:12:44.679Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-03",
+      "host": "www.typescriptlang.org",
+      "category": "Technical documentation",
+      "oldSite": "fresh-site11",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-03-p1",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+          "finalUrl": "https://www.typescriptlang.org/docs/handbook/intro.html",
+          "sha256": "c66c7a14e27e1fdfbd6747c568db1a7d6cd0820cfa9b68141d6ed1c349ac0fcc",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:53:17.162Z"
+        },
+        {
+          "pageId": "eval-03-p2",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html",
+          "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html",
+          "sha256": "78b006a7ec0a1d08ac8969c85cc897790114940d207b4d9a52de7e753bc10f63",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:53:26.027Z"
+        },
+        {
+          "pageId": "eval-03-p3",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+          "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+          "sha256": "78e8b683ef67514f57345cbafc88ec210186ec224981b3a865f85ba39a14a002",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:53:36.374Z"
+        },
+        {
+          "pageId": "eval-03-p4",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+          "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+          "sha256": "f477548b3f72ca21ee4f87d0c3340007236482b3c79fd55cc3d2e4d29cf43cb4",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:53:47.062Z"
+        },
+        {
+          "pageId": "eval-03-p5",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/functions.html",
+          "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/functions.html",
+          "sha256": "4b30883ba79cf75332aeed59e1b9a4137c895ea79a20bdf53773267865c46294",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:53:58.510Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-04",
+      "host": "numpy.org",
+      "category": "Technical documentation",
+      "oldSite": "fresh-site12",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-04-p1",
+          "url": "https://numpy.org/doc/stable",
+          "finalUrl": "https://numpy.org/doc/stable/",
+          "sha256": "0b19a2a8ca74902289f94dcb086febe41de892516955f37b19a52b980cf1dc8d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:13:25.216Z"
+        },
+        {
+          "pageId": "eval-04-p2",
+          "url": "https://numpy.org/doc/stable/user/quickstart.html",
+          "finalUrl": "https://numpy.org/doc/stable/user/quickstart.html",
+          "sha256": "e3f976ffc7afb652a12f888ea3ae32dc91e9b05290fb846bd8aaff475692421d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:13:48.893Z"
+        },
+        {
+          "pageId": "eval-04-p3",
+          "url": "https://numpy.org/doc/stable/user/basics.html",
+          "finalUrl": "https://numpy.org/doc/stable/user/basics.html",
+          "sha256": "6bd30b08720b1d2dcd4ff63ef3de592c390fd9938f33492a6847f61bb6d64ff3",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:13:55.490Z"
+        },
+        {
+          "pageId": "eval-04-p4",
+          "url": "https://numpy.org/doc/stable/user/absolute_beginners.html",
+          "finalUrl": "https://numpy.org/doc/stable/user/absolute_beginners.html",
+          "sha256": "672fefd702f985c4b5dfafc35703d09a9672b5372b10e1ae7c261aebd086b8d9",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:14:13.782Z"
+        },
+        {
+          "pageId": "eval-04-p5",
+          "url": "https://numpy.org/doc/stable/user/how-to-index.html",
+          "finalUrl": "https://numpy.org/doc/stable/user/how-to-index.html",
+          "sha256": "1b716aae54849e080389a28b8614fa5e57e4eca482e64b4c6130bb8e1b619a3f",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:14:22.250Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-05",
+      "host": "sciencedaily.com",
+      "category": "News",
+      "oldSite": "fresh-site03",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-05-p1",
+          "url": "https://sciencedaily.com/releases/2026/10/261018084421.htm",
+          "finalUrl": "https://sciencedaily.com/releases/2026/10/261018084421.htm",
+          "sha256": "dcda450625a4fdea9b6ee501c43c450e2f716b1af92d06db24f5c4d0177c9898",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:13:52.628Z"
+        },
+        {
+          "pageId": "eval-05-p2",
+          "url": "https://sciencedaily.com/releases/2026/09/260930020309.htm",
+          "finalUrl": "https://sciencedaily.com/releases/2026/09/260930020309.htm",
+          "sha256": "c2044fe37ec7a20461ceddd254d76e76804cd5a2121cf2f2c9712b4337c535a6",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:14:12.659Z"
+        },
+        {
+          "pageId": "eval-05-p3",
+          "url": "https://sciencedaily.com/releases/2026/07/260719035931.htm",
+          "finalUrl": "https://sciencedaily.com/releases/2026/07/260719035931.htm",
+          "sha256": "ac5fb14aeca900364137caa5457cd1402f4eca21b35b3fcb96719e116b4c18c5",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:14:33.039Z"
+        },
+        {
+          "pageId": "eval-05-p4",
+          "url": "https://sciencedaily.com/releases/2024/09/240905120854.htm",
+          "finalUrl": "https://sciencedaily.com/releases/2024/09/240905120854.htm",
+          "sha256": "02a6ad98a910f0ce0001ac83aa591a5b6edea2639e8f58bcd694c21447e00f56",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:14:51.706Z"
+        },
+        {
+          "pageId": "eval-05-p5",
+          "url": "https://sciencedaily.com/releases/2026/05/260515234803.htm",
+          "finalUrl": "https://sciencedaily.com/releases/2026/05/260515234803.htm",
+          "sha256": "1708968b3e0f9947c222dc5b3bfdbc658daacf8d75a192af830e122d9a253d8e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:02.669Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-06",
+      "host": "news.yale.edu",
+      "category": "Education",
+      "oldSite": "original-07",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-06-p1",
+          "url": "https://news.yale.edu/2026/10/19/marcela-effect-women-faculty-forum-honors-leader-health-care-equity",
+          "finalUrl": "https://news.yale.edu/2026/10/19/marcella-effect-women-faculty-forum-honors-leader-health-care-equity",
+          "sha256": "adc37abc1bb2971bcaf929bdd561ae67a6f56d14f28f49d44072c0d198639e3c",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:11.688Z"
+        },
+        {
+          "pageId": "eval-06-p2",
+          "url": "https://news.yale.edu/2026/10/15/nato-new-haven-former-ambassador-shares-lessons-diplomacy",
+          "finalUrl": "https://news.yale.edu/2026/10/15/nato-new-haven-former-ambassador-shares-lessons-diplomacy",
+          "sha256": "b4b89abb38fcdff6930a4d6078a9317b2a02fc0ed4a723f0d71e408f887217fa",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:19.894Z"
+        },
+        {
+          "pageId": "eval-06-p3",
+          "url": "https://news.yale.edu/2026/11/19/yale-scholars-named-american-academy-science-letters",
+          "finalUrl": "https://news.yale.edu/2026/11/19/yale-scholars-named-american-academy-science-letters",
+          "sha256": "8e177385289092b7c397530d44e7106214a7d61271d319c1af0362aba3e35974",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:27.417Z"
+        },
+        {
+          "pageId": "eval-06-p4",
+          "url": "https://news.yale.edu/2026/11/19/learning-maestro-yale-visit-conductor-dudamel-leads-students-through-spirited",
+          "finalUrl": "https://news.yale.edu/2026/11/19/learning-maestro-yale-visit-conductor-dudamel-leads-students-through-spirited",
+          "sha256": "4c3d6684f82d98ffa8522e1242bdb878fcece372f8c6dc3226bf635d4835e46d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:35.781Z"
+        },
+        {
+          "pageId": "eval-06-p5",
+          "url": "https://news.yale.edu/2026/11/12/drawing-deep-heritage-yale-scholars-explore-health-benefits-olive-oil",
+          "finalUrl": "https://news.yale.edu/2026/11/12/drawing-deep-heritage-yale-scholars-explore-health-benefits-olive-oil",
+          "sha256": "7eb727cf9ff6d4fbf7de44a2e615f55d89cf5910dd5a2080676d00cbeec34399",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:15:45.531Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-07",
+      "host": "statlect.com",
+      "category": "Education",
+      "oldSite": "additional-01",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-07-p1",
+          "url": "https://statlect.com/fundamentals-of-probability/conditional-probability",
+          "finalUrl": "https://statlect.com/fundamentals-of-probability/conditional-probability",
+          "sha256": "73ef4965643e4572a7581d9a773f3e09d52544c8ec9a4ed452e9a70975016e99",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:15:54.075Z"
+        },
+        {
+          "pageId": "eval-07-p2",
+          "url": "https://statlect.com/fundamentals-of-probability/independent-events",
+          "finalUrl": "https://statlect.com/fundamentals-of-probability/independent-events",
+          "sha256": "2cc77e07c554ddb581777c3176dac03be5541c7892e84e59013714c637fd34bf",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:01.724Z"
+        },
+        {
+          "pageId": "eval-07-p3",
+          "url": "https://statlect.com/fundamentals-of-probability/conditional-probability-as-a-random-variable",
+          "finalUrl": "https://statlect.com/fundamentals-of-probability/conditional-probability-as-a-random-variable",
+          "sha256": "b8905c3ec866834e126b2c282874ea80f3325e4051bbaac4ab2a10476e79de4b",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:10.095Z"
+        },
+        {
+          "pageId": "eval-07-p4",
+          "url": "https://statlect.com/fundamentals-of-probability/conditional-probability-distributions",
+          "finalUrl": "https://statlect.com/fundamentals-of-probability/conditional-probability-distributions",
+          "sha256": "10e7e5535d50cec68095c580da289162763ea85965a8b5839ff0cf660e690393",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:18.699Z"
+        },
+        {
+          "pageId": "eval-07-p5",
+          "url": "https://statlect.com/fundamentals-of-probability/",
+          "finalUrl": "https://statlect.com/fundamentals-of-probability/",
+          "sha256": "328c2948edd2adfc4d942c4ab1d729d3c2d9cc575635ed58bb1d9ea69605d117",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:26.594Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-08",
+      "host": "mathsisfun.com",
+      "category": "Education",
+      "oldSite": "additional-03",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-08-p1",
+          "url": "https://mathsisfun.com/algebra/logarithms.html",
+          "finalUrl": "https://www.mathsisfun.com/algebra/logarithms.html",
+          "sha256": "80707f1d51ac22a4cc73791c8cfdf0e4744013ce317ce05f071da1829f7e914e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:34.776Z"
+        },
+        {
+          "pageId": "eval-08-p2",
+          "url": "https://mathsisfun.com/algebra/quadratic-equation.html",
+          "finalUrl": "https://www.mathsisfun.com/algebra/quadratic-equation.html",
+          "sha256": "8777dea526b861555805b0f32b3eb751d82960087c72ea306a00d2078b250161",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:43.264Z"
+        },
+        {
+          "pageId": "eval-08-p3",
+          "url": "https://www.mathsisfun.com/algebra/linear-equations.html",
+          "finalUrl": "https://www.mathsisfun.com/algebra/linear-equations.html",
+          "sha256": "b89bb1689be0e10f43b70c4f3caa8f6d7fb95e6d24a061193119818157a3ac82",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:54:11.743Z"
+        },
+        {
+          "pageId": "eval-08-p4",
+          "url": "https://www.mathsisfun.com/algebra/logarithms-decimals.html",
+          "finalUrl": "https://www.mathsisfun.com/algebra/logarithms-decimals.html",
+          "sha256": "4aee071d764df7c815d9198b8870e5d43b3d2bf13b0dea78b900a5d506b24bc7",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:54:22.063Z"
+        },
+        {
+          "pageId": "eval-08-p5",
+          "url": "https://www.mathsisfun.com/algebra/exponents-logarithms.html",
+          "finalUrl": "https://www.mathsisfun.com/algebra/exponents-logarithms.html",
+          "sha256": "68f5ce561a24abf7fd65545eec2509667a26b42a100bb065fcbf302fe1164b44",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:54:31.418Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-09",
+      "host": "openintro.org",
+      "category": "Education",
+      "oldSite": "additional-04",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-09-p1",
+          "url": "https://openintro.org/book/os/",
+          "finalUrl": "https://openintro.org/book/os/",
+          "sha256": "1a81d6f284d93919eda8a4041f8ac3dcce840318a11c128b7ea98d16e3c04fc8",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:16:52.892Z"
+        },
+        {
+          "pageId": "eval-09-p2",
+          "url": "https://openintro.org/book/ims/",
+          "finalUrl": "https://openintro.org/book/ims/",
+          "sha256": "aa1e24452031d2ea080fe33a3968cfd2c649acb5e05f3ff659a5eae11179e704",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:00.446Z"
+        },
+        {
+          "pageId": "eval-09-p3",
+          "url": "https://openintro.org/book/biostat",
+          "finalUrl": "https://openintro.org/book/biostat/",
+          "sha256": "af2df24a3d45f7a81fe08e0619496faf02110b9263d1b359b7eb7e7eabf20de0",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:08.356Z"
+        },
+        {
+          "pageId": "eval-09-p4",
+          "url": "https://openintro.org/book/isrs",
+          "finalUrl": "https://openintro.org/book/isrs/",
+          "sha256": "4f464817a3bf1678841b385ae60403ee347ba708991add87cc89968ac42e6bb3",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:54:41.858Z"
+        },
+        {
+          "pageId": "eval-09-p5",
+          "url": "https://openintro.org/book/cat",
+          "finalUrl": "https://openintro.org/book/cat/",
+          "sha256": "27bd5e06ea9b42e790364965d8a352a7c0c905c6bfa93695a6e82294fbe1582d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:14:33.227Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-10",
+      "host": "ncatlab.org",
+      "category": "Reference/collections",
+      "oldSite": "additional-11",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-10-p1",
+          "url": "https://ncatlab.org/nlab/show/group",
+          "finalUrl": "https://ncatlab.org/nlab/show/group",
+          "sha256": "dd024448b0bda1bfbe7c2ea31585f419974a9dc048d60e905cfade26e67fe44e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:32.412Z"
+        },
+        {
+          "pageId": "eval-10-p2",
+          "url": "https://ncatlab.org/nlab/show/functor",
+          "finalUrl": "https://ncatlab.org/nlab/show/functor",
+          "sha256": "6f41c30e8312a72fb6eb38de576be405062f4eb03300c0e846110465665fa8e9",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:41.100Z"
+        },
+        {
+          "pageId": "eval-10-p3",
+          "url": "https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory",
+          "finalUrl": "https://ncatlab.org/nlab/show/relationship+between+type+theory+and+category+theory",
+          "sha256": "1c92706b02ea446aab28eb32ff2a7107f6ccd1c65faec199991874415f42d8ee",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:50.171Z"
+        },
+        {
+          "pageId": "eval-10-p4",
+          "url": "https://ncatlab.org/nlab/show/monoid+object+in+an+%28infinity%2C1%29-category",
+          "finalUrl": "https://ncatlab.org/nlab/show/monoid+in+a+monoidal+%28infinity%2C1%29-category",
+          "sha256": "6926d8b482fa8565c101ecd759334b0d32f3deca6c4e139ed077b95e430caf5b",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:17:56.323Z"
+        },
+        {
+          "pageId": "eval-10-p5",
+          "url": "https://ncatlab.org/nlab/show/applications+of+%28higher%29+category+theory",
+          "finalUrl": "https://ncatlab.org/nlab/show/applications+of+%28higher%29+category+theory",
+          "sha256": "00b41305f07d2cefb51907529ad193e60432bf0aa1b1fc8013a7744d24cebad1",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:18:04.064Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-11",
+      "host": "proofwiki.org",
+      "category": "Reference/collections",
+      "oldSite": "additional-12",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-11-p1",
+          "url": "https://proofwiki.org/wiki/Definition:Group",
+          "finalUrl": "https://proofwiki.org/wiki/Definition:Group",
+          "sha256": "681597dc0b8af8900c11547e1fee5e854c6a82d65dc4f44698cf660eac270c71",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:18:13.778Z"
+        },
+        {
+          "pageId": "eval-11-p2",
+          "url": "https://proofwiki.org/wiki/Definition:Ring",
+          "finalUrl": "https://proofwiki.org/wiki/Definition:Ring",
+          "sha256": "597ef4053b134937631d62c3cfaa34fefbcf2ac7fb3101d11f76402b559bc046",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:18:27.153Z"
+        },
+        {
+          "pageId": "eval-11-p3",
+          "url": "https://proofwiki.org/wiki/Book:George_McCarty/Topology:_An_Introduction_with_Application_to_Topological_Groups",
+          "finalUrl": "https://proofwiki.org/wiki/Book:George_McCarty/Topology:_An_Introduction_with_Application_to_Topological_Groups",
+          "sha256": "bbb57bf450253e0d49c2c8ceb3aec9b5f85fa93b7dc75ffb95cb285db5be708d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:18:36.509Z"
+        },
+        {
+          "pageId": "eval-11-p4",
+          "url": "https://proofwiki.org/wiki/Book:Robert_Gilmore/Lie_Groups,_Lie_Algebras_and_Some_of_their_Applications",
+          "finalUrl": "https://proofwiki.org/wiki/Book:Robert_Gilmore/Lie_Groups,_Lie_Algebras_and_Some_of_their_Applications",
+          "sha256": "5892f7d2ac0b5031559f5b24f4635df7e37be0898ea0553b5aed0b45a4674a59",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:18:49.707Z"
+        },
+        {
+          "pageId": "eval-11-p5",
+          "url": "https://proofwiki.org/wiki/Group/Non-Group_Examples",
+          "finalUrl": "https://proofwiki.org/wiki/Group/Non-Group_Examples",
+          "sha256": "2d250a8dd50484be35b7e56207ee24dd22c5373b6668801912ba0bc815c6cc4c",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:18:59.959Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-12",
+      "host": "www.bbcgoodfood.com",
+      "category": "Reference/collections",
+      "oldSite": "reserve-08",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-12-p1",
+          "url": "https://www.bbcgoodfood.com/review/best-stainless-steel-frying-pans",
+          "finalUrl": "https://www.bbcgoodfood.com/review/best-stainless-steel-frying-pans",
+          "sha256": "c77552d76be6b5b7e3b3df3e37c73704859824daca87c9c17d1afe27b0b5aca3",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:19:29.227Z"
+        },
+        {
+          "pageId": "eval-12-p2",
+          "url": "https://www.bbcgoodfood.com/review/best-cast-iron-skillet-pans",
+          "finalUrl": "https://www.bbcgoodfood.com/review/best-cast-iron-skillet-pans",
+          "sha256": "6d39925c55ab8951bb4b8a29dd01ff139d61b4751ae73b7bf298c4a9ed0b107c",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:19:58.059Z"
+        },
+        {
+          "pageId": "eval-12-p3",
+          "url": "https://www.bbcgoodfood.com/review/best-ceramic-cookware",
+          "finalUrl": "https://www.bbcgoodfood.com/review/best-ceramic-cookware",
+          "sha256": "cd74d86de36724d8993ee4847b683a1d54acd08805d0003adeac0e3dc3e9a515",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:20:26.854Z"
+        },
+        {
+          "pageId": "eval-12-p4",
+          "url": "https://www.bbcgoodfood.com/review/test-best-casserole-dishes",
+          "finalUrl": "https://www.bbcgoodfood.com/review/test-best-casserole-dishes",
+          "sha256": "d3b30957d790fe9ab205cfe77e1da5c487a909a1c4cf45422cd262b784df0e3d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:21:04.584Z"
+        },
+        {
+          "pageId": "eval-12-p5",
+          "url": "https://www.bbcgoodfood.com/review/best-saucier-pan",
+          "finalUrl": "https://www.bbcgoodfood.com/review/best-saucier-pan",
+          "sha256": "57389d13fb15fbf43b4259d944a91d1451fb1059ad91aeb30a00f1747a7cd885",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:21:30.950Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-13",
+      "host": "news.berkeley.edu",
+      "category": "Education",
+      "oldSite": "original-09",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-13-p1",
+          "url": "https://news.berkeley.edu/2026/10/15/watch-did-ancient-humans-really-throw-spears-at-mammoths-a-berkeley-archaeologist-says-no/",
+          "finalUrl": "https://news.berkeley.edu/2026/10/15/watch-did-ancient-humans-really-throw-spears-at-mammoths-a-berkeley-archaeologist-says-no/",
+          "sha256": "22361c6206ce6a1fda2cc65af7cfd0cf6df80678201a3eab318d36629e06c6e4",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:21:41.907Z"
+        },
+        {
+          "pageId": "eval-13-p2",
+          "url": "https://news.berkeley.edu/2026/10/16/berkeley-talks-michael-pollan-and-christof-koch-talk-psychedelics-and-consciousness/",
+          "finalUrl": "https://news.berkeley.edu/2026/10/16/berkeley-talks-michael-pollan-and-christof-koch-talk-psychedelics-and-consciousness/",
+          "sha256": "cd42c40944abbdaefd055f308a89f98c4f1317603b44de397345aa14131e3c37",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:21:52.919Z"
+        },
+        {
+          "pageId": "eval-13-p3",
+          "url": "https://news.berkeley.edu/2024/08/21/to-kill-mammoths-in-the-ice-age-people-used-planted-pikes-not-throwing-spears-researchers-say/",
+          "finalUrl": "https://news.berkeley.edu/2024/08/21/to-kill-mammoths-in-the-ice-age-people-used-planted-pikes-not-throwing-spears-researchers-say/",
+          "sha256": "17467b67852958243b7007c42fbcd43369debbf485778f37856d8052760fa0e7",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:15:07.783Z"
+        },
+        {
+          "pageId": "eval-13-p4",
+          "url": "https://news.berkeley.edu/2026/11/19/watch-how-a-uc-berkeley-innovation-led-to-the-microprocessors-that-run-the-world/",
+          "finalUrl": "https://news.berkeley.edu/2026/11/19/watch-how-a-uc-berkeley-innovation-led-to-the-microprocessors-that-run-the-world/",
+          "sha256": "7c8d8102c2b82fd0c53b12b47114a6816f9077fa40a02398babe58f3ae292cb6",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:25:54.469Z"
+        },
+        {
+          "pageId": "eval-13-p5",
+          "url": "https://news.berkeley.edu/2026/11/18/theresa-may-will-be-the-first-visiting-fellow-at-uc-berkeleys-new-nancy-pelosi-institute/",
+          "finalUrl": "https://news.berkeley.edu/2026/11/18/theresa-may-will-be-the-first-visiting-fellow-at-uc-berkeleys-new-nancy-pelosi-institute/",
+          "sha256": "b520e5deab942f61e1b56c8b0054153e3b9d94a9080895039a559e85c315f713",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:26:06.888Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-14",
+      "host": "www.adafruit.com",
+      "category": "Commerce",
+      "oldSite": "reserve-07",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-14-p1",
+          "url": "https://www.adafruit.com/product/6501",
+          "finalUrl": "https://www.adafruit.com/product/6501",
+          "sha256": "d789d713469bff852a6a9a5bfe59ed650002231fc4c6c2e2a466d78058415157",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:22:05.360Z"
+        },
+        {
+          "pageId": "eval-14-p2",
+          "url": "https://www.adafruit.com/product/6065",
+          "finalUrl": "https://www.adafruit.com/product/6065",
+          "sha256": "c742772638a501687ac996260ad25b066047b4cedaa81da8a0507646e51e2c8b",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:22:16.111Z"
+        },
+        {
+          "pageId": "eval-14-p3",
+          "url": "https://www.adafruit.com/product/3316",
+          "finalUrl": "https://www.adafruit.com/product/3316",
+          "sha256": "b9776c48b6e8ddd33ab8d4389199923a315fdd25737403a9e472acd19216d348",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:22:28.010Z"
+        },
+        {
+          "pageId": "eval-14-p4",
+          "url": "https://www.adafruit.com/product/3967",
+          "finalUrl": "https://www.adafruit.com/product/3967",
+          "sha256": "bdf1fa76b5078ee94e5a1b5fe251e76c1d6abb1484a2da21bdda45504e91744c",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:22:40.448Z"
+        },
+        {
+          "pageId": "eval-14-p5",
+          "url": "https://www.adafruit.com/product/5396",
+          "finalUrl": "https://www.adafruit.com/product/5396",
+          "sha256": "de66e7fcc2a5a576c8c70f660b88f58585b0773d190d307783f15fc0cd025762",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:22:52.503Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-15",
+      "host": "discourse.jupyter.org",
+      "category": "Discussion",
+      "oldSite": "additional-13",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-15-p1",
+          "url": "https://discourse.jupyter.org/t/jupyterhub-on-k8s-500-internal-server-error-redirect-loop-detected-notebook-has-jupyterhub-version-unknown-likely-0-8-but-the-hub-expects-4-1-5-try-installing-jupyterhub-4-1-5-in-the-user-environment-if-you-continue-to-have-problems/38192",
+          "finalUrl": "https://discourse.jupyter.org/t/jupyterhub-on-k8s-500-internal-server-error-redirect-loop-detected-notebook-has-jupyterhub-version-unknown-likely-0-8-but-the-hub-expects-4-1-5-try-installing-jupyterhub-4-1-5-in-the-user-environment-if-you-continue-to-have-problems/38192",
+          "sha256": "d9e694846b4836c2ae9fb47aa9c7d412163d2467a671f220401fa36a1ea4fdb5",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:23:15.904Z"
+        },
+        {
+          "pageId": "eval-15-p2",
+          "url": "https://discourse.jupyter.org/t/q-values-set-in-authenticator-post-auth-hook-are-not-available-in-spawner-auth-state-hook-when-using-azureadoauthenticator/38501",
+          "finalUrl": "https://discourse.jupyter.org/t/q-values-set-in-authenticator-post-auth-hook-are-not-available-in-spawner-auth-state-hook-when-using-azureadoauthenticator/38501",
+          "sha256": "5852198aee10d184e0778591b0d20515258f801ca4b81ba470992ce14c82725e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:23:38.973Z"
+        },
+        {
+          "pageId": "eval-15-p3",
+          "url": "https://discourse.jupyter.org/t/jupyterhub-on-k8s-not-running-redirect-loop-detected-500-internal-server-error/8197",
+          "finalUrl": "https://discourse.jupyter.org/t/jupyterhub-on-k8s-not-running-redirect-loop-detected-500-internal-server-error/8197",
+          "sha256": "89fc3c2d5604fd8a97f09bf449298106f4514271578f680ff90f9c1e64030024",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:24:01.304Z"
+        },
+        {
+          "pageId": "eval-15-p4",
+          "url": "https://discourse.jupyter.org/t/jupyterhub-stuck-after-the-first-login-on-kubernetes-with-nginx-ingress-controller/10336",
+          "finalUrl": "https://discourse.jupyter.org/t/jupyterhub-stuck-after-the-first-login-on-kubernetes-with-nginx-ingress-controller/10336",
+          "sha256": "588a1533736b15f17b9f1046f3bea89bb4f5a12f0a707613761c82fd395a8384",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:24:25.817Z"
+        },
+        {
+          "pageId": "eval-15-p5",
+          "url": "https://discourse.jupyter.org/t/jupyterhub-notebook-500-internal-server-error-redirect-loop-detected/30108",
+          "finalUrl": "https://discourse.jupyter.org/t/jupyterhub-notebook-500-internal-server-error-redirect-loop-detected/30108",
+          "sha256": "64c87f750920ef0f37607b2d02936d5beffb6597d786f70b54054cc469731539",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:24:34.655Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-16",
+      "host": "discuss.ocaml.org",
+      "category": "Discussion",
+      "oldSite": "additional-15",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-16-p1",
+          "url": "https://discuss.ocaml.org/t/parameter-sdl-createtexturefromsurface-surface-is-invalid-issue-with-a-successfully-created-surface-from-tsdl-image/18615",
+          "finalUrl": "https://discuss.ocaml.org/t/parameter-sdl-createtexturefromsurface-surface-is-invalid-issue-with-a-successfully-created-surface-from-tsdl-image/18615",
+          "sha256": "7919bb0d4cc66cb6a6fb126fcb7da2037081fd6dbd597b57030e39d12387355e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:24:44.221Z"
+        },
+        {
+          "pageId": "eval-16-p2",
+          "url": "https://discuss.ocaml.org/t/https-ocaml-org-p-ocaml-latest-versions-seems-to-have-wrong-misleading-release-dates/17791",
+          "finalUrl": "https://discuss.ocaml.org/t/https-ocaml-org-p-ocaml-latest-versions-seems-to-have-wrong-misleading-release-dates/17791",
+          "sha256": "bb4c3634d7a19710bf6909bec75c3bc89853016947a6d44f80fe40a84e203f6c",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:24:53.933Z"
+        },
+        {
+          "pageId": "eval-16-p3",
+          "url": "https://discuss.ocaml.org/t/tsdl-api-confusion-how-do-i-get-pixel-format-from-pixel-format-enum-or-from-a-surface/4260",
+          "finalUrl": "https://discuss.ocaml.org/t/tsdl-api-confusion-how-do-i-get-pixel-format-from-pixel-format-enum-or-from-a-surface/4260",
+          "sha256": "553e5bf2e722918b008b91169dcb5c96c1d9b9564833bae16fdbcd9d2d8ec4d0",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:25:03.176Z"
+        },
+        {
+          "pageId": "eval-16-p4",
+          "url": "https://discuss.ocaml.org/t/graphics-and-event-management-for-a-retro-gaming-project/6915",
+          "finalUrl": "https://discuss.ocaml.org/t/graphics-and-event-management-for-a-retro-gaming-project/6915",
+          "sha256": "3f7cd39316af700f133f7d2f7bb6e9dbd122c11ea6254cda1d28e12e85654465",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:25:12.696Z"
+        },
+        {
+          "pageId": "eval-16-p5",
+          "url": "https://discuss.ocaml.org/t/does-anybody-have-tsdl-working-on-mingw64/9415",
+          "finalUrl": "https://discuss.ocaml.org/t/does-anybody-have-tsdl-working-on-mingw64/9415",
+          "sha256": "b9041727f2c099e2f074fff1d12ead00fdfe6a6a604556867b75034c5f286c99",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:25:22.138Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-17",
+      "host": "forum.posit.co",
+      "category": "Discussion",
+      "oldSite": "additional-14",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-17-p1",
+          "url": "https://forum.posit.co/t/unable-to-deploy-r-based-shiny-app-to-posit-connect-cloud-possibly-because-a-required-package-is-a-private-github-repo/217546",
+          "finalUrl": "https://forum.posit.co/t/unable-to-deploy-r-based-shiny-app-to-posit-connect-cloud-possibly-because-a-required-package-is-a-private-github-repo/217546",
+          "sha256": "5cd777a5757b7f5bdac367e9465367a8bdbd949a1abdd9feda929391abb4b369",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:25:45.699Z"
+        },
+        {
+          "pageId": "eval-17-p2",
+          "url": "https://forum.posit.co/t/tidyverse-2-0-0-causes-segmentation-faults-when-publishing-shiny-apps-to-shinyapps-io-or-posit-connect-cloud/216835",
+          "finalUrl": "https://forum.posit.co/t/tidyverse-2-0-0-causes-segmentation-faults-when-publishing-shiny-apps-to-shinyapps-io-or-posit-connect-cloud/216835",
+          "sha256": "f73bc24ff0f4deebb893b9c102b5f38c46ced1d08acc563356d91739bf5d68b0",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:26:10.839Z"
+        },
+        {
+          "pageId": "eval-17-p3",
+          "url": "https://forum.posit.co/t/deployment-fails-on-shinyapps-io-because-of-terra/214331",
+          "finalUrl": "https://forum.posit.co/t/deployment-fails-on-shinyapps-io-because-of-terra/214331",
+          "sha256": "6405924e05e80ec9ddfa429380150db57dad154ea2d0e66734295776d1152077",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:26:36.868Z"
+        },
+        {
+          "pageId": "eval-17-p4",
+          "url": "https://forum.posit.co/t/dt-impromptu-scrolling-when-setting-filters/217151",
+          "finalUrl": "https://forum.posit.co/t/dt-impromptu-scrolling-when-setting-filters/217151",
+          "sha256": "eb7b3031980ff7bdad97974fc8b1edeab00b56c44d7fa16fdb14aadaa06cc466",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:27:00.358Z"
+        },
+        {
+          "pageId": "eval-17-p5",
+          "url": "https://forum.posit.co/t/is-there-another-way-to-paginate-through-an-ioslide-presentation-besides-the-arrow-keys/217501",
+          "finalUrl": "https://forum.posit.co/t/is-there-another-way-to-paginate-through-an-ioslide-presentation-besides-the-arrow-keys/217501",
+          "sha256": "bd469c4c363e15d3fa781dc8c510f4c63c99d3b9680dece9586da0df906e15f4",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:15:32.735Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-18",
+      "host": "sparkfun.com",
+      "category": "Commerce",
+      "oldSite": "additional-16",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-18-p1",
+          "url": "https://sparkfun.com/sparkfun-thing-plus-esp32-wroom-usb-c.html",
+          "finalUrl": "https://www.sparkfun.com/sparkfun-thing-plus-esp32-wroom-usb-c.html",
+          "sha256": "df87b5f8793a58e8ea84cb802ab2e4594fa5e3142a5d388abc771a6968d619df",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:27:34.019Z"
+        },
+        {
+          "pageId": "eval-18-p2",
+          "url": "https://sparkfun.com/sparkfun-redboard-plus.html",
+          "finalUrl": "https://www.sparkfun.com/sparkfun-redboard-plus.html",
+          "sha256": "b6b3a7e966e429bdaa34e1605ac5f3c54d675756f9f8fc70c2761102006255ba",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:27:44.279Z"
+        },
+        {
+          "pageId": "eval-18-p3",
+          "url": "https://www.sparkfun.com/sparkfun-iot-redboard-esp32-micropython-development-board.html",
+          "finalUrl": "https://www.sparkfun.com/sparkfun-iot-redboard-esp32-micropython-development-board.html",
+          "sha256": "12730b7c3f6048e73878abdeaa9522704d6e484551f56a87c33b6d670605bded",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:55:20.510Z"
+        },
+        {
+          "pageId": "eval-18-p4",
+          "url": "https://www.sparkfun.com/sparkfun-micro-proximity-sensor-20cm-vcnl4040-qwiic.html",
+          "finalUrl": "https://www.sparkfun.com/sparkfun-micro-proximity-sensor-20cm-vcnl4040-qwiic.html",
+          "sha256": "49643d8b82080fd1869785ef1e2c3eef51e33e2bb02003e08680c37bdada47f2",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:55:33.230Z"
+        },
+        {
+          "pageId": "eval-18-p5",
+          "url": "https://www.sparkfun.com/sparkfun-iot-redboard-esp32-p4-esp32-c5-wifi-ble.html",
+          "finalUrl": "https://www.sparkfun.com/sparkfun-iot-redboard-esp32-p4-esp32-c5-wifi-ble.html",
+          "sha256": "8f76a713cdc621615d89a07b51ed7052a30021268695ee55314216167a6f4878",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:55:46.203Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-19",
+      "host": "pololu.com",
+      "category": "Commerce",
+      "oldSite": "additional-18",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-19-p1",
+          "url": "https://pololu.com/product/2135",
+          "finalUrl": "https://www.pololu.com/product/2135",
+          "sha256": "7f6672e28e2eed5cf70690e2989ae077e7f29319442394da3497ecb94ddad1e0",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:27:55.073Z"
+        },
+        {
+          "pageId": "eval-19-p2",
+          "url": "https://pololu.com/product/3768",
+          "finalUrl": "https://www.pololu.com/product/3768",
+          "sha256": "fa132124242853e69fe8ff658d92277e3e7b53d7f697d4fc6744d8de6446bc65",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:28:03.864Z"
+        },
+        {
+          "pageId": "eval-19-p3",
+          "url": "https://www.pololu.com/product/1207",
+          "finalUrl": "https://www.pololu.com/product/1207",
+          "sha256": "ace0b9505a66f75ec6f843f1c4793f6b53a9b217564400ff162cd8992be4bbd3",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:55:54.423Z"
+        },
+        {
+          "pageId": "eval-19-p4",
+          "url": "https://www.pololu.com/product/1683",
+          "finalUrl": "https://www.pololu.com/product/1683",
+          "sha256": "495958b8d111e50f0435315dcd17a841ca9bbb0cc7d57791fbe7f1b2e4f4c100",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:56:01.721Z"
+        },
+        {
+          "pageId": "eval-19-p5",
+          "url": "https://www.pololu.com/product/1117",
+          "finalUrl": "https://www.pololu.com/product/1117",
+          "sha256": "4e36ee2353d3bfc9606ba479c9b88334343391a17bd8af902bd79f1cd545f8ec",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:56:12.879Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-20",
+      "host": "www.nasa.gov",
+      "category": "Government/public information",
+      "oldSite": "original-05",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-20-p1",
+          "url": "https://www.nasa.gov/humans-in-space/astronauts/la-nasa-refuerza-artemis-anade-una-mision-y-perfecciona-su-arquitectura-general/",
+          "finalUrl": "https://www.nasa.gov/humans-in-space/astronauts/la-nasa-refuerza-artemis-anade-una-mision-y-perfecciona-su-arquitectura-general/",
+          "sha256": "f2ac47ac501d7cb500d3085a8a08fc8ff986b885df1f19c7cf99e5b20c28fdcd",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:28:14.944Z"
+        },
+        {
+          "pageId": "eval-20-p2",
+          "url": "https://www.nasa.gov/missions/moon-base/nasa-jpl-testing-readies-voyager-technologies-lander-for-moon-mission/",
+          "finalUrl": "https://www.nasa.gov/missions/moon-base/nasa-jpl-testing-readies-voyager-technologies-lander-for-moon-mission/",
+          "sha256": "3be26647ea9aae2c94414166fd495be1007f4cb480780f0b99b6ea8d442ee536",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:28:29.749Z"
+        },
+        {
+          "pageId": "eval-20-p3",
+          "url": "https://www.nasa.gov/humans-in-space/becoming-an-astronaut-frequently-asked-questions/",
+          "finalUrl": "https://www.nasa.gov/humans-in-space/becoming-an-astronaut-frequently-asked-questions/",
+          "sha256": "52e0102bd8b239742a9225ba8359c4b5612e09eb2017910e875da6d29f83649f",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:28:43.319Z"
+        },
+        {
+          "pageId": "eval-20-p4",
+          "url": "https://www.nasa.gov/humans-in-space/astronaut-selection-timeline/",
+          "finalUrl": "https://www.nasa.gov/humans-in-space/astronaut-selection-timeline/",
+          "sha256": "5b78c7d6781c15f8e0be97ec86f12938117651c69862baca1359e55ba3b41be6",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:28:52.598Z"
+        },
+        {
+          "pageId": "eval-20-p5",
+          "url": "https://www.nasa.gov/humans-in-space/spaceships-and-rockets/",
+          "finalUrl": "https://www.nasa.gov/humans-in-space/spaceships-and-rockets/",
+          "sha256": "ab25b3874e5490642309727b0ee9a9300c3e51537d0b1e1cc706b989fda3e028",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:29:08.700Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-21",
+      "host": "www.quantamagazine.org",
+      "category": "News",
+      "oldSite": "additional-05",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-21-p1",
+          "url": "https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/",
+          "finalUrl": "https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/",
+          "sha256": "f2fcb027937889d1ddf4092d8d4bd353c52b5a094abc8155cf1fa82b63de6c41",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:29:20.164Z"
+        },
+        {
+          "pageId": "eval-21-p2",
+          "url": "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/",
+          "finalUrl": "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/",
+          "sha256": "aeabf281bcbf024303066dfa6d40150413c90d6ffcdb6f9653b729e74da44d15",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:29:30.759Z"
+        },
+        {
+          "pageId": "eval-21-p3",
+          "url": "https://www.quantamagazine.org/mathematicians-find-hidden-structure-in-a-common-type-of-space-20230412/",
+          "finalUrl": "https://www.quantamagazine.org/mathematicians-find-hidden-structure-in-a-common-type-of-space-20230412/",
+          "sha256": "909152743c7a82fb0bfa9e897439f8c77383e6447f08d09e3de25277bc45826e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:56:25.634Z"
+        },
+        {
+          "pageId": "eval-21-p4",
+          "url": "https://www.quantamagazine.org/how-m-c-eschers-art-creates-bizarre-mathematical-worlds-20261118/",
+          "finalUrl": "https://www.quantamagazine.org/how-m-c-eschers-art-creates-bizarre-mathematical-worlds-20261118/",
+          "sha256": "997b6257630da109936aef09030c336f17cf958aedb041d86969501c31a8636e",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:56:38.024Z"
+        },
+        {
+          "pageId": "eval-21-p5",
+          "url": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/",
+          "finalUrl": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/",
+          "sha256": "fa96fa7ad83b326172fc244a34c06efaf3207a006bdbeaa57e85fb012116e2a5",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:56:49.012Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-22",
+      "host": "theconversation.com",
+      "category": "News",
+      "oldSite": "additional-06",
+      "previouslyEvaluatedSite": true,
+      "pages": [
+        {
+          "pageId": "eval-22-p1",
+          "url": "https://theconversation.com/do-you-think-teachers-are-similar-to-coaches-pastors-or-something-else-it-depends-on-where-you-live-294029",
+          "finalUrl": "https://theconversation.com/do-you-think-teachers-are-similar-to-coaches-pastors-or-something-else-it-depends-on-where-you-live-294029",
+          "sha256": "2500df177d8d7696e32a5eff2e27e16515760b94aa6b309d74d3cab0d77ad566",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:29:38.483Z"
+        },
+        {
+          "pageId": "eval-22-p2",
+          "url": "https://theconversation.com/polytechnic-universities-focus-on-practical-career-oriented-skills-offering-an-alternative-to-traditional-universities-268349",
+          "finalUrl": "https://theconversation.com/polytechnic-universities-focus-on-practical-career-oriented-skills-offering-an-alternative-to-traditional-universities-268349",
+          "sha256": "ac3515c535ed68c1077a37895f6a92011eeb4c22c43b7d117e4f63fb092c9689",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:29:46.258Z"
+        },
+        {
+          "pageId": "eval-22-p3",
+          "url": "https://theconversation.com/more-and-more-teachers-and-students-are-using-ai-even-though-it-might-do-more-harm-than-good-275650",
+          "finalUrl": "https://theconversation.com/more-and-more-teachers-and-students-are-using-ai-even-though-it-might-do-more-harm-than-good-275650",
+          "sha256": "9dbabc46a05c55f998c6f12919febcf9beaa471066db3a0b8e4fea809e059ba8",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:56:57.141Z"
+        },
+        {
+          "pageId": "eval-22-p4",
+          "url": "https://theconversation.com/colleges-face-a-choice-try-to-shape-ais-impact-on-learning-or-be-redefined-by-it-275653",
+          "finalUrl": "https://theconversation.com/colleges-face-a-choice-try-to-shape-ais-impact-on-learning-or-be-redefined-by-it-275653",
+          "sha256": "5708fdc19a5e9e36e996f543d0cca27b3dceeee46285487b3acbc70678e0c38d",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:57:04.968Z"
+        },
+        {
+          "pageId": "eval-22-p5",
+          "url": "https://theconversation.com/despite-the-growth-of-some-ai-schools-like-alpha-research-doesnt-show-that-ai-tutors-are-better-than-human-teachers-281290",
+          "finalUrl": "https://theconversation.com/despite-the-growth-of-some-ai-schools-like-alpha-research-doesnt-show-that-ai-tutors-are-better-than-human-teachers-281290",
+          "sha256": "43612ab9c11d641e7d8fc06c70d9fe9870feabc95d438a25a58fa98a05055777",
+          "flags": {
+            "previouslyEvaluatedSite": true,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:57:12.645Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-23",
+      "host": "store.arduino.cc",
+      "category": "Product pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-23-p1",
+          "url": "https://store.arduino.cc/products/uno-r4-wifi",
+          "finalUrl": "https://store.arduino.cc/products/uno-r4-wifi",
+          "sha256": "07932dc0b17847093b5398f671bd0a52f993ffa2d35fb8cd9a6147c6641bcfed",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:30:11.323Z"
+        },
+        {
+          "pageId": "eval-23-p2",
+          "url": "https://store.arduino.cc/products/iq-9075-evaluation-kit-evk",
+          "finalUrl": "https://store.arduino.cc/products/iq-9075-evaluation-kit-evk",
+          "sha256": "ccf553d95a293a72f1da2e33d953293a493b63316f8bb36e6ea83b270a11fd79",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:30:32.288Z"
+        },
+        {
+          "pageId": "eval-23-p3",
+          "url": "https://store.arduino.cc/products/iq-8275-evaluation-kit-evk",
+          "finalUrl": "https://store.arduino.cc/products/iq-8275-evaluation-kit-evk",
+          "sha256": "f586b0a225103a1be76661bffcf4fd9f1b88954f87ab0ff9b96eda2731339874",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:30:52.720Z"
+        },
+        {
+          "pageId": "eval-23-p4",
+          "url": "https://store.arduino.cc/products/portenta-proto-kit-ve",
+          "finalUrl": "https://store.arduino.cc/products/portenta-proto-kit-ve",
+          "sha256": "71bbbec534a7fbf2dad5ecbc7b3419023ccda3783c22b62aed8f3a450df7b4a6",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:31:17.945Z"
+        },
+        {
+          "pageId": "eval-23-p5",
+          "url": "https://store.arduino.cc/products/plug-and-make-kit",
+          "finalUrl": "https://store.arduino.cc/products/plug-and-make-kit",
+          "sha256": "7f49f124280e5493eac08ec53a633f2383c0c526730115daccba4de6002129b1",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:31:38.113Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-24",
+      "host": "shop.pimoroni.com",
+      "category": "Product pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-24-p1",
+          "url": "https://shop.pimoroni.com/products/raspberry-pi-5",
+          "finalUrl": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-5?variant=55956625195387",
+          "sha256": "a21b4ea031b5b46269265bec3616d34636c169e1384ffcd289b69a83aa22baaf",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:16:02.884Z"
+        },
+        {
+          "pageId": "eval-24-p2",
+          "url": "https://shop.pimoroni.com/en-ca/products/generic-microsd-card-with-raspberry-pi-os",
+          "finalUrl": "https://shop.pimoroni.com/en-ca/products/generic-microsd-card-with-raspberry-pi-os?variant=56248705810811",
+          "sha256": "18ad39e02f713644b0a5e0d191573ac28b1e3d04d9981151a17281c5913126cd",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:16:25.395Z"
+        },
+        {
+          "pageId": "eval-24-p3",
+          "url": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-5-active-cooler",
+          "finalUrl": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-5-active-cooler?variant=41044554580051",
+          "sha256": "9afc92def8168c5da4b869ebc7c2a3455c1bb2afe53161fcd7e2434279fd8377",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:16:47.564Z"
+        },
+        {
+          "pageId": "eval-24-p4",
+          "url": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-5-official-case",
+          "finalUrl": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-5-official-case?variant=41044517191763",
+          "sha256": "c039ebe4941cdbae432df1638aa87a499247f1cba8c8afabfbb87abfda3446ed",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:17:10.215Z"
+        },
+        {
+          "pageId": "eval-24-p5",
+          "url": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-27w-usb-c-power-supply",
+          "finalUrl": "https://shop.pimoroni.com/en-ca/products/raspberry-pi-27w-usb-c-power-supply?variant=41120802013267",
+          "sha256": "333a63cd63c0725de049cc85b3550386b6d8dd6b701ffd5672c896315d8766c0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:17:32.478Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-25",
+      "host": "www.logitech.com",
+      "category": "Product pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-25-p1",
+          "url": "https://www.logitech.com/en-ca/products/mice/mx-master-3s.html",
+          "finalUrl": "https://www.logitech.com/en-ca/shop/p/mx-master-3s.910-007500",
+          "sha256": "4090e1dafb64e6c62a389c0fe969e550a68141c3fbd8f338fb1bf9eb7c2656be",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:59:02.053Z"
+        },
+        {
+          "pageId": "eval-25-p2",
+          "url": "https://www.logitech.com/en-ca/products/mice/mx-anywhere-3s.html",
+          "finalUrl": "https://www.logitech.com/en-ca/shop/p/mx-anywhere-3s.910-006927",
+          "sha256": "bb01a47150c2a6b7139ec4fc6b4448d917db9dc7690ddc67e242c6ac1f0a048f",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:59:20.084Z"
+        },
+        {
+          "pageId": "eval-25-p3",
+          "url": "https://www.logitech.com/en-ca/products/mice/lift-vertical-ergonomic-mouse.html",
+          "finalUrl": "https://www.logitech.com/en-ca/shop/p/lift-vertical-ergonomic-mouse.910-006472",
+          "sha256": "f3c463467a2a6808583ae031e44d1ad2bfc9f1069b095931563955192d695cf1",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:59:38.782Z"
+        },
+        {
+          "pageId": "eval-25-p4",
+          "url": "https://www.logitech.com/en-ca/products/keyboards/mx-keys-s.html",
+          "finalUrl": "https://www.logitech.com/en-ca/shop/p/mx-keys-s.920-011406",
+          "sha256": "ff56c0b09931bab36edd04dec694c76013d920c55f9518b91be5e02b42ed855b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:00:06.322Z"
+        },
+        {
+          "pageId": "eval-25-p5",
+          "url": "https://www.logitech.com/en-ca/products/keyboards/mx-mechanical.html",
+          "finalUrl": "https://www.logitech.com/en-ca/shop/p/mx-mechanical",
+          "sha256": "e7352a4bce5b5748a89d20a028e53657b58730df2056327b0693be527b71ffad",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:00:33.933Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-26",
+      "host": "www.razer.com",
+      "category": "Product pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-26-p1",
+          "url": "https://www.razer.com/gaming-mice/razer-deathadder-v3-pro",
+          "finalUrl": "https://www.razer.com/gaming-mice/razer-deathadder-v3-pro",
+          "sha256": "91831e2f5af716814ca9a3dc611fd0281ce75c288968d797644f858978e27f6b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:18:10.050Z"
+        },
+        {
+          "pageId": "eval-26-p2",
+          "url": "https://www.razer.com/gaming-mice/razer-viper-v3-pro",
+          "finalUrl": "https://www.razer.com/gaming-mice/razer-viper-v3-pro",
+          "sha256": "bb6970263e81e19edaea39be274a66ffd5a1e9cfb46332554a0acebf46bb3f16",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:18:50.208Z"
+        },
+        {
+          "pageId": "eval-26-p3",
+          "url": "https://www.razer.com/gaming-mice/razer-basilisk-v3-pro",
+          "finalUrl": "https://www.razer.com/gaming-mice/razer-basilisk-v3-pro",
+          "sha256": "a76e4460f6510c065c3d43f3e10f8f4339d491490edc1999079b593e6eea085b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:19:34.750Z"
+        },
+        {
+          "pageId": "eval-26-p4",
+          "url": "https://www.razer.com/gaming-mice/razer-cobra-pro",
+          "finalUrl": "https://www.razer.com/gaming-mice/razer-cobra-pro",
+          "sha256": "56c6cb09b09216c3689ea8962c49b837fd2f2ed80e707dd222ebf53af75912c4",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:20:14.359Z"
+        },
+        {
+          "pageId": "eval-26-p5",
+          "url": "https://www.razer.com/gaming-mice/razer-orochi-v2",
+          "finalUrl": "https://www.razer.com/gaming-mice/razer-orochi-v2",
+          "sha256": "d08ea3301452d5a116f76d721bd5bab66937221f041230548deb4e5d5e7c49e0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:20:48.748Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-27",
+      "host": "community.home-assistant.io",
+      "category": "Forum/Q&A threads",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-27-p1",
+          "url": "https://community.home-assistant.io/t/daylight-calendar-import-turn-emails-flyers-and-screenshots-into-home-assistant-calendar-events-with-ai/1034746",
+          "finalUrl": "https://community.home-assistant.io/t/daylight-calendar-import-turn-emails-flyers-and-screenshots-into-home-assistant-calendar-events-with-ai/1034746",
+          "sha256": "9aca0a0af67d1c751a31c8bef3a1686c60aa1ab42c4dff0f5f7cfaecea6efce4",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:01:19.323Z"
+        },
+        {
+          "pageId": "eval-27-p2",
+          "url": "https://community.home-assistant.io/t/cap-alerts-an-event-driven-approach-to-severe-weather-and-hazard-alerts-v0-8-1/1012328",
+          "finalUrl": "https://community.home-assistant.io/t/cap-alerts-an-event-driven-approach-to-severe-weather-and-hazard-alerts-v0-8-1/1012328",
+          "sha256": "fbe1ca42dd078849ba0dd8e5b2c9a6ca2c0f0afc68c47cbbcd5118d4d6dd0186",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:01:46.530Z"
+        },
+        {
+          "pageId": "eval-27-p3",
+          "url": "https://community.home-assistant.io/t/custom-integration-homedeck-a-dashboard-that-builds-itself-from-your-areas-4-layouts-iphone-style-edit-mode/1032025",
+          "finalUrl": "https://community.home-assistant.io/t/custom-integration-homedeck-a-dashboard-that-builds-itself-from-your-areas-4-layouts-iphone-style-edit-mode/1032025",
+          "sha256": "bcdfe490d9e3b6814f13ae0e3632bce9ef30bab07d5fd78a57178816a31f3284",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:02:12.231Z"
+        },
+        {
+          "pageId": "eval-27-p4",
+          "url": "https://community.home-assistant.io/t/homenodes-all-your-automations-as-a-live-node-graph-made-it-for-myself-sharing-in-case-it-s-useful/1035626",
+          "finalUrl": "https://community.home-assistant.io/t/homenodes-all-your-automations-as-a-live-node-graph-made-it-for-myself-sharing-in-case-it-s-useful/1035626",
+          "sha256": "c4881251263d05d0fec957e55f6bf341edf5cf4783fc865bd3d66e967b351dda",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:02:34.073Z"
+        },
+        {
+          "pageId": "eval-27-p5",
+          "url": "https://community.home-assistant.io/t/offline-device-alert-one-message-listing-every-device-thats-been-unavailable-too-long/1035698",
+          "finalUrl": "https://community.home-assistant.io/t/offline-device-alert-one-message-listing-every-device-thats-been-unavailable-too-long/1035698",
+          "sha256": "99d5d12bba381a95b20091e7884985ee90f947dc108e264c28f340044ac88f21",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:02:55.578Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-28",
+      "host": "discuss.python.org",
+      "category": "Forum/Q&A threads",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-28-p1",
+          "url": "https://discuss.python.org/t/review-request-for-pr-128309-use-explicit-exception-when-shutil-copytree-should-group-exceptions/110213",
+          "finalUrl": "https://discuss.python.org/t/review-request-for-pr-128309-use-explicit-exception-when-shutil-copytree-should-group-exceptions/110213",
+          "sha256": "265c8aa1abea2b72d750c56a653696c462c65c7bd6a4793f7406a02751314b45",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:34:42.364Z"
+        },
+        {
+          "pageId": "eval-28-p2",
+          "url": "https://discuss.python.org/t/how-do-i-correctly-invalidate-all-references-to-a-dynamically-created-module-package-that-no-longer-exists/110203",
+          "finalUrl": "https://discuss.python.org/t/how-do-i-correctly-invalidate-all-references-to-a-dynamically-created-module-package-that-no-longer-exists/110203",
+          "sha256": "18ef2370f09ab057e9cf934521713cbfd12947f7bb0af23becce89580f8126d0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:35:04.315Z"
+        },
+        {
+          "pageId": "eval-28-p3",
+          "url": "https://discuss.python.org/t/does-anyone-have-a-hard-dependency-on-pyio-proposing-pep-399-exception/110202",
+          "finalUrl": "https://discuss.python.org/t/does-anyone-have-a-hard-dependency-on-pyio-proposing-pep-399-exception/110202",
+          "sha256": "dcb5dcedac088e0e35f72d4295560b74815938cae27947a2d3098f7b3750474b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:35:25.773Z"
+        },
+        {
+          "pageId": "eval-28-p4",
+          "url": "https://discuss.python.org/t/an-announcement-from-the-steering-council-regarding-the-jit-project/107638",
+          "finalUrl": "https://discuss.python.org/t/an-announcement-from-the-steering-council-regarding-the-jit-project/107638",
+          "sha256": "9056620b001c98b67ca81de2d5bdea6ea1d7a9c0bf26a79f8065e2f66f15f84c",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:35:49.206Z"
+        },
+        {
+          "pageId": "eval-28-p5",
+          "url": "https://discuss.python.org/t/pythonic-getting-and-setting-for-externaly-configurable-attributes/110187",
+          "finalUrl": "https://discuss.python.org/t/pythonic-getting-and-setting-for-externaly-configurable-attributes/110187",
+          "sha256": "e11b816052a39a8d9226adb27b2989edd5544293d881aded4ce17df185af7f44",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:36:11.231Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-29",
+      "host": "forum.arduino.cc",
+      "category": "Forum/Q&A threads",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-29-p1",
+          "url": "https://forum.arduino.cc/t/esp32-s3-touch-lcd-7-glitching-shifted-picture-only-when-wifi-is-active-cause-and-fix/1468572",
+          "finalUrl": "https://forum.arduino.cc/t/esp32-s3-touch-lcd-7-glitching-shifted-picture-only-when-wifi-is-active-cause-and-fix/1468572",
+          "sha256": "35c3fa228bce320ee85a89695dce69d7bb54f914d6afba96de089f74c0e42858",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:36:53.112Z"
+        },
+        {
+          "pageId": "eval-29-p2",
+          "url": "https://forum.arduino.cc/t/i-need-help-with-my-studuino-coding-i-need-my-robot-to-follow-a-thick-black-line/1468410",
+          "finalUrl": "https://forum.arduino.cc/t/i-need-help-with-my-studuino-coding-i-need-my-robot-to-follow-a-thick-black-line/1468410",
+          "sha256": "b966a9efa884da9e9e1d4a46acd018ca5e0fc2b2f5a33a235e307588fd2b0471",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:37:16.263Z"
+        },
+        {
+          "pageId": "eval-29-p3",
+          "url": "https://forum.arduino.cc/t/help-please-built-in-led-turns-off-spuriously-and-strange-interrupt-behaviour/1468245",
+          "finalUrl": "https://forum.arduino.cc/t/help-please-built-in-led-turns-off-spuriously-and-strange-interrupt-behaviour/1468245",
+          "sha256": "b44b7f7372808688fa311eb4cfdfa823de5baa0aa62571a2b5d26546afcf3779",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:37:40.431Z"
+        },
+        {
+          "pageId": "eval-29-p4",
+          "url": "https://forum.arduino.cc/t/how-to-wire-sn75176-correctly-for-transmitting-dmx-using-dmxsimple-library/1468529",
+          "finalUrl": "https://forum.arduino.cc/t/how-to-wire-sn75176-correctly-for-transmitting-dmx-using-dmxsimple-library/1468529",
+          "sha256": "7354bfa26be018d6d9b5a987dc8c298607c8ca6d3e61ed8df594b42f35830937",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:38:03.103Z"
+        },
+        {
+          "pageId": "eval-29-p5",
+          "url": "https://forum.arduino.cc/t/rpi-imx219-v2-noir-cameras-connected-to-the-mipi-csi-ports-wlan-problems/1468548",
+          "finalUrl": "https://forum.arduino.cc/t/rpi-imx219-v2-noir-cameras-connected-to-the-mipi-csi-ports-wlan-problems/1468548",
+          "sha256": "5f4f1b5eb3acfdd9ea63f253030c57d7400755fe2fb4ea6b488d3ce7e0b183bd",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:38:25.927Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-30",
+      "host": "www.legislation.gov.uk",
+      "category": "Listing/category pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-30-p1",
+          "url": "https://www.legislation.gov.uk/uksi/2025",
+          "finalUrl": "https://www.legislation.gov.uk/uksi/2025",
+          "sha256": "563aa8cafec0096faf287777a9fff0c472d98cfaa7ff9ecebd86c8e2629d16f9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:03:43.647Z"
+        },
+        {
+          "pageId": "eval-30-p2",
+          "url": "https://www.legislation.gov.uk/uksi/2024",
+          "finalUrl": "https://www.legislation.gov.uk/uksi/2024",
+          "sha256": "a8986d9c25dd966bfbb82abdf52aaadb50536020dbd42408075a60065e517603",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:03:51.090Z"
+        },
+        {
+          "pageId": "eval-30-p3",
+          "url": "https://www.legislation.gov.uk/uksi/2023",
+          "finalUrl": "https://www.legislation.gov.uk/uksi/2023",
+          "sha256": "2f4fc1911339bf3f5405daa16303fbf3619e20105284c3d16fbed360bab9fae8",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:03:59.117Z"
+        },
+        {
+          "pageId": "eval-30-p4",
+          "url": "https://www.legislation.gov.uk/uksi/2022",
+          "finalUrl": "https://www.legislation.gov.uk/uksi/2022",
+          "sha256": "9c53c53c284df7051123eccba968ec898929dc52f3167e99300343dba58517fc",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:04:07.004Z"
+        },
+        {
+          "pageId": "eval-30-p5",
+          "url": "https://www.legislation.gov.uk/uksi/2021",
+          "finalUrl": "https://www.legislation.gov.uk/uksi/2021",
+          "sha256": "2d76fd0143a9174bf9ec515d8de1fe064b3053b4c55fe2fa7788484596d29583",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:04:14.572Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-31",
+      "host": "www.nps.gov",
+      "category": "Listing/category pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-31-p1",
+          "url": "https://www.nps.gov/subjects/camping/index.htm",
+          "finalUrl": "https://www.nps.gov/subjects/camping/index.htm",
+          "sha256": "15e2af906187260e3e23ebe362f4956eec41c8371fb5abe01227bb1432f9ce5c",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:35:37.439Z"
+        },
+        {
+          "pageId": "eval-31-p2",
+          "url": "https://www.nps.gov/subjects/volunteer/index.htm",
+          "finalUrl": "https://www.nps.gov/subjects/volunteer/index.htm",
+          "sha256": "f38bc517d46114137162bec4ed5aacd4df07966493abd88b13fe79707abc98eb",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:35:55.432Z"
+        },
+        {
+          "pageId": "eval-31-p3",
+          "url": "https://www.nps.gov/subjects/air/index.htm",
+          "finalUrl": "https://www.nps.gov/subjects/air/index.htm",
+          "sha256": "a21c54f0e14a0064665801eea935f51b7894dfd6d7bfa9f65465244b152f9697",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:36:06.836Z"
+        },
+        {
+          "pageId": "eval-31-p4",
+          "url": "https://www.nps.gov/subjects/geology/index.htm",
+          "finalUrl": "https://www.nps.gov/subjects/geology/index.htm",
+          "sha256": "8869b95b9d4aba83e76f231925a1ef29f5be1d43bc430fe422cde106fb777f0e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:50:01.072Z"
+        },
+        {
+          "pageId": "eval-31-p5",
+          "url": "https://www.nps.gov/subjects/climatechange/index.htm",
+          "finalUrl": "https://www.nps.gov/subjects/climatechange/index.htm",
+          "sha256": "0a5e59f84865d578518ae3f822bac14892867591b22b9c5124719e9600e7630e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T05:50:12.689Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-32",
+      "host": "docs.djangoproject.com",
+      "category": "Documentation with sidebars or tabs",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-32-p1",
+          "url": "https://docs.djangoproject.com/en/stable/intro/tutorial01/",
+          "finalUrl": "https://docs.djangoproject.com/en/6.1/intro/tutorial01/",
+          "sha256": "3eb88276f6ef15e7387bda550ca14c555b1b2a7e708cf79ad1368fec3658738d",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:38:40.224Z"
+        },
+        {
+          "pageId": "eval-32-p2",
+          "url": "https://docs.djangoproject.com/en/6.1/faq/install/",
+          "finalUrl": "https://docs.djangoproject.com/en/6.1/faq/install/",
+          "sha256": "6466038832c9d80d5b85dd11106c44b53005095aa80b4e21f8c3b4971a1a762e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:38:46.895Z"
+        },
+        {
+          "pageId": "eval-32-p3",
+          "url": "https://docs.djangoproject.com/en/6.1/faq/troubleshooting/",
+          "finalUrl": "https://docs.djangoproject.com/en/6.1/faq/troubleshooting/",
+          "sha256": "87a32c5627bef5482e43286a4620efe84e8b1808aec8c1b5bfd14e3809ab7825",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:38:54.088Z"
+        },
+        {
+          "pageId": "eval-32-p4",
+          "url": "https://docs.djangoproject.com/en/6.1/howto/deployment/asgi/",
+          "finalUrl": "https://docs.djangoproject.com/en/6.1/howto/deployment/asgi/",
+          "sha256": "79b4960465eb97ea02ee8e48a6451f1306d233b7d9e6a47fe5b9cbdbc0fd4784",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:01.240Z"
+        },
+        {
+          "pageId": "eval-32-p5",
+          "url": "https://docs.djangoproject.com/en/6.1/howto/deployment/wsgi/",
+          "finalUrl": "https://docs.djangoproject.com/en/6.1/howto/deployment/wsgi/",
+          "sha256": "698fdb18a1d4e64a9626927c8c2214e2ab21920e6244af473744a6984d79c674",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:08.229Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-33",
+      "host": "doc.rust-lang.org",
+      "category": "Documentation with sidebars or tabs",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-33-p1",
+          "url": "https://doc.rust-lang.org/book/ch01-00-getting-started.html",
+          "finalUrl": "https://doc.rust-lang.org/book/ch01-00-getting-started.html",
+          "sha256": "d7815c6b2e5d01f3434791cab4877b3dbbd229221575b7f9ac4796f343250bf4",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:14.161Z"
+        },
+        {
+          "pageId": "eval-33-p2",
+          "url": "https://doc.rust-lang.org/book/ch17-00-async-await.html",
+          "finalUrl": "https://doc.rust-lang.org/book/ch17-00-async-await.html",
+          "sha256": "59d6b2539a4be1faf608dec13f2952900b2446a3674d8a1cc28207d78d48d0d3",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:20.924Z"
+        },
+        {
+          "pageId": "eval-33-p3",
+          "url": "https://doc.rust-lang.org/book/ch12-03-improving-error-handling-and-modularity.html",
+          "finalUrl": "https://doc.rust-lang.org/book/ch12-03-improving-error-handling-and-modularity.html",
+          "sha256": "9fb80591fcbfa1f992d5d6b901de1b8003754b5d88d5fa2c3a50b97909a4be09",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:39:30.408Z"
+        },
+        {
+          "pageId": "eval-33-p4",
+          "url": "https://doc.rust-lang.org/book/ch18-02-trait-objects.html",
+          "finalUrl": "https://doc.rust-lang.org/book/ch18-02-trait-objects.html",
+          "sha256": "051c4b592ad2106ab72fa8156f3ff0af7633de62ba84732af3d81e0d481d1c49",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:38.312Z"
+        },
+        {
+          "pageId": "eval-33-p5",
+          "url": "https://doc.rust-lang.org/book/ch19-02-refutability.html",
+          "finalUrl": "https://doc.rust-lang.org/book/ch19-02-refutability.html",
+          "sha256": "b4eafe4fe86cddd1414f37d20a226d884e3a8c7c2e79f00c7b46767fbc227d1e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:39:45.083Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-34",
+      "host": "react.dev",
+      "category": "Documentation with sidebars or tabs",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-34-p1",
+          "url": "https://react.dev/learn",
+          "finalUrl": "https://react.dev/learn",
+          "sha256": "2bf4972ed7e25727273b28eba76211a9da992c9c08e11b497479c88744d91b43",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:39:57.492Z"
+        },
+        {
+          "pageId": "eval-34-p2",
+          "url": "https://react.dev/learn/extracting-state-logic-into-a-reducer",
+          "finalUrl": "https://react.dev/learn/extracting-state-logic-into-a-reducer",
+          "sha256": "051c3a7fdbc17675c9db816aba3e9e7859e65f0f1372aad2bb0c9f48829a8c55",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:40:09.946Z"
+        },
+        {
+          "pageId": "eval-34-p3",
+          "url": "https://react.dev/learn/javascript-in-jsx-with-curly-braces",
+          "finalUrl": "https://react.dev/learn/javascript-in-jsx-with-curly-braces",
+          "sha256": "ac537b457705e68cb1d48a9708c192cb3ac759dfc758ea30c598f83bb60a5207",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:40:21.748Z"
+        },
+        {
+          "pageId": "eval-34-p4",
+          "url": "https://react.dev/learn/scaling-up-with-reducer-and-context",
+          "finalUrl": "https://react.dev/learn/scaling-up-with-reducer-and-context",
+          "sha256": "bb7fb3b2dc458d0a1268587d1db20157e7fa39b55c59e8c62efb8e1ae75d2123",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:40:33.588Z"
+        },
+        {
+          "pageId": "eval-34-p5",
+          "url": "https://react.dev/learn/importing-and-exporting-components",
+          "finalUrl": "https://react.dev/learn/importing-and-exporting-components",
+          "sha256": "7396298f68df32c178473f87cc832bd1352f3f79212b322caa482ed68ba464d9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": true
+          },
+          "capturedAt": "2026-11-21T04:40:44.724Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-35",
+      "host": "angular.dev",
+      "category": "Client-rendered pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-35-p1",
+          "url": "https://angular.dev/overview",
+          "finalUrl": "https://angular.dev/overview",
+          "sha256": "b39b1d50c8b0c482e537d6737e25cf1d8b790fc21128aba8ac522c686c4a1419",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:40:59.391Z"
+        },
+        {
+          "pageId": "eval-35-p2",
+          "url": "https://angular.dev/essentials",
+          "finalUrl": "https://angular.dev/essentials",
+          "sha256": "1cd0c4a4f9c5a88a0f4ca27a0663642538c2fb0bdd617a1c3d855e1fa0af4fa5",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:05:25.485Z"
+        },
+        {
+          "pageId": "eval-35-p3",
+          "url": "https://angular.dev/tutorials/learn-angular",
+          "finalUrl": "https://angular.dev/tutorials/learn-angular",
+          "sha256": "52f78641d0167c27153a91298b6ee14f5427247fd4d8d146a7e643cde8c538d3",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:05:47.224Z"
+        },
+        {
+          "pageId": "eval-35-p4",
+          "url": "https://angular.dev/guide/components",
+          "finalUrl": "https://angular.dev/guide/components",
+          "sha256": "71abcecc1b9c5e26d8e0466ae51d8d03795c6b73111827afdf5e7ed1c8592656",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:05:58.443Z"
+        },
+        {
+          "pageId": "eval-35-p5",
+          "url": "https://angular.dev/guide/signals",
+          "finalUrl": "https://angular.dev/guide/signals",
+          "sha256": "0eb0b50116d6f40862cd97d3e81253d4b26f3d363c5b0abdfe99ccd76d62c9d2",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:06:14.165Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-36",
+      "host": "svelte.dev",
+      "category": "Client-rendered pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-36-p1",
+          "url": "https://svelte.dev/docs/svelte/overview",
+          "finalUrl": "https://svelte.dev/docs/svelte/overview",
+          "sha256": "3071fbf4581050c440a54d0ac2068f69526443d45462a7de0ccb4ae31a943b86",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:05.694Z"
+        },
+        {
+          "pageId": "eval-36-p2",
+          "url": "https://svelte.dev/docs/svelte/svelte-js-files",
+          "finalUrl": "https://svelte.dev/docs/svelte/svelte-js-files",
+          "sha256": "79a45d020d5d2242880d0ee3684ecf434061c6b38078d15896f34361aff78a0c",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:11.787Z"
+        },
+        {
+          "pageId": "eval-36-p3",
+          "url": "https://svelte.dev/docs/svelte/legacy-let",
+          "finalUrl": "https://svelte.dev/docs/svelte/legacy-let",
+          "sha256": "8c3bcbf5d4bb9acf1fbf27a09dc4c19627be71c99a4b4ab8b07d41bfa9ddfeb9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:18.044Z"
+        },
+        {
+          "pageId": "eval-36-p4",
+          "url": "https://svelte.dev/docs/svelte/faq",
+          "finalUrl": "https://svelte.dev/docs/svelte/faq",
+          "sha256": "5baee9cf65ae0f9850bec4b612baf9c6b92d81882864e3b73a34720a5a13c100",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:25.702Z"
+        },
+        {
+          "pageId": "eval-36-p5",
+          "url": "https://svelte.dev/docs/svelte/imperative-component-api",
+          "finalUrl": "https://svelte.dev/docs/svelte/imperative-component-api",
+          "sha256": "e57aeda300b3635b2521c30b147077997f7d337a0b2e49271a2abd2d43474288",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:32.533Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-37",
+      "host": "vuejs.org",
+      "category": "Client-rendered pages",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-37-p1",
+          "url": "https://vuejs.org/guide/introduction.html",
+          "finalUrl": "https://vuejs.org/guide/introduction.html",
+          "sha256": "4fdabbf733a4dcfe7ea75aec012598259cba5be561eca6f102fcf8da74277467",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": false,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:42.044Z"
+        },
+        {
+          "pageId": "eval-37-p2",
+          "url": "https://vuejs.org/guide/scaling-up/ssr.html",
+          "finalUrl": "https://vuejs.org/guide/scaling-up/ssr.html",
+          "sha256": "2c3e5e91826dd95ab1b18ce728dbc5b64f4fa63629ebebad00bda5c3fd750e7a",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:41:53.226Z"
+        },
+        {
+          "pageId": "eval-37-p3",
+          "url": "https://vuejs.org/guide/essentials/class-and-style.html",
+          "finalUrl": "https://vuejs.org/guide/essentials/class-and-style.html",
+          "sha256": "800c60c3f2847b21dddfe0f60dfc9ffce5ad5e43e1d90ed8aefb71341cde2710",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:02.874Z"
+        },
+        {
+          "pageId": "eval-37-p4",
+          "url": "https://vuejs.org/guide/essentials/application.html",
+          "finalUrl": "https://vuejs.org/guide/essentials/application.html",
+          "sha256": "6a72f0f86a71b27737b958d12a739156e40209ad9215f5db150c8e67bd5afe28",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:11.180Z"
+        },
+        {
+          "pageId": "eval-37-p5",
+          "url": "https://vuejs.org/guide/essentials/reactivity-fundamentals.html",
+          "finalUrl": "https://vuejs.org/guide/essentials/reactivity-fundamentals.html",
+          "sha256": "8b3817f1d116da5ba98df11ee8190a2d319ab86a5e8a0c955078056fd3c41d0e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:21.833Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-38",
+      "host": "www.weather.gov",
+      "category": "Pages without main/article markup",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-38-p1",
+          "url": "https://www.weather.gov/safety/",
+          "finalUrl": "https://www.weather.gov/safety/",
+          "sha256": "dac6a799d62c177ad15e5c2dce5282374d852ecab924e9810bda0d381fa452f0",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:31:43.820Z"
+        },
+        {
+          "pageId": "eval-38-p2",
+          "url": "https://www.weather.gov/Contact",
+          "finalUrl": "https://www.weather.gov/Contact",
+          "sha256": "c8f0e0a51294ce525ecd0ef8028853e13135e07fc390548f267068a9412f0f7f",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:35.850Z"
+        },
+        {
+          "pageId": "eval-38-p3",
+          "url": "https://www.weather.gov/hazstat",
+          "finalUrl": "https://www.weather.gov/hazstat",
+          "sha256": "a2b85d1924d4e0643dd3d8f13f15a4b632cd03958360fbdb653db8e13c65d697",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:42.950Z"
+        },
+        {
+          "pageId": "eval-38-p4",
+          "url": "https://www.weather.gov/sju/",
+          "finalUrl": "https://www.weather.gov/sju/",
+          "sha256": "31fb7c28d13b2943e7e9f771b99543a4b359c6e6248a326410062fb97f548e08",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T04:42:49.699Z"
+        },
+        {
+          "pageId": "eval-38-p5",
+          "url": "https://www.weather.gov/wrn/wea",
+          "finalUrl": "https://www.weather.gov/wrn/wea",
+          "sha256": "54df0447aeace1b72818bf4c53ade6600e37f7d34d8af0a1f6326e03a6ac91a8",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:22:09.388Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-39",
+      "host": "info.cern.ch",
+      "category": "Pages without main/article markup",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-39-p1",
+          "url": "http://info.cern.ch/hypertext/WWW/WhatIs.html",
+          "finalUrl": "http://info.cern.ch/hypertext/WWW/WhatIs.html",
+          "sha256": "f85aa487dca2d542c04f02bf851b57037d5ad2b5f2a4679a10bebae278627f0e",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:32:00.291Z"
+        },
+        {
+          "pageId": "eval-39-p2",
+          "url": "http://info.cern.ch/hypertext/WWW/TheProject.html",
+          "finalUrl": "http://info.cern.ch/hypertext/WWW/TheProject.html",
+          "sha256": "3940431d063bff71dbb329b66edb3586404eede2d066ddcaf6e9c6bc4aadf851",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:06:21.291Z"
+        },
+        {
+          "pageId": "eval-39-p3",
+          "url": "http://info.cern.ch/hypertext/WWW/FAQ/List.html",
+          "finalUrl": "http://info.cern.ch/hypertext/WWW/FAQ/List.html",
+          "sha256": "4c76a65aec1203c492a0304c7e8468ae92756ddf3a086ef68767420b9660a51c",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:06:27.157Z"
+        },
+        {
+          "pageId": "eval-39-p4",
+          "url": "http://info.cern.ch/hypertext/WWW/Summary.html",
+          "finalUrl": "http://info.cern.ch/hypertext/WWW/Summary.html",
+          "sha256": "db6b7c4a89e9b10a5a7be6c945d372e15df1b058332d50afd05b6af13a34bc55",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:06:33.112Z"
+        },
+        {
+          "pageId": "eval-39-p5",
+          "url": "http://info.cern.ch/hypertext/DataSources/Top.html",
+          "finalUrl": "http://info.cern.ch/hypertext/DataSources/Top.html",
+          "sha256": "b590b558d79b1f32520ad63bd4245c44ec913671d31356cdc6da5d18722ae6e9",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T05:06:38.938Z"
+        }
+      ]
+    },
+    {
+      "split": "eval",
+      "siteId": "eval-40",
+      "host": "tldp.org",
+      "category": "Pages without main/article markup",
+      "previouslyEvaluatedSite": false,
+      "pages": [
+        {
+          "pageId": "eval-40-p1",
+          "url": "https://tldp.org/LDP/abs/html/why-shell.html",
+          "finalUrl": "https://tldp.org/LDP/abs/html/why-shell.html",
+          "sha256": "260bfd49155ff4d8bf8f14618e8451fc2930fc24b972895ca069b47acbaa97ac",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:33:33.918Z"
+        },
+        {
+          "pageId": "eval-40-p2",
+          "url": "https://tldp.org/LDP/abs/html/sha-bang.html",
+          "finalUrl": "https://tldp.org/LDP/abs/html/sha-bang.html",
+          "sha256": "f9518aa7497217e65ebf9383f65c313c6a6d78c3722d15efd0f970dc1a65acda",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": false,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:34:00.997Z"
+        },
+        {
+          "pageId": "eval-40-p3",
+          "url": "https://tldp.org/LDP/abs/html/special-chars.html",
+          "finalUrl": "https://tldp.org/LDP/abs/html/special-chars.html",
+          "sha256": "f98afde249ed302dd674a72fc5e302dbc48097bc786b6c63f5b80d2e86820350",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:34:14.417Z"
+        },
+        {
+          "pageId": "eval-40-p4",
+          "url": "https://tldp.org/LDP/abs/html/variables.html",
+          "finalUrl": "https://tldp.org/LDP/abs/html/variables.html",
+          "sha256": "97514f97677585b9b76d32da0083ae39e9700e5770d06624f358c10bdb55f07b",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:34:22.923Z"
+        },
+        {
+          "pageId": "eval-40-p5",
+          "url": "https://tldp.org/LDP/abs/html/quoting.html",
+          "finalUrl": "https://tldp.org/LDP/abs/html/quoting.html",
+          "sha256": "ada3181df12784a4f90da312df295fb36187e1b83aa099e4d1a8fcd4804b50a6",
+          "flags": {
+            "previouslyEvaluatedSite": false,
+            "newPage": true,
+            "heldOut": true,
+            "clientRendered": false
+          },
+          "capturedAt": "2026-11-21T06:34:31.499Z"
+        }
+      ]
+    }
+  ],
+  "rejections": []
+}

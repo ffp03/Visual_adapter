@@ -20,6 +20,12 @@ and preservation checks. Missing, failed and rejected rules never automatically
 start generation, verification, renewal, or a provider request. The legacy
 /analyze generation endpoint now refuses requests, including from older panels.
 
+Page-derived reading content is rendered only in a sandboxed srcdoc iframe with
+no script, form or same-origin permissions. Labels/form wrappers are unwrapped;
+form controls, page ids and for attributes are removed before rendering. The
+existing theme CSS is injected into the frame; theme, font and size controls still
+apply. Reading text cannot activate controls in the extension's own document.
+
 The panel shows "Improve this site's layout". To prepare its redacted cue sample,
 the extension sends a sanitized BODY snapshot and its page URL/tab identifier
 to the loopback backend's /disclose route. This is local-only preflight: no page
@@ -38,15 +44,33 @@ same structural family (the existing deterministic structural descriptor). Other
 families keep separate pending examples. Failed families stay in basic view until
 explicitly reported or their pending examples are cleared.
 
-With two examples, the backend runs the existing P4 runtime agent, including its
-gate and ledger guard. Exact disclosure of future adaptive requests is impossible
-before the model chooses its next action, so this implementation requires a
-separate "Send and generate" click for **every provider turn**. Registering the
-second example prepares the first request locally; it does not send it. The panel
-then shows the actual provider/model, exact count and redacted sample for that
-request. Each later query/outline/preview turn pauses in the same way. There are
-at most six turns and no automatic provider retries. Waiting consent expires
-after two minutes. The provider never receives either complete example DOM.
+When a compatible pending example exists, local preflight prepares the two-page
+Views and baseline evidence without storing the second page. Before the click,
+the panel shows the actual provider/model, the first payload's exact character
+count and redacted sample, and a maximum total character count for the induction.
+The token binds that preview to the snapshot. The actual first payload must match
+the disclosed SHA-256 before transport; a framing or baseline mismatch refuses
+the request. No provider request occurs during preflight.
+
+One "Send and generate" click on the second page authorizes **one full induction**
+on those two pages, including up to six adaptive query/outline/preview/submit
+turns through the existing P4 runtime agent, gate and ledger guard. Later turns
+do not request more clicks. There are no automatic retries or automatic subsequent
+inductions. Unused preflight tokens expire after ten minutes. The provider never
+receives either complete example DOM.
+
+The total bound includes complete serialized requests, not just cue text. The
+runtime derives the six-turn limit from runLoop's default and the per-page
+12,000-character budget from Views.summary. For two pages, it additionally
+enforces a 24,000-character cap on the complete final observation/action-history
+message before every transport. Views' cue budget alone does not cap all JSON
+metadata. An oversized observation fails closed; it is not silently truncated.
+Let B be the serialized request length with that final message's content empty.
+The per-request cap is B + 6 x 24,000 (JSON escaping needs at most six characters
+per UTF-16 code unit), including the repeated system prompt, initial evidence and
+provider settings. The disclosed induction maximum is six times that cap.
+Every actual request is checked against both limits. If the agent defaults can
+no longer be derived, disclosure fails instead of showing a stale bound.
 
 The character count is JavaScript UTF-16 string length of the complete serialized
 provider JSON request, including system instructions, model/settings, messages
@@ -54,7 +78,12 @@ and JSON escapes. It is not a token or UTF-8 byte estimate. The displayed cue
 sample is copied from the actual message content within that payload. The SHA-256
 uses its UTF-8 serialized bytes and matches inputSha256 in the runtime usage
 ledger. A zero-character registration click genuinely sends no provider payload.
-Each disclosed request is saved locally before transport for audit.
+Every request actually handed to the provider runner is saved locally for audit.
+The panel's "Provider payloads sent" section shows their count and, for each
+request, its character count, redacted sample, SHA-256 and complete serialized
+payload. These receipts remain viewable after admission, failure and backend
+restart. A failed transport receipt records an attempt, not proof of provider
+delivery. A preview that was never consented is not included in sent receipts.
 
 Only a gate-admitted rule enters lookup. A third compatible page uses the saved
 rule without sending page text to the provider. The always-visible Basic view
@@ -89,28 +118,34 @@ Consented examples stay under workspace/local-ai/runtime-examples/. Runtime
 payloads, pending/admitted family records, archives and usage stay under
 workspace/local-ai/ (provider/model subdirectories). The runtime policy does not
 modify the development/evaluation corpus or study ledger. LOCAL_AI_MAX_CALLS
-defaults to 20 and can be lowered to 1-20. Every guarded agent turn reserves one
-session attempt while awaiting its click; cancellation/expiry can therefore
-consume an attempt without a provider call. Only one turn is active at once.
+defaults to 20 and can be lowered to 1-20. Every guarded agent turn consumes one
+session attempt; one induction can consume up to six. Preflight consumes none.
+Only one induction runs at once. Cancellation after a guarded turn starts can
+consume an attempt even if transport has not completed.
 Restarting resets the session allowance; local examples and admitted rules persist.
 An interrupted two-page induction is marked failed on restart and requires clearing
 pending examples or reporting before a new attempt; it never resumes a provider
 request automatically.
 
-Options has "Clear pending examples". It removes pending and failed examples
-from active registration and cancels outstanding consent jobs. Under the project's
-retention rule originals are moved into a local archive, not erased from disk.
-Admitted rules and their evidence remain. Reporting also archives rule records.
-This is not a data-erasure control.
+Options has "Clear pending examples". It cancels active inductions and deletes
+the stored pending/failed runtime example files, their baseline cache copies,
+pending family metadata and raw example copies archived by the earlier product
+version. It waits for active
+baseline workers to settle so they cannot recreate deleted copies afterwards.
+This wait includes jobs already marked failed by Report. A per-host epoch
+invalidates old jobs before their rule/payload writes; their results are discarded.
+Pending preflight tokens are invalidated. Admitted rules and their evidence
+remain, as do provider payload audit receipts and usage records. Reporting
+still archives rule metadata; clearing also removes pending examples belonging
+to those retired records. This is deletion of pending examples, not erasure of
+everything previously sent to the provider.
 
 ## Offline checks
 
 No paid or local model is needed:
 
 ```text
-node --test tests/revision/extension/routes.test.cjs
-node --test tests/revision/extension/content.test.cjs
-node --test tests/revision/extension/browser.test.cjs
+node --test tests/revision/extension
 ```
 
 The browser test uses installed Chrome and playwright-core with a fresh isolated
@@ -121,6 +156,9 @@ isolated extension copy. LOCAL_AI_FAKE_RUNNER=1 selects the scripted runner;
 it never falls through to a provider. Test artifacts stay under
 workspace/local-ai/wp-d1-*/. Fake outputs check control flow, not model quality
 or accessibility conformance.
+The directory entry point runs the content, route and browser files in sequence.
+Tests include one-click six-turn induction, exact first-payload matching, total
+bounds, full receipt inspection and deletion of stored examples/cache copies.
 
 The study tools and tests/local historical captures remain separate. Do not run
 archived acceptance scripts or live study generation as installation checks.

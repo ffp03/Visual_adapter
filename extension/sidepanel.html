@@ -22,19 +22,22 @@
         <details id="layout-disclosure" open hidden>
             <summary>Improve this site's layout</summary>
             <p>Provider / model: <span id="provider-model"></span></p>
-            <p><span id="payload-characters">0</span> characters will reach the provider on this click.</p>
+            <p>First request: <span id="payload-characters">0</span> characters.</p>
+            <p>Maximum for this induction: <span id="maximum-characters">0</span> characters (up to 6 requests).</p>
             <p>Redacted cue sample (names and personal details may remain):</p>
             <pre id="cue-sample"></pre>
-            <p>The sanitized page reaches only your local backend. Saving the first example sends nothing to the provider. Each provider turn needs its own click.</p>
+            <p>The sanitized page reaches only your local backend. Saving the first example sends nothing to the provider. One click authorizes the whole induction on these two pages.</p>
             <button id="send-generate" disabled>Send and generate</button>
+        </details>
+        <details id="payload-history" hidden>
+            <summary>Provider payloads sent: <span id="payload-count">0</span></summary>
+            <div id="sent-payloads"></div>
         </details>
     </section>
 
     <!-- Main Content Area (Reader Mode) -->
     <main id="reader-view">
-        <div class="placeholder">
-            <p>Open a webpage to see the adapted version here.</p>
-        </div>
+        <iframe id="reader-frame" title="Adapted reading view" sandbox=""></iframe>
     </main>
 
     <!-- Settings Area (Foldable Sections) -->
@@ -152,6 +155,7 @@
         </details>
     </footer>
 
+    <script src="reader-frame.js"></script>
     <script src="sidepanel.js"></script>
 </body>
 

@@ -8,3 +8,7 @@ docs/evaluation/unseen-source-pool-2026-10-21/** -text whitespace=trailing-space
 tests/local/study-*.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
 tests/local/retained-regression.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
 workspace/task023/refresh-20261021/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+# Hash-bound files of evaluation freeze v5 keep their frozen bytes (2026-11-22).
+backend/agent/ledger.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
+extension/procedure-core.js -text whitespace=trailing-space,space-before-tab,cr-at-eol
+backend/deepseek-runner.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol

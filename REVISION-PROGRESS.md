@@ -103,7 +103,12 @@ line, 37 chars); 1 not on the sample pages at all (dev-07-p4 W3C "Tests" boxes);
 (dev-06 p4/p5). Cause: the agent's prompt defines clutter narrower than the answer-key guideline
 (DESIGN 3 noise kinds): it names only share/related/recommended/newsletter/promo/nav/sidebars, says
 "retain author and date metadata", and says to remove "evidence-backed" noise (repeat-flagged) only;
-author-boilerplate and widgets are never named. Proposed prompt fix to the user (waiting).
+author-boilerplate and widgets are named once each but undefined and tied to passing G4/G6. User chose A
+(23:20): guidance-only change (analysis/2026-11-22-m8/guidance-m9.txt; system prompt and code unchanged;
+iteration-9, prompt 62501d9f, output results/capability-agent-9-1795390118486), P4-on, 12 sites, on ld
+dilab-5080 with --secret DEEPSEEK_API_KEY (workspace/revision/ld/m9-lab.sh, dev-02 first as the one-case
+check), outputs workspace/revision/ld-out-m9. Then: merge ledger (prefix check), score with check and
+without (nogate-style on iteration 9), before/after table to the user (milestone 9 check).
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

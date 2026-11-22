@@ -82,8 +82,13 @@ out or count as failures (user called them a bug to fix first).
   because the refused exclusions there are not clutter-named (Blogger "Originally published",
   BBC Links container, MDN header). P4-off: 3/7 sites with a rule (G4 on those blocks; MDN G2;
   wikipedia family:no-matching-anchors at use time).
-- Running: ld va-m8-regate (eval v5 final rules re-gated with the new gate, read-only; map
-  analysis/2026-11-22-m8/eval-trials.json; output stage workspace/revision/ld-out-regate).
+- Eval re-gate done (claude-host, one process per site, 1 GB cap; regate-eval.jsonl, map
+  eval-trials.json): 80 v5 final rules (40 sites x P4-on/off): 62 admitted stay admitted, 1 refused
+  now passes (P4-off eval-18, #content-recommended-products), 11 still refused (G2, recirc, ...),
+  6 no saved rule. Intermediate refusals are not stored, so the full effect needs a fresh eval run
+  (milestone 10). ld route failed first (regate skips symlinked folders; fixed by copying).
+- Waiting on the user: how to run the 5 large dev sites (A claude-host 3 GB / B ld key route /
+  C report 7 sites); claude-host had 4.1 GB available at 18:50.
 - Milestone 9 lead (evalvary.py): 74% of clutter characters leaked on eval P4-on pages vary per
   page (recommended, widget, promo, related); the system treats per-page text as unique content
   (gate G3/G4/G6 and the agent's repeat flags). Dev leaks the same way (date/URL boilerplate).

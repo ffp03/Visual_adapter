@@ -90,7 +90,9 @@ out or count as failures (user called them a bug to fix first).
 - User chose B (shared keys on dilab-5080) and needs dilab-5090 for other work: never use or
   reserve it (pin --only dilab-5080). My orphaned job 305372 (ld run killed by timeout mid-upload)
   held 5090 ~1 h; lessons staged in MEMORY.md. Copying ~/.env.shared to 5080 was blocked by the
-  permission classifier -> the user runs the scp line themselves (0600 file, no master key).
+  permission classifier; the user's B meant a dispatcher key route, so instead: issue
+  https://github.com/ffp03/load-dispatcher/issues/69 (job secret route). Do NOT copy secrets.
+  When #69 gives a route, adapt m8-lab.sh (now mounts ~/.env.shared) to it.
   Ready: iteration-8 (output results/capability-agent-8-1795375429159), wrapper
   workspace/revision/ld/m8-lab.sh (mounts ~/.env.shared read-only, one process per site, heap
   6 GB, dev-07 dev-09..12, P4-on then P4-off). Submit: ld submit --only dilab-5080 --reason ...

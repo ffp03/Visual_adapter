@@ -87,25 +87,40 @@ G per page: v5 P3 0.0020, P2-fresh 0.00155), threat model (verify each claim in 
 backend/ code first), comparison table, per-failure breakdown, reference fixes, format fixes. Every
 number traced to an export file; then a Codex claim review (codex-budget first). Milestone 13 =
 Word/PDF via tools/manuscript-v4 (PDF export needs Windows Word) + response letter.
-STATE 2026-11-23 17:30 UTC (milestone 12): sources rewritten and committed in the paper repo (e4e38f7;
-submitted sources archived in archive/2026-11-23-submitted-manuscript-sources/). 4,799 words, 4 tables
-(compare, contract, results, cost), 19 references. New export inputs/results/2026-11-23-cost-instance/
-(script workspace/revision/export/export-cost.py; ledger tokens; USD recomputed at peak list prices:
-the v5 runs were partly off-peak, so the earlier "5-7 views" mixed tiers; correct: F 0.0104/site, G
-0.0040 (P3) / 0.0031 (P2-fresh), break-even 2.6/3.4 views, 34/44 with 12 renewals). Number trace:
-paper repo artifacts/number-trace-2026-11-23.md (97/105 literal, rest roundings/code parameters).
-Found: the extension still applies the gate-mode check (content.js useTime without check:'output';
-runtime induction runLoop default 'gate'), not the evaluated output-only check: disclosed in the
-paper (case study + limitations); offer the user to align the code. No redaction audit was done and
-the reference audit (milestone 4) is not done: paper says both. RUNNING: Codex claim review
-(codex-remote, gpt-6.1-sol medium; brief scratchpad codex-m12-claims.md, output codex-m12-claims.out;
-bundle docs/revision/manuscript-review-2026-11-23/, untracked: move to workspace/revision/response/
-after). Next: act on findings, recommit, then milestone 13. Milestone 13 builder work needed:
-prepare_inputs.py ABSTRACT_SHA (abstract changed), reference-count envelope 18 -> 19, references
-formatter in build_docx.py prints no DOI/series/volume/publisher/note/access date (cause of the
-reviewers' reference complaints; also maps the venue to "Comput. Inf. Sci. Eng."), section numbering
-for 4 and 6, figure relabel (no compiler; agent induction on two examples; renewal triggers;
-versions), Table header wraps.
+MILESTONE 12 DONE 2026-11-23 ~18:15 UTC. Paper repo commits e4e38f7, e0a0db9 (+ trace fix): drafts
+00-06 + full_paper.md rewritten (claim = low-cost access, full strength; no usability claim; v6 main,
+v5 earlier run; agent method; threat model; comparison table; cost instance; failure breakdown),
+references fixed (arXiv DOIs, PAL/AWM ICML PMLR, FrugalGPT TMLR, WebArena ICLR, [3] editor Roger Lee +
+Cham, Mind2Web pages, W3C FPWD 2016 labelled, pricing model version + access date, Readability 0.6.0
+added; 19 refs). Submitted sources archived archive/2026-11-23-submitted-manuscript-sources/. New
+export inputs/results/2026-11-23-cost-instance/ (workspace/revision/export/export-cost.py): F 0.0104
+per site at peak (v5 recorded USD was partly off-peak; all figures now peak), G 0.0040 (P3) / 0.0031
+(P2-fresh), break-even 2.6/3.4 views, 34/44 with 12 renewals. Number trace artifacts/number-trace-
+2026-11-23.md (all numbers to exports or code). Codex claim review (dilab-5080, gpt-6.1-sol medium):
+31 findings, all numbers matched; acted on the valid ones (privacy/trust boundary as implemented:
+local disclosure preview sends sanitized page to the loopback backend, backend unauthenticated,
+images load from origin, synced preferences; evaluated vs prototype checks; anchors not checked at
+admission and may allow 0; renewal only via report; provenance model-written; measure definitions;
+eval-38 mixed family; v5 clean pass fallback-inclusive with own-output rates 22.5 etc.; wording
+"passes more pages"/"similar pass rates"/"model cost"; table with R1's six dimensions, Co-Scraper
+fallback, SkillWeaver preconditions, FrugalGPT cascade). Not acted: self-citation anonymity (user's
+decision B). Review record: workspace/revision/response/claim-review-m12/. No re-review (fix round).
+OPEN FOR THE USER (asked 2026-11-23): A align the extension to the evaluated output-only check
+(content.js useTime {check:'output'}, runtime runLoop check 'output', tests; then drop the caveat in
+the case study + limitations; recommended) / B keep code, keep caveat. Not blocking milestone 13.
+START HERE (milestone 13): Word/PDF in the VDE template <= 7 pages anonymous + response letter.
+Draft is 5,396 source words, likely over 7 pages: trim against the actual render (main candidates:
+04 case study, 05 earlier-run and cost paragraphs). Builder work in tools/manuscript-v4 first (copy
+to an archive before editing): prepare_inputs.py ABSTRACT_SHA (abstract changed) and reference
+envelope 18 -> 19; build_docx.py reference formatter prints no DOI/series/volume/publisher/editor/
+note/access date and maps the venue to "Comput. Inf. Sci. Eng." (cause of the reviewers' reference
+complaints); section numbering for Case Study and Discussion; figure relabel via draw_figure.cjs
+(no compiler; agent induction on two examples; admitted version published; failed check -> fallback;
+report -> renewal within budget); table header wrapping; paths target Windows (ROOT C:\Dev\paper-
+agent), Word COM export (export_checked.py) needs the Windows laptop: check how earlier builds ran
+(paper repo TASK-023-PROGRESS.md, tools/manuscript-v4/README.md). Response letter: point by point
+from response-plan.json + the coverage list in claim-review-m12/codex-m12-claims.out. User checks
+milestone 13; submission stays with the user/Kevin. Nothing is running; no watchdogs.
 
 **Milestones:**
 1. Pilot design spec (rule format v3, agent loop, gate, measures, reference format,

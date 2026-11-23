@@ -64,8 +64,18 @@ need to fix them first"):
    for every reader on order only (2 of 715 near-identical units cannot be placed, tau set to 0).
 9. Find why the agent misses the remaining clutter on the other failing pages, and fix the
    cause. Check: before/after table on development sites. (user checks)
+   DONE 2026-11-23 (user's "A", ticked on the offline estimate, no re-run): cause = narrow clutter
+   definition in the instructions ("retain author and date metadata", "evidence-backed" removals);
+   fix = guidance-m9.txt (iteration 9, 52 requests). Table analysis/2026-11-22-m8/estimate-m9.txt:
+   m8 with check 44.4 / clutter 6.7 / kept 100.0 -> m9 no check 44.4 / clutter 4.9 / kept 99.4
+   (page pass higher is better, clutter lower is better); AI-P1 +25.0 [+0.0, +50.0], AI-P0 +33.3
+   [+13.9, +55.6]. The no-check figure assumes the agent stops at the rule the check refused.
 10. (Proposed, not yet agreed) Rerun P4 on the 40 evaluation sites with the fixes, scored on
    the new measures. Needs the user's OK for DeepSeek requests beyond the 2,000 cap.
+   Detail proposed 2026-11-23 (waiting): code a no-check mode (keep only "rule produces output"),
+   Codex review of all uncommitted code, freeze; dev-02 as the one-case check; then P4-on on the
+   40 evaluation sites once (~190 requests at ~4.7/site, ~$0.30 at iteration 9's $0.0015/request);
+   cap 2,000 -> 2,300 requests, $5 unchanged. Check: table vs P1/P0 with site-clustered intervals.
 Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-goal-change/
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).

@@ -6,3 +6,5 @@
 - 2026-11-23T20:01:24.070274+00:00 done: Owner A: extension/runtime aligned to the evaluated output-only check (66dcb78); paper it6 (f68aaee)
 - 2026-11-23T20:01:24.202834+00:00 Next: Milestone 13 (it6) waits for the owner's check of the PDF and the response letter; then act on comments
 - 2026-11-23T20:48:52.211556+00:00 Next: Owner asked the page limit (answered: extra-page fee above 7 pages, checked 2026-10-19); milestone 13 it6 waits for the owner's check
+- 2026-11-23T20:57:33.910300+00:00 Next: M13 owner comments: figure resolution, tables fit content + bold best, highlight major changes, polite letter quoting revised text, shortened references; rebuild it7
+- 2026-11-23T21:03:40.144083+00:00 Next: Settle the abstract (positioning, significance) with the owner; then carry it through the manuscript, apply the 5 m13 comments, rebuild

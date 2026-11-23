@@ -37,3 +37,7 @@ Done means:
 - 2026-11-23 Owner: "your message missed the progress and goal. you need to fix that before you continue". Plan registered here; every milestone report states the goal and the milestone status. Next: milestone 13 builder fixes.
 - 2026-11-23 Agent: milestone 13 built (7-page anonymous Word/PDF, response letter Doc); waiting for the owner's check. Next: act on the owner's comments; submission stays with the owner/Kevin.
 - 2026-11-23 Owner: "for your q, a" (A: align the extension to the evaluated output-only check; remove the caveat in Sections 4.2 and 6). Milestone 13 check still pending.
+- 2026-11-23 Owner (m13 check): "1. fig resolution not enough. 2. table width should fit content. and bold best values. 3. highlight parts that you have made major changes. 4. letter should be polite and quote the newly added/revised part directly. 5. ref citation should be shorthanded so we can add more analysis". Page-rule A/B left unanswered (keep 7).
+- 2026-11-23 Owner: "cut the mentioning on earlier run. you can use the space for more results details."
+- 2026-11-23 Owner on the abstract results: "you explanation is poor. the point is how much better our tool is and how much saving it can be. you give numbers with no obvious meaning". Abstract rewrite authorized (abstract hash updated).
+- 2026-11-23 Owner: "we need to settle down on that abstract together first. And then you carry out the idea from the abstract to the rest of the manuscript". Abstract positioning agreed with the owner before further manuscript changes.

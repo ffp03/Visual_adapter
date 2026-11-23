@@ -113,6 +113,14 @@ Attempt 1 (ld 305407) VOID: the empty output folder was not uploaded, dev-02 out
 STOP after the dev-02 check (4 requests, merged into the ledger: 1,848 paid, 813 dev, $1.75; files in
 workspace/archive/2026-11-22-m9-attempt1-void). m9-lab.sh now creates the output folder; resubmitted
 (00:00 UTC). score.cjs labels iteration-9 rows m9; nogate.cjs takes --iteration=9.
+Attempt 2 (00:45 UTC) done: 52 requests, all generated (totals 1,900 paid, 865 dev, $1.83). WITH CHECK
+P4-on page pass 33.3 (m8 44.4): worse (table-m9.txt, scores-m9.csv). dev-02 3->0 (agent's own last-turn
+change: its turn-2/4 rules passed 3/3), dev-04 3->2, dev-09 16->13% clutter. The gate refused the
+agent's new removals on dev-01/05/06/07/08 (G4 unique-exclusion, G3, G6). Every tried rule scored without
+check (nogate.cjs --iteration=9 --all-turns; nogate-m9.jsonl small sites; large on ld -> nogate-m9-large):
+refused rules would have helped on dev-01 (0->2 pages, clutter 3%) and dev-06 (p3 clutter 44.5->8.2%),
+were neutral on dev-05, and on dev-08 the refused rule dropped article text (93-95% kept): the one real
+protection. Content kept 100% everywhere else.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

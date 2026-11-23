@@ -1,6 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {spawnSync}=require('node:child_process');
+const {isDeepStrictEqual}=require('node:util');
 const freeze=require('./eval-freeze.cjs'),{Ledger,hash,BoundaryError}=require('./ledger.cjs'),{PageRegistry}=require('./pages.cjs');
 const baseline=require('./baselines.cjs'),{runLoop}=require('./loop.cjs'),{oneShot}=require('./one-shot.cjs');
 const {DeepSeekRunner,LocalRunner,CodexRunner}=require('./runners.cjs');
@@ -53,7 +54,7 @@ function reconcile(ledger,experiment,site){
   if(e.event==='request'&&e.experiment===experiment&&e.site===site)requests.set(e.id,e);
   else if(requests.has(e.id))requests.set(e.id,{...requests.get(e.id),...e});
  }
- for(const e of requests.values())if(e.outcome==='started')ledger.locked(()=>ledger.append({event:'result',id:e.id,outcome:'provider-error',reason:'interrupted-request-not-retried',costEstimate:e.reservedCost||0,costBasis:'conservative-reservation-interrupted',latencyMs:null}));
+ for(const e of requests.values())if(e.outcome==='started')ledger.settle(e.id,{outcome:'provider-error',reason:'interrupted-request-not-retried',costEstimate:e.reservedCost||0,costBasis:'conservative-reservation-interrupted',latencyMs:null});
  return requests.size;
 }
 function targets(site,policy){return policy==='P3'?[site.pages[2]]:policy.endsWith('shared')?site.pages.slice(1):site.pages.slice(2);}
@@ -88,20 +89,41 @@ function runnerFor(policy,ledger){
  }
  return new DeepSeekRunner({ledger,thinking:!['P2-fresh','P2-shared','P3','P4-off'].includes(policy)});
 }
-function trialRecord(result){
- return {accepted:result.accepted,reason:result.reason||null,reasons:result.reasons||[],rule:result.rule||null,turns:result.turns||0,accounting:result.accounting||null,history:result.history||[],promptHash:result.promptHash,inductionMedianRatio:result.inductionMedianRatio,
-  fatal:result.fatal||false,error:result.error||null,gate:result.gate?{accepted:result.gate.accepted,reasons:result.gate.reasons,pages:result.gate.pages.map(p=>({accepted:p.accepted,reasons:p.reasons,textLength:p.textLength,html:p.html,uniqueCoverage:p.uniqueCoverage?.ratio,g6:p.g6?{baseline:p.g6.baseline,protected:p.g6.protected,preserved:p.g6.preserved}:null}))}:null};
+function trialRecord(result,check){
+ return {check,accepted:result.accepted,reason:result.reason||null,reasons:result.reasons||[],rule:result.rule||null,turns:result.turns||0,accounting:result.accounting||null,history:result.history||[],promptHash:result.promptHash,inductionMedianRatio:result.inductionMedianRatio,
+  fatal:result.fatal||false,error:result.error||null,gate:result.gate?{accepted:result.gate.accepted,reasons:result.gate.reasons,advisory:result.gate.advisory,pages:result.gate.pages.map(p=>({accepted:p.accepted,reasons:p.reasons,advisory:p.advisory,textLength:p.textLength,html:p.html,uniqueCoverage:p.uniqueCoverage?.ratio,g6:p.g6?{baseline:p.g6.baseline,protected:p.g6.protected,preserved:p.g6.preserved}:null}))}:null};
 }
 async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date.now()+120*60000,runnerFactory=runnerFor,root=freeze.ROOT,onEvent=emit}={}){
  if(!POLICIES.includes(policy))throw Error('unknown-evaluation-policy');
  if(!Number.isFinite(deadline))throw Error('evaluation-invalid-deadline');
  const verified=freeze.verify({root});
+ const options={policy,siteIds,directory,sourceDirectory,deadline,runnerFactory,root,onEvent};
+ if(verified.freeze.schemaVersion===1)return runVerifiedPolicy(verified,options);
+ if(sourceDirectory!==undefined||policy.startsWith('P2-nr'))throw Error('v6-source-or-carry-refused');
+ const work=path.join(root,'workspace/revision/evaluation/v6'),owner=path.join(work,'generation.lock'),archive=path.join(work,'lock-receipts');
+ fs.mkdirSync(archive,{recursive:true});
+ let fd;
+ try{fd=fs.openSync(owner,'wx');}
+ catch(error){if(error.code==='EEXIST')throw Error('v6-generation-locked');throw error;}
+ try{
+  fs.writeSync(fd,JSON.stringify({pid:process.pid,policy,at:new Date().toISOString()}));
+  return await runVerifiedPolicy(verified,options);
+ }finally{
+  fs.closeSync(fd);
+  fs.renameSync(owner,path.join(archive,crypto.randomUUID()+'.json'));
+ }
+}
+async function runVerifiedPolicy(verified,{policy,siteIds,directory,sourceDirectory,deadline,runnerFactory,root,onEvent}){
+ const check=verified.freeze.settings.check||'gate',agentPolicy=policy.startsWith('P4')||policy==='P3';
+ const v6=verified.freeze.schemaVersion===2;
+ const baselineCache=path.join(root,'workspace/revision/evaluation',v6?path.join('v6','baseline-cache',verified.sha256):'baseline-cache');
  if(!Array.isArray(siteIds)||!siteIds.length||new Set(siteIds).size!==siteIds.length)throw Error('named-sites-required');
  const sites=siteIds.map(id=>{const s=verified.manifest.sites.find(s=>s.siteId===id);if(!s)throw Error('unknown-evaluation-site:'+id);return s;});
  if(policy==='P4-Codex'&&siteIds.some(id=>!verified.freeze.execution.Codex.siteIds.includes(id)))throw Error('Codex-outside-frozen-ten-site-subset');
  directory=directory?path.resolve(directory):newRun(policy,siteIds,verified,{root});
  if(!directory.startsWith(outputRoot(root)+path.sep))throw Error('evaluation-output-outside-results');
  const config=JSON.parse(fs.readFileSync(path.join(directory,'run.json')));
+ if(v6&&(['carriedFrom','carriedFromFreezeSha256','carryRecordSha256'].some(key=>Object.hasOwn(config,key))||fs.existsSync(path.join(directory,'carry.json'))))throw Error('v6-source-or-carry-refused');
  if(config.policy!==policy||config.freezeSha256!==verified.sha256||JSON.stringify(config.siteIds)!==JSON.stringify(siteIds))throw Error('resume-configuration-mismatch');
  const owner=path.join(directory,'run.lock');let lock;
  if(fs.existsSync(owner)){
@@ -111,10 +133,12 @@ async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date
   if(alive)throw Error('evaluation-run-locked:owner-alive');
   const archive=path.join(directory,'lock-receipts');fs.mkdirSync(archive,{recursive:true});fs.renameSync(owner,path.join(archive,'interrupted-'+crypto.randomUUID()+'.json'));
  }
- try{lock=fs.openSync(owner,'wx');fs.writeSync(lock,JSON.stringify({pid:process.pid,at:new Date().toISOString()}));}
- catch(e){if(e.code==='EEXIST')throw Error('evaluation-run-locked:inspect-owner-before-resuming');throw e;}
  let stopped=null;
  try{
+  try{lock=fs.openSync(owner,'wx');}
+  catch(e){if(e.code==='EEXIST')throw Error('evaluation-run-locked:inspect-owner-before-resuming');throw e;}
+  const lockRecord=JSON.stringify({pid:process.pid,at:new Date().toISOString()});
+  if(fs.writeSync(lock,lockRecord)!==Buffer.byteLength(lockRecord))throw Error('evaluation-lock-write-incomplete');
   for(const site of sites){
    if(Date.now()>=deadline){stopped='time-cap';break;}
    const siteDir=path.join(directory,'sites',site.siteId);fs.mkdirSync(siteDir,{recursive:true});
@@ -135,23 +159,23 @@ async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date
    const save=async(page,result,{fallbackAllowed=false,charge=false,promptHash=verified.freeze.promptSha256,extra={}}={})=>{
     const deliveryStarted=performance.now();
     const canonical=registry.resolve(page.id);let html=result.html||'',fallback=false;
-    if(!result.ok&&fallbackAllowed){const b=await baseline.fromRecord('P0',canonical,{cacheDirectory:path.join(root,'workspace/revision/evaluation/baseline-cache')});html=b.html;fallback=true;}
+    if(!result.ok&&fallbackAllowed){const b=await baseline.fromRecord('P0',canonical,{cacheDirectory:baselineCache});html=b.html;fallback=true;}
     const account=charge?accounting(ledger,config.experiment,site.host):{};
     if(charge)for(const key of Object.keys(beforeAccounted))account[key]-=beforeAccounted[key];
     if(charge){account.requestIds=account.requestIds.filter(id=>!accountedRequestIds.has(id));for(const id of account.requestIds)accountedRequestIds.add(id);}
     const row=writeRow(directory,{id:page.id,site:site.host,siteId:site.siteId,policy,ok:result.ok===true,reason:result.ok?null:result.reason||'runtime-error',fallback,
      modelRequests:account.modelRequests||0,promptTokens:account.promptTokens||0,completionTokens:account.completionTokens||0,cachedTokens:account.cachedTokens||0,costEstimate:account.costEstimate||0,
-     unknownUsageRequests:account.unknownUsageRequests||0,requestIds:account.requestIds||[],sourceSha256:canonical.sha256,referenceSha256:page.referenceSha256,promptHash,freezeSha256:verified.sha256,latencyMs:(result.latencyMs||0)+performance.now()-deliveryStarted,...(!result.ok&&ledger.lastTransportFailure?{transportCause:ledger.lastTransportFailure}:{}),...extra},html);
+     unknownUsageRequests:account.unknownUsageRequests||0,requestIds:account.requestIds||[],sourceSha256:canonical.sha256,referenceSha256:page.referenceSha256,promptHash,freezeSha256:verified.sha256,latencyMs:(result.latencyMs||0)+performance.now()-deliveryStarted,...(agentPolicy?{check}:{}),...(!result.ok&&ledger.lastTransportFailure?{transportCause:ledger.lastTransportFailure}:{}),...extra},html);
     done.add(page.id);onEvent({event:'output',policy,id:page.id,ok:row.ok,fallback,modelRequests:row.modelRequests});return row;
    };
    try{
     if(!interrupted&&!['P0','P1'].includes(policy)&&!policy.startsWith('P2-nr')){
      runner=runnerFactory(policy,ledger);ledger.checkDeadline();if(policy==='P4-local')await runner.configure({checkDeadline:()=>ledger.checkDeadline()});if(policy==='P4-Codex')runner.checkLogin();
-     if(policy.startsWith('P4')||policy==='P3'){
+     if(agentPolicy){
       trial=await runLoop({pageIds:(policy==='P3'?[site.pages[2]]:site.pages.slice(0,2)).map(p=>p.id),policy:'eval',mode:policy==='P3'?'P3':'P4',runner,ledger,site:site.host,
-       cueLength:policy==='P4-cue0'?0:policy==='P4-full'?'full':60,maxTurns:6,systemPrompt:fs.readFileSync(path.join(root,verified.freeze.promptFile),'utf8'),onEvent,
-       provenance:{settingsHash:hash(verified.freeze.settings),gateHash:verified.freeze.files['extension/procedure-v3.js'],viewsHash:verified.freeze.files['backend/agent/outline.cjs']}});
-      json(path.join(siteDir,'trial.json'),trialRecord(trial));if(trial.fatal)fatal=trial.error||'fatal-provider-error';
+       cueLength:policy==='P4-cue0'?0:policy==='P4-full'?'full':60,maxTurns:6,systemPrompt:fs.readFileSync(path.join(root,verified.freeze.promptFile),'utf8'),onEvent,check,
+       provenance:{settingsHash:hash(verified.freeze.settings),gateHash:verified.freeze.files['extension/procedure-v3.js'],viewsHash:verified.freeze.settled?.viewsHash||verified.freeze.files['backend/agent/outline.cjs']}});
+      json(path.join(siteDir,'trial.json'),trialRecord(trial,check));if(trial.fatal)fatal=trial.error||'fatal-provider-error';
      }else if(policy==='P2-shared'){
       const r=await oneShot({pageId:site.pages[0].id,runner,ledger,policy:'eval'});candidateTrials.push({id:site.pages[0].id,...r});trial=r;
       if(r.accepted){trial={...r,compiled:executeBounded('compile',registry.resolve(site.pages[0].id),r.rule,{timeoutMs:120000})};}
@@ -173,7 +197,7 @@ async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date
      const tick=performance.now();let result,extra={},promptHash=verified.freeze.promptSha256;
      if(interrupted||fatal)result={ok:false,html:'',reason:reason||fatal};
      else if(policy==='P1')result=await require('../../tests/revision/eval/policies/p1-reader-view.cjs').fromRecord(registry.resolve(page.id));
-     else if(policy==='P0')result=await baseline.fromRecord(policy,registry.resolve(page.id),{cacheDirectory:path.join(root,'workspace/revision/evaluation/baseline-cache')});
+     else if(policy==='P0')result=await baseline.fromRecord(policy,registry.resolve(page.id),{cacheDirectory:v6?path.join(baselineCache,'P0'):baselineCache});
      else if(policy.startsWith('P2-nr')){
       const original=source.find(t=>t.id===(policy.endsWith('shared')?site.pages[0].id:page.id));
       if(!original){result={ok:false,html:'',reason:'interrupted-original-no-candidate'};promptHash=require('./one-shot.cjs').PROMPT_HASH;}
@@ -190,8 +214,17 @@ async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date
       promptHash=trial.promptHash;result=trial.accepted&&trial.compiled.ok?executeBounded('P2',registry.resolve(page.id),trial.rule,{procedure:trial.compiled.procedure,timeoutMs:120000}):{ok:false,reason:trial.reason||trial.compiled?.reason||'invalid',html:''};
      }else{
       if(!trial.accepted)result={ok:false,reason:trial.reasons?.join(';')||trial.reason||'gate-rejected',html:''};
-      else if(policy==='P3')result={ok:trial.gate.pages[0].accepted,html:trial.gate.pages[0].html,reason:trial.gate.pages[0].reasons.join(';')};
-      else {const dom=registry.load(page.id);try{const verdict=v3.useTime(dom.window.document,trial.rule);result={ok:verdict.accepted,html:verdict.html,reason:verdict.reasons.join(';')||'not-applicable'};}finally{dom.window.close();}}
+      else{
+       let verdict;
+       if(policy==='P3'&&check!=='output')verdict=trial.gate.pages[0];
+       else{
+        const dom=registry.load(page.id);
+        try{verdict=v3.useTime(dom.window.document,trial.rule,undefined,{check});}
+        finally{dom.window.close();}
+       }
+       result={ok:verdict.accepted,html:verdict.html,reason:verdict.reasons.join(';')||'not-applicable'};
+       if(verdict.advisory)extra={advisory:policy==='P3'?[...new Set([...trial.gate.pages[0].advisory,...verdict.advisory])]:verdict.advisory};
+      }
      }
      const charge=policy==='P2-fresh'||!charged&&!policy.startsWith('P2-nr')&&!['P0','P1'].includes(policy);
      // Fresh requests are charged once per page; other inductions once per site.
@@ -214,28 +247,37 @@ async function runPolicy({policy,siteIds,directory,sourceDirectory,deadline=Date
    }finally{clearTimeout(timer);runner?.close();}
    if(!fs.existsSync(path.join(siteDir,'candidates.json')))json(path.join(siteDir,'candidates.json'),candidateTrials);
    const evidenceHashes=Object.fromEntries(fs.readdirSync(siteDir).filter(f=>f.endsWith('.json')).sort().map(f=>[f,hash(fs.readFileSync(path.join(siteDir,f)))]));
-   const account=accounting(ledger,config.experiment,site.host),receipt={policy,siteId:site.siteId,finishedAt:new Date().toISOString(),wallMs:performance.now()-started,interrupted,reason,fatal,accounting:account,rows:scope.map(p=>p.id),evidenceHashes,freezeSha256:verified.sha256,ledgerAfter:ledger.totals()};
+   const account=accounting(ledger,config.experiment,site.host),receipt={policy,siteId:site.siteId,finishedAt:new Date().toISOString(),wallMs:performance.now()-started,interrupted,...(interrupted?{resumed:true}:{}),reason,fatal,accounting:account,rows:scope.map(p=>p.id),evidenceHashes,freezeSha256:verified.sha256,ledgerAfter:ledger.totals()};
    if(scope.some(p=>!done.has(p.id)))throw Error('site-output-incomplete');
    json(path.join(siteDir,'complete.json'),receipt);onEvent({event:'site-complete',...receipt});
    if(fatal){stopped=fatal;break;}
   }
  }finally{
-  fs.closeSync(lock);const archive=path.join(directory,'lock-receipts');fs.mkdirSync(archive,{recursive:true});fs.renameSync(owner,path.join(archive,crypto.randomUUID()+'.json'));
+  if(lock!==undefined){
+   try{fs.closeSync(lock);}
+   finally{
+    const archive=path.join(directory,'lock-receipts');fs.mkdirSync(archive,{recursive:true});fs.renameSync(owner,path.join(archive,crypto.randomUUID()+'.json'));
+   }
+  }
  }
  return {directory,policy,stopped};
 }
 function offlineChecks({root=freeze.ROOT}={}){
- const commands=[['--test','tests/revision/agent/','tests/revision/eval/'],['--test',...fs.readdirSync(path.join(root,'tests/revision/capture')).filter(n=>n.endsWith('.test.cjs')).map(n=>'tests/revision/capture/'+n)]];
+ const sourceHashes=freeze.offlineSourceHashes(root),commands=freeze.offlineCommands(root);
  const folder=path.join(root,'workspace/revision/evaluation/checks-'+Date.now());fs.mkdirSync(folder,{recursive:true});
  const results=commands.map((args,i)=>{const r=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8',timeout:600000,maxBuffer:16000000,windowsHide:true});fs.writeFileSync(path.join(folder,'checks-'+i+'.log'),(r.stdout||'')+(r.stderr||''),{flag:'wx'});return {args,status:r.status,error:r.error?.message||null,log:path.join(folder,'checks-'+i+'.log')};});
- const receipt={at:new Date().toISOString(),ok:results.every(r=>r.status===0),commands:results,sourceHashes:Object.fromEntries(freeze.sourceFiles(root).map(f=>[f,hash(fs.readFileSync(path.join(root,f)))]))};
- const file=path.join(folder,'receipt.json');json(file,receipt);emit({event:'offline-checks',file,...receipt,sourceHashes:undefined});return file;
+ let sourceHashesAfter=null,sourceError=null;
+ try{sourceHashesAfter=freeze.offlineSourceHashes(root);}
+ catch(error){sourceError=error.message;}
+ const sourceChanged=!isDeepStrictEqual(sourceHashes,sourceHashesAfter);
+ const summary={at:new Date().toISOString(),ok:!sourceChanged&&results.every(r=>r.status===0&&r.error===null),commands:results,sourceChanged,sourceError};
+ const file=path.join(folder,'receipt.json');json(file,{...summary,sourceHashes,sourceHashesAfter});emit({event:'offline-checks',file,...summary});return file;
 }
 module.exports={POLICIES,EvaluationRegistry,EvaluationLedger,accounting,reconcile,targets,writeRow,newRun,runnerFor,runPolicy,offlineChecks,lines,json};
 if(require.main===module){const [command,...args]=process.argv.slice(2);(async()=>{
  if(command==='check')return offlineChecks();
- if(command==='freeze'){const result=freeze.create({testsReceipt:args[0]});return emit({event:'frozen',sha256:result.sha256,files:Object.keys(result.freeze.files).length});}
+ if(command==='freeze'){const result=freeze.create({testsReceipt:args[0],settledFile:args[1]});return emit({event:'frozen',sha256:result.sha256,files:Object.keys(result.freeze.files).length});}
  if(command==='verify'){const result=freeze.verify();return emit({event:'freeze-valid',sha256:result.sha256});}
- if(command==='run'){const [policy,sites,...flags]=args,get=k=>flags.find(f=>f.startsWith('--'+k+'='))?.slice(k.length+3);const result=await runPolicy({policy,siteIds:sites.split(','),directory:get('resume'),sourceDirectory:get('source'),deadline:get('deadline')?Date.parse(get('deadline')):undefined});emit({event:'run-complete',...result});if(result.stopped)process.exitCode=1;return;}
- throw Error('Usage: eval-run.cjs check | freeze CHECK_RECEIPT | verify | run POLICY SITE_IDS [--resume=DIR] [--source=P2_DIR] [--deadline=ISO]');
+ if(command==='run'){const [policy,sites,...flags]=args,get=k=>flags.find(f=>f.startsWith('--'+k+'='))?.slice(k.length+3);const result=await runPolicy({policy,siteIds:sites.split(','),directory:get('resume'),sourceDirectory:get('source')??(flags.includes('--source')?'':undefined),deadline:get('deadline')?Date.parse(get('deadline')):undefined});emit({event:'run-complete',...result});if(result.stopped)process.exitCode=1;return;}
+ throw Error('Usage: eval-run.cjs check | freeze CHECK_RECEIPT [SETTLED_POINTER] | verify | run POLICY SITE_IDS [--resume=DIR] [--source=P2_DIR] [--deadline=ISO]');
  })().catch(error=>{console.error(error.stack);process.exitCode=1;});}

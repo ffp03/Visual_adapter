@@ -31,12 +31,12 @@ function cost(usage, tier = 'peak') {
 class BudgetError extends Error { constructor(reason) { super(reason); this.name = 'BudgetError'; this.reason = reason; } }
 class BoundaryError extends Error {constructor(reason){super(reason);this.name='BoundaryError';this.reason=reason;}}
 class Ledger {
-    constructor({ root = ROOT, directory = path.join(root, 'workspace/revision'), maxDollars = 5, maxRequests = 2000, maxDevRequests = 780, now = () => new Date() } = {}) {
+    constructor({ root = ROOT, directory = path.join(root, 'workspace/revision'), maxDollars = 5, maxRequests = 2300, maxDevRequests = 900, now = () => new Date() } = {}) {
         this.directory = directory; this.file = path.join(directory, 'ledger.jsonl');
         this.root=path.resolve(root);this.registry=new PageRegistry({root:this.root});
         this.payloadDirectory = path.join(directory, 'payloads'); this.now = now;
         // Configuration can lower limits for tests; it cannot increase approval.
-        this.limits = { dollars: Math.min(5,maxDollars), requests: Math.min(2000,maxRequests), dev: Math.min(780,maxDevRequests) };
+        this.limits = { dollars: Math.min(5,maxDollars), requests: Math.min(2300,maxRequests), dev: Math.min(900,maxDevRequests) };
         if (Object.values(this.limits).some(n => !Number.isFinite(n) || n < 0)) throw Error('invalid-ledger-limits');
         fs.mkdirSync(this.payloadDirectory, { recursive: true });
     }
@@ -53,7 +53,11 @@ class Ledger {
     }
     append(entry) {
         const fd = fs.openSync(this.file, 'a');
-        try { fs.writeSync(fd, JSON.stringify({ at: this.now().toISOString(), ...entry }) + '\n'); fs.fsyncSync(fd); }
+        try {
+            const record = JSON.stringify({ at: this.now().toISOString(), ...entry }) + '\n';
+            if (fs.writeSync(fd, record) !== Buffer.byteLength(record)) throw Error('incomplete-ledger-write');
+            fs.fsyncSync(fd);
+        }
         finally { fs.closeSync(fd); }
     }
     locked(work) {
@@ -73,11 +77,23 @@ class Ledger {
             fs.renameSync(lock, path.join(archive, crypto.randomUUID() + '.json'));
         }
     }
+    settle(id, result) {
+        return this.locked(() => {
+            const entries = this.entries();
+            if (entries.some(entry => entry.id === id && entry.event === 'result')) return false;
+            if (!entries.some(entry => entry.id === id && entry.event === 'request')) throw Error('unknown-ledger-request:' + id);
+            const { event: _event, id: _id, ...details } = result;
+            this.append({ event: 'result', id, ...details });
+            return true;
+        });
+    }
     totals() {
         const requests = new Map();
-        const entries=this.entries();
+        const entries=this.entries(), reservations=new Map(), overReservations=new Set();
         for (const entry of entries) {
             if (!entry.id || entry.event === 'refused' || entry.event === 'freeze') continue;
+            if (entry.event === 'request' && entry.paid) reservations.set(entry.id, entry.reservedCost);
+            if (entry.event === 'result' && entry.costEstimate > reservations.get(entry.id)) overReservations.add(entry.id);
             requests.set(entry.id, { ...requests.get(entry.id), ...entry });
         }
         const values = [...requests.values()].filter(e => e.event !== 'refused');
@@ -89,13 +105,15 @@ class Ledger {
             promptTokens: values.reduce((s,e) => s + (e.tokens?.prompt || 0),0),
             completionTokens: values.reduce((s,e) => s + (e.tokens?.completion || 0),0),
             cachedTokens: values.reduce((s,e) => s + (e.tokens?.cached || 0),0),
-            failures: values.filter(e => !['started','generated','accepted'].includes(e.outcome)).length };
+            failures: values.filter(e => !['started','generated','accepted'].includes(e.outcome)).length,
+            ...(overReservations.size ? { overReservations: overReservations.size } : {}) };
     }
     guard({ policy, pageIds, pageSourceHashes,paid = true, reservedCost = 0 }) {
         let records;try{records=this.registry.records(pageIds,policy);}catch(e){throw new BoundaryError(e.message);}
         if(pageSourceHashes&&(!Array.isArray(pageSourceHashes)||pageSourceHashes.length!==records.length||records.some((p,i)=>p.sha256!==pageSourceHashes[i])))throw new BoundaryError('manifest-source-changed');
-        if (!paid) return records;
         const totals = this.totals();
+        if (totals.overReservations) throw new BudgetError('over-reservation');
+        if (!paid) return records;
         if (totals.paidRequests >= this.limits.requests) throw new BudgetError('request-cap');
         if (totals.dollars >= this.limits.dollars || totals.dollars + reservedCost > this.limits.dollars) throw new BudgetError('dollar-cap');
         if (policy === 'dev' && totals.devRequests >= this.limits.dev) throw new BudgetError('development-cap');
@@ -126,24 +144,29 @@ class Ledger {
             fs.writeFileSync(filename, serialized, { flag: 'wx', mode: 0o600 });
             this.append({ event: 'request', id, ...info, outcome: 'started', reservedCost, payloadFile: path.relative(this.directory, filename), pricing: { ...PRICES, tier } });
         });
+        let result, response;
         try {
             const raw = await dispatch(runner, messages, payload, metadata);
-            const result = typeof raw === 'string' ? {content:raw} : typeof raw?.action === 'string' ? {content:JSON.stringify(raw)} : raw;
-            const responseFile=path.join(this.payloadDirectory,id+'.response.json');
-            fs.writeFileSync(responseFile,JSON.stringify(result),{flag:'wx',mode:0o600});
-            this.locked(() => this.append({ event: 'result', id, outcome: 'generated', usage: result.usage || null, tokens: tokens(result.usage),
-                responseFile:path.relative(this.directory,responseFile),
-                costEstimate: paid ? cost(result.usage, tier) ?? reservedCost : 0,
-                costBasis: tokens(result.usage) ? 'reported-usage' : 'conservative-reservation-usage-unavailable',
-                latencyMs: this.now() - start, requestId: result.requestId || result.threadId || null, servedModel: result.servedModel || null }));
-            return { ...result, ledgerId: id,costEstimate:paid ? cost(result.usage,tier)??reservedCost : 0 };
+            result = typeof raw === 'string' ? {content:raw} : typeof raw?.action === 'string' ? {content:JSON.stringify(raw)} : raw;
+            response = JSON.stringify(result);
+            if (result == null || response === undefined) throw new TypeError('invalid-provider-result');
         } catch (error) {
-            this.locked(() => this.append({ event: 'result', id, outcome: 'provider-error', reason: error.code || error.name || 'Error',
-                usage: error.usage || null, tokens: tokens(error.usage), costEstimate: paid ? cost(error.usage,tier) ?? reservedCost : 0,
+            const costEstimate = paid ? cost(error.usage, tier) ?? reservedCost : 0;
+            this.settle(id, { outcome: error.code === 'output-limit' ? 'output-limit' : 'provider-error', reason: error.code || error.name || 'Error',
+                usage: error.usage || null, tokens: tokens(error.usage), costEstimate,
                 costBasis: tokens(error.usage) ? 'reported-usage' : 'conservative-reservation-usage-unavailable',
-                latencyMs: this.now() - start, requestId: error.requestId || null }));
-            error.costEstimate=paid ? cost(error.usage,tier)??reservedCost : 0;throw error;
+                latencyMs: this.now() - start, requestId: error.requestId || null });
+            error.costEstimate = costEstimate;
+            throw error;
         }
+        const responseFile = path.join(this.payloadDirectory, id + '.response.json');
+        fs.writeFileSync(responseFile, response, { flag:'wx', mode:0o600 });
+        const costEstimate = paid ? cost(result.usage, tier) ?? reservedCost : 0;
+        this.settle(id, { outcome: 'generated', usage: result.usage || null, tokens: tokens(result.usage),
+            responseFile: path.relative(this.directory, responseFile), costEstimate,
+            costBasis: tokens(result.usage) ? 'reported-usage' : 'conservative-reservation-usage-unavailable',
+            latencyMs: this.now() - start, requestId: result.requestId || result.threadId || null, servedModel: result.servedModel || null });
+        return { ...result, ledgerId: id, costEstimate };
     }
     outcome(id, outcome, reasons = []) { this.locked(() => this.append({ event: 'assessment', id, outcome, reasons })); }
 }

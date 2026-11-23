@@ -7,6 +7,7 @@ const {exclusions}=require('./run2.cjs');
 const {freezeValidReferences}=require('../../tests/revision/eval/references.cjs');
 const {createOutput}=require('../../tests/revision/eval/output.cjs');
 const ROOT=path.resolve(__dirname,'../..'),BASE=path.join(ROOT,'workspace/revision/dev-runs/capability');
+const gateHash=()=>hash(fs.readFileSync(path.join(ROOT,'extension/procedure-v3.js')));
 const emit=value=>console.log(JSON.stringify({at:new Date().toISOString(),...value}));
 const json=(file,value)=>fs.writeFileSync(file,JSON.stringify(value,null,2),{flag:'wx'});
 const settings={schemaVersion:3,selectorCharacters:300,turns:6,cueLength:60,G3:{P4:.9,P3:.8},G4LinkDensity:.3,G5:{cap:200,fraction:.5},G6:'all eligible better-baseline blocks',useTimeCoverage:.6};
@@ -60,25 +61,28 @@ function iteration(context,index,extraPrompt=''){
  const folder=path.join(context.directory,'iteration-'+index);fs.mkdirSync(folder);const output=path.join(ROOT,'workspace/revision/results','capability-agent-'+index+'-'+Date.now());createOutput(output);
  const prompt=SYSTEM_PROMPT+(extraPrompt?'\n'+extraPrompt:'');fs.writeFileSync(path.join(folder,'prompt.txt'),prompt,{flag:'wx'});
  const viewComponents=['outline.cjs','catalog.cjs'].map(file=>({file,sha256:hash(fs.readFileSync(path.join(__dirname,file)))}));
- const state={index,folder,output,prompt,promptHash:hash(prompt),gateHash:hash(fs.readFileSync(path.join(ROOT,'extension/procedure-v3.js'))),viewsHash:hash(viewComponents),viewComponents,settingsHash:context.settingsHash};
+ const state={index,folder,output,prompt,promptHash:hash(prompt),gateHash:gateHash(),viewsHash:hash(viewComponents),viewComponents,settingsHash:context.settingsHash};
  const snapshot=path.join(folder,'source-snapshot');fs.mkdirSync(snapshot);
  for(const file of ['outline.cjs','catalog.cjs'])fs.copyFileSync(path.join(__dirname,file),path.join(snapshot,file));
  fs.copyFileSync(path.join(ROOT,'extension/procedure-v3.js'),path.join(snapshot,'procedure-v3.js'));
  json(path.join(folder,'iteration.json'),state);emit({event:'iteration-created',file:path.join(folder,'iteration.json'),promptHash:state.promptHash});return state;
 }
-async function policyRun(context,state,policy,{maxSites=Infinity}={}){
- const local=policy==='P4-local',thinking=policy==='P4-on',p3=policy==='P3';
+async function policyRun(context,state,policy,{maxSites=Infinity,siteIds}={}){
+ const local=policy==='P4-local',thinking=policy==='P4-on',p3=policy==='P3',check=context.check||'gate';
  if(!['P4-off','P4-on','P4-local','P3'].includes(policy))throw Error('invalid-capability-policy');
- const ledger=new Ledger({maxDevRequests:context.tuningDevCap??670}),runner=local?new LocalRunner({ledger}):new DeepSeekRunner({ledger,thinking}),families=new Families(),trials=[];
- const stopFile=path.join(context.directory,'STOP.json');let stopped=false;
+ if(check==='output'&&thinking&&(hash(state.prompt)!==state.promptHash||gateHash()!==state.gateHash))throw Error('capability-iteration-source-changed');
+ const sites=siteIds===undefined?context.sites:context.sites.filter(site=>siteIds.includes(site.id));
+ if(siteIds!==undefined&&(!siteIds.length||sites.length!==siteIds.length||new Set(siteIds).size!==siteIds.length))throw Error('invalid-capability-sites');
+ const ledger=new Ledger({maxDevRequests:context.tuningDevCap??670}),runner=local?new LocalRunner({ledger}):new DeepSeekRunner({ledger,thinking}),families=new Families({check}),trials=[];
+ const stopFile=path.join(context.directory,'STOP.json'),completedSiteIds=[];let stopped=false;
  const stop=reason=>{stopped=true;runner.close();if(!fs.existsSync(stopFile))json(stopFile,{at:new Date().toISOString(),reason});};
  const watch=setInterval(()=>{if(fs.existsSync(stopFile))stop('campaign-stop');if(Date.now()>Date.parse(context.deadline))stop('time-cap');},1000);
  async function generate(site,pages){
   const doms=pages.map(load),docs=doms.map(d=>d.window.document),baselines=await baseline.forPages(pages);
   try{
-   const result=await runLoop({pageIds:pages.map(p=>p.id),runner,ledger,mode:p3?'P3':'P4',site:site.host,baselines,systemPrompt:state.prompt,onEvent:emit,
+   const result=await runLoop({pageIds:pages.map(p=>p.id),runner,ledger,mode:p3?'P3':'P4',site:site.host,baselines,systemPrompt:state.prompt,onEvent:emit,check,
     provenance:{iteration:state.index,experiment:'capability-'+policy,gateHash:state.gateHash,viewsHash:state.viewsHash,settingsHash:state.settingsHash}});
-   const trial={site:site.host,siteId:site.id,policy,pages:pages.map(p=>p.id),admitted:result.accepted,reasons:result.reasons,turns:result.turns,accounting:result.accounting,rule:result.rule,
+   const trial={site:site.host,siteId:site.id,policy,check,pages:pages.map(p=>p.id),admitted:result.accepted,reasons:result.reasons,turns:result.turns,accounting:result.accounting,rule:result.rule,
     gate:result.gate?.pages.map(p=>({accepted:p.accepted,reasons:p.reasons,g6:p.g6?{baseline:p.g6.baseline,protected:p.g6.protected,preserved:p.g6.preserved,missing:p.g6.missing.map(b=>({text:b.protectedText,characters:b.protectedCharacters}))}:null})),
     excluded:result.accepted?exclusions(docs,result.rule):[],history:result.history};
    trials.push(trial);fs.appendFileSync(path.join(state.folder,policy+'-trials.jsonl'),JSON.stringify(trial)+'\n');
@@ -92,7 +96,7 @@ async function policyRun(context,state,policy,{maxSites=Infinity}={}){
   if(local){emit({event:'local-preflight'});await runner.configure();}
   const existing=fs.existsSync(path.join(state.output,'rows.jsonl'))?fs.readFileSync(path.join(state.output,'rows.jsonl'),'utf8').split('\n').filter(Boolean).map(JSON.parse).filter(r=>r.policy===policy):[];
   const completed=new Set(existing.map(r=>r.id));let visited=0;
-  for(const site of context.sites){
+  for(const site of sites){
    if(site.targets.every(p=>completed.has(p.id)))continue;
    if(site.targets.some(p=>completed.has(p.id)))throw Error('partial-site-output-requires-recovery:'+site.id);
    if(visited++>=maxSites)break;
@@ -108,12 +112,19 @@ async function policyRun(context,state,policy,{maxSites=Infinity}={}){
      const row=writeRow(state.output,{id:page.id,site:site.host,policy,ok:verdict.accepted,reason:verdict.accepted?null:verdict.reasons?.join(';')||'agent-declined',fallback,
       modelRequests:charge?account.requests:0,promptTokens:charge?account.promptTokens:0,completionTokens:charge?account.completionTokens:0,cachedTokens:charge?account.cachedTokens:0,
       usageUnknown:charge?account.unknownUsageRequests:0,costEstimate:charge?account.costEstimate||0:0,sourceSha256:page.sha256,promptHash:state.promptHash,gateHash:state.gateHash,viewsHash:state.viewsHash,iteration:state.index},html);
+     completed.add(page.id);
      emit({event:'output',id:page.id,site:site.host,policy,ok:row.ok,fallback,firstLines:firstLines(doc,html).slice(0,2)});
     }finally{held?.window.close();if(p3)for(const d of generated.doms)d.window.close();}
    }}finally{if(shared)for(const d of shared.doms)d.window.close();}
+   if(site.targets.every(page=>completed.has(page.id)))completedSiteIds.push(site.id);
   }
  }catch(error){emit({event:'policy-error',policy,error:error.message,fatal:!!error.fatal});stop(error.message);throw error;}
- finally{clearInterval(watch);runner.close();json(path.join(state.folder,policy+'-complete-'+Date.now()+'.json'),{policy,trials:trials.length,stopped,families:families.toJSON(),ledger:ledger.totals()});}
+ finally{
+  clearInterval(watch);runner.close();
+  const record={policy,check,trials:trials.length,stopped,families:families.toJSON(),ledger:ledger.totals()};
+  if(check==='output')Object.assign(record,{stopped:stopped||fs.existsSync(stopFile),promptHash:state.promptHash,gateHash:state.gateHash,siteIds:completedSiteIds});
+  json(path.join(check==='output'?state.output:state.folder,policy+'-complete-'+Date.now()+'.json'),record);
+ }
 }
 function scoreboard(context,state){
  const {run}=require('../../tests/revision/eval/scoreboard.cjs'),directory=path.join(ROOT,'workspace/revision/results','capability-scoreboard-'+state.index+'-'+Date.now());
@@ -133,6 +144,7 @@ if(require.main===module){const [phase,file,extra]=process.argv.slice(2);(async(
  if(phase==='iteration')return iteration(context,Number(extra));
  const state=JSON.parse(fs.readFileSync(path.join(context.directory,'iteration-'+extra,'iteration.json'),'utf8'));
  if(phase==='score')return scoreboard(context,state);
- if(phase.startsWith('P'))return policyRun(context,state,phase,{maxSites:Number(process.argv.find(a=>a.startsWith('--limit='))?.slice(8))||Infinity});
+ if(phase.startsWith('P'))return policyRun(context,state,phase,{maxSites:Number(process.argv.find(a=>a.startsWith('--limit='))?.slice(8))||Infinity,
+  siteIds:process.argv.find(a=>a.startsWith('--sites='))?.slice(8).split(',')});
  throw Error('unknown-phase');})().catch(error=>{console.error(error.stack);process.exitCode=1;});}
 module.exports={prepare,iteration,policyRun,scoreboard,writeRow,settings};

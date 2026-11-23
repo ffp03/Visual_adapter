@@ -3,7 +3,7 @@ const {DeepSeekRunner,HTTPRunner,CodexRunner,LocalRunner,LOCAL}=require('../../.
 const messages=[{role:'system',content:'system'},{role:'user',content:'redacted'}];
 const response=content=>new Response(JSON.stringify({id:'request-test',model:'served-model',usage:{prompt_tokens:10,completion_tokens:2},choices:[{finish_reason:'stop',message:{content}}]}),{status:200});
 test('Flash off/on use existing key route, settings and guarded payload; direct generate is guarded too',async()=>{
- for(const thinking of [false,true]){const l=ledger();let body;const r=new DeepSeekRunner({apiKey:'test-key',thinking,ledger:l,fetchRequest:async(url,init)=>{assert.equal(url,'https://api.deepseek.com/chat/completions');body=JSON.parse(init.body);assert.equal(l.totals().pending,1);return response('{"action":"query","selector":"main"}');}});const out=await r.generate(messages);assert.equal(out.requestId,'request-test');assert.equal(body.model,'deepseek-flash');assert.equal(body.thinking.type,thinking?'enabled':'disabled');assert.equal(body.reasoning_effort,thinking?'high':'none');assert.equal(l.totals().paidRequests,1);}
+ for(const thinking of [false,true]){const l=ledger();let body;const r=new DeepSeekRunner({apiKey:'test-key',thinking,ledger:l,fetchRequest:async(url,init)=>{assert.equal(url,'https://api.deepseek.com/chat/completions');body=JSON.parse(init.body);assert.equal(l.totals().pending,1);return response('{"action":"query","selector":"main"}');}});const out=await r.generate(messages);assert.equal(out.requestId,'request-test');assert.equal(body.max_tokens,thinking?16384:4096);assert.equal(r.timeoutMs,thinking?300000:60000);assert.equal(body.model,'deepseek-flash');assert.equal(body.thinking.type,thinking?'enabled':'disabled');assert.equal(body.reasoning_effort,thinking?'high':'none');assert.equal(l.totals().paidRequests,1);}
 });
 test('provider errors preserve reported usage, incomplete response fails, local config has no hidden model default',async()=>{
  assert.throws(()=>new HTTPRunner({}),/baseURL-and-model/);assert.throws(()=>new HTTPRunner({baseURL:'https://api.deepseek.com',model:'local'}),/local-runner/);
@@ -110,4 +110,48 @@ test('localFetch preserves caller Content-Length regardless of case, and frames 
   const raw=seen.at(-1).headers;assert.equal(raw[raw.findIndex(v=>v.toLowerCase()==='content-length')+1],'0');
   await (await localFetch(url)).text();assert.equal(seen.at(-1).headers.some(v=>v.toLowerCase()==='content-length'),false);
  }finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
+});
+
+test('output limits retain request identity, exact usage/cost and the increased peak reservation',async()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const {cost,PRICES}=require('../../../backend/agent/ledger.cjs');
+ for(const variant of ['length','reasoning','incomplete','usable']){
+  const l=ledger();let calls=0,payload;
+  const usage={prompt_tokens:100,completion_tokens:variant==='reasoning'?16384:7,prompt_cache_hit_tokens:20,
+   completion_tokens_details:{reasoning_tokens:variant==='reasoning'?16384:3}};
+  const r=new DeepSeekRunner({thinking:true,apiKey:'fake',ledger:l,fetchRequest:async(url,init)=>{
+   calls++;payload=JSON.parse(init.body);
+   return new Response(JSON.stringify({id:'limited-request',model:'fixture-model',usage,
+    choices:[{finish_reason:variant==='length'?'length':'stop',message:{content:variant==='usable'?'{}':variant==='length'?'{"action":':'   '}}]}));
+  }});
+  if(variant==='usable')assert.equal((await r.generate(messages)).content,'{}');
+  else await assert.rejects(r.generate(messages),e=>e.requestId==='limited-request'&&e.usage?.completion_tokens===usage.completion_tokens&&
+   (variant==='incomplete'?e.code===undefined:e.code==='output-limit'));
+  assert.equal(calls,1);
+  const [request,result]=l.entries();
+  const bytes=fs.readFileSync(path.join(l.directory,request.payloadFile));
+  assert.equal(payload.max_tokens,16384);
+  assert.equal(request.reservedCost,(bytes.length*PRICES.peak.input+16384*PRICES.peak.output)/1e6);
+  assert.equal(result.outcome,variant==='usable'?'generated':variant==='incomplete'?'provider-error':'output-limit');
+  if(!['usable','incomplete'].includes(variant))assert.equal(result.reason,'output-limit');
+  assert.equal(result.costEstimate,cost(usage,request.pricing.tier));
+  assert.equal(result.costBasis,'reported-usage');assert.equal(l.totals().completionTokens,usage.completion_tokens);assert.equal(l.totals().pending,0);
+ }
+});
+test('output-limit reaches P4 trial reason and accounting without a retry',async()=>{
+ const {runLoop}=require('../../../backend/agent/loop.cjs');const l=ledger();let calls=0;
+ const runner=new DeepSeekRunner({thinking:true,apiKey:'fake',ledger:l,fetchRequest:async()=>{
+  calls++;return new Response(JSON.stringify({id:'cap',usage:{prompt_tokens:12,completion_tokens:16384,completion_tokens_details:{reasoning_tokens:16384}},choices:[{finish_reason:'length',message:{content:null}}]}));
+ }});
+ const result=await runLoop({pageIds:['fixture-p1','fixture-p2'],runner,ledger:l});
+ assert.equal(result.reason,'output-limit');assert.deepEqual(result.reasons,['output-limit']);assert.equal(result.turns,1);
+ assert.equal(result.history[0].outcome,'output-limit');assert.equal(result.accounting.completionTokens,16384);
+ assert.equal(result.accounting.reportedUsageRequests,1);assert.equal(result.accounting.failures,1);assert.equal(calls,1);
+});
+test('DeepSeek mode defaults survive undefined options and explicit token bounds stay configurable',()=>{
+ const l=ledger();
+ for(const thinking of [false,true]){
+  assert.equal(new DeepSeekRunner({apiKey:'fake',thinking,maxTokens:undefined,ledger:l}).payload(messages).max_tokens,thinking?16384:4096);
+  assert.equal(new DeepSeekRunner({apiKey:'fake',thinking,maxTokens:8192,ledger:l}).payload(messages).max_tokens,8192);
+ }
 });

@@ -21,7 +21,8 @@ test('refuses exact global, development and dollar limits before transport; no p
  }
 });
 test('dev allowance cannot be raised and paid eval paths are forbidden despite a dev label',async()=>{
- const l=ledger({maxRequests:10000,maxDevRequests:10000,maxDollars:500});assert.deepEqual(l.limits,{dollars:5,requests:2000,dev:780});const r=fake([],{provider:'deepseek'});
+ const l=ledger({maxRequests:2301,maxDevRequests:10000,maxDollars:500});assert.deepEqual(l.limits,{dollars:5,requests:2300,dev:900});
+ assert.equal(ledger().limits.requests,2300);const r=fake([],{provider:'deepseek'});
  for(const meta of [{policy:'eval'},{policy:'dev',pages:['C:\\Dev\\Visual_adapter\\workspace\\revision\\corpus\\eval\\e01\\p1']},{policy:'other'}])await assert.rejects(l.run(r,messages,meta));assert.equal(r.calls.length,0);
 });
 test('pending reservations prevent concurrent overrun; transport failures consume requests and conservatively retain unknown usage cost',async()=>{
@@ -33,4 +34,38 @@ test('Codex and local-model requests logged but excluded from DeepSeek caps; cor
  const l=ledger({maxRequests:0,maxDevRequests:0,maxDollars:0});for(const provider of ['codex','pc11'])await l.run(fake(['{}'],{provider}),messages,{policy:'dev'});assert.equal(l.totals().requests,2);assert.equal(l.totals().paidRequests,0);
  fs.appendFileSync(l.file,'bad-json\n');await assert.rejects(l.run(fake(['{}'],{provider:'deepseek'}),messages,{policy:'dev'}));
  const locked=ledger();fs.writeFileSync(path.join(locked.directory,'ledger.lock'),'held');await assert.rejects(locked.run(fake(['{}']),messages),/ledger-locked/);
+});
+test('settlement is idempotent even after an assessment',async()=>{
+ const l=ledger(),r=fake(['{}'],{provider:'deepseek'}),result=await l.run(r,messages);
+ l.outcome(result.ledgerId,'accepted');
+ const before=l.totals();
+ assert.equal(l.settle(result.ledgerId,{outcome:'provider-error',costEstimate:1}),false);
+ assert.deepEqual(l.totals(),before);
+ assert.equal(l.entries().filter(e=>e.event==='result').length,1);
+});
+
+test('a persistence failure after writing a generated result does not create a provider error result',async t=>{
+ const l=ledger(),r=fake(['{}'],{provider:'deepseek'}),sync=fs.fsyncSync;
+ const stub=t.mock.method(fs,'fsyncSync',fd=>{
+  if(l.entries().at(-1)?.outcome==='generated')throw Error('fixture-fsync-failed');
+  return sync(fd);
+ });
+ await assert.rejects(l.run(r,messages),/fixture-fsync-failed/);
+ stub.mock.restore();
+ const results=l.entries().filter(e=>e.event==='result');
+ assert.equal(results.length,1);assert.equal(results[0].outcome,'generated');
+ assert.equal(l.settle(results[0].id,{outcome:'provider-error',costEstimate:1}),false);
+});
+
+test('usage above its reservation stays in totals and closes dispatch after a reopen',async()=>{
+ const l=ledger(),usage={prompt_tokens:10000,completion_tokens:12000},r=fake([],{provider:'deepseek',payload:()=>({max_tokens:1})});
+ r.generate=async()=>{r.calls.push(1);return {content:'{}',usage};};
+ const result=await l.run(r,messages),request=l.entries()[0],actual=cost(usage,request.pricing.tier);
+ assert.ok(actual>request.reservedCost);assert.equal(result.costEstimate,actual);
+ assert.equal(l.totals().dollars,actual);assert.equal(l.totals().overReservations,1);
+ const reopened=new l.constructor({root:l.root,directory:l.directory});
+ for(const runner of [r,fake(['{}'])]){
+  await assert.rejects(reopened.run(runner,messages,{pageIds:['fixture-p1']}),/over-reservation/);
+ }
+ assert.equal(r.calls.length,1);assert.equal(reopened.totals().dollars,actual);
 });

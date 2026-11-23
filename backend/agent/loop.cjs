@@ -34,7 +34,7 @@ function parseAction(result) {
     return action;
 }
 async function runLoop({ pages,pageIds, runner, ledger = runner?.ledger || new Ledger(), mode = 'P4', cueLength = 60,
-    policy = 'dev', site = null, pagePaths = [], maxTurns = 6, systemPrompt = SYSTEM_PROMPT,onEvent=()=>{},baselines,provenance={} } = {}) {
+    policy = 'dev', site = null, pagePaths = [], maxTurns = 6, systemPrompt = SYSTEM_PROMPT,onEvent=()=>{},baselines,provenance={},check='gate' } = {}) {
     if (!runner || typeof runner.generate !== 'function') throw Error('runner-required');
     if(policy==='runtime'&&!require('./runtime.cjs').isRuntimeLedger(ledger))throw new BoundaryError('runtime-guard-required');
     const owned=[];let records;
@@ -50,7 +50,7 @@ async function runLoop({ pages,pageIds, runner, ledger = runner?.ledger || new L
     try{
     if (!['P3','P4'].includes(mode) || (mode === 'P3' ? pages?.length !== 1 : pages?.length !== 2)) throw Error('mode-page-count');
     if (!Number.isInteger(maxTurns) || maxTurns < 1 || maxTurns > 6) throw Error('invalid-turn-budget');
-    const views = new Views(pages, { cueLength, mode,baselines });
+    const views = new Views(pages, { cueLength, mode,baselines,check });
     const initial = [{role:'system',content:systemPrompt},{role:'user',content:JSON.stringify({ mode,hostname:pages[0].location.hostname, model:runner.model || 'scripted', inductionPages:pages.length,
         cueLength, remainingTurns:maxTurns, pages:views.initial() })}];
     const actionLog=[];let observation={remainingTurns:maxTurns,mustSubmit:maxTurns===1};
@@ -71,7 +71,7 @@ async function runLoop({ pages,pageIds, runner, ledger = runner?.ledger || new L
             accounting.costEstimate+=error.costEstimate||0;
             const failedUsage = tokens(error.usage);
             if (failedUsage) { accounting.reportedUsageRequests++;accounting.promptTokens+=failedUsage.prompt;accounting.completionTokens+=failedUsage.completion;accounting.cachedTokens+=failedUsage.cached; }
-            const outcome=error.name==='BoundaryError'?'boundary':error.name==='BudgetError'?'budget':'provider-error';
+            const outcome=error.name==='BoundaryError'?'boundary':error.name==='BudgetError'?'budget':error.code==='output-limit'?'output-limit':'provider-error';
             accounting.failures++; history.push({turn,outcome,reason:error.message});
             return finish(false,outcome,{fatal:!!error.fatal,error:error.message});
         }
@@ -93,11 +93,11 @@ async function runLoop({ pages,pageIds, runner, ledger = runner?.ledger || new L
             return finish(false,'final-turn-must-submit');
         }
         if(action.action==='submit') {
-            const gate=v3.gate(pages,action.rule,{inventories:views.inventories,mode,baselines:views.baselines});
+            const gate=v3.gate(pages,action.rule,{inventories:views.inventories,mode,baselines:views.baselines,check});
             const outcome=gate.accepted ? 'accepted' : gate.reasons.some(r=>r.includes('runtime-error')) ? 'runtime-error' : (gate.reasons.some(r=>r.includes('G1:')) ? 'invalid' : 'gate-rejected');
             ledger.outcome(generated.ledgerId,outcome,gate.reasons);
             if(!gate.accepted)accounting.failures++;
-            history.push({turn,action:'submit',outcome,reasons:gate.reasons});
+            history.push({turn,action:'submit',outcome,reasons:gate.reasons,...(gate.advisory?{advisory:gate.advisory}:{})});
             return finish(gate.accepted,gate.accepted ? null : outcome,{rule:action.rule,gate,inductionMedianRatio:gate.inductionMedianRatio});
         }
         let response;
@@ -111,7 +111,8 @@ async function runLoop({ pages,pageIds, runner, ledger = runner?.ledger || new L
             const outcome=action.action==='preview' && !response.accepted
                 ? (response.reasons.some(r=>r.includes('runtime-error')) ? 'runtime-error' : response.reasons.some(r=>r.includes('G1:')) ? 'invalid' : 'gate-rejected') : 'accepted';
             if(outcome!=='accepted')accounting.failures++;
-            ledger.outcome(generated.ledgerId,outcome,response.reasons || []);history.push({turn,action:action.action,outcome,reasons:response.reasons || []});
+            ledger.outcome(generated.ledgerId,outcome,response.reasons || []);history.push({turn,action:action.action,outcome,reasons:response.reasons || [],
+                ...(action.action==='preview'&&response.advisory?{advisory:response.advisory}:{})});
         } catch(error) {
             response={error:'invalid-action-arguments'};accounting.failures++;
             ledger.outcome(generated.ledgerId,'invalid',[error.message]);history.push({turn,action:action.action,outcome:'invalid'});

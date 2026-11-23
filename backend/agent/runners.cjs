@@ -44,11 +44,17 @@ class HTTPRunner {
             const data = JSON.parse(raw);
             metadata = { requestId: metadata.requestId || data.id || null, usage: data.usage || null, servedModel: data.model || null };
             const choice = data.choices?.[0];
-            if (choice?.finish_reason !== 'stop' || typeof choice.message?.content !== 'string' || !choice.message.content.trim() || choice.message.tool_calls?.length) throw Error('provider-incomplete-action');
+            if (choice?.finish_reason !== 'stop' || typeof choice.message?.content !== 'string' || !choice.message.content.trim() || choice.message.tool_calls?.length) {
+                const cap = context.payload.max_tokens;
+                const outputLimit = choice?.finish_reason === 'length' ||
+                    (Number.isSafeInteger(cap) && data.usage?.completion_tokens_details?.reasoning_tokens === cap);
+                throw Object.assign(Error(outputLimit ? 'provider-output-limit' : 'provider-incomplete-action'),
+                    outputLimit ? { code: 'output-limit' } : {});
+            }
             return { content: choice.message.content, ...metadata };
         } catch (error) {
             const safe = Error(controller.signal.aborted ? 'provider-timeout-or-abort' : /^provider-/.test(error.message) ? error.message : 'provider-request-failed');
-            Object.assign(safe, metadata,{fatal:!!error.fatal,transportFailure:/ENOTFOUND|EAI_AGAIN|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH/.test(error.cause?.code||error.code||'')});
+            Object.assign(safe, metadata,error.code === 'output-limit' ? {code:error.code} : {},{fatal:!!error.fatal,transportFailure:/ENOTFOUND|EAI_AGAIN|ECONNREFUSED|EHOSTUNREACH|ENETUNREACH/.test(error.cause?.code||error.code||'')});
             if(this.provider==='pc11'){
                 const cause=error.cause||error;safe.transportCause={code:String(cause.code||error.code||error.name||'Error'),message:String(cause.message||error.message).slice(0,2048)};
             }
@@ -58,8 +64,10 @@ class HTTPRunner {
     close() { for (const controller of this.controllers) controller.abort(); }
 }
 class DeepSeekRunner extends HTTPRunner {
-    constructor({ thinking = false, apiKey = sharedKey(), ...options } = {}) {
-        super({ ...options, baseURL: 'https://api.deepseek.com', model: MODEL, apiKey, provider: 'deepseek' });
+    constructor({ thinking = false, maxTokens = thinking ? 16384 : 4096, timeoutMs = thinking ? 300000 : 60000, apiKey = sharedKey(), ...options } = {}) {
+        // Thinking consumes completion tokens too; reserve room for the JSON action.
+        // 4,096 thinking tokens took about 30 s, so 16,384 needs more than the 60 s default.
+        super({ ...options, maxTokens, timeoutMs, baseURL: 'https://api.deepseek.com', model: MODEL, apiKey, provider: 'deepseek' });
         this.thinking = thinking; this.effort = thinking ? 'high' : 'none';
     }
     payload(messages) { return { ...super.payload(messages), thinking: { type: this.thinking ? 'enabled' : 'disabled' }, reasoning_effort: this.effort }; }

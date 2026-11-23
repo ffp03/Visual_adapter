@@ -36,6 +36,24 @@ test('rejected previews remain counted when a later submission succeeds; raw act
  const out=await runLoop({pages:ds,runner,ledger:l});assert.equal(out.accepted,true);assert.equal(out.accounting.failures,1);assert.equal(l.totals().failures,1);
  const raw={provider:'scripted',model:'scripted',async generate(){return {action:'submit',rule:rule()};}};assert.equal((await runLoop({pages:ds,runner:raw,ledger:ledger()})).accepted,true);
 });
+test('output-only preview and submission succeed with redacted preview advice and recorded history',async()=>{
+ const ds=pages(),candidate=rule({exclude:['.body[class~="body"]:not(.private123)']});
+ const actions=[{action:'preview',rule:candidate},{action:'submit',rule:candidate}];
+ const gate=await runLoop({pages:ds,runner:fake([...actions]),ledger:ledger()});
+ assert.equal(gate.accepted,false);
+ assert.ok(gate.history.every(entry=>entry.outcome==='gate-rejected'));
+ const runner=fake([...actions]);
+ const output=await runLoop({pages:ds,runner,ledger:ledger(),check:'output'});
+ assert.equal(output.accepted,true);
+ assert.equal(output.accounting.failures,0);
+ const preview=JSON.parse(runner.calls[1].at(-1).content).response;
+ assert.equal(preview.check,'output');
+ assert.equal(preview.accepted,true);
+ assert.deepEqual(preview.reasons,[]);
+ assert.ok(preview.advisory.some(reason=>reason.includes('G4:')&&reason.includes('private#')));
+ assert.ok(preview.pages.every(page=>page.advisory.some(reason=>reason.includes('G6:'))));
+ assert.deepEqual(output.history.map(entry=>entry.advisory),[preview.advisory,output.gate.advisory]);
+});
 test('DOM runtime errors settle submitted requests as failures and decline use-time safely',async()=>{
  const v3=require('../../../extension/procedure-v3.js'),ds=pages(),r=rule(),runner=fake([{action:'submit',rule:r}]),l=ledger();
  const generate=runner.generate.bind(runner);runner.generate=async(...args)=>{const result=await generate(...args);ds[0].createElement=()=>{throw Error('synthetic DOM failure');};return result;};

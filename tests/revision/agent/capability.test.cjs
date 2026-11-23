@@ -40,3 +40,34 @@ test('family storage keeps distinct anchors per host and selects by anchors, oth
  const article=doc(`<main class="reading"><h1>A</h1><p>${prose('article')}</p></main>`),product=doc(`<main class="product"><h1>B</h1><p>${prose('product')}</p></main>`),other=doc(`<main><h1>C</h1><p>${prose('other')}</p></main>`);
  assert.equal(families.select(article).rule.name,a.name);assert.equal(families.select(product).rule.name,'Product');assert.equal(families.select(other).fallback,true);assert.equal(families.select(other).rule,null);
 });
+
+test('output-mode P4-on records a completed one-site development run in the output folder',async()=>{
+ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),Module=require('node:module');
+ const directory=fs.mkdtempSync(path.join(os.tmpdir(),'va-capability-'));
+ const folder=path.join(directory,'iteration-1'),output=path.join(directory,'output');
+ fs.mkdirSync(folder);fs.mkdirSync(output);
+ const sites=['dev-01','dev-02'].map(id=>({id,host:'example.test',pages:[{id:id+'-p1'},{id:id+'-p2'}],targets:[{id:id+'-p3'}]}));
+ const ledger=require('../../../backend/agent/ledger.cjs'),prompt='fixture';
+ const state={index:1,folder,output,prompt,promptHash:ledger.hash(prompt),gateHash:ledger.hash(fs.readFileSync(require.resolve('../../../extension/procedure-v3.js')))};
+ const selected=[],r=rule(),document=doc('<main class="reading"><p>Visible copy</p></main>');
+ const stubs={
+  './develop.cjs':{load:()=>({window:{document,close(){}}}),firstLines:()=>[]},
+  './baselines.cjs':{forPages:async()=>[]},
+  './loop.cjs':{async runLoop({pageIds}){selected.push(...pageIds);return {accepted:true,rule:r,gate:v3.gate([document,document],r,{check:'output'}),accounting:{requests:0}};}},
+  './runners.cjs':{DeepSeekRunner:class { close(){} }},
+  './ledger.cjs':{...ledger,Ledger:class { totals(){return {};} }},
+  './run2.cjs':{exclusions:()=>[]}
+ };
+ const filename=require.resolve('../../../backend/agent/capability-run.cjs'),mod=new Module(filename,module);
+ mod.filename=filename;mod.paths=module.paths;
+ const load=mod.require.bind(mod);mod.require=name=>Object.hasOwn(stubs,name)?stubs[name]:load(name);
+ mod._compile(fs.readFileSync(filename,'utf8'),filename);
+ await assert.rejects(mod.exports.policyRun({directory,check:'output',sites},{...state,gateHash:'stale'},'P4-on',{siteIds:['dev-02']}),/capability-iteration-source-changed/);
+ await mod.exports.policyRun({directory,check:'output',sites},state,'P4-on',{siteIds:['dev-02']});
+ assert.deepEqual(selected,['dev-02-p1','dev-02-p2']);
+ const file=fs.readdirSync(output).find(f=>/^P4-on-complete-\d+\.json$/.test(f));
+ assert.ok(file);
+ const result=JSON.parse(fs.readFileSync(path.join(output,file)));
+ assert.deepEqual({policy:result.policy,check:result.check,trials:result.trials,stopped:result.stopped,promptHash:result.promptHash,gateHash:result.gateHash,siteIds:result.siteIds},
+  {policy:'P4-on',check:'output',trials:1,stopped:false,promptHash:state.promptHash,gateHash:state.gateHash,siteIds:['dev-02']});
+});

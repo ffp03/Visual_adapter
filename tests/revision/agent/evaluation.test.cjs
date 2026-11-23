@@ -5,10 +5,11 @@ const {PageRegistry}=require('../../../backend/agent/pages.cjs');
 const harness=require('../../../backend/agent/eval-run.cjs'),scoring=require('../../../backend/agent/eval-score.cjs');
 const {Ledger}=require('../../../backend/agent/ledger.cjs');
 const ROOT=path.resolve(__dirname,'../../..');
-const {fixture,sealed,modelFactory}=require('./evaluation-fixture.cjs');
+const {fixture,sealed,modelFactory,historicalVerify}=require('./evaluation-fixture.cjs');
 test('evaluation refuses a missing, malformed, changed or unreceipted freeze; matching freeze loads only canonical eval sources',()=>{
  const f=fixture(),registry=new PageRegistry({root:f.root});assert.throws(()=>registry.resolve('eval-01-p3','eval'),/evaluation-freeze-required:missing/);
- const valid=freeze.create(f);assert.equal(valid.freeze.settings.turns,6);assert.equal(valid.freeze.promptSha256,freeze.EXPECTED.prompt);
+ const valid=freeze.create(f);assert.equal(valid.freeze.schemaVersion,1);assert.equal(valid.freeze.settings.turns,6);assert.equal(valid.freeze.promptSha256,freeze.sha(fs.readFileSync(f.promptFile)));
+ assert.throws(()=>historicalVerify({root:f.root}),/evaluation-freeze-required:prompt-mismatch/);
  assert.equal(registry.resolve('eval-01-p3','eval').site,'fixture1.test');
  const l=new Ledger({root:f.root});assert.equal(l.totals().requests,0);assert.equal(l.totals().pending,0);
  const core=path.join(f.root,'extension/procedure-core.js');fs.appendFileSync(core,'\n// changed');
@@ -72,6 +73,7 @@ test('interrupted sites fail unfinished outputs, reconcile reserved requests, an
  await harness.runPolicy({root:f.root,policy:'P4-on',siteIds:['eval-01'],directory,runnerFactory:()=>{throw Error('must-not-request');},onEvent:()=>{}});
  assert.equal(l.totals().pending,0);assert.equal(l.totals().paidRequests,1);assert.equal(l.totals().dollars,.01);
  const rows=harness.lines(path.join(directory,'rows.jsonl'));assert.equal(rows.length,3);assert.ok(rows.every(r=>!r.ok&&r.fallback&&r.reason==='interrupted-site-not-retried'));assert.equal(rows.reduce((s,r)=>s+r.modelRequests,0),1);
+ assert.equal(JSON.parse(fs.readFileSync(path.join(siteDir,'complete.json'))).resumed,true);
 });
 test('applicability pairs are seeded, cover all 40 sites once, and never self-pair',()=>{
  const {pairs}=require('../../../backend/agent/eval-applicability.cjs'),sites=Array.from({length:40},(_,i)=>({siteId:'eval-'+String(i+1).padStart(2,'0')})),p=pairs(sites);
@@ -163,12 +165,16 @@ test('evaluation failure rows retain underlying transport code and message',asyn
 });
 
 test('saved Windows run-7 pointers map to this checkout without modifying historical bytes',()=>{
- const pointer=path.join(ROOT,'workspace/revision/dev-runs/run7/final.json'),before=fs.readFileSync(pointer);
- const old=JSON.parse(before),iteration=freeze.checkoutPath(old.iterationFile),stateBefore=fs.readFileSync(iteration);
- assert.equal(freeze.retained().promptFile,'workspace/revision/dev-runs/capability/2026-11-21T07-04-41-280Z/iteration-4/prompt.txt');
+ const {root,iterationFile}=fixture(),pointer=path.join(root,'workspace/revision/dev-runs/run7/final.json');
+ const windows=file=>'C:\\Dev\\Visual_adapter\\'+path.relative(root,file).replaceAll(path.sep,'\\');
+ const state=JSON.parse(fs.readFileSync(iterationFile));
+ fs.writeFileSync(iterationFile,JSON.stringify({...state,folder:windows(state.folder)}));
+ fs.writeFileSync(pointer,JSON.stringify({iterationFile:windows(iterationFile)}));
+ const before=fs.readFileSync(pointer),stateBefore=fs.readFileSync(iterationFile);
+ assert.equal(freeze.retained(root).promptFile,'workspace/revision/dev-runs/fixture/iteration-1/prompt.txt');
  assert.equal(freeze.checkoutPath('C:\\Dev\\Visual_adapter\\workspace\\fixture'),path.join(ROOT,'workspace/fixture'));
  assert.throws(()=>freeze.checkoutPath('C:\\Dev\\Other\\file'),/unmapped-windows/);
- assert.deepEqual(fs.readFileSync(pointer),before);assert.deepEqual(fs.readFileSync(iteration),stateBefore);
+ assert.deepEqual(fs.readFileSync(pointer),before);assert.deepEqual(fs.readFileSync(iterationFile),stateBefore);
 });
 
 test('deadline crossed during reservation refuses transport and settles the counted reservation',async()=>{

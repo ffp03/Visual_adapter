@@ -11,3 +11,4 @@ require('./runtime.test.cjs');
 require('./catalog.test.cjs');
 require('./performance.test.cjs');
 require('./evaluation.test.cjs');
+require('./regate.test.cjs');

@@ -356,3 +356,37 @@ after the v5 freeze and the only v5-generated runs are the 40 P4-local sites (F5
 simultaneous local requests 4, every request has a result (F6); no site receipt is interrupted
 and no row latency exceeds its site wall time across 490 receipts (F7). Any later freeze should
 fix (1)-(7) before generating new rows.
+
+## V6 output-only evaluation
+
+V6 uses freeze schema 2 and `check: 'output'`. Induction still checks schema,
+declared region counts, runtime errors and visible output text after reveal.
+G2 through G6 are advisory. At delivery, including for P3, anchor counts must
+also match. H1 retention, output length and substantive coverage are advisory.
+
+1. Settle the development iteration using `context.check = 'output'`. Keep its
+   `final.json` pointer, `iteration.json` and `prompt.txt` with the
+   `P4-on-complete-<timestamp>.json` receipt in the iteration's output folder.
+   A completed subset such as `--sites=dev-02` is sufficient. The receipt
+   records the mode, prompt and gate hashes, and the completed site IDs.
+2. Archive both v5 freeze files in `workspace/revision/freeze/archive/v5/`
+   before creating v6. Record their old and new paths and SHA-256 hashes.
+   Retain the v5 source bytes for verifying its historical freeze.
+3. Run `node backend/agent/eval-run.cjs check` through the lab dispatcher.
+   Use the resulting receipt with
+   `node backend/agent/eval-run.cjs freeze CHECK_RECEIPT SETTLED_POINTER`
+   (for example, `workspace/revision/dev-runs/m10/final.json` as the pointer).
+   Then run `node backend/agent/eval-run.cjs verify`. The receipt binds the
+   successful command arguments and the test and source hashes before and after
+   the checks. Creation and verification compare ordered site and page records
+   to the archived v5 manifest and hash each capture and reference. A continuity
+   mismatch leaves the new manifest for inspection. Archive it before retrying.
+4. Generate fresh P0, P1, P4-on and any other approved v6 policies using
+   `node backend/agent/eval-run.cjs run POLICY SITE_IDS`. V6 refuses carry and
+   `--source` inputs, including the source-dependent P2-nr replay policies.
+   Each run holds `workspace/revision/evaluation/v6/generation.lock` across all
+   its sites. If a crash leaves the lock behind, verify that the recorded
+   process has exited and archive the lock before resuming. Use
+   `--resume=DIR` for a v6 run directory. A started, interrupted site is
+   completed without retrying generation. Its receipt marks `resumed: true`
+   and `wallMs` covers only the time spent completing the interrupted run.

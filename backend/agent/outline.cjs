@@ -6,9 +6,9 @@ const {redact}=require('./privacy.cjs');
 const observed=require('./catalog.cjs');
 
 class Views {
-    constructor(pages, { cueLength = 60, mode = pages.length === 1 ? 'P3' : 'P4',baselines } = {}) {
+    constructor(pages, { cueLength = 60, mode = pages.length === 1 ? 'P3' : 'P4',baselines,check = 'gate' } = {}) {
         if (![0,60,'full'].includes(cueLength)) throw Error('cue-length-must-be-0-60-or-full');
-        this.pages = pages; this.cueLength = cueLength; this.mode = mode;
+        this.pages = pages; this.cueLength = cueLength; this.mode = mode; this.check = check;
         this.inventories = v3.inventory(pages, { mode });
         this.baselines=baselines||synchronous(pages);this.precisionCache=new Map();
         this.maps = pages.map(doc => {
@@ -146,8 +146,9 @@ class Views {
         });
     }
     preview(rule) {
-        const verdict = v3.gate(this.pages, rule, { inventories: this.inventories,baselines:this.baselines });
+        const verdict = v3.gate(this.pages, rule, { inventories: this.inventories,baselines:this.baselines,check:this.check });
         return { accepted: verdict.accepted, reasons: verdict.reasons.map(redact), inductionMedianRatio: verdict.inductionMedianRatio,
+            ...(verdict.advisory ? { check: verdict.check, advisory: verdict.advisory.map(redact) } : {}),
             pages: verdict.pages.map((v, i) => {
                 const budget = { remaining: 12000 };
                 const output = this.pages[i].createElement('div'); output.innerHTML = v.html || '';
@@ -159,6 +160,7 @@ class Views {
                 const g6=v.g6?{...v.g6,missing:v.g6.missing.slice(0,40).map(b=>({node:this.maps[i].ids.get(b.node),characters:b.protectedCharacters,cue:this.cue(b.protectedText,budget)}))}:null;
                 const suspicion=this.suspicions(i,output,budget);
                 return { page: i+1, accepted: v.accepted, reasons: v.reasons.map(redact), textLength: v.textLength || 0,
+                    ...(v.advisory ? { advisory: v.advisory.map(redact) } : {}),
                     g6,precision,suspicion,
                     uniqueCoverage: v.uniqueCoverage?.ratio ?? null,
                     substantiveCoverage:v.substantiveCoverage?.ratio??null,minimumTextLength:v.minimumTextLength??null,

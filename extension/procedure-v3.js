@@ -10,6 +10,32 @@
     const NAVIGATION = 'nav,[role="navigation"]', READING = 'main,article,[role="main"]';
     const SUBSTANTIVE = 'p,li,td,th,dd,pre,blockquote,figcaption,h2,h3,h4,h5,h6';
     const SIDEBAR = 'aside,[role="complementary"],nav';
+    // Readability 0.6.0 class/id heuristics plus DESIGN 6a suspicion markers.
+    // Words come from separators/camelCase. Long stems match a word prefix
+    // (recommend -> recommendations); short markers match whole words only, so
+    // "ad" never matches admonition/address and "share" never matches shared.
+    const CLUTTER_PREFIXES = Object.freeze(['related','recommend','promo','sponsor','social','newsletter','subscri','cookie','consent','banner','breadcrumb','footer','sidebar','paginat','outbrain','taboola','widget','advert','navigation']);
+    const CLUTTER_WORDS = Object.freeze(['share','sharing','gdpr','popup','modal','pager','shopping','ad','ads','nav','navbar','menu']);
+    function clutterElement(node) {
+        // Page-wide wrappers are never clutter: html/body, or anything holding
+        // the page heading or the reading container (e.g. body.has-sidebar).
+        if (!node.tagName || node.tagName === 'BODY' || node.tagName === 'HTML') return false;
+        let marked = node.matches('nav,aside,[role="navigation"],[role="complementary"],[role="contentinfo"],[role="banner"]');
+        if (!marked) {
+            const words = ((node.getAttribute('class') || '') + ' ' + (node.getAttribute('id') || ''))
+                .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2').replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+                .toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+            marked = words.some(word => CLUTTER_WORDS.includes(word) || CLUTTER_PREFIXES.some(stem => word.startsWith(stem)));
+        }
+        return marked && !node.querySelector('h1,main,article,[role="main"]') && !node.matches('main,article,[role="main"]');
+    }
+    function markedClutter(node) {
+        for (let current = node; current; current = current.parentElement) {
+            if (clutterElement(current)) return true;
+            if (current.tagName === 'BODY') break;
+        }
+        return false;
+    }
     const ROLES = Object.freeze(['title','byline','date','lede','heading','body','list','table','code','figure','caption','price','specs','description','post','comment','review','item','other']);
     const norm = value => (value || '').normalize('NFKC').replace(/\s+/g, ' ').trim();
     const hostnameKey = host => typeof host === 'string' ? host.replace(/^www\./, '') : null;
@@ -78,6 +104,32 @@
         all(copy, NOISE).forEach(n => n.remove());
         return norm(copy.textContent);
     }
+    function visibleText(output) {
+        // Inspect the delivered fragment after exclusions and reveals. The
+        // sanitiser removes stylesheets, but inline styles and hidden survive.
+        const parts = [], stack = [[output, true]];
+        while (stack.length) {
+            const [node, inheritedVisibility] = stack.pop();
+            if (node.nodeType === 3) {
+                if (inheritedVisibility) parts.push(node.nodeValue);
+                continue;
+            }
+            if (node.nodeType !== 1 || node.hasAttribute('hidden') || node.matches('input,textarea,select,button,' + NOISE)) continue;
+            const style = node.style;
+            if (style?.display === 'none' || style?.getPropertyValue('content-visibility') === 'hidden' ||
+                parseFloat(style?.opacity) === 0) continue;
+            const visibility = style?.visibility;
+            const visible = visibility === 'hidden' || visibility === 'collapse' ? false :
+                ['visible', 'initial', 'revert', 'revert-layer'].includes(visibility) || inheritedVisibility;
+            if (node.matches('details:not([open])')) {
+                const summary = [...node.children].find(child => child.matches('summary'));
+                if (summary) stack.push([summary, visible]);
+            } else {
+                for (let i = node.childNodes.length - 1; i >= 0; i--) stack.push([node.childNodes[i], visible]);
+            }
+        }
+        return norm(parts.join(''));
+    }
     function linkDensity(node) {
         const total = text(node).length;
         const links = all(node, 'a[href]').filter(n => !n.parentElement?.closest('a[href]'));
@@ -94,10 +146,11 @@
         const tokens=noComments.replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g,'').replace(/\[[^\]]*\]/g,'');
         return /[.#](?:[-_a-zA-Z\u0080-\uffff]|\\)/.test(tokens);
     }
-    function nonSidebarText(node) {
+    function nonSidebarText(node, {excludeClutter=false}={}) {
         const clone=node.cloneNode(true);
         all(clone,SIDEBAR).forEach(n=>n.remove());
-        return clone.matches?.(SIDEBAR) ? '' : text(clone);
+        if (excludeClutter) all(clone, '*').filter(clutterElement).forEach(n=>n.remove());
+        return clone.matches?.(SIDEBAR) || (excludeClutter && clutterElement(clone)) ? '' : text(clone);
     }
     function validate(rule, doc) {
         const reasons = [];
@@ -166,7 +219,7 @@
         }
         return wrapper;
     }
-    function blockMetrics(root) {
+    function blockMetrics(root, {excludeClutter=false}={}) {
         const metrics=new Map(),stack=[[root,false]];
         while(stack.length){const [node,visited]=stack.pop();
             if(!visited){stack.push([node,true]);for(let i=node.childNodes.length-1;i>=0;i--)stack.push([node.childNodes[i],false]);continue;}
@@ -175,27 +228,27 @@
             const muted=node.matches('input,textarea,select,option,button,'+NOISE)&&node!==root;
             const children=[...node.childNodes].map(n=>metrics.get(n));
             const raw=muted?'':children.map(m=>m.raw).join(''),value=norm(raw);
-            const protectedRaw=muted||node.matches(SIDEBAR)?'':children.map(m=>m.protectedRaw).join('');
+            const protectedRaw=muted||node.matches(SIDEBAR)||(excludeClutter&&clutterElement(node))?'':children.map(m=>m.protectedRaw).join('');
             const links=muted?0:node.matches('a[href]')?value.length:children.reduce((s,m)=>s+m.links,0);
             metrics.set(node,{raw,protectedRaw,value,links});
         }
         return metrics;
     }
-    function blocks(doc) {
+    function blocks(doc, {excludeClutter=false}={}) {
         // Sanitize once, then measure subtrees without repeatedly cloning every
         // paragraph/list/table and each of its links (pathological on large specs).
-        const mapping=new Map(),sanitizedBody=clean(doc.body,doc,true,mapping),metrics=blockMetrics(sanitizedBody);
+        const mapping=new Map(),sanitizedBody=clean(doc.body,doc,true,mapping),metrics=blockMetrics(sanitizedBody,{excludeClutter});
         return matches(doc, SUBSTANTIVE).map(node => {
             const cached=metrics.get(mapping.get(node)),sanitized=cached?null:clean(node,doc);
             const value=cached?cached.value:text(sanitized),sidebar=!!node.closest(SIDEBAR);
-            const protectedText=sidebar?'':cached?norm(cached.protectedRaw):nonSidebarText(sanitized);
+            const protectedText=sidebar||(excludeClutter&&markedClutter(node))?'':cached?norm(cached.protectedRaw):nonSidebarText(sanitized,{excludeClutter});
             const density=cached?(value.length?Math.min(1,cached.links/value.length):0):linkDensity(sanitized);
             return {node,text:value,characters:value.length,linkDensity:density,sidebar,
                 protectedText,protectedCharacters:protectedText.length};
         }).filter(b=>b.characters>=40 && b.linkDensity<0.5);
     }
-    function inventory(pages, { mode = pages.length === 1 ? 'P3' : 'P4' } = {}) {
-        const inventories = pages.map(doc => blocks(doc));
+    function inventory(pages, { mode = pages.length === 1 ? 'P3' : 'P4', excludeClutter = true } = {}) {
+        const inventories = pages.map(doc => blocks(doc,{excludeClutter}));
         const occurrences = new Map();
         for (const list of inventories) for (const value of new Set(list.map(b => b.text))) occurrences.set(value, (occurrences.get(value) || 0) + 1);
         // Repeat flags also apply to short non-substantive nodes in outlines.
@@ -209,14 +262,15 @@
             template: mode === 'P4' && occurrences.get(b.text) >= 2 }))).map((list, i) => ({ doc: pages[i], blocks: list,
                 unique: list.filter(b => !b.template && !b.sidebar && b.protectedCharacters>=40),
                 nonSidebar: list.filter(b=>!b.sidebar && b.protectedCharacters>=40),
-                templates: list.filter(b => b.template), repeatTexts, mode }));
+                templates: list.filter(b => b.template), repeatTexts, mode, excludeClutter }));
     }
-    function coverage(list, output, {excludeSidebars=false}={}) {
+    function coverage(list, output, {excludeSidebars=false,excludeClutter=false}={}) {
         if(!list.length)return {ratio:1,characters:0,kept:0,total:0,missing:[]};
         // Text, not an output tag, establishes preservation. Collapse identical
         // ancestor/descendant matches so wrappers cannot invent extra copies.
         const clone=output.cloneNode(true);
         all(clone,'input,textarea,select,option,button,'+NOISE+(excludeSidebars?','+SIDEBAR:'')).forEach(n=>n.remove());
+        if(excludeClutter)all(clone,'*').filter(clutterElement).forEach(n=>n.remove());
         const wanted=new Set(list.map(b=>excludeSidebars?b.protectedText:b.text)),counts=new Map(),values=new Map();
         const elements=all(clone,'*');
         for(const n of elements){const value=norm(n.textContent);values.set(n,value);if(!wanted.has(value))continue;
@@ -251,7 +305,7 @@
         if(!baselines || !['P0','P1'].every(k=>typeof baselines[k]?.html==='string'&&typeof baselines[k]?.ok==='boolean'))return null;
         const candidates=['P0','P1'].map(policy=>{
             const output=doc.createElement('div');output.innerHTML=baselines[policy].ok?baselines[policy].html:'';
-            const kept=coverage(inv.unique,output,{excludeSidebars:true});
+            const kept=coverage(inv.unique,output,{excludeSidebars:true,excludeClutter:inv.excludeClutter});
             return {policy,coverage:kept.ratio,kept:inv.unique.filter(b=>!kept.missing.includes(b)),ok:baselines[policy].ok};
         });
         candidates.sort((a,b)=>b.coverage-a.coverage||a.policy.localeCompare(b.policy));
@@ -259,17 +313,18 @@
             blocks:candidates[0].kept.filter(b=>!b.template&&!b.sidebar&&b.linkDensity<0.3&&b.characters>=40),
             baselines:candidates.map(b=>({policy:b.policy,coverage:b.coverage,ok:b.ok}))};
     }
-    function pageVerdict(doc, rule, inv, { induction = true,baselines } = {}) {
+    function pageVerdict(doc, rule, inv, { induction = true,baselines,outputOnly = false } = {}) {
         const schema = validate(rule, doc), reasons = [...schema.reasons];
         if (reasons.length) return { accepted: false, reasons, html: '' };
         reasons.push(...regionCounts(doc, rule));
         if (reasons.length) return { accepted: false, reasons, html: '' };
         const output = render(doc, rule), outputText = text(output);
+        const textLength = outputOnly ? visibleText(output).length : outputText.length;
         const h1 = matches(doc, 'h1').find(n => text(clean(n, doc)));
         if (h1 && !outputText.includes(text(clean(h1, doc)))) reasons.push('G2:h1-missing');
-        const uniqueCoverage = coverage(inv.unique, output,{excludeSidebars:true}), templateCoverage = coverage(inv.templates, output);
+        const uniqueCoverage = coverage(inv.unique, output,{excludeSidebars:true,excludeClutter:inv.excludeClutter}), templateCoverage = coverage(inv.templates, output);
         const sameInventory=inv.unique.length===inv.nonSidebar.length&&inv.unique.every((b,i)=>b===inv.nonSidebar[i]);
-        const substantiveCoverage=sameInventory?uniqueCoverage:coverage(inv.nonSidebar,output,{excludeSidebars:true});
+        const substantiveCoverage=sameInventory?uniqueCoverage:coverage(inv.nonSidebar,output,{excludeSidebars:true,excludeClutter:inv.excludeClutter});
         let g6;
         if (induction) {
             if (uniqueCoverage.ratio < (inv.mode === 'P3' ? 0.8 : 0.9)) reasons.push('G3:unique-coverage');
@@ -283,14 +338,14 @@
                     const original = all(b.node, '*'), copy = all(b.node.cloneNode(true), '*');
                     const trial = copy[0];
                     original.forEach((n, i) => { if (removed.includes(n) || isNoise(n)) copy[i].remove(); });
-                    return nonSidebarText(trial) !== b.protectedText;
+                    return nonSidebarText(trial,{excludeClutter:inv.excludeClutter}) !== b.protectedText;
                 });
                 if (losesUnique) reasons.push('G4:unique-exclusion:' + exclusion);
             }
             const protection=baselineProtection(doc,inv,baselines);
             if(!protection)reasons.push('G6:baseline-evidence-required');
             else{
-                const preservation=coverage(protection.blocks,output,{excludeSidebars:true});
+                const preservation=coverage(protection.blocks,output,{excludeSidebars:true,excludeClutter:inv.excludeClutter});
                 g6={baseline:protection.policy,baselineCoverage:protection.coverage,baselines:protection.baselines,
                     protected:protection.blocks.length,preserved:preservation.kept,missing:preservation.missing};
                 if(preservation.missing.length)reasons.push('G6:baseline-regression');
@@ -299,47 +354,67 @@
         const substantiveNodes=new Set(inv.blocks.map(b=>b.node));
         const substantiveCharacters=inv.blocks.filter(b=>{for(let p=b.node.parentElement;p;p=p.parentElement)if(substantiveNodes.has(p))return false;return true;}).reduce((sum,b)=>sum+b.characters,0);
         const minimumTextLength=Math.min(200,0.5*substantiveCharacters);
-        if (outputText.length < minimumTextLength) reasons.push('G5:output-too-short');
-        return { accepted: !reasons.length, reasons, html: output.innerHTML, textLength: outputText.length,
+        if (textLength < minimumTextLength) reasons.push('G5:output-too-short');
+        return { accepted: !reasons.length, reasons, html: output.innerHTML, textLength,
             uniqueCoverage, templateCoverage, substantiveCoverage,substantiveCharacters,minimumTextLength,g6 };
     }
     function median(values) {
         const sorted = [...values].sort((a,b) => a-b), middle = Math.floor(sorted.length / 2);
         return sorted.length % 2 ? sorted[middle] : (sorted[middle-1] + sorted[middle]) / 2;
     }
+    function outputVerdict(verdict) {
+        const reasons = [], advisory = [];
+        for (const reason of verdict.reasons) {
+            const diagnostic = /^G[2-6]:/.test(reason) || reason === 'use-time:substantive-coverage';
+            (diagnostic ? advisory : reasons).push(reason);
+        }
+        if (verdict.textLength === 0) reasons.push('output:empty');
+        return { ...verdict, accepted: !reasons.length, reasons, advisory };
+    }
     function gate(pages, rule, options = {}) {
-        if (!Array.isArray(pages) || !pages.length) return { accepted: false, reasons: ['G1:no-pages'], pages: [] };
+        const outputOnly = options.check === 'output';
+        if (!Array.isArray(pages) || !pages.length) return { accepted: false, reasons: ['G1:no-pages'], pages: [],
+            ...(outputOnly ? { check: options.check, advisory: [] } : {}) };
         const inventories = options.inventories || inventory(pages, options);
         const verdicts = pages.map((doc, i) => {
-            try { return pageVerdict(doc, rule, inventories[i],{baselines:options.baselines?.[i]}); }
-            catch { return {accepted:false,reasons:['runtime-error'],html:''}; }
+            let verdict;
+            try { verdict = pageVerdict(doc, rule, inventories[i],{baselines:options.baselines?.[i],outputOnly}); }
+            catch { verdict = {accepted:false,reasons:['runtime-error'],html:''}; }
+            return outputOnly ? outputVerdict(verdict) : verdict;
         });
         return { accepted: verdicts.every(v => v.accepted), reasons: verdicts.flatMap((v, i) => v.reasons.map(r => `p${i+1}:${r}`)), pages: verdicts,
-            inductionMedianRatio: verdicts.every(v => Number.isFinite(v.substantiveRatio)) ? median(verdicts.map(v => v.substantiveRatio)) : null };
+            inductionMedianRatio: verdicts.every(v => Number.isFinite(v.substantiveRatio)) ? median(verdicts.map(v => v.substantiveRatio)) : null,
+            ...(outputOnly ? { check: options.check, advisory: verdicts.flatMap((v, i) => v.advisory.map(r => `p${i+1}:${r}`)) } : {}) };
     }
-    function useTime(doc, rule, induction) {
+    function useTime(doc, rule, induction, options = {}) {
         let verdict;
-        try { const inv = inventory([doc], { mode: 'P3' })[0]; verdict = pageVerdict(doc, rule, inv, { induction: false }); }
-        catch { return {accepted:false,reasons:['runtime-error'],html:'',fallback:true}; }
-        if (!validate(rule, doc).accepted) return { ...verdict, fallback: true };
-        for (const anchor of rule.applicability.anchors) {
-            const count = matches(doc, anchor.selector).length;
-            if (count < anchor.min || count > anchor.max) verdict.reasons.push('applicability:anchor-count:' + anchor.selector);
+        try { const inv = inventory([doc], { mode: 'P3', excludeClutter: false })[0]; verdict = pageVerdict(doc, rule, inv, { induction: false,outputOnly: options.check === 'output' }); }
+        catch {
+            return {accepted:false,reasons:['runtime-error'],html:'',fallback:true,
+                ...(options.check === 'output' ? { advisory: [] } : {})};
         }
-        if(verdict.substantiveCoverage && verdict.substantiveCoverage.ratio<0.6)verdict.reasons.push('use-time:substantive-coverage');
+        if (validate(rule, doc).accepted) {
+            for (const anchor of rule.applicability.anchors) {
+                const count = matches(doc, anchor.selector).length;
+                if (count < anchor.min || count > anchor.max) verdict.reasons.push('applicability:anchor-count:' + anchor.selector);
+            }
+            if(verdict.substantiveCoverage && verdict.substantiveCoverage.ratio<0.6)verdict.reasons.push('use-time:substantive-coverage');
+        }
         verdict.accepted = !verdict.reasons.length;
+        if (options.check === 'output') verdict = outputVerdict(verdict);
         return { ...verdict, fallback: !verdict.accepted };
     }
-    function selectFamily(doc,rules) {
+    function selectFamily(doc,rules,options = {}) {
         const matching=(Array.isArray(rules)?rules:[]).filter(rule=>validate(rule,doc).accepted&&rule.applicability.anchors.every(a=>{
             const count=matches(doc,a.selector).length;return count>=a.min&&count<=a.max;
         }));
         // More independent matching constraints first; stable input order breaks
         // ties. A selected rule failing use-time declines, without trial repairs.
         matching.sort((a,b)=>b.applicability.anchors.length-a.applicability.anchors.length);
-        if(!matching.length)return {accepted:false,fallback:true,reasons:['family:no-matching-anchors'],html:'',rule:null};
-        const rule=matching[0],verdict=useTime(doc,rule);
+        if(!matching.length)return {accepted:false,fallback:true,reasons:['family:no-matching-anchors'],html:'',rule:null,
+            ...(options.check === 'output' ? { advisory: [] } : {})};
+        const rule=matching[0],verdict=useTime(doc,rule,undefined,options);
         return {...verdict,rule,matchingFamilies:matching.length};
     }
-    return { NOISE, SUBSTANTIVE, SIDEBAR, ROLES, norm,hostnameKey, clean,srcsetCandidates,text, nonSidebarText,matches, linkDensity, validSelector,identityAnchor, validate, render, blocks, inventory, coverage, substantiveRatio,baselineProtection,gate,useTime,selectFamily };
+    return { NOISE, SUBSTANTIVE, SIDEBAR, CLUTTER_PREFIXES, CLUTTER_WORDS, clutterElement, markedClutter, ROLES, norm,hostnameKey, clean,srcsetCandidates,text, nonSidebarText,matches, linkDensity, validSelector,identityAnchor, validate, render, blocks, inventory, coverage, substantiveRatio,baselineProtection,gate,useTime,selectFamily };
 });

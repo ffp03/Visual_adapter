@@ -5,3 +5,4 @@
 - 2026-11-23T18:54:24.069835+00:00 Next: Owner chose A: align extension useTime/runtime to the output-only check, add tests, remove the paper caveat, rebuild PDF and letter
 - 2026-11-23T20:01:24.070274+00:00 done: Owner A: extension/runtime aligned to the evaluated output-only check (66dcb78); paper it6 (f68aaee)
 - 2026-11-23T20:01:24.202834+00:00 Next: Milestone 13 (it6) waits for the owner's check of the PDF and the response letter; then act on comments
+- 2026-11-23T20:48:52.211556+00:00 Next: Owner asked the page limit (answered: extra-page fee above 7 pages, checked 2026-10-19); milestone 13 it6 waits for the owner's check

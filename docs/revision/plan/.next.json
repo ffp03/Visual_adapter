@@ -1,6 +1,6 @@
 {
-  "step": "Milestone 13 built; wait for the owner's check of the PDF and the response letter, then act on comments",
-  "at": "2026-11-23T18:30:54.190539+00:00",
-  "decision_digest": "21b6f0714e70a36e940f46e8fc77499a6d8b3d47da904cb3c47f561e0f61cd83",
+  "step": "Owner chose A: align extension useTime/runtime to the output-only check, add tests, remove the paper caveat, rebuild PDF and letter",
+  "at": "2026-11-23T18:54:24.069835+00:00",
+  "decision_digest": "6a83bc0be8d7922bb30cd988e5274c6ecfc81eaf5879d554ea7553dbc7281bc0",
   "done": false
 }

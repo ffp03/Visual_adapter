@@ -2,3 +2,4 @@
 - 2026-11-23T18:10:53.159739+00:00 Next: Milestone 13 step 1: check how earlier builds reached Windows Word (paper repo TASK-023-PROGRESS.md, tools/manuscript-v4/README.md), then builder fixes
 - 2026-11-23T18:30:54+00:00 Milestone 13 built; waiting for the owner's check
 - 2026-11-23T18:30:54.190539+00:00 Next: Milestone 13 built; wait for the owner's check of the PDF and the response letter, then act on comments
+- 2026-11-23T18:54:24.069835+00:00 Next: Owner chose A: align extension useTime/runtime to the output-only check, add tests, remove the paper caveat, rebuild PDF and letter

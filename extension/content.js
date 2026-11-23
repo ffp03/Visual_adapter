@@ -154,7 +154,7 @@ async function tryApplyRules(outcome = {}) {
         outcome.ruleFailure = false;
         outcome.inventory = PreservationCore.inspect(document);
         for (const rule of rules) {
-            const result = rule.schemaVersion === 3 ? ProcedureV3.useTime(document, rule) : rule.schemaVersion === 2
+            const result = rule.schemaVersion === 3 ? ProcedureV3.useTime(document, rule, undefined, { check: 'output' }) : rule.schemaVersion === 2
                 ? PreservationCore.apply(document, rule, outcome.inventory) : PreservationCore.applyLegacy(document, rule, outcome.inventory);
             outcome.attemptedCombinations = (outcome.attemptedCombinations || 0) + (result.attemptedCombinations || 0);
             if (!result.accepted) {
@@ -169,7 +169,7 @@ async function tryApplyRules(outcome = {}) {
                 }
                 outcome.ruleFailure = true;
                 outcome.ruleRejected = 'substantive-content-loss';
-                outcome.ruleRejectionDetail = result.reason;
+                outcome.ruleRejectionDetail = result.reason || (result.reasons || []).join(',') || null;
                 outcome.rejectedCoverage = result.coverage;
                 continue;
             }

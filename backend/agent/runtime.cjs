@@ -327,7 +327,10 @@ function createRuntimeAgent({ root = ROOT, session = new RuntimeSession() } = {}
             const records = registry.records(ids);
             if (records.some(r => r.site !== host)) refused('runtime-host-mismatch');
             if (records[0].url === records[1].url || records[0].sha256 === records[1].sha256) refused('runtime-distinct-examples-required');
-            return require('./loop.cjs').runLoop({ pageIds: ids, policy: 'runtime', mode: 'P4', runner, ledger, site: host });
+            const procedure = require('./runtime-procedure.cjs');
+            if (!procedure.runtimePromptMatches()) refused('runtime-prompt-not-evaluated');
+            return require('./loop.cjs').runLoop({ pageIds: ids, policy: 'runtime', mode: 'P4', runner, ledger, site: host,
+                systemPrompt: procedure.RUNTIME_PROMPT, check: procedure.RUNTIME_CHECK });
         },
         session
     };

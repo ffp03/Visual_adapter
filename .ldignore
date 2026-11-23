@@ -19,3 +19,6 @@ workspace/revision/archive/
 workspace/revision/runs/
 workspace/revision/results/synthetic-containment-*/
 workspace/revision/ld-out*/
+# Finished evaluation outputs (1.4 GB, ~21k files); offline checks build their own fixtures (2026-11-23)
+workspace/revision/results/
+workspace/revision/payloads/

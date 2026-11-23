@@ -30,7 +30,7 @@ test('unpacked extension: consent, payload disclosure, P4 admission, runtime use
     });
     const siteURL = await listen(site); t.after(() => close(site));
     const context = await chromium.launchPersistentContext(path.join(directory, 'chrome-profile'), {
-        executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: false,
+        executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: process.env.BROWSER_HEADLESS === '1',
         viewport: { width: 420, height: 900 },
         ignoreDefaultArgs: ['--disable-extensions'],
         args: ['--enable-unsafe-extension-debugging', '--no-first-run', '--no-default-browser-check']
@@ -42,6 +42,11 @@ test('unpacked extension: consent, payload disclosure, P4 admission, runtime use
     await cdp.send('Extensions.loadUnpacked', { path: extension });
     const worker = context.serviceWorkers()[0] || await context.waitForEvent('serviceworker');
     const extensionId = new URL(worker.url()).hostname;
+    // The install handler opens the setup page in a new tab; on some browsers it becomes the active
+    // tab after the site page opens. Close it so the panel reads the site tab, as a user would.
+    const setup = context.pages().find(p => p.url().endsWith('/options.html')) ||
+        await context.waitForEvent('page', { predicate: p => p.url().endsWith('/options.html'), timeout: 5000 }).catch(() => null);
+    if (setup) await setup.close();
     const errors = [];
     const panel = await context.newPage(); panel.on('pageerror', error => errors.push(error.message));
     const reading = panel.frameLocator('#reader-frame');

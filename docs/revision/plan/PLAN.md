@@ -36,3 +36,4 @@ Done means:
 - 2026-11-23 Owner: "b" keep all four self-citations [3]-[6], cited in the third person. Page budget up to 7 pages; title stays.
 - 2026-11-23 Owner: "your message missed the progress and goal. you need to fix that before you continue". Plan registered here; every milestone report states the goal and the milestone status. Next: milestone 13 builder fixes.
 - 2026-11-23 Agent: milestone 13 built (7-page anonymous Word/PDF, response letter Doc); waiting for the owner's check. Next: act on the owner's comments; submission stays with the owner/Kevin.
+- 2026-11-23 Owner: "for your q, a" (A: align the extension to the evaluated output-only check; remove the caveat in Sections 4.2 and 6). Milestone 13 check still pending.

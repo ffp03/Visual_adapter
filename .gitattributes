@@ -12,3 +12,5 @@ workspace/task023/refresh-20261021/** -text whitespace=trailing-space,space-befo
 backend/agent/ledger.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
 extension/procedure-core.js -text whitespace=trailing-space,space-before-tab,cr-at-eol
 backend/deepseek-runner.cjs -text whitespace=trailing-space,space-before-tab,cr-at-eol
+# Evaluated runtime guidance: its bytes are hash-bound to the v6 freeze prompt.
+backend/agent/evaluated-guidance.txt -text

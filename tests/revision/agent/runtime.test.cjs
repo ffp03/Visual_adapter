@@ -278,3 +278,52 @@ test('development guard remains manifest-only and rejects runtime/evaluation eve
     await Ledger.prototype.run.call(l, normal, [], { policy: 'dev', pageIds: ['fixture-p1'] });
     assert.equal(l.totals().devRequests, 1); assert.equal(runner.calls.length, 0);
 });
+
+test('runtime induction uses the evaluated (freeze v6) prompt and the output-only check', async () => {
+    const procedure = require('../../../backend/agent/runtime-procedure.cjs');
+    const freeze = path.resolve(__dirname, '../../../workspace/revision/freeze/evaluation-freeze.json');
+    assert.equal(procedure.runtimePromptMatches(), true);
+    assert.equal(procedure.RUNTIME_CHECK, 'output');
+    if (fs.existsSync(freeze)) {
+        const data = JSON.parse(fs.readFileSync(freeze, 'utf8'));
+        assert.equal(procedure.EVALUATED_PROMPT_SHA256, data.promptSha256); assert.equal(data.settings.check, 'output');
+    }
+    // A title-only rule is valid and produces output but fails G3/G5: the gate check refuses it,
+    // the evaluated output-only check admits it (G2-G6 become advisory).
+    const titleOnly = rule({ regions: [{ role: 'body', selector: 'h1', multiple: false, required: true }] });
+    const { agent } = setup(), runner = fake([{ action: 'submit', rule: titleOnly }]);
+    const out = await agent.runRuntimeInduction('example.test', ids(agent), runner);
+    assert.equal(out.accepted, true, JSON.stringify(out.reasons));
+    assert.equal(runner.calls[0][0].content, procedure.RUNTIME_PROMPT);
+    assert.equal(out.promptHash, procedure.EVALUATED_PROMPT_SHA256);
+});
+
+test('runtime disclosure previews exactly the first payload the runtime induction sends', async () => {
+    const procedure = require('../../../backend/agent/runtime-procedure.cjs');
+    const { firstDisclosure, payloadFor } = require('../../../backend/runtime-disclosure.cjs');
+    const { JSDOM } = require('jsdom');
+    const { agent } = setup(), runner = fake([{ action: 'submit', rule: rule() }]);
+    await agent.runRuntimeInduction('example.test', ids(agent), runner);
+    const sent = JSON.stringify(payloadFor(runner, runner.calls[0]));
+    const doms = ['Alpha', 'Beta'].map(seed => new JSDOM(snapshot(seed).sanitizedHtml, { url: snapshot(seed).url }));
+    try {
+        const disclosure = firstDisclosure(doms.map(d => d.window.document), runner);
+        assert.equal(runner.calls[0][0].content, procedure.RUNTIME_PROMPT);
+        assert.equal(disclosure.payloadHash, crypto.createHash('sha256').update(sent).digest('hex'));
+        assert.ok(sent.length <= disclosure.perRequestCharacters);
+    } finally { doms.forEach(d => d.window.close()); }
+});
+
+test('extension applies stored v3 rules with the evaluated output-only check', () => {
+    const source = fs.readFileSync(path.resolve(__dirname, '../../../extension/content.js'), 'utf8');
+    assert.match(source, /ProcedureV3\.useTime\(document, rule, undefined, \{ check: 'output' \}\)/);
+    const v3 = require('../../../extension/procedure-v3.js'), { JSDOM } = require('jsdom');
+    const dom = new JSDOM(`<main class="reading"><h1>Held out title</h1><p>${prose('Held out body')}</p></main>`, { url: 'https://example.test/x' });
+    try {
+        const titleOnly = rule({ regions: [{ role: 'body', selector: 'h1', multiple: false, required: true }] });
+        assert.equal(v3.useTime(dom.window.document, titleOnly, undefined, { check: 'output' }).accepted, true);
+        assert.equal(v3.useTime(dom.window.document, titleOnly).accepted, false);
+        const wrongAnchor = rule({ applicability: { hostname: 'example.test', anchors: [{ selector: 'main.other', min: 1, max: 1 }] } });
+        assert.equal(v3.useTime(dom.window.document, wrongAnchor, undefined, { check: 'output' }).accepted, false);
+    } finally { dom.window.close(); }
+});

@@ -11,17 +11,36 @@ reference audit (milestone 4) is still done by the user/Randy, in parallel. Desi
 conversation, `plan.py start docs/revision/plan` prints the briefing):**
 - [x] 1-3 pilot design, pilot corpus, agent loop prototype (superseded by the 12 development sites)
 - [ ] 4 corpus 40 x 5 and references DONE; ~20% audit NOT done (user/Randy; paper says unaudited)
-- [x] 5 extension changes (open A/B: extension uses the gate check, not the evaluated output-only check)
+- [x] 5 extension changes; owner A 2026-11-23: extension and runtime now use the evaluated output-only check and prompt
 - [x] 6-7 freeze v5 evaluation and export (2026-11-22)
 - [x] 8-10 bug fixes, clutter fix, freeze v6 on 40 sites: page pass AI 45.8 vs P1 27.5 vs P0 24.2 (higher is better)
 - [x] 10b local model 41.7 and Codex 43.3 on v6
 - [x] 11 response plan Doc (user chose self-citations B)
 - [x] 12 manuscript sources revised, numbers traced, claim review acted on (paper repo e0a0db9)
-- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- BUILT 2026-11-23 18:30 UTC, WAITING FOR THE USER'S CHECK
+- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- BUILT (it6 19:16 UTC, paper repo f68aaee), WAITING FOR THE USER'S CHECK
 
 **Current step:** milestone 13 is built and waits for the user's check (submission stays with the
 user/Kevin). Every milestone report to the user states the goal and this status (user, 2026-11-23:
 "your message missed the progress and goal").
+
+OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
+procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +
+backend/agent/evaluated-guidance.txt (= guidance-m10.txt; sha256 9126b73e = v6 freeze promptSha256;
+CRLF normalized, .gitattributes -text; runtime refuses 'runtime-prompt-not-evaluated' on drift),
+RUNTIME_CHECK 'output'. runtime.cjs runRuntimeInduction passes both; runtime-disclosure.cjs previews
+RUNTIME_PROMPT; content.js useTime(..., {check:'output'}) and rejection detail falls back to
+reasons. Tests: 3 new in runtime.test.cjs (prompt/check, disclosure hash = first sent payload,
+extension output check); browser.test.cjs takes CHROME_PATH/BROWSER_HEADLESS and closes the
+install setup tab (runs under xvfb-run on claude-host). Local: 54/54 unit, browser 1/1. Codex review
+(dilab-5080): 4 findings; fixed CRLF hash, rejection detail, weak tests; not changed: output gate
+admits a rule whose anchors match 0 at induction (evaluated behaviour; use time checks counts and
+falls back; paper states it). Full offline suite (ld, dilab-5080, eval-run check): agent+eval 166/166 pass; capture suite timed out
+(needs Google Chrome, absent on the worker; known since 2026-11-21; capture code untouched). Receipt
+workspace/revision/ld-out/checks-1795463371381/. .ldignore now skips workspace/revision/results/ and
+payloads/ (1.4 GB of finished outputs stalled the upload for 30+ min).
+Paper: Section 4.2 rewritten (extension and backend use the evaluated check), limitation 6 drops
+the mismatch; number trace row updated; it6 PDF 7 pages, pages 1-3 identical to it5, 4-7
+inspected; paper repo f68aaee. Letter unchanged (it never mentioned the mismatch).
 
 MILESTONE 13 BUILT 2026-11-23 ~18:30 UTC (paper repo 92808ee): drafts/aiipcc2026_revision1.docx +
 .pdf, 7 pages, anonymous (core creator Anonymous, PDF author empty), every page inspected (5 Word

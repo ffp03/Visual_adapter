@@ -1,6 +1,7 @@
 'use strict';
 const { Views } = require('./agent/outline.cjs');
-const { SYSTEM_PROMPT, runLoop } = require('./agent/loop.cjs');
+const { runLoop } = require('./agent/loop.cjs');
+const { RUNTIME_PROMPT } = require('./agent/runtime-procedure.cjs');
 const { synchronous } = require('./agent/baselines.cjs');
 const { BoundaryError } = require('./agent/ledger.cjs');
 const { createHash } = require('node:crypto');
@@ -20,10 +21,10 @@ const payloadFor = (runner, messages) => JSON.parse(JSON.stringify(runner.payloa
 function firstDisclosure(documents, runner) {
     const bound = limits(documents.length);
     const views = new Views(documents, { cueLength: 60, mode: 'P4', baselines: synchronous(documents) });
-    // The public loop prompt and Views are the sole sources of page evidence.
+    // The evaluated runtime prompt and Views are the sole sources of page evidence.
     // Framing mirrors loop.cjs; the guarded actual first payload must match its
     // preview hash before ANY transport, so drift refuses instead of sending.
-    const messages = [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: JSON.stringify({
+    const messages = [{ role: 'system', content: RUNTIME_PROMPT }, { role: 'user', content: JSON.stringify({
         mode: 'P4', hostname: documents[0].location.hostname, model: runner.model || 'scripted', inductionPages: documents.length,
         cueLength: 60, remainingTurns: bound.maxTurns, pages: views.initial()
     }) }, { role: 'user', content: JSON.stringify({ actionLog: [], remainingTurns: bound.maxTurns, mustSubmit: bound.maxTurns === 1 }) }];

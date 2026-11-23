@@ -32,6 +32,17 @@ revised in paper-agent/workspaces/visual-adapter-aiipcc-2026. Submission deadlin
   before generating a new rule; offers manual fallback; a failed rule never uploads by itself.
 - Site-clustered results, route/failure counts and limitations exported to the paper project.
 
+**Manuscript revision (proposed 2026-11-23, waiting for the user's agreement):** review reports
+received (paper repo inputs/reviews/2026-11-19-AIIPCC69233/, 3 docx: R1 72 major, R2 74 major,
+R3 76 accept with major). Page budget: 7 pages before the extra-page fee (now 5). Proposed:
+11. Response plan: each reviewer point -> change + evidence, in a Google Doc. (user checks)
+12. Revised manuscript sources (paper repo drafts/*.md): v6 method and results, cost model
+    instantiated from the ledger, comparison table, threat model, softened access claims,
+    reference/format fixes. Check: every number traced to an export; Codex claim review.
+13. Word/PDF in the VDE template (<= 7 pages, anonymous) plus response letter. Check: rendered
+    pages inspected. (user checks) Submission stays with the user/Kevin.
+Asked: 1 access claims (A soften, no user study), 2 page budget (A up to 7), 3 milestone list OK.
+
 **Milestones:**
 1. Pilot design spec (rule format v3, agent loop, gate, measures, reference format,
    de-identification). Check: summary shown to the user in chat. (user checks)

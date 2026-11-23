@@ -102,6 +102,13 @@ need to fix them first"):
    idempotent settlement/over-reservation stop, run.lock cleanup. Not fixed (by choice): clutter-marking
    heuristic (advisory in output mode) and the 16,384 thinking cap (design). After the fix patch:
    apply, re-run targeted tests, then continue below.
+   FIX ROUND DONE 06:00 UTC: patch .git/codex-remote/263aa7f1887646d2b2f7a52593a6c229.patch applied
+   (originals in workspace/archive/2026-11-23-m10-pre-fix/); targeted tests 108/108 pass here; real
+   ledger loads (1,900 paid, 865 dev, $1.83). Iteration 10 CREATED (prompt 9126b73e, output
+   results/capability-agent-10-1795413772915); pointer dev-runs/m10/final.json WRITTEN. m10-lab.sh now
+   runs its container as root, installs Chrome for the capture tests in mode A (as check-docker.sh
+   did), chowns workspace/revision back on exit. Submit it DIRECTLY (not via in-place.sh: it runs its
+   own docker). JOB A SUBMITTED ~06:10 UTC (estimate ~1 h incl. upload). Then continue below.
    Next: act on valid findings (fix small ones yourself; re-run targeted tests), THEN (not before:
    iteration snapshots procedure-v3/outline hashes) create dev iteration 10:
    `node workspace/revision/analysis/2026-11-22-m8/rerun.cjs prepare-guidance --iteration=10
@@ -113,7 +120,7 @@ need to fix them first"):
    P0/P1/P4-on; `C <sites>` = the other 39, one process per site and policy. Submit:
    ld submit --only dilab-5080 --secret DEEPSEEK_API_KEY --mem 8G --cpus 2 --outputs
    workspace/revision/ld-out-m10 -- env STAGE=workspace/revision/ld-out-m10 bash
-   workspace/revision/ld/in-place.sh bash workspace/revision/ld/m10-lab.sh A. After pull: archive
+   workspace/revision/ld/m10-lab.sh A. After pull: archive
    local v5 freeze+manifest to freeze/archive/v5 by hand BEFORE copying staged files; merge the
    ledger with a prefix check; inspect dev-02 and eval-01 outputs; add FREEZE-LOG.md v6 entry.
    Scoring: v6 P0, P1, P4-on rows (eval-P*-* result dirs with the v6 freezeSha256), AI rule only,

@@ -76,6 +76,18 @@ need to fix them first"):
    Codex review of all uncommitted code, freeze; dev-02 as the one-case check; then P4-on on the
    40 evaluation sites once (~190 requests at ~4.7/site, ~$0.30 at iteration 9's $0.0015/request);
    cap 2,000 -> 2,300 requests, $5 unchanged. Check: table vs P1/P0 with site-clustered intervals.
+   AGREED 2026-11-23 (user "A"; "carry on everything without me, unless something is out of
+   expectations"). Plan: Codex (dilab-5080, brief scratchpad codex-m10-brief.md) implements
+   check:'gate'|'output' (procedure-v3 gate/useTime/selectFamily, Views, runLoop, Families,
+   capability-run, eval-run), ledger ceiling 2300, eval freeze schemaVersion 2 (v6) bound to a
+   settled dev iteration pointer (workspace/revision/dev-runs/m10/final.json), verify rechecks the
+   test receipt (finding 4), v6 generation lock (finding 6), no carry (P0, P1, P4-on all fresh
+   under v6). Then: apply + targeted tests; Codex review of all uncommitted code; dev iteration 10
+   = guidance-m10.txt (m9 guidance + one check-mode sentence) created after review; ld job A:
+   offline checks receipt (eval-run check) + dev-02 output-mode check; archive v5 freeze/manifest
+   to freeze/archive/v5 and freeze v6; ld job B: eval-01 P0/P1/P4-on, inspect; ld job C: other 39.
+   Checked 2026-11-23: all 200 eval sources and references match the v5 manifest; files changed
+   since v5 = ledger.cjs, loop.cjs, runners.cjs, procedure-v3.js (WP-F1/m8) only.
 Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-goal-change/
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).

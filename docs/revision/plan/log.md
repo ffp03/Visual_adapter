@@ -8,3 +8,4 @@
 - 2026-11-23T20:48:52.211556+00:00 Next: Owner asked the page limit (answered: extra-page fee above 7 pages, checked 2026-10-19); milestone 13 it6 waits for the owner's check
 - 2026-11-23T20:57:33.910300+00:00 Next: M13 owner comments: figure resolution, tables fit content + bold best, highlight major changes, polite letter quoting revised text, shortened references; rebuild it7
 - 2026-11-23T21:03:40.144083+00:00 Next: Settle the abstract (positioning, significance) with the owner; then carry it through the manuscript, apply the 5 m13 comments, rebuild
+- 2026-11-23T21:04:34.665675+00:00 Next: Abstract proposal sent to the owner (positioning A/B, per-page cost source A/B/C); wait, then carry the abstract through the manuscript

@@ -88,6 +88,29 @@ need to fix them first"):
    to freeze/archive/v5 and freeze v6; ld job B: eval-01 P0/P1/P4-on, inspect; ld job C: other 39.
    Checked 2026-11-23: all 200 eval sources and references match the v5 manifest; files changed
    since v5 = ledger.cjs, loop.cjs, runners.cjs, procedure-v3.js (WP-F1/m8) only.
+   STATE 2026-11-23 ~05:00 UTC: Codex implementation job 19fb5b56... (dilab-5080) DONE, patch
+   .git/codex-remote/19fb5b56f90c49248259d2db129488d0.patch APPLIED to the working tree (originals
+   archived in workspace/archive/2026-11-23-m10-pre-codex/; CRLF kept). Targeted tests here (heap
+   900): procedure 23, loop 10, ledger 6, eval-v6 6, evaluation 15, eval-v5 6, eval-carry 5,
+   runners 14, regate 2, capability 6 - all pass. Codex REVIEW of all uncommitted code RUNNING
+   (brief scratchpad codex-m10-review.md, output scratchpad codex-m10-review.out; job id there;
+   `python ~/.local/bin/codex-remote result ~/Dev/Visual_adapter <job>` if no notification).
+   Next: act on valid findings (fix small ones yourself; re-run targeted tests), THEN (not before:
+   iteration snapshots procedure-v3/outline hashes) create dev iteration 10:
+   `node workspace/revision/analysis/2026-11-22-m8/rerun.cjs prepare-guidance --iteration=10
+   --guidance=workspace/revision/analysis/2026-11-22-m8/guidance-m10.txt` (guidance-m10.txt =
+   m9 guidance + check-mode sentence, written), write workspace/revision/dev-runs/m10/final.json =
+   {"iterationFile":"<RUN>/iteration-10/iteration.json"}; rerun.cjs now takes --check=output.
+   ld payload workspace/revision/ld/m10-lab.sh written (untested): `A` = eval-run check ->
+   dev-02 output-mode check -> archive v5 freeze (job copy) -> freeze v6 + verify -> eval-01
+   P0/P1/P4-on; `C <sites>` = the other 39, one process per site and policy. Submit:
+   ld submit --only dilab-5080 --secret DEEPSEEK_API_KEY --mem 8G --cpus 2 --outputs
+   workspace/revision/ld-out-m10 -- env STAGE=workspace/revision/ld-out-m10 bash
+   workspace/revision/ld/in-place.sh bash workspace/revision/ld/m10-lab.sh A. After pull: archive
+   local v5 freeze+manifest to freeze/archive/v5 by hand BEFORE copying staged files; merge the
+   ledger with a prefix check; inspect dev-02 and eval-01 outputs; add FREEZE-LOG.md v6 entry.
+   Scoring: v6 P0, P1, P4-on rows (eval-P*-* result dirs with the v6 freezeSha256), AI rule only,
+   same page-pass definition as estimate-m9.py, site-clustered bootstrap seed 20261122.
 Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-goal-change/
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).

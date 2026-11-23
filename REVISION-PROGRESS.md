@@ -87,6 +87,25 @@ G per page: v5 P3 0.0020, P2-fresh 0.00155), threat model (verify each claim in 
 backend/ code first), comparison table, per-failure breakdown, reference fixes, format fixes. Every
 number traced to an export file; then a Codex claim review (codex-budget first). Milestone 13 =
 Word/PDF via tools/manuscript-v4 (PDF export needs Windows Word) + response letter.
+STATE 2026-11-23 17:30 UTC (milestone 12): sources rewritten and committed in the paper repo (e4e38f7;
+submitted sources archived in archive/2026-11-23-submitted-manuscript-sources/). 4,799 words, 4 tables
+(compare, contract, results, cost), 19 references. New export inputs/results/2026-11-23-cost-instance/
+(script workspace/revision/export/export-cost.py; ledger tokens; USD recomputed at peak list prices:
+the v5 runs were partly off-peak, so the earlier "5-7 views" mixed tiers; correct: F 0.0104/site, G
+0.0040 (P3) / 0.0031 (P2-fresh), break-even 2.6/3.4 views, 34/44 with 12 renewals). Number trace:
+paper repo artifacts/number-trace-2026-11-23.md (97/105 literal, rest roundings/code parameters).
+Found: the extension still applies the gate-mode check (content.js useTime without check:'output';
+runtime induction runLoop default 'gate'), not the evaluated output-only check: disclosed in the
+paper (case study + limitations); offer the user to align the code. No redaction audit was done and
+the reference audit (milestone 4) is not done: paper says both. RUNNING: Codex claim review
+(codex-remote, gpt-6.1-sol medium; brief scratchpad codex-m12-claims.md, output codex-m12-claims.out;
+bundle docs/revision/manuscript-review-2026-11-23/, untracked: move to workspace/revision/response/
+after). Next: act on findings, recommit, then milestone 13. Milestone 13 builder work needed:
+prepare_inputs.py ABSTRACT_SHA (abstract changed), reference-count envelope 18 -> 19, references
+formatter in build_docx.py prints no DOI/series/volume/publisher/note/access date (cause of the
+reviewers' reference complaints; also maps the venue to "Comput. Inf. Sci. Eng."), section numbering
+for 4 and 6, figure relabel (no compiler; agent induction on two examples; renewal triggers;
+versions), Table header wraps.
 
 **Milestones:**
 1. Pilot design spec (rule format v3, agent loop, gate, measures, reference format,

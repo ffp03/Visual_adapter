@@ -111,7 +111,7 @@
       "status": "doing",
       "owner_checks": true,
       "check": "Rendered pages inspected; user checks; submission stays with the user/Kevin",
-      "evidence": "",
+      "evidence": "Built 2026-11-23 18:30 UTC, paper repo 92808ee: drafts/aiipcc2026_revision1.docx/.pdf, 7 pages, anonymous, all pages inspected; response letter Doc 1iRwIXp6LfCW6ug9nZDCKvfx1yboKfyrZ0LK4VaF_yh0. Waiting for the user check.",
       "read": [
         "REVISION-PROGRESS.md / START HERE (milestone 13)",
         "paper repo tools/manuscript-v4/README.md",

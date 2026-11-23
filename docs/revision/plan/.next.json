@@ -1,6 +1,6 @@
 {
-  "step": "Milestone 13 step 1: check how earlier builds reached Windows Word (paper repo TASK-023-PROGRESS.md, tools/manuscript-v4/README.md), then builder fixes",
-  "at": "2026-11-23T18:10:53.159739+00:00",
-  "decision_digest": "72c89836cc3e09080cd5d45cbfb9813973c0f64baf6f2689e2b04a582c74848c",
+  "step": "Milestone 13 built; wait for the owner's check of the PDF and the response letter, then act on comments",
+  "at": "2026-11-23T18:30:54.190539+00:00",
+  "decision_digest": "21b6f0714e70a36e940f46e8fc77499a6d8b3d47da904cb3c47f561e0f61cd83",
   "done": false
 }

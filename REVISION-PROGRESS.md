@@ -17,11 +17,29 @@ conversation, `plan.py start docs/revision/plan` prints the briefing):**
 - [x] 10b local model 41.7 and Codex 43.3 on v6
 - [x] 11 response plan Doc (user chose self-citations B)
 - [x] 12 manuscript sources revised, numbers traced, claim review acted on (paper repo e0a0db9)
-- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- CURRENT
+- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- BUILT 2026-11-23 18:30 UTC, WAITING FOR THE USER'S CHECK
 
-**Current step:** milestone 13, step 1: find how earlier builds reached Windows Word, then the
-builder fixes (START HERE milestone 13 below). Every milestone report to the user states the goal
-and this status (user, 2026-11-23: "your message missed the progress and goal").
+**Current step:** milestone 13 is built and waits for the user's check (submission stays with the
+user/Kevin). Every milestone report to the user states the goal and this status (user, 2026-11-23:
+"your message missed the progress and goal").
+
+MILESTONE 13 BUILT 2026-11-23 ~18:30 UTC (paper repo 92808ee): drafts/aiipcc2026_revision1.docx +
+.pdf, 7 pages, anonymous (core creator Anonymous, PDF author empty), every page inspected (5 Word
+iterations; archive/2026-11-23-revision1-iterations/). Route: Word is not on claude-host; ld job on
+dilab-pc2 (Word 16 on pc1/pc2/pc7 only) runs tools/manuscript-v4/word-export-ld.sh (export.ps1 as
+ldworker) and renders PNGs; tools README documents it. Builder fixes (originals archive/2026-11-23-
+manuscript-v4-tools-pre-m13/): portable paths, abstract SHA d86130ed, 13-20 refs, verified ref
+snapshot tools/manuscript-v4/archive/m13/, full reference formatter (venue/series/volume/pages/
+publisher/DOI or URL+access date; TACCESS and UIST venues written out in references.bib), widths
+for 4 tables, suppressAutoHyphens (R3 hyphen artefacts came from Word auto-hyphenation), table rows
+keep with captions, refs left-aligned. Figure relabelled (draw_figure.cjs, portable; old figure
+archive/2026-11-23-figure-pre-m13/). Table 1 moved after the Co-Scraper paragraph (02_related_work.md,
+full_paper.md reassembled) so it fits with its caption. Response letter (2,213 words, point by point
+R1.1-R1.9, R2.1-R2.6, R3.1-R3.9): Google Doc
+https://docs.google.com/document/d/1iRwIXp6LfCW6ug9nZDCKvfx1yboKfyrZ0LK4VaF_yh0/edit (verified;
+source workspace/revision/response/letter/make-letter.py -> response-letter.json; service record
+va-m13-response-letter-doc). Not done: no Codex review of the render or letter (docs; own checks).
+Open for the user: milestone 13 check; A/B extension check alignment (unchanged). Nothing running.
 
 **Goal:** answer the AIIPCC69233 reviewers with new evidence. The current design makes
 agent-generated rules only match the deterministic (rule-based) reader, which defeats the

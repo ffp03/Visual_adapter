@@ -35,3 +35,4 @@ Done means:
 - 2026-11-23 Owner: claim = low-cost access to AI services at full strength; no low-vision usability claim; run the local model and Codex on the latest code (milestone 10b); "A, I want you to carry on everything without me, unless something is out of expectations".
 - 2026-11-23 Owner: "b" keep all four self-citations [3]-[6], cited in the third person. Page budget up to 7 pages; title stays.
 - 2026-11-23 Owner: "your message missed the progress and goal. you need to fix that before you continue". Plan registered here; every milestone report states the goal and the milestone status. Next: milestone 13 builder fixes.
+- 2026-11-23 Agent: milestone 13 built (7-page anonymous Word/PDF, response letter Doc); waiting for the owner's check. Next: act on the owner's comments; submission stays with the owner/Kevin.

@@ -42,6 +42,25 @@ R3 76 accept with major). Page budget: 7 pages before the extra-page fee (now 5)
 13. Word/PDF in the VDE template (<= 7 pages, anonymous) plus response letter. Check: rendered
     pages inspected. (user checks) Submission stays with the user/Kevin.
 Asked: 1 access claims (A soften, no user study), 2 page budget (A up to 7), 3 milestone list OK.
+User 2026-11-23: access = low-cost access to AI services is THE claim; keep it at full strength and
+make it clearer; do not claim low-vision usability (no user study). Also: run the local model and
+Codex on the latest code (freeze v6) "to complete the tests" -> milestone 10b, before 11. Taken as
+agreement to 11-13 and 7 pages (carry-on order). 10b plan: P4-Codex on the frozen v6 subset
+eval-01..10, then P4-local on 40 sites, both on claude-host one process per site (local model is
+served via the image portal 100.106.192.82:8780 on dilab-pc11; ld on 5080 cannot reach it, 5090 is
+off limits); unpaid, so ledger caps are not touched; generation.lock = one policy at a time.
+STATE 2026-11-23 14:45 UTC: 10b P4-Codex DONE on eval-01..10 (first eval-01 try hit the runner's
+10 s login check before any request -> archived workspace/revision/archive/m10b-codex-login-failure-
+2026-11-23/ with README, site rerun; disclose in export). P4-local eval-01 checked (4 requests, own
+output on 3/3), eval-02..40 RUNNING in background (scratchpad m10b-run.sh, log m10b-local.log,
+~3 min/site, expected done ~16:30 UTC; watchdogs: cron 15:13 + host 15:38). score-v6.cjs now also
+reads P4-local/P4-Codex (pre-edit copy archived). First 10 sites page pass (higher is better): P4-on
+60.0, Codex 43.3, P1 26.7, P0 13.3. Next for 10b: score all, export-v6 update (add the two policies
++ paired vs P4-on/P1/P0), Doc update. Milestone 11 response plan Doc published (text-verified):
+https://docs.google.com/document/d/1l_5S7kZ6x1CFMEHjQtfhFM1JO1jzhTTuKjfSDeYkH30/edit (source
+workspace/revision/response/response-plan.json); open decision: self-citations [3]-[6] A keep 1-2
+third person (recommended) / B keep all / C anonymous. Then milestone 12 (Markdown sources in the
+paper repo drafts/; tools/manuscript-v4 builds; Word PDF export needs Windows Word).
 
 **Milestones:**
 1. Pilot design spec (rule format v3, agent loop, gate, measures, reference format,

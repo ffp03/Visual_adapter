@@ -59,8 +59,34 @@ reads P4-local/P4-Codex (pre-edit copy archived). First 10 sites page pass (high
 + paired vs P4-on/P1/P0), Doc update. Milestone 11 response plan Doc published (text-verified):
 https://docs.google.com/document/d/1l_5S7kZ6x1CFMEHjQtfhFM1JO1jzhTTuKjfSDeYkH30/edit (source
 workspace/revision/response/response-plan.json); open decision: self-citations [3]-[6] A keep 1-2
-third person (recommended) / B keep all / C anonymous. Then milestone 12 (Markdown sources in the
+third person (recommended) / B keep all / C anonymous -> USER CHOSE B (keep all four, third person). Then milestone 12 (Markdown sources in the
 paper repo drafts/; tools/manuscript-v4 builds; Word PDF export needs Windows Word).
+10b DONE 2026-11-23 ~14:50 UTC: P4-local 40/40 sites (172 requests, unpaid, ~40 s/site), P4-Codex
+10/10 (53 requests). Page pass (higher is better): DeepSeek 45.8, local 41.7 [30.0, 54.2], Codex
+43.3 [20.0, 70.0] (30 pages), P1 27.5, P0 24.2; local-P1 +14.2 [-0.8, +29.2], local-P0 +17.5 [+5.8,
++29.2], Codex-P1 +16.7 [+3.3, +30.0], Codex-P0 +30.0 [+6.7, +56.7], Codex-DeepSeek -16.7 [-40.0, +0.0]
+on its 10 sites. Clean pass (higher is better): local 41.7, Codex 70.0; noise leakage (lower is
+better): local 22.2, Codex 7.1; content recall (higher is better): local 86.5, Codex 94.1. P0/P1/P4-on
+unchanged. scores-v6.csv 510 rows (3-policy copy archived). Export regenerated in place in the paper
+repo (017fcc2; old 3-policy files git mv'd to archive/2026-11-23-v6-export-three-policies/).
+export-v6.py extended (old copy archived). m10-lab.sh mode C exit status fixed (old copy archived).
+Service records: google-workplace (plan Doc), codex, local-llm. No results Doc update (table in chat).
+
+START HERE (milestone 12, after the 2026-11-23 15:00 wrap): revise the manuscript sources in
+~/Dev/paper-agent/workspaces/visual-adapter-aiipcc-2026 (own git repo, main): drafts/00..06_*.md and
+full_paper.md (prepare_inputs.py requires full_paper.md == section assembly). Read first: paper-agent
+agent/instructions/shared/writing_style.md, the response plan (workspace/revision/response/response-
+plan.json = the Doc), reviews in inputs/reviews/2026-11-19-AIIPCC69233/ (text extracted in plan),
+exports inputs/results/2026-11-23-revision-evaluation-v6/ (main) and 2026-11-22-revision-evaluation/
+(v5 earlier run: P2, compiler ablation, P3, cue ablations). Decisions: claim = low-cost access to AI
+services, full strength, clearer; no low-vision usability claim; title stays; <= 7 pages; keep all
+four self-citations [3]-[6] in the third person (user "b"); v6 main, v5 the earlier run. Rewrite the
+method/case study for the v3 agent loop (rules induced on p1-p2, output-only check, use-time anchor
+check, reader fallback not scored), cost instance from the ledger (F per site 0.0104 USD DeepSeek;
+G per page: v5 P3 0.0020, P2-fresh 0.00155), threat model (verify each claim in extension/ and
+backend/ code first), comparison table, per-failure breakdown, reference fixes, format fixes. Every
+number traced to an export file; then a Codex claim review (codex-budget first). Milestone 13 =
+Word/PDF via tools/manuscript-v4 (PDF export needs Windows Word) + response letter.
 
 **Milestones:**
 1. Pilot design spec (rule format v3, agent loop, gate, measures, reference format,

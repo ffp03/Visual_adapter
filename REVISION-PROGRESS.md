@@ -70,8 +70,16 @@ need to fix them first"):
    m8 with check 44.4 / clutter 6.7 / kept 100.0 -> m9 no check 44.4 / clutter 4.9 / kept 99.4
    (page pass higher is better, clutter lower is better); AI-P1 +25.0 [+0.0, +50.0], AI-P0 +33.3
    [+13.9, +55.6]. The no-check figure assumes the agent stops at the rule the check refused.
-10. (Proposed, not yet agreed) Rerun P4 on the 40 evaluation sites with the fixes, scored on
-   the new measures. Needs the user's OK for DeepSeek requests beyond the 2,000 cap.
+10. Rerun P4 on the 40 evaluation sites with the fixes, scored on the new measures.
+   DONE 2026-11-23 07:50 UTC: freeze v6 5ae6dac2 (output-only check, iteration 10), P0/P1/P4-on all
+   generated fresh, 40 sites x 3 held-out pages, AI rule only (3 fallback pages = fail). Page pass
+   (higher is better): AI 45.8, P1 27.5, P0 24.2; AI-P1 +18.3 [+3.3, +32.5], AI-P0 +21.7 [+7.5,
+   +35.8] (site-clustered, 10,000, seed 20261122). Clutter (lower is better) AI 7.9 / P1 9.9 / P0
+   17.3; content kept (higher is better) AI 99.4 / P1 82.9 / P0 99.8. AI failing pages: clutter >5%
+   57, title 6, order 8, content 3, no output 3. Sites by AI pages passing of 3: 0:15, 1:7, 2:6, 3:12.
+   Eval cost 151 requests, $0.42; ledger 2,057 paid / 871 dev / $2.26. Files:
+   analysis/2026-11-23-m10/{scores-v6.csv,table-m10.txt,score-v6.cjs,table-m10.py}; jobs A 305483, C 305484.
+   (Original text:) Needs the user's OK for DeepSeek requests beyond the 2,000 cap.
    Detail proposed 2026-11-23 (waiting): code a no-check mode (keep only "rule produces output"),
    Codex review of all uncommitted code, freeze; dev-02 as the one-case check; then P4-on on the
    40 evaluation sites once (~190 requests at ~4.7/site, ~$0.30 at iteration 9's $0.0015/request);

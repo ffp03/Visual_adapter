@@ -1,0 +1,2 @@
+- 2026-11-23T18:10:52+00:00 Plan created from REVISION-PROGRESS.md goal block; milestones 1-12 recorded, 13 doing
+- 2026-11-23T18:10:53.159739+00:00 Next: Milestone 13 step 1: check how earlier builds reached Windows Word (paper repo TASK-023-PROGRESS.md, tools/manuscript-v4/README.md), then builder fixes

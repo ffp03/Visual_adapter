@@ -1,0 +1,91 @@
+[
+  {
+    "id": "1",
+    "title": "Pilot design spec (rule format v3, agent loop, gate, measures, reference format, de-identification)",
+    "owner_checks": true,
+    "check": "Summary shown to the user in chat"
+  },
+  {
+    "id": "2",
+    "title": "Pilot corpus 4 sites x 5 pages with independent references, baselines scored",
+    "owner_checks": true,
+    "check": "Table in chat: does the ceiling reproduce"
+  },
+  {
+    "id": "3",
+    "title": "Agent loop prototype on the pilot",
+    "owner_checks": true,
+    "check": "Per-page comparison against reader and Readability in chat"
+  },
+  {
+    "id": "4",
+    "title": "Full corpus 40 x 5 captured, references drafted, ~20% audit sample",
+    "owner_checks": true,
+    "check": "Audit sample passed by user/Randy"
+  },
+  {
+    "id": "5",
+    "title": "Extension changes (v3 rules and checks, minimized de-identified input, consent/disclosure, fallback)",
+    "owner_checks": false,
+    "check": "Project and browser tests pass; Codex review findings resolved"
+  },
+  {
+    "id": "6",
+    "title": "Full rerun with all comparators, ablations and models",
+    "owner_checks": false,
+    "check": "Complete accounting, every attempt counted, site-clustered intervals"
+  },
+  {
+    "id": "7",
+    "title": "Sanitized export to the paper project plus result summary",
+    "owner_checks": true,
+    "check": "Summary in chat or a Google Doc"
+  },
+  {
+    "id": "8",
+    "title": "Fix DeepSeek thinking output cap and gate refusing clutter removals",
+    "owner_checks": false,
+    "check": "Tests pass; dev sites re-scored"
+  },
+  {
+    "id": "9",
+    "title": "Find and fix why the agent misses remaining clutter",
+    "owner_checks": true,
+    "check": "Before/after table on development sites"
+  },
+  {
+    "id": "10",
+    "title": "Rerun P4 on the 40 evaluation sites with the fixes (freeze v6)",
+    "owner_checks": false,
+    "check": "Table vs P1/P0 with site-clustered intervals"
+  },
+  {
+    "id": "10b",
+    "title": "Local model and Codex on the v6 code",
+    "owner_checks": false,
+    "check": "Paired results vs P4-on/P1/P0 in the export"
+  },
+  {
+    "id": "11",
+    "title": "Response plan: each reviewer point -> change + evidence, in a Google Doc",
+    "owner_checks": true,
+    "check": "User reads the Doc"
+  },
+  {
+    "id": "12",
+    "title": "Revised manuscript sources (paper repo drafts/*.md)",
+    "owner_checks": false,
+    "check": "Every number traced to an export; Codex claim review"
+  },
+  {
+    "id": "13",
+    "title": "Word/PDF in the VDE template (<= 7 pages, anonymous) plus response letter",
+    "owner_checks": true,
+    "check": "Rendered pages inspected; user checks; submission stays with the user/Kevin",
+    "read": [
+      "REVISION-PROGRESS.md / START HERE (milestone 13)",
+      "paper repo tools/manuscript-v4/README.md",
+      "paper repo TASK-023-PROGRESS.md"
+    ]
+  }
+]

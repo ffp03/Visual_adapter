@@ -1,0 +1,123 @@
+{
+  "task": "aiipcc69233-revision",
+  "milestones": [
+    {
+      "id": "1",
+      "title": "Pilot design spec (rule format v3, agent loop, gate, measures, reference format, de-identification)",
+      "status": "done",
+      "owner_checks": true,
+      "check": "Summary shown to the user in chat",
+      "evidence": "docs/revision/DESIGN-2026-11.md; user 2026-11-20: continue without stopping"
+    },
+    {
+      "id": "2",
+      "title": "Pilot corpus 4 sites x 5 pages with independent references, baselines scored",
+      "status": "done",
+      "owner_checks": true,
+      "check": "Table in chat: does the ceiling reproduce",
+      "evidence": "Superseded by the 12 development sites (REVISION-PROGRESS.md 2026-11-21 blocks)"
+    },
+    {
+      "id": "3",
+      "title": "Agent loop prototype on the pilot",
+      "status": "done",
+      "owner_checks": true,
+      "check": "Per-page comparison against reader and Readability in chat",
+      "evidence": "Tuning runs 1-7 on development sites, 2026-11-21"
+    },
+    {
+      "id": "4",
+      "title": "Full corpus 40 x 5 captured, references drafted, ~20% audit sample",
+      "status": "blocked",
+      "owner_checks": true,
+      "check": "Audit sample passed by user/Randy",
+      "evidence": "Corpus and references done (WP-A3b, WP-A4); audit not done, waits for user/Randy; paper states references are unaudited"
+    },
+    {
+      "id": "5",
+      "title": "Extension changes (v3 rules and checks, minimized de-identified input, consent/disclosure, fallback)",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Project and browser tests pass; Codex review findings resolved",
+      "evidence": "Committed with the freeze v5/v6 code (c48c870, 928eec8); open: extension applies the gate check, not the evaluated output-only check (user A/B)"
+    },
+    {
+      "id": "6",
+      "title": "Full rerun with all comparators, ablations and models",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Complete accounting, every attempt counted, site-clustered intervals",
+      "evidence": "Freeze v5 evaluation 2026-11-22; audit review-audit-v5.json 0 problems"
+    },
+    {
+      "id": "7",
+      "title": "Sanitized export to the paper project plus result summary",
+      "status": "done",
+      "owner_checks": true,
+      "check": "Summary in chat or a Google Doc",
+      "evidence": "Paper repo inputs/results/2026-11-22-revision-evaluation; v5 results Doc 2026-11-22"
+    },
+    {
+      "id": "8",
+      "title": "Fix DeepSeek thinking output cap and gate refusing clutter removals",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Tests pass; dev sites re-scored",
+      "evidence": "2026-11-22 21:20 UTC: 117 requests, 0 output-limit; P4-on 44.4 vs P1 19.4 on 12 dev sites"
+    },
+    {
+      "id": "9",
+      "title": "Find and fix why the agent misses remaining clutter",
+      "status": "done",
+      "owner_checks": true,
+      "check": "Before/after table on development sites",
+      "evidence": "2026-11-23 user A; guidance-m9.txt; estimate-m9.txt clutter 6.7 -> 4.9"
+    },
+    {
+      "id": "10",
+      "title": "Rerun P4 on the 40 evaluation sites with the fixes (freeze v6)",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Table vs P1/P0 with site-clustered intervals",
+      "evidence": "2026-11-23 07:50 UTC freeze v6 5ae6dac2: page pass AI 45.8, P1 27.5, P0 24.2; AI-P1 +18.3 [+3.3, +32.5]; export commit 62f95b0"
+    },
+    {
+      "id": "10b",
+      "title": "Local model and Codex on the v6 code",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Paired results vs P4-on/P1/P0 in the export",
+      "evidence": "2026-11-23 14:50 UTC: local 41.7 (40 sites), Codex 43.3 (10 sites); export 017fcc2"
+    },
+    {
+      "id": "11",
+      "title": "Response plan: each reviewer point -> change + evidence, in a Google Doc",
+      "status": "done",
+      "owner_checks": true,
+      "check": "User reads the Doc",
+      "evidence": "Doc 1l_5S7kZ6x1CFMEHjQtfhFM1JO1jzhTTuKjfSDeYkH30 (response-plan.json); user answered self-citations B"
+    },
+    {
+      "id": "12",
+      "title": "Revised manuscript sources (paper repo drafts/*.md)",
+      "status": "done",
+      "owner_checks": false,
+      "check": "Every number traced to an export; Codex claim review",
+      "evidence": "2026-11-23 18:15 UTC: paper repo e4e38f7, e0a0db9; artifacts/number-trace-2026-11-23.md; claim review 31 findings acted on (claim-review-m12)"
+    },
+    {
+      "id": "13",
+      "title": "Word/PDF in the VDE template (<= 7 pages, anonymous) plus response letter",
+      "status": "doing",
+      "owner_checks": true,
+      "check": "Rendered pages inspected; user checks; submission stays with the user/Kevin",
+      "evidence": "",
+      "read": [
+        "REVISION-PROGRESS.md / START HERE (milestone 13)",
+        "paper repo tools/manuscript-v4/README.md",
+        "paper repo TASK-023-PROGRESS.md"
+      ]
+    }
+  ],
+  "goal_sha256_of_purpose_section": "4b5fc60695779049fdb4b83f4e3bd237c6e4d192678308efd24c873a0d8bcda1"
+}

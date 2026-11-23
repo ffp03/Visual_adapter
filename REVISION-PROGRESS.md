@@ -7,6 +7,22 @@ for me to review. you can continue all the way"). Change 2026-11-20 on the user'
 "(user checks)" milestones no longer stop the work; progress is shared and work continues. The
 reference audit (milestone 4) is still done by the user/Randy, in parallel. Design: docs/revision/DESIGN-2026-11.md.
 
+**Milestone status (2026-11-23 ~18:40 UTC; tracked plan docs/revision/plan/, registered for this
+conversation, `plan.py start docs/revision/plan` prints the briefing):**
+- [x] 1-3 pilot design, pilot corpus, agent loop prototype (superseded by the 12 development sites)
+- [ ] 4 corpus 40 x 5 and references DONE; ~20% audit NOT done (user/Randy; paper says unaudited)
+- [x] 5 extension changes (open A/B: extension uses the gate check, not the evaluated output-only check)
+- [x] 6-7 freeze v5 evaluation and export (2026-11-22)
+- [x] 8-10 bug fixes, clutter fix, freeze v6 on 40 sites: page pass AI 45.8 vs P1 27.5 vs P0 24.2 (higher is better)
+- [x] 10b local model 41.7 and Codex 43.3 on v6
+- [x] 11 response plan Doc (user chose self-citations B)
+- [x] 12 manuscript sources revised, numbers traced, claim review acted on (paper repo e0a0db9)
+- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- CURRENT
+
+**Current step:** milestone 13, step 1: find how earlier builds reached Windows Word, then the
+builder fixes (START HERE milestone 13 below). Every milestone report to the user states the goal
+and this status (user, 2026-11-23: "your message missed the progress and goal").
+
 **Goal:** answer the AIIPCC69233 reviewers with new evidence. The current design makes
 agent-generated rules only match the deterministic (rule-based) reader, which defeats the
 purpose of using an agent. Redesign how rules are generated and evaluated so the agent's
@@ -262,7 +278,7 @@ Done-means bullet 1 replacement drafted (workspace/revision/analysis/2026-11-22-
 new.txt, rule-only, higher/lower better), not adopted: open whether sites with no rule are left
 out or count as failures (user called them a bug to fix first).
 
-**Current step (2026-11-22 21:20 UTC):** milestone 8 DONE (see list); now milestone 9. Laptop results merged
+**Current step (2026-11-22 21:20 UTC; superseded by the milestone status at the top):** milestone 8 DONE (see list); now milestone 9. Laptop results merged
 (ledger prefix-checked: 6626 -> 6764 lines, 1,844 paid, 809 dev, $1.75; pre-merge copy in
 workspace/archive/2026-11-22-m8-laptop/). Branches m8-laptop-transfer / m8-laptop-results can be deleted later.
 Milestone 9 cause found (iteration-8 payloads, outline.cjs suspicions()): the preview feedback's

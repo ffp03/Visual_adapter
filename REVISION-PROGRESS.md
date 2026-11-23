@@ -17,11 +17,26 @@ conversation, `plan.py start docs/revision/plan` prints the briefing):**
 - [x] 10b local model 41.7 and Codex 43.3 on v6
 - [x] 11 response plan Doc (user chose self-citations B)
 - [x] 12 manuscript sources revised, numbers traced, claim review acted on (paper repo e0a0db9)
-- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- BUILT (it6 19:16 UTC, paper repo f68aaee), WAITING FOR THE USER'S CHECK
+- [ ] 13 Word/PDF <= 7 pages anonymous + response letter (user checks) <- it6 checked by the user 2026-11-23; acting on comments (abstract first)
 
 **Current step:** milestone 13 is built and waits for the user's check (submission stays with the
 user/Kevin). Every milestone report to the user states the goal and this status (user, 2026-11-23:
 "your message missed the progress and goal").
+
+M13 OWNER COMMENTS 2026-11-23 ~20:00-21:10 UTC (in progress; see PLAN.md Decision Log): 1 figure
+resolution, 2 tables fit content + bold best, 3 highlight major changes, 4 polite letter quoting the
+revised text, 5 shorthand references; then "cut the mentioning on earlier run", "abstract explanation
+poor: how much better and how much saving", and "settle the abstract together first, then carry it
+through the manuscript". Done in paper repo (uncommitted, it7 preview built, Word export ok, 7 pages):
+builder (tools archived to archive/2026-11-23-manuscript-v4-tools-pre-it7/): **bold** and ==highlight==
+inline markup, table widths fitted to content with Times metrics (centred), SVG figure + PNG fallback +
+doNotAutoCompressPictures (PDF figure now vector), short references (SHORT_VENUE/SHORT_URL, DOIs kept),
+citations as ranges [3-6], caption prefix space fixed after the preview. Drafts: bold best values in
+Tables 3-4, non-load-bearing earlier-run mentions cut, paired page outcomes and near-miss detail added
+(number trace updated), abstract/results/conclusion reworded (ABSTRACT_SHA updated). TODO: SVG arrowheads
+do not render in Word (markers): convert markers to polygons; "No" label overlaps its box. OPEN with the
+owner: abstract positioning (proposal in chat); where the per-page cost G comes from (earlier run); then
+highlight passages, letter rewrite (quote highlighted text), Section 5.4 cut, rebuild it8.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

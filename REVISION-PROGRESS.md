@@ -129,7 +129,19 @@ need to fix them first"):
    clutter 11-14% (run 7 with gate 3%) - expected cost of no gate on that site.
    JOB C DONE 07:40 UTC (117/117 site-policy runs exit 0; the job's final "exit status 1" is the
    trailing `[ -f STOP ] &&` test in m10-lab.sh mode C, harmless). Merged (ledger prefix-checked
-   6963 -> 7404), scored, MILESTONE 10 TICKED (see list). WAITING FOR THE USER (asked 07:55 UTC):
+   6963 -> 7404), scored, MILESTONE 10 TICKED (see list). USER ANSWERED "A" (08:00 UTC): v6 is the
+   main result, v5 reported as the earlier run with the dev-only fixes in between. EXPORT DONE:
+   paper repo workspaces/visual-adapter-aiipcc-2026 commit 62f95b0, folder
+   inputs/results/2026-11-23-revision-evaluation-v6 (README with the v5->v6 sequence, report.json,
+   per-page.csv, hashes.json; script workspace/revision/export/export-v6.py; v5 export untouched).
+   On the frozen v5 measures too: AI clean pass 54.2 vs P1 26.7 (+27.5 [+8.3, +45.8]) and P0 10.0;
+   noise leakage AI 19.5 vs P1 8.1 (+11.4 [+2.6, +20.0], P1 better) vs P0 67.3. Fresh baselines
+   reproduce v5 (P1 identical, P0 clean pass identical). v6 results Doc (private, verified):
+   https://docs.google.com/document/d/1mac6d-pUZYu2G8OAyJEKYkKpMB4AfRQpf8J9Amyz7fQ/edit
+   (results-doc-v6.json). Service records: deepseek, google-workplace, codex. Open, not urgent:
+   MEMORY.md inbox items from 2026-11-22 (wait for change-review), delete branches
+   m8-laptop-transfer / m8-laptop-results, small m10-lab.sh mode C trailing exit status 1.
+   (Answered question was:)
    how the paper reports v6 vs v5 (A. v6 as the main result, v5 disclosed as the earlier
    evaluation run and the dev-only fixes in between - recommended; B. v6 as a supplementary
    result, v5 stays main). Then: export v6 like export-v5.py to paper-agent inputs/results/ (new

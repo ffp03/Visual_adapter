@@ -127,7 +127,14 @@ need to fix them first"):
    checks output/reference hashes). eval-01: P4-on passes 2/3 pages (clutter 2.6/0.1/6.9%, content
    100%); P1 0/3 (content 7/3/100%); P0 0/3 (clutter 11/1/17%). dev-02 output mode: content 100%,
    clutter 11-14% (run 7 with gate 3%) - expected cost of no gate on that site.
-   JOB C SUBMITTED 06:58 UTC: m10-lab.sh C eval-02..eval-40, outputs workspace/revision/ld-out-m10c
+   JOB C DONE 07:40 UTC (117/117 site-policy runs exit 0; the job's final "exit status 1" is the
+   trailing `[ -f STOP ] &&` test in m10-lab.sh mode C, harmless). Merged (ledger prefix-checked
+   6963 -> 7404), scored, MILESTONE 10 TICKED (see list). WAITING FOR THE USER (asked 07:55 UTC):
+   how the paper reports v6 vs v5 (A. v6 as the main result, v5 disclosed as the earlier
+   evaluation run and the dev-only fixes in between - recommended; B. v6 as a supplementary
+   result, v5 stays main). Then: export v6 like export-v5.py to paper-agent inputs/results/ (new
+   folder, v5 export untouched) and update the results Doc. Nothing running, no watchdogs.
+   (Done:) JOB C SUBMITTED 06:58 UTC: m10-lab.sh C eval-02..eval-40, outputs workspace/revision/ld-out-m10c
    (estimate ~2.5 h incl. upload: ~3 min per site). After it: copy run files from ld-out-m10c/stage
    (skip tests/, synthetic-*, scoreboard-test-*, payloads/locks, corpus/archive test artifacts),
    merge ledger with prefix check, score all v6 rows with score-v6.cjs, page pass as estimate-m9.py

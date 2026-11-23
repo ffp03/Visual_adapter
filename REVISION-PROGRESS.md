@@ -108,8 +108,24 @@ need to fix them first"):
    results/capability-agent-10-1795413772915); pointer dev-runs/m10/final.json WRITTEN. m10-lab.sh now
    runs its container as root, installs Chrome for the capture tests in mode A (as check-docker.sh
    did), chowns workspace/revision back on exit. Submit it DIRECTLY (not via in-place.sh: it runs its
-   own docker). JOB A SUBMITTED ~06:10 UTC (estimate ~1 h incl. upload). Then continue below.
-   Next: act on valid findings (fix small ones yourself; re-run targeted tests), THEN (not before:
+   own docker). JOB A SUBMITTED 06:27 UTC (ld --only needs --reason; added). ~1 h. Then continue below.
+   JOB A DONE 06:42 UTC (all steps ok, 10 paid requests): Chrome installed, checks ok (receipt
+   evaluation/checks-1795415843679), dev-02 output mode 3 rows (completion P4-on-complete-1795415931275),
+   v6 FROZEN 5ae6dac2 (516 files) and verified (also here), eval-01 P0/P1/P4-on done. Merged here:
+   v5 freeze+manifest archived by hand to freeze/archive/v5 (identical to the job's copies), 68 run
+   files copied (test litter left in ld-out-m10/stage), ledger prefix-checked 6932 -> 6963 lines
+   (1,910 paid, 871 dev, $1.86). FREEZE-LOG.md v6 entry added. Code committed 928eec8.
+   Scorer: workspace/revision/analysis/2026-11-23-m10/score-v6.cjs <out.csv> (frozen thresholds,
+   checks output/reference hashes). eval-01: P4-on passes 2/3 pages (clutter 2.6/0.1/6.9%, content
+   100%); P1 0/3 (content 7/3/100%); P0 0/3 (clutter 11/1/17%). dev-02 output mode: content 100%,
+   clutter 11-14% (run 7 with gate 3%) - expected cost of no gate on that site.
+   JOB C SUBMITTED 06:58 UTC: m10-lab.sh C eval-02..eval-40, outputs workspace/revision/ld-out-m10c
+   (estimate ~2.5 h incl. upload: ~3 min per site). After it: copy run files from ld-out-m10c/stage
+   (skip tests/, synthetic-*, scoreboard-test-*, payloads/locks, corpus/archive test artifacts),
+   merge ledger with prefix check, score all v6 rows with score-v6.cjs, page pass as estimate-m9.py
+   (recall>=.95, title, tau>=.9, clutter<=.05), site-clustered bootstrap 10,000 seed 20261122,
+   table vs P1 and P0 in chat, tick milestone 10.
+   (Old plan, done:) act on valid findings, THEN (not before:
    iteration snapshots procedure-v3/outline hashes) create dev iteration 10:
    `node workspace/revision/analysis/2026-11-22-m8/rerun.cjs prepare-guidance --iteration=10
    --guidance=workspace/revision/analysis/2026-11-22-m8/guidance-m10.txt` (guidance-m10.txt =

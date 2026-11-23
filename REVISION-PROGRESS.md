@@ -95,6 +95,13 @@ need to fix them first"):
    runners 14, regate 2, capability 6 - all pass. Codex REVIEW of all uncommitted code RUNNING
    (brief scratchpad codex-m10-review.md, output scratchpad codex-m10-review.out; job id there;
    `python ~/.local/bin/codex-remote result ~/Dev/Visual_adapter <job>` if no notification).
+   REVIEW DONE (9 findings; scratchpad codex-m10-review.out). Valid and sent to a Codex FIX ROUND
+   (brief scratchpad codex-m10-fix.md, output codex-m10-fix.out, job id there): v2 capture hashing,
+   required v5 archive + ordered record compare, receipt covers test inputs/commands/drift, pointer
+   must match a completed output-mode dev run, visible-text output check + P3 anchor check, ledger
+   idempotent settlement/over-reservation stop, run.lock cleanup. Not fixed (by choice): clutter-marking
+   heuristic (advisory in output mode) and the 16,384 thinking cap (design). After the fix patch:
+   apply, re-run targeted tests, then continue below.
    Next: act on valid findings (fix small ones yourself; re-run targeted tests), THEN (not before:
    iteration snapshots procedure-v3/outline hashes) create dev iteration 10:
    `node workspace/revision/analysis/2026-11-22-m8/rerun.cjs prepare-guidance --iteration=10

@@ -121,6 +121,12 @@ check (nogate.cjs --iteration=9 --all-turns; nogate-m9.jsonl small sites; large 
 refused rules would have helped on dev-01 (0->2 pages, clutter 3%) and dev-06 (p3 clutter 44.5->8.2%),
 were neutral on dev-05, and on dev-08 the refused rule dropped article text (93-95% kept): the one real
 protection. Content kept 100% everywhere else.
+Offline no-check estimate (user, 01:00: "why always rerun? we record the data"): estimate-m9.py ->
+estimate-m9.txt, no new requests. Page pass (higher is better) thinking on, 36 pages: m8 with check 44.4;
+m9 with check 33.3; m9 no check low (final rule) 33.3; m9 no check high (last refused rule accepted) 44.4,
+clutter 4.9% (lowest so far), content kept 99.4%. High gains vs m9-check: dev-01 +2, dev-07 +1, dev-11 +1.
+Losses vs m8 not from the check: dev-02 3->0 (agent's own final-turn change undid its passing turn-2/4
+rule), dev-04 3->2. dev-06, dev-09, dev-12 fail in every version. Reported to the user; waiting.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

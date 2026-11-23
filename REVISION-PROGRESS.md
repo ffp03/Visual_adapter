@@ -127,6 +127,16 @@ m9 with check 33.3; m9 no check low (final rule) 33.3; m9 no check high (last re
 clutter 4.9% (lowest so far), content kept 99.4%. High gains vs m9-check: dev-01 +2, dev-07 +1, dev-11 +1.
 Losses vs m8 not from the check: dev-02 3->0 (agent's own final-turn change undid its passing turn-2/4
 rule), dev-04 3->2. dev-06, dev-09, dev-12 fail in every version. Reported to the user; waiting.
+User chose A (analyse last-turn regressions, saved data only). Found: dev-02 is a one-off agent slip: at
+the forced last turn (after a wasted query, #recently_viewed count 0) it resubmitted a never-previewed
+rule rewritten from scratch without `ul.row` (recently-viewed grid) -> 3 pages lost. Over all trials
+checked (m9 12 sites; m8 small sites both settings, nogate-m8-allturns.jsonl) the submitted rule's result
+differs from the last accepted preview only twice: dev-02 m9 (-3) and dev-01 P4-off m8 (+2), so "submit
+the last preview" is no fix. dev-04 is not the agent: dev-04-p5 keeps 99.9% with 1.8% clutter but 1 of 264
+units ("Wikimedia Commons has media...") cannot be placed, so order = 0 (same as dev-12). Proposed next
+(waiting): remove the check from the loop (keep only "rule produces output") and re-run only the 6 sites
+where it refused a rule in iteration 9 (dev-01, 05, 06, 07, 08, 11; ~30 requests, fits the 35 dev left),
+keeping the other 6 sites' iteration-9 results (the check never spoke there). Needs a no-check mode in code.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

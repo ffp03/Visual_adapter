@@ -39,7 +39,7 @@
       "status": "done",
       "owner_checks": false,
       "check": "Project and browser tests pass; Codex review findings resolved",
-      "evidence": "Committed with the freeze v5/v6 code (c48c870, 928eec8); open: extension applies the gate check, not the evaluated output-only check (user A/B)"
+      "evidence": "Committed with the freeze v5/v6 code (c48c870, 928eec8); owner A 2026-11-23: extension and runtime use the evaluated output-only check and prompt (66dcb78; 166/166 agent+eval checks, browser test pass)"
     },
     {
       "id": "6",
@@ -111,7 +111,7 @@
       "status": "doing",
       "owner_checks": true,
       "check": "Rendered pages inspected; user checks; submission stays with the user/Kevin",
-      "evidence": "Built 2026-11-23 18:30 UTC, paper repo 92808ee: drafts/aiipcc2026_revision1.docx/.pdf, 7 pages, anonymous, all pages inspected; response letter Doc 1iRwIXp6LfCW6ug9nZDCKvfx1yboKfyrZ0LK4VaF_yh0. Waiting for the user check.",
+      "evidence": "Built 2026-11-23 18:30 UTC, paper repo 92808ee: drafts/aiipcc2026_revision1.docx/.pdf, 7 pages, anonymous, all pages inspected; response letter Doc 1iRwIXp6LfCW6ug9nZDCKvfx1yboKfyrZ0LK4VaF_yh0. Waiting for the user check. It6 2026-11-23 19:16 UTC (owner A, Section 4.2 and limitation 6): paper repo f68aaee, 7 pages.",
       "read": [
         "REVISION-PROGRESS.md / START HERE (milestone 13)",
         "paper repo tools/manuscript-v4/README.md",

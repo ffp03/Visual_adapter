@@ -137,6 +137,13 @@ units ("Wikimedia Commons has media...") cannot be placed, so order = 0 (same as
 (waiting): remove the check from the loop (keep only "rule produces output") and re-run only the 6 sites
 where it refused a rule in iteration 9 (dev-01, 05, 06, 07, 08, 11; ~30 requests, fits the 35 dev left),
 keeping the other 6 sites' iteration-9 results (the check never spoke there). Needs a no-check mode in code.
+2026-11-23: user asked "assuming the rest will be more or less the same as what we tried, do we have
+everything we needed?" Answered yes for milestone 9: the before/after table is estimate-m9.txt (m8 44.4 /
+clutter 6.7 -> m9 no check 44.4 / clutter 4.9, content 99.4; beats P1 +25.0 [+0.0, +50.0], P0 +33.3
+[+13.9, +55.6]). Page pass flat: dev-01 +2, dev-07 +1, dev-11 +1 offset by dev-02 -3 (slip) and dev-04 -1
+(order). Gaps named: the high case is an assumption (agent stops at the refused rule), one run per site,
+no-check mode not coded (needed only for milestone 10). Asked: A tick milestone 9 on estimate (recommended),
+B run the 6 sites first. Waiting.
 
 **Earlier step (2026-11-22 ~18:30 UTC):** milestone 8, measured on dev, eval re-gate running.
 - Code: WP-F1 patch + my fixes (see 17:15 note below), UNCOMMITTED; dev allowance raised 780 -> 900

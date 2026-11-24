@@ -88,6 +88,11 @@ The extension code itself still shows the basic reader; the paper no longer desc
 It11b built and exported: 7 pages, inspected, no fallback wording left. PDF drafts/aiipcc2026_revision1.pdf.
 Letter v4 (33 verbatim quotes): https://docs.google.com/document/d/1Xa0X_DS2fjcjvS6FoS2yX72cvQierDnn4OMVEXDjt2Q/edit
 Waiting for the owner's check of it11b and letter v4.
+OWNER 2026-11-24 (after it11b): writing "very, very bad": (1) reads like a study report, lacking the point (e.g.
+Table 6: three columns, no message, no way to tell which column is ours); names for our method vary (AI rule,
+AI-written rule, the rule, shared rule, Visual Adapter...); column widths still questionable, build a proper skill;
+(2) AI-ish writing: borrow proposal-agent-v2 readability-check, only after (1). Asked for analysis first, no changes.
+Analysis sent: per-section missing points, naming census, table-width faults, proposed fix order. Waiting for answer.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

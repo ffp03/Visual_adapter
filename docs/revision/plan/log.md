@@ -26,3 +26,4 @@
 - 2026-11-24T02:28:50.406849+00:00 Next: Owner to choose reviewer-driven additions A-E; then build it11
 - 2026-11-24T11:52:16.681717+00:00 Next: It11: add cost sensitivity (A) and page-type results (C); remove fallback from methodology, figure, Table 1/2; letter v4; build and send
 - 2026-11-24T11:58:31.941391+00:00 Next: It11b PDF and letter v4 sent; waiting for the owner's check
+- 2026-11-24T20:58:11.666970+00:00 Next: Analyse writing problems (missing point, naming of our method vs comparators, column widths); report understanding to the owner before changing anything

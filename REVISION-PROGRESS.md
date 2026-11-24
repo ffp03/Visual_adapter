@@ -38,6 +38,20 @@ do not render in Word (markers): convert markers to polygons; "No" label overlap
 owner: abstract positioning (proposal in chat); where the per-page cost G comes from (earlier run); then
 highlight passages, letter rewrite (quote highlighted text), Section 5.4 cut, rebuild it8.
 
+IT8 2026-11-24 ~01:00-01:45 UTC (owner agreed the abstract, cost source A, no Codex: "run that yourself";
+Sonnet review allowed via the right review skill = paper-agent phase4 4b coherence pass). Paper repo
+(uncommitted): drafts archived to archive/2026-11-24-drafts-pre-it8/; new short abstract (key message:
+67% more often than Readability; under USD 1/yr vs > USD 3,000 at 1M views/yr), intro rewritten
+(semi-structured data), 5.4 earlier-run section removed, G described as same model same pages, cost
+table per website per year (1k/100k/1M views), per-site detail, discussion/conclusion; == highlights on
+major-change passages; figure arrowheads as polygons + No label moved (old figure archived to
+archive/2026-11-24-figure-pre-it8/); it7 outputs archived to archive/2026-11-23-revision1-iterations/it7;
+it8 docx built, PDF exported (7 pages, page 7 mostly references). Letter v2: make-letter.py (v1 archived
+in letter/archive-2026-11-23-letter-v1/) quotes 30 passages verbatim from the built docx; not yet
+published (publish-doc.py creates a new Doc; use response-letter-v2.json). NEXT: Sonnet coherence pass
+-> artifacts/coherence_issues-it8.md; add per-site table (Table 4, cost becomes Table 5; letter Table
+refs); rebuild, export, inspect, publish letter Doc, commit paper repo, send PDF + Doc link to owner.
+
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +
 backend/agent/evaluated-guidance.txt (= guidance-m10.txt; sha256 9126b73e = v6 freeze promptSha256;

@@ -16,3 +16,5 @@
 - 2026-11-24T00:32:55.504024+00:00 Next: Abstract: key message stated; results cut to two sentences; agree with the owner
 - 2026-11-24T00:33:47.361862+00:00 Next: Abstract results agreed (A); re-asked per-page cost source in plain words; then write the full abstract
 - 2026-11-24T01:15:46.292565+00:00 Next: Write the full abstract around the agreed key message; agree with the owner
+- 2026-11-24T01:17:29.703625+00:00 Next: Carry the agreed abstract through the manuscript (intro, evaluation, discussion, conclusion); apply m13 comments; rebuild it8. No Codex; optional Sonnet review via the right review skill
+- 2026-11-24T01:29:13.403914+00:00 Next: It8 built (7 pages); Sonnet coherence pass running; then per-site table, letter v2 publish, rebuild, send to owner

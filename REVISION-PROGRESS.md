@@ -76,6 +76,18 @@ sensitivity (R1.3; break-even per year vs renewal none/quarterly/monthly/weekly 
 ablation sentences (R2.5; v5 one-shot unit-level pass 5.0 fresh / 3.3 shared, without compiler repairs
 21.7 / 25.8; needs owner OK as earlier-run content), C page types (R1.1, R3.4), D looser clutter limits
 (R1.2, R3.4), E disclosure measured from logged payloads (R3.9, R2.6; ~30 min, no model calls).
+Owner chose 2026-11-24 "A and c" and dropped the ablation ("we are dropping the fallback ... never mentioned
+the fallback in methodology"). Applied in it11: Table 5 page types (05_evaluation 5.2), Table 7 sensitivity
+(5.4); fallback removed from Sections 1-3 and 6, Table 1 column, Table 2 row and Figure 1 (box "Not applied /
+Failure recorded"; old figure in archive/2026-11-24-figure-pre-it11/); deterministic reader now "the rule-free
+reader of the submitted version". Letter make-letter.py (v3 copy archived): R1.1, R1.2, R1.3, R1.4, R2.4, R2.5,
+R3.4, R3.5 updated (fallback and compiler removed; Tables 5/6/7). Drafts pre-it11 archived. site-categories.csv
+added to the V6 export; number trace it11 rows. It11a (7 pages) inspected: Section 4 still described the basic
+reader shown when no rule passes; removed (running example, 4.2 sentence, "Basic view" switch). It11b export running.
+The extension code itself still shows the basic reader; the paper no longer describes it.
+It11b built and exported: 7 pages, inspected, no fallback wording left. PDF drafts/aiipcc2026_revision1.pdf.
+Letter v4 (33 verbatim quotes): https://docs.google.com/document/d/1Xa0X_DS2fjcjvS6FoS2yX72cvQierDnn4OMVEXDjt2Q/edit
+Waiting for the owner's check of it11b and letter v4.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

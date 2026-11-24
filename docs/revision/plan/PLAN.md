@@ -53,3 +53,4 @@ Done means:
 - 2026-11-24 Owner: "You can narrow the highlights parts" (highlight only the passages the letter quotes).
 - 2026-11-24 Owner: "When you adjust table width, did you consider heading? With more room, you can include more details in exp, what can be added?"
 - 2026-11-24 Owner: "What can be added to help with reviewer comments" (map possible additions to reviewer points).
+- 2026-11-24 Owner: "A and c. Ablation is no longer needed as we are dropping the fallback, just make sure we are clear in response and never mentioned the fallback in methodology" (add cost sensitivity and results by page type; remove the fallback from the method and say so clearly in the letter).

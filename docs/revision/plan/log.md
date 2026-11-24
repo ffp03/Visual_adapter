@@ -18,3 +18,4 @@
 - 2026-11-24T01:15:46.292565+00:00 Next: Write the full abstract around the agreed key message; agree with the owner
 - 2026-11-24T01:17:29.703625+00:00 Next: Carry the agreed abstract through the manuscript (intro, evaluation, discussion, conclusion); apply m13 comments; rebuild it8. No Codex; optional Sonnet review via the right review skill
 - 2026-11-24T01:29:13.403914+00:00 Next: It8 built (7 pages); Sonnet coherence pass running; then per-site table, letter v2 publish, rebuild, send to owner
+- 2026-11-24T01:33:35.712285+00:00 Next: It8 PDF and letter v2 sent; waiting for the owner's check

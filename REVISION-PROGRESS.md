@@ -51,6 +51,14 @@ in letter/archive-2026-11-23-letter-v1/) quotes 30 passages verbatim from the bu
 published (publish-doc.py creates a new Doc; use response-letter-v2.json). NEXT: Sonnet coherence pass
 -> artifacts/coherence_issues-it8.md; add per-site table (Table 4, cost becomes Table 5; letter Table
 refs); rebuild, export, inspect, publish letter Doc, commit paper repo, send PDF + Doc link to owner.
+DONE 2026-11-24 ~02:10 UTC: Sonnet coherence pass (artifacts/coherence_issues-it8.md, 25 issues): applied
+privacy wording when a rule is used, "model cost", "clean pass" renamed "unit-level pass", break-even
+labels, unrounded-G caption note, discussion clutter wording, "Other models"; kept owner-approved abstract
+wording and reviewer-answering detail (R1.7 limits, R1.8 tokens). Per-site Table 4 added (cost now
+Table 5). Final it8 PDF 7 pages, all pages inspected; paper repo 7ed6996. Letter v2 Doc
+1Jd6GxvEMBwlURNieewrM2SIt-aRCuGHXWRsqb9prb-4 (30 verbatim quotes). Waiting for the owner's check.
+Flagged to owner: abstract "leading existing tool" and "page is not sent" wording (reviewer said
+overclaim risk); compiler/cue ablations no longer in the paper (R2.5 answered without them).
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

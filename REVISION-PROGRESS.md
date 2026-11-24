@@ -105,6 +105,10 @@ It12 exported: 7 pages; check_pdf_tables: all 7 tables match predicted lines (24
 https://docs.google.com/document/d/1M29hVnxva29kpukhGYHj6dffNMaNcNS4Ne7yVIN2pdQ/edit . Sent to the owner.
 Next (after owner's look): readability pass with proposal-agent-v2 readability-check rules (Codex paused: ask
 the owner whether Sonnet readers are fine); change-review of paper-table-widths when Codex is back.
+Owner 2026-11-24: "codex is available. you can use" (codex-budget GO). Next: readability pass on the whole
+manuscript with proposal-agent-v2 .claude/skills/readability-check (its Codex readers via codex-remote), apply the
+wording repairs (wording only; quoted letter passages keep their start/stop anchors or make-letter.py is updated),
+rebuild, check_pdf_tables, letter v6, send. Also change-review of paper-table-widths (Codex now available).
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

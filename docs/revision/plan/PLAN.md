@@ -49,3 +49,5 @@ Done means:
 - 2026-11-24 Owner: "A" (key message and two-sentence results accepted: 67% more often than Readability; under USD 1 a year vs more than USD 3,000 for a million views). "I don't understand your earlier question 2, which makes no sense." Re-ask the per-page cost source in plain words.
 - 2026-11-24 Owner: "A" (per-page cost: say it was measured with the same model on the same 120 pages, no earlier-run mention; the earlier run's other results come out of the paper).
 - 2026-11-24 Owner: "A" (short abstract accepted; carry it through the manuscript). "codex usage is running out, so you should not using that. Just run that yourself. If you need, you can call a Sonnet subagent to review your work, but you need to identify the correct review skill first."
+- 2026-11-24 Owner: "B is ok" (abstract: "a widely used tool" instead of "the leading existing tool"; "when a rule is used, ... the page stays on the device" instead of "the page is not sent to an AI provider").
+- 2026-11-24 Owner: "You can narrow the highlights parts" (highlight only the passages the letter quotes).

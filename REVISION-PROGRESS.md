@@ -59,6 +59,10 @@ Table 5). Final it8 PDF 7 pages, all pages inspected; paper repo 7ed6996. Letter
 1Jd6GxvEMBwlURNieewrM2SIt-aRCuGHXWRsqb9prb-4 (30 verbatim quotes). Waiting for the owner's check.
 Flagged to owner: abstract "leading existing tool" and "page is not sent" wording (reviewer said
 overclaim risk); compiler/cue ablations no longer in the paper (R2.5 answered without them).
+IT10 2026-11-24 ~03:00 UTC: owner "B is ok" (abstract: "a widely used tool"; "when a rule is used ... the
+page stays on the device"); owner "narrow the highlights": tools/manuscript-v4/narrow_highlights.py
+highlights only the 29 passages make-letter.py quotes. it8/it9 archived; it10 PDF 7 pages inspected.
+Letter v3 Doc 18Nf-Vt8PsV5nO0DoqDr_nih6I4Qdy5d9bxeCNQvENss (supersedes v2). Waiting for the owner's check.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

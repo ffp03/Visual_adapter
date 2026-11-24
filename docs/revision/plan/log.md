@@ -11,3 +11,4 @@
 - 2026-11-23T21:04:34.665675+00:00 Next: Abstract proposal sent to the owner (positioning A/B, per-page cost source A/B/C); wait, then carry the abstract through the manuscript
 - 2026-11-23T21:22:28.142498+00:00 Next: Rewrite the abstract as a short story (semi-structured data framing); agree it with the owner
 - 2026-11-23T21:57:01.011680+00:00 Next: Abstract third paragraph reframed (counts per 100 pages; one cent per site vs per-page cost); agree with the owner
+- 2026-11-24T00:25:57.867670+00:00 Next: Abstract results reframed: percent higher than Readability; yearly cost per site vs per-page cost at a million views; agree with the owner

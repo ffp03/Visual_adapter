@@ -109,6 +109,11 @@ Owner 2026-11-24: "codex is available. you can use" (codex-budget GO). Next: rea
 manuscript with proposal-agent-v2 .claude/skills/readability-check (its Codex readers via codex-remote), apply the
 wording repairs (wording only; quoted letter passages keep their start/stop anchors or make-letter.py is updated),
 rebuild, check_pdf_tables, letter v6, send. Also change-review of paper-table-widths (Codex now available).
+Readability pass started 2026-11-24 22:24 UTC: paper repo workspace/readability-2026-11-24 (paper.md = it12 full
+paper without highlights; briefs adapted from proposal-agent-v2 readability-check: grant framing -> conference reviewer,
+no awarded passages; reader 1 and 2 on parts A (Abstract-3), B (4-5.2), C (5.3-7), reader 3 terms on all). Seven
+codex-remote jobs (gpt-6.1-sol, high) via run-all.sh; reports in reports/<reader>.md. Then: merge by sentence, repair
+each sentence once (wording only), keep letter anchors, verify read (brief-verify.md) on changed sentences, rebuild.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

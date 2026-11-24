@@ -114,6 +114,11 @@ paper without highlights; briefs adapted from proposal-agent-v2 readability-chec
 no awarded passages; reader 1 and 2 on parts A (Abstract-3), B (4-5.2), C (5.3-7), reader 3 terms on all). Seven
 codex-remote jobs (gpt-6.1-sol, high) via run-all.sh; reports in reports/<reader>.md. Then: merge by sentence, repair
 each sentence once (wording only), keep letter anchors, verify read (brief-verify.md) on changed sentences, rebuild.
+First run failed (codex-remote snapshots the enclosing repo; workspace/ is ignored, readers saw no files and
+refused; outputs in reports-failed-1/). Rerun from scratchpad/rdr/<reader> (each its own git repo): 7 reports, 21k words,
+copied to paper repo artifacts/readability-2026-11-24/. Writer delegated to Codex (writer-brief.md there: wording only,
+abstract untouched, no word growth, agreed names, anchor changes listed in record.md); running 22:42 UTC. Next: review
+its patch and record, apply, update make-letter anchors, verify read on changed sentences, rebuild.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

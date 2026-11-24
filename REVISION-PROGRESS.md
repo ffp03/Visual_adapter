@@ -70,7 +70,12 @@ Tables 4/5 headers shortened. Offered additions (owner to choose): A results by 
 category per eval site; rule/Readability/deterministic passes per category, e.g. docs with sidebars 6/0/6,
 forums 9/6/5, product+listing 0-1 for all); B pass rate at looser clutter limits 5/10/15/20%: rule
 45.8/62.5/72.5/75.8, Readability 27.5/32.5/34.2/36.7, deterministic 24.2/38.3/58.3/68.3, local
-41.7/52.5/59.2/66.7 (per-page.csv; 5% reproduces Table 3); C worked example figure.
+41.7/52.5/59.2/66.7 (per-page.csv; 5% reproduces Table 3); C worked example figure. Owner then asked "what can be added to help with reviewer comments": offered A cost
+sensitivity (R1.3; break-even per year vs renewal none/quarterly/monthly/weekly and mean/max F: 2.6/3.4,
+13/17, 34/44, 138/178; max F 7/9, 36/47, 95/122, 386/496; yearly 0.01/0.05/0.14/0.55 USD), B compiler
+ablation sentences (R2.5; v5 one-shot unit-level pass 5.0 fresh / 3.3 shared, without compiler repairs
+21.7 / 25.8; needs owner OK as earlier-run content), C page types (R1.1, R3.4), D looser clutter limits
+(R1.2, R3.4), E disclosure measured from logged payloads (R3.9, R2.6; ~30 min, no model calls).
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

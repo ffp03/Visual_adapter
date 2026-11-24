@@ -1,6 +1,6 @@
 {
-  "step": "Table header widths fixed (not built); owner to choose experiment additions A/B/C",
-  "at": "2026-11-24T02:28:06.434768+00:00",
-  "decision_digest": "0fb214b74fbbba9b46742d348be601869a89282068fd46a7e99650fcb4b08f49",
+  "step": "Owner to choose reviewer-driven additions A-E; then build it11",
+  "at": "2026-11-24T02:28:50.406849+00:00",
+  "decision_digest": "1e491693d1e60037d59a883c8d9088618f5440abe20fbb7b81e80219579ca231",
   "done": false
 }

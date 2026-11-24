@@ -52,3 +52,4 @@ Done means:
 - 2026-11-24 Owner: "B is ok" (abstract: "a widely used tool" instead of "the leading existing tool"; "when a rule is used, ... the page stays on the device" instead of "the page is not sent to an AI provider").
 - 2026-11-24 Owner: "You can narrow the highlights parts" (highlight only the passages the letter quotes).
 - 2026-11-24 Owner: "When you adjust table width, did you consider heading? With more room, you can include more details in exp, what can be added?"
+- 2026-11-24 Owner: "What can be added to help with reviewer comments" (map possible additions to reviewer points).

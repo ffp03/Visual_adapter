@@ -128,6 +128,13 @@ Run 2 PASSED the gate (87 repairs, words 5,571 unchanged), applied. Reviewed by 
 extraction" -> "such a capability", Table 1 row cells, and the ambiguous "only the rule passed 34 pages" pair (restored
 "The gain holds page by page..."). Four letter anchors updated in make-letter.py from record.md. Verify reader
 (brief-verify adapted; changes.md = 57 changed passages) running 23:07 UTC. Then fold, rebuild, check tables, letter v6.
+Verify read: 20 findings; folded 10 wording repairs (intro cost-model sentence, related-work pronouns, report from a
+user, payload limit, mitigation opener, Codex back-reference, page-type comparators, unit-level pass sentence, cost
+comparison clause); not folded: repeats in captions, discussion and conclusion (intended), "can try to steer" (claim).
+Words 5,571 -> 5,596. It13 built and exported: 7 pages, no "fallback", check_pdf_tables 7/7 OK (checker fixed: merge
+baselines within 2 pt, count only lines centred in the row). Letter v6:
+https://docs.google.com/document/d/1r3Vbf5QLQRmjiB4u1-T36n0dmTTMyi6TWPDJ3OkZKx8/edit . Sent to the owner.
+Pending: change-review of paper-table-widths (Codex available).
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

@@ -30,3 +30,4 @@
 - 2026-11-24T21:34:14.879187+00:00 Next: It12: claim-first evaluation, one name per thing, Table 6/7 regrouped; then table-width skill; rebuild; then readability pass
 - 2026-11-24T21:43:57.375142+00:00 Next: It12 PDF and letter v5 sent; owner to look; next the readability pass (Sonnet readers?)
 - 2026-11-24T21:51:00.261298+00:00 Next: Readability pass with readability-check Codex readers on the manuscript; apply wording repairs; rebuild; letter v6; send
+- 2026-11-24T23:16:23.275308+00:00 Next: It13 (readability pass) PDF and letter v6 sent; waiting for the owner's check

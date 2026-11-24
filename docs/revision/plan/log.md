@@ -14,3 +14,4 @@
 - 2026-11-24T00:25:57.867670+00:00 Next: Abstract results reframed: percent higher than Readability; yearly cost per site vs per-page cost at a million views; agree with the owner
 - 2026-11-24T00:32:03.691013+00:00 Next: Abstract cost comparison rewritten as one explicit scenario (one site, a million page opens a year, both options named); agree with the owner
 - 2026-11-24T00:32:55.504024+00:00 Next: Abstract: key message stated; results cut to two sentences; agree with the owner
+- 2026-11-24T00:33:47.361862+00:00 Next: Abstract results agreed (A); re-asked per-page cost source in plain words; then write the full abstract

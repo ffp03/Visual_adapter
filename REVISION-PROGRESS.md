@@ -124,6 +124,10 @@ its drafts/record in archive/2026-11-24-readability-writer-run1/. Drafts restore
 archive/2026-11-24-drafts-pre-readability/. New gate artifacts/readability-2026-11-24/check_wording_only.py (numbers,
 citations, paragraphs, sentence loss, protected text, word growth; catches run 1 with 9 failures). Writer run 2 started
 22:54 UTC with stricter brief; must PASS the gate. Then review diff, apply, anchors, verify read, rebuild.
+Run 2 PASSED the gate (87 repairs, words 5,571 unchanged), applied. Reviewed by hand; reverted three: intro "article
+extraction" -> "such a capability", Table 1 row cells, and the ambiguous "only the rule passed 34 pages" pair (restored
+"The gain holds page by page..."). Four letter anchors updated in make-letter.py from record.md. Verify reader
+(brief-verify adapted; changes.md = 57 changed passages) running 23:07 UTC. Then fold, rebuild, check tables, letter v6.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

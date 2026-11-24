@@ -22,3 +22,4 @@
 - 2026-11-24T02:23:44.349767+00:00 Next: Apply owner B to abstract wording; rebuild it9, letter v3, send
 - 2026-11-24T02:24:27.982773+00:00 Next: Narrow highlights to the letter's quoted passages; rebuild it10, letter v3, send
 - 2026-11-24T02:26:26.454787+00:00 Next: It10 PDF and letter v3 sent; waiting for the owner's check
+- 2026-11-24T02:28:06.434768+00:00 Next: Table header widths fixed (not built); owner to choose experiment additions A/B/C

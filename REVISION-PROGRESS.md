@@ -63,6 +63,14 @@ IT10 2026-11-24 ~03:00 UTC: owner "B is ok" (abstract: "a widely used tool"; "wh
 page stays on the device"); owner "narrow the highlights": tools/manuscript-v4/narrow_highlights.py
 highlights only the 29 passages make-letter.py quotes. it8/it9 archived; it10 PDF 7 pages inspected.
 Letter v3 Doc 18Nf-Vt8PsV5nO0DoqDr_nih6I4Qdy5d9bxeCNQvENss (supersedes v2). Waiting for the owner's check.
+IT11 (in progress, 2026-11-24 ~03:20 UTC): owner asked whether table widths consider headings (they did
+not: only the longest header word) and what experiment detail to add. Done, not built: fitted_widths
+gives spare width to wrapping headers (tool archived to archive/2026-11-24-manuscript-v4-tools-pre-it11/),
+Tables 4/5 headers shortened. Offered additions (owner to choose): A results by page type (manifest.json
+category per eval site; rule/Readability/deterministic passes per category, e.g. docs with sidebars 6/0/6,
+forums 9/6/5, product+listing 0-1 for all); B pass rate at looser clutter limits 5/10/15/20%: rule
+45.8/62.5/72.5/75.8, Readability 27.5/32.5/34.2/36.7, deterministic 24.2/38.3/58.3/68.3, local
+41.7/52.5/59.2/66.7 (per-page.csv; 5% reproduces Table 3); C worked example figure.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

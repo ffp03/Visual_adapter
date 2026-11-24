@@ -51,3 +51,4 @@ Done means:
 - 2026-11-24 Owner: "A" (short abstract accepted; carry it through the manuscript). "codex usage is running out, so you should not using that. Just run that yourself. If you need, you can call a Sonnet subagent to review your work, but you need to identify the correct review skill first."
 - 2026-11-24 Owner: "B is ok" (abstract: "a widely used tool" instead of "the leading existing tool"; "when a rule is used, ... the page stays on the device" instead of "the page is not sent to an AI provider").
 - 2026-11-24 Owner: "You can narrow the highlights parts" (highlight only the passages the letter quotes).
+- 2026-11-24 Owner: "When you adjust table width, did you consider heading? With more room, you can include more details in exp, what can be added?"

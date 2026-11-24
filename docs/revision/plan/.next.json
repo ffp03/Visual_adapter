@@ -1,6 +1,6 @@
 {
-  "step": "It10 PDF and letter v3 sent; waiting for the owner's check",
-  "at": "2026-11-24T02:26:26.454787+00:00",
-  "decision_digest": "6e064ad85b1609a249b98d259b083e808a516e68d9eb6027824436290f40ea5c",
+  "step": "Table header widths fixed (not built); owner to choose experiment additions A/B/C",
+  "at": "2026-11-24T02:28:06.434768+00:00",
+  "decision_digest": "0fb214b74fbbba9b46742d348be601869a89282068fd46a7e99650fcb4b08f49",
   "done": false
 }

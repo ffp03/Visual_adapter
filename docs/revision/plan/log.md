@@ -27,3 +27,5 @@
 - 2026-11-24T11:52:16.681717+00:00 Next: It11: add cost sensitivity (A) and page-type results (C); remove fallback from methodology, figure, Table 1/2; letter v4; build and send
 - 2026-11-24T11:58:31.941391+00:00 Next: It11b PDF and letter v4 sent; waiting for the owner's check
 - 2026-11-24T20:58:11.666970+00:00 Next: Analyse writing problems (missing point, naming of our method vs comparators, column widths); report understanding to the owner before changing anything
+- 2026-11-24T21:34:14.879187+00:00 Next: It12: claim-first evaluation, one name per thing, Table 6/7 regrouped; then table-width skill; rebuild; then readability pass
+- 2026-11-24T21:43:57.375142+00:00 Next: It12 PDF and letter v5 sent; owner to look; next the readability pass (Sonnet readers?)

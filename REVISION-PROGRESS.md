@@ -93,6 +93,18 @@ Table 6: three columns, no message, no way to tell which column is ours); names 
 AI-written rule, the rule, shared rule, Visual Adapter...); column widths still questionable, build a proper skill;
 (2) AI-ish writing: borrow proposal-agent-v2 readability-check, only after (1). Asked for analysis first, no changes.
 Analysis sent: per-section missing points, naming census, table-width faults, proposed fix order. Waiting for answer.
+Owner "a" (2026-11-24). IT12 done so far: 05_evaluation rewritten claim-first (each paragraph and caption opens
+with its point); one name per thing: "AI-written rule" (ours; tables "AI-written rule (ours)", first column/rows),
+"per-page AI" (cost comparator; Table 6 now 3 columns with a per-page range; Table 7 break-even as ranges),
+"tools without rules" (Readability + deterministic reader); names unified in 01/02/04/06 (abstract unchanged).
+Added Codex minus deterministic +30.0 [+6.7, +56.7]. Letter quotes updated (make-letter v4 copy archived). New skill
+~/Dev/paper-agent/.claude/skills/paper-table-widths (table_widths.py: simulated Word wrap, Liberation Serif metrics,
+glue rules, min total lines; check_pdf_tables.py compares predicted lines with the PDF); wired into build_docx.py
+(pre-it12 copy archived). Skill not yet through change-review (Codex paused). It12 export running on dilab-pc2.
+It12 exported: 7 pages; check_pdf_tables: all 7 tables match predicted lines (24/10/10/6/21/4/6). Letter v5:
+https://docs.google.com/document/d/1M29hVnxva29kpukhGYHj6dffNMaNcNS4Ne7yVIN2pdQ/edit . Sent to the owner.
+Next (after owner's look): readability pass with proposal-agent-v2 readability-check rules (Codex paused: ask
+the owner whether Sonnet readers are fine); change-review of paper-table-widths when Codex is back.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

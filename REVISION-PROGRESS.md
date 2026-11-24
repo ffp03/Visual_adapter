@@ -119,6 +119,11 @@ refused; outputs in reports-failed-1/). Rerun from scratchpad/rdr/<reader> (each
 copied to paper repo artifacts/readability-2026-11-24/. Writer delegated to Codex (writer-brief.md there: wording only,
 abstract untouched, no word growth, agreed names, anchor changes listed in record.md); running 22:42 UTC. Next: review
 its patch and record, apply, update make-letter anchors, verify read on changed sentences, rebuild.
+Writer run 1 REJECTED (deleted key results from Sections 1 and 6, rewrote the agreed opening, removed facts);
+its drafts/record in archive/2026-11-24-readability-writer-run1/. Drafts restored from
+archive/2026-11-24-drafts-pre-readability/. New gate artifacts/readability-2026-11-24/check_wording_only.py (numbers,
+citations, paragraphs, sentence loss, protected text, word growth; catches run 1 with 9 failures). Writer run 2 started
+22:54 UTC with stricter brief; must PASS the gate. Then review diff, apply, anchors, verify read, rebuild.
 
 OWNER A DONE 2026-11-23 ~19:30 UTC ("for your q, a"): the shipped path now equals the evaluated
 procedure. New backend/agent/runtime-procedure.cjs: RUNTIME_PROMPT = loop SYSTEM_PROMPT + '\n' +

@@ -34,3 +34,6 @@
 - 2026-11-25T00:46:11.878513+00:00 Next: Analyse why the abstract and Introduction paragraph 1 read oddly; report to the owner before changing anything
 - 2026-11-25T00:48:43.054639+00:00 Next: Letter v7 (formatted) published; abstract and Introduction paragraph 1 analysis sent with a draft rewrite; waiting for the owner's choice
 - 2026-11-25T13:13:36.819476+00:00 Next: Affordability-first openings for the abstract and Introduction paragraph 1 drafted and sent; waiting for the owner's A/B/C
+- 2026-11-25T13:15:23.995514+00:00 Next: It14: affordability-first abstract and Introduction, Section 1 joins, absolute rates; letter v8; rebuild at 7 pages
+- 2026-11-25T13:17:34.347916+00:00 Next: It14 docx built and letter v8 published; Word export running on dilab-pc2 (cron backup 13:33 UTC); then check pages and tables, send PDF
+- 2026-11-25T13:33:23.782344+00:00 Next: It14 docx built, letter v8 published; Word export queued (dilab-pc1/pc2/pc7 unreachable); background wait running, cron backup 14:41 UTC; then check pages and tables, send PDF

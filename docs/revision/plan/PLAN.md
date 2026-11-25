@@ -61,3 +61,4 @@ Done means:
 - 2026-11-25 Owner: "the letter need better formatting".
 - 2026-11-25 Owner, on the draft abstract opening "Many people cannot use AI services: a subscription costs money, a model key takes setup, and every request sends the user's data to a provider.": "still odd".
 - 2026-11-25 Owner: "The first line should start with the problem directly, which is people cannot afford AI. Right? So none of your version provide that. Your original saying in that direction, but it's too short. And it's almost like a summary".
+- 2026-11-25 Owner: "A" (use the affordability-first openings for the abstract and Introduction paragraph 1; repair the rest of the abstract and the sentence joins in Section 1; absolute rates instead of "67% more"; update letter quotes; rebuild at 7 pages).

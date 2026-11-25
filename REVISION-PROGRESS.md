@@ -274,6 +274,8 @@ decision B). Review record: workspace/revision/response/claim-review-m12/. No re
 OPEN FOR THE USER (asked 2026-11-23): A align the extension to the evaluated output-only check
 (content.js useTime {check:'output'}, runtime runLoop check 'output', tests; then drop the caveat in
 the case study + limitations; recommended) / B keep code, keep caveat. Not blocking milestone 13.
+STATUS 2026-11-25 14:40 UTC (milestone 13): it14 done and sent for the owner to forward. Paper repo a7d6f4f..5ecdf56: affordability-first abstract and Introduction (owner choice A), absolute rates instead of 67%; Word PDF 7 pages, tables 7/7 (local export kept, lab export archived it14-ldout). Letter v8 (formatted by workspace/revision/export/publish-letter.py): https://docs.google.com/document/d/1Jr-2twexM68AWcOBo9NwSs7AREUD7XbpthsgB6KPFWc/edit. Four files in paper repo workspace/m13/send-2026-11-25/; unsent reply draft to Kevin (r5536417562078879455) in the Algoma Gmail thread "Fwd: AIIPCC69233-changes requested" (AIIPCC asks: highlighted manuscript + response letter to review@aiipcc.org by Nov 26). Final file check clean. Waiting: owner sends the draft; Kevin submits. Nothing running.
+
 START HERE (milestone 13): Word/PDF in the VDE template <= 7 pages anonymous + response letter.
 Draft is 5,396 source words, likely over 7 pages: trim against the actual render (main candidates:
 04 case study, 05 earlier-run and cost paragraphs). Builder work in tools/manuscript-v4 first (copy

@@ -31,3 +31,5 @@
 - 2026-11-24T21:43:57.375142+00:00 Next: It12 PDF and letter v5 sent; owner to look; next the readability pass (Sonnet readers?)
 - 2026-11-24T21:51:00.261298+00:00 Next: Readability pass with readability-check Codex readers on the manuscript; apply wording repairs; rebuild; letter v6; send
 - 2026-11-24T23:16:23.275308+00:00 Next: It13 (readability pass) PDF and letter v6 sent; waiting for the owner's check
+- 2026-11-25T00:46:11.878513+00:00 Next: Analyse why the abstract and Introduction paragraph 1 read oddly; report to the owner before changing anything
+- 2026-11-25T00:48:43.054639+00:00 Next: Letter v7 (formatted) published; abstract and Introduction paragraph 1 analysis sent with a draft rewrite; waiting for the owner's choice

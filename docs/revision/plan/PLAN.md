@@ -57,3 +57,5 @@ Done means:
 - 2026-11-24 Owner: "the writing in general are very, very bad ... it sounds like a general study report because it's kind of lacking the point ... how would you expect people understand which column is our work and which ones are for comparison? ... your choice of column widths are still questionable. I feel like you need to build a proper skill for that ... quite AI-ish writing ... a readability skill you can borrow from the proposal agent ... only after you fix the first issue ... do the analysis first and let me know your understanding of the issue I'm talking about before you actually making the changes"
 - 2026-11-24 Owner: "a" (go ahead: fix points and names first, then the table-width skill, rebuild, then the readability pass).
 - 2026-11-24 Owner: "codex is available. you can use" (run the readability pass with the readability-check Codex readers).
+- 2026-11-25 Owner: "check the writing to abstract and p1 in intro. why it is odd to read" (analysis first).
+- 2026-11-25 Owner: "the letter need better formatting".

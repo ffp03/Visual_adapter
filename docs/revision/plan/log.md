@@ -38,3 +38,4 @@
 - 2026-11-25T13:17:34.347916+00:00 Next: It14 docx built and letter v8 published; Word export running on dilab-pc2 (cron backup 13:33 UTC); then check pages and tables, send PDF
 - 2026-11-25T13:33:23.782344+00:00 Next: It14 docx built, letter v8 published; Word export queued (dilab-pc1/pc2/pc7 unreachable); background wait running, cron backup 14:41 UTC; then check pages and tables, send PDF
 - 2026-11-25T13:57:58.690532+00:00 Next: It14 committed (paper a7d6f4f); owner's local agent exports the PDF with Word and pushes it; then check pages and tables here
+- 2026-11-25T14:11:40.378448+00:00 Next: It14 PDF done (7 pages, tables 7/7); four files and email text to Kevin given to the owner; owner sends; submission stays with the owner/Kevin

@@ -1,6 +1,6 @@
 {
-  "step": "It14 committed (paper a7d6f4f); owner's local agent exports the PDF with Word and pushes it; then check pages and tables here",
-  "at": "2026-11-25T13:57:58.690532+00:00",
-  "decision_digest": "d071f3cf8f57f788a443499dca88844b2b3582365723d26244c39a69538d5870",
+  "step": "It14 PDF done (7 pages, tables 7/7); four files and email text to Kevin given to the owner; owner sends; submission stays with the owner/Kevin",
+  "at": "2026-11-25T14:11:40.378448+00:00",
+  "decision_digest": "b7f5eae0fce827de13584ba61f4d04855be9a565a55b38d6aa2126c3855b1dd5",
   "done": false
 }

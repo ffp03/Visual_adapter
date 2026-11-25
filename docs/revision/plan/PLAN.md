@@ -65,3 +65,4 @@ Done means:
 - 2026-11-25 Owner: "No one is going to turn them on for now. Any walk around ?" then "Send a prompt to my local agent so they will build a document. I already have this project locally, but it's out of date right now" (local Word export of the it14 docx).
 - 2026-11-25 Owner: "So what do we need to send? I think the Word, PDF, and as well the letter. Is that all three? And create a draft of email go back to Kevin with the file you have and the missing file I will attach locally".
 - 2026-11-25 Owner: "use my workplace api" then "check skill from email agent" (create the Gmail draft to Kevin with the workplace Gmail route of the EmailAssistant drafting skill).
+- 2026-11-25 Owner: "Can you make sure there's no placeholder information, any comments in those files before I send them out?" (checked: none found).

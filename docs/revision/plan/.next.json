@@ -1,6 +1,6 @@
 {
-  "step": "Unsent reply draft to Kevin (4 files) saved in the workplace Gmail; owner reviews and sends; Kevin submits to review@aiipcc.org by 2026-11-26",
-  "at": "2026-11-25T15:24:15.223250+00:00",
-  "decision_digest": "d8753f7e9adb7611a17b570f920ffd8dee1bb7e41f1e696c2e8abb176eba8909",
+  "step": "Final check of the four files done (no comments, placeholders, tracked changes or names; letter quotes and table numbers match); owner sends the draft to Kevin",
+  "at": "2026-11-25T15:26:47.914706+00:00",
+  "decision_digest": "772bb24dd9064559c1ee3643c0f04e181bda70ddc5dd178e999ef8aaa9cb740e",
   "done": false
 }

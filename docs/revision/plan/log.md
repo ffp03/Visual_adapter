@@ -40,3 +40,4 @@
 - 2026-11-25T13:57:58.690532+00:00 Next: It14 committed (paper a7d6f4f); owner's local agent exports the PDF with Word and pushes it; then check pages and tables here
 - 2026-11-25T14:11:40.378448+00:00 Next: It14 PDF done (7 pages, tables 7/7); four files and email text to Kevin given to the owner; owner sends; submission stays with the owner/Kevin
 - 2026-11-25T15:24:15.223250+00:00 Next: Unsent reply draft to Kevin (4 files) saved in the workplace Gmail; owner reviews and sends; Kevin submits to review@aiipcc.org by 2026-11-26
+- 2026-11-25T15:26:47.914706+00:00 Next: Final check of the four files done (no comments, placeholders, tracked changes or names; letter quotes and table numbers match); owner sends the draft to Kevin

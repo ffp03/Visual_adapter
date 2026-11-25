@@ -1,6 +1,6 @@
 {
-  "step": "It14 docx built, letter v8 published; Word export queued (dilab-pc1/pc2/pc7 unreachable); background wait running, cron backup 14:41 UTC; then check pages and tables, send PDF",
-  "at": "2026-11-25T13:33:23.782344+00:00",
-  "decision_digest": "2069d557300daeae976834aed9feb458de27614627fbb348479414cb71dbdada",
+  "step": "It14 committed (paper a7d6f4f); owner's local agent exports the PDF with Word and pushes it; then check pages and tables here",
+  "at": "2026-11-25T13:57:58.690532+00:00",
+  "decision_digest": "d071f3cf8f57f788a443499dca88844b2b3582365723d26244c39a69538d5870",
   "done": false
 }

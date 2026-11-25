@@ -64,3 +64,4 @@ Done means:
 - 2026-11-25 Owner: "A" (use the affordability-first openings for the abstract and Introduction paragraph 1; repair the rest of the abstract and the sentence joins in Section 1; absolute rates instead of "67% more"; update letter quotes; rebuild at 7 pages).
 - 2026-11-25 Owner: "No one is going to turn them on for now. Any walk around ?" then "Send a prompt to my local agent so they will build a document. I already have this project locally, but it's out of date right now" (local Word export of the it14 docx).
 - 2026-11-25 Owner: "So what do we need to send? I think the Word, PDF, and as well the letter. Is that all three? And create a draft of email go back to Kevin with the file you have and the missing file I will attach locally".
+- 2026-11-25 Owner: "use my workplace api" then "check skill from email agent" (create the Gmail draft to Kevin with the workplace Gmail route of the EmailAssistant drafting skill).

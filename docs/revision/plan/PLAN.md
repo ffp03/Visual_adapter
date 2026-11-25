@@ -59,3 +59,4 @@ Done means:
 - 2026-11-24 Owner: "codex is available. you can use" (run the readability pass with the readability-check Codex readers).
 - 2026-11-25 Owner: "check the writing to abstract and p1 in intro. why it is odd to read" (analysis first).
 - 2026-11-25 Owner: "the letter need better formatting".
+- 2026-11-25 Owner, on the draft abstract opening "Many people cannot use AI services: a subscription costs money, a model key takes setup, and every request sends the user's data to a provider.": "still odd".
